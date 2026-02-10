@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swarm &amp; Bee — We Compute Intelligence</title>
+  <meta name="description" content="S&B — Compute infrastructure intelligence. Datasets, knowledge graphs, and benchmarks for AI builders.">
+  <meta property="og:title" content="Swarm & Bee">
+  <meta property="og:description" content="We compute intelligence.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://swarmandbee.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #1a1a1a;
+      --text: #e8e8e8;
+      --text-dim: #888888;
+      --text-muted: #555555;
+      --accent: #d4a017;
+      --accent-dim: #b8860b;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- HERO --- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    .firm-mark {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    .firm-name {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .firm-name span {
+      color: var(--accent);
+    }
+
+    .tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 300;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .scroll-hint .arrow {
+      width: 1px;
+      height: 24px;
+      background: linear-gradient(to bottom, var(--text-muted), transparent);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    /* --- SECTIONS --- */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 3rem;
+    }
+
+    /* --- VERTICALS --- */
+    .verticals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .vertical {
+      background: var(--surface);
+      padding: 2.5rem 2rem;
+      transition: background 0.3s ease;
+    }
+
+    .vertical:hover {
+      background: #161616;
+    }
+
+    .vertical-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.01em;
+    }
+
+    .vertical-prefix {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .vertical-desc {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .vertical-status {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .status-live { color: #4ade80; }
+    .status-building { color: var(--accent); }
+    .status-planned { color: var(--text-muted); }
+
+    /* --- ASSETS --- */
+    .assets-section {
+      padding-top: 6rem;
+    }
+
+    .assets-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .assets-table th {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: left;
+      padding: 0 0 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .assets-table td {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .assets-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .asset-name {
+      font-weight: 500;
+    }
+
+    .asset-class {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid;
+    }
+
+    .class-a {
+      color: #4ade80;
+      border-color: #4ade8040;
+    }
+
+    .class-ship {
+      color: var(--accent);
+      border-color: var(--accent-dim);
+    }
+
+    .class-building {
+      color: var(--text-muted);
+      border-color: var(--text-muted);
+    }
+
+    .asset-type {
+      color: var(--text-dim);
+    }
+
+    .asset-vertical {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* --- INFRASTRUCTURE --- */
+    .infra-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .infra-stat {
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .infra-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .infra-number .unit {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .infra-label {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      padding: 4rem 2rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-firm {
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .footer-location {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 640px) {
+      section { padding: 4rem 1.5rem; }
+      .verticals-grid { grid-template-columns: 1fr; }
+      .assets-table .col-type,
+      .assets-table .col-vertical { display: none; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="firm-mark">S&amp;B</div>
+    <h1 class="firm-name">Swarm <span>&amp;</span> Bee</h1>
+    <p class="tagline">We compute intelligence.</p>
+    <div class="scroll-hint">
+      <div class="arrow"></div>
+    </div>
+  </div>
+
+  <!-- VERTICALS -->
+  <section>
+    <div class="section-label">Verticals</div>
+    <div class="verticals-grid">
+      <div class="vertical">
+        <div class="vertical-name"><span class="vertical-prefix">S&amp;B</span> Compute</div>
+        <div class="vertical-desc">Infrastructure intelligence. QA datasets, pain-point analysis, and market data for GPU compute builders.</div>
+        <div class="vertical-status status-live">Live</div>
+      </div>
+      <div class="vertical">
+        <div class="vertical-name"><span class="vertical-prefix">S&amp;B</span> Medical</div>
+        <div class="vertical-desc">Clinical intelligence. Knowledge graphs, benchmarks, and RAG datasets from 10+ medical sources.</div>
+        <div class="vertical-status status-live">Live</div>
+      </div>
+      <div class="vertical">
+        <div class="vertical-name"><span class="vertical-prefix">S&amp;B</span> Capital</div>
+        <div class="vertical-desc">Deal intelligence. Underwriting, cap rates, tenant scoring, and Letters of Compute for infrastructure deals.</div>
+        <div class="vertical-status status-building">Building</div>
+      </div>
+      <div class="vertical">
+        <div class="vertical-name"><span class="vertical-prefix">S&amp;B</span> Edge</div>
+        <div class="vertical-desc">Local intelligence. Sub-10W inference nodes, BitNet deployment, and edge compute orchestration.</div>
+        <div class="vertical-status status-planned">Planned</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSET CLASSES -->
+  <section class="assets-section">
+    <div class="section-label">Asset Classes</div>
+    <table class="assets-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Class</th>
+          <th class="col-type">Type</th>
+          <th class="col-vertical">Vertical</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="asset-name">SwarmComputeQA</td>
+          <td><span class="asset-class class-a">Class A</span></td>
+          <td class="col-type asset-type">Dataset</td>
+          <td class="col-vertical asset-vertical">Compute</td>
+        </tr>
+        <tr>
+          <td class="asset-name">SwarmComputePain</td>
+          <td><span class="asset-class class-ship">Ship</span></td>
+          <td class="col-type asset-type">Dataset</td>
+          <td class="col-vertical asset-vertical">Compute</td>
+        </tr>
+        <tr>
+          <td class="asset-name">SwarmMedGraph</td>
+          <td><span class="asset-class class-ship">Ship</span></td>
+          <td class="col-type asset-type">Knowledge Graph</td>
+          <td class="col-vertical asset-vertical">Medical</td>
+        </tr>
+        <tr>
+          <td class="asset-name">SwarmMedBench</td>
+          <td><span class="asset-class class-ship">Ship</span></td>
+          <td class="col-type asset-type">Benchmark</td>
+          <td class="col-vertical asset-vertical">Medical</td>
+        </tr>
+        <tr>
+          <td class="asset-name">SwarmMedRAG</td>
+          <td><span class="asset-class class-ship">Ship</span></td>
+          <td class="col-type asset-type">Dataset</td>
+          <td class="col-vertical asset-vertical">Medical</td>
+        </tr>
+        <tr>
+          <td class="asset-name">SwarmMedQA</td>
+          <td><span class="asset-class class-building">Building</span></td>
+          <td class="col-type asset-type">Dataset</td>
+          <td class="col-vertical asset-vertical">Medical</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- INFRASTRUCTURE -->
+  <section>
+    <div class="section-label">Infrastructure</div>
+    <div class="infra-grid">
+      <div class="infra-stat">
+        <div class="infra-number">4<span class="unit">x</span></div>
+        <div class="infra-label">RTX 3090 / 3090 Ti GPUs</div>
+      </div>
+      <div class="infra-stat">
+        <div class="infra-number">7</div>
+        <div class="infra-label">Autonomous pipeline agents</div>
+      </div>
+      <div class="infra-stat">
+        <div class="infra-number">10</div>
+        <div class="infra-label">Medical intelligence sources</div>
+      </div>
+      <div class="infra-stat">
+        <div class="infra-number">24/7</div>
+        <div class="infra-label">Continuous harvesting &amp; refinement</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-firm">Swarm &amp; Bee</div>
+      <div class="footer-location">Florida, USA</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://huggingface.co/SwarmnBee" target="_blank" rel="noopener">HuggingFace</a>
+      <a href="https://x.com/swarmosv1" target="_blank" rel="noopener">X</a>
+      <a href="https://intel.quantumrails.io" target="_blank" rel="noopener">Intelligence Dashboard</a>
+    </div>
+  </footer>
+
+</body>
+</html>
