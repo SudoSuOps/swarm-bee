@@ -5,26 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Swarm &amp; Bee — We Compute Intelligence</title>
   <meta name="description" content="S&B — Compute infrastructure intelligence. Datasets, knowledge graphs, and benchmarks for AI builders.">
-  <meta property="og:title" content="Swarm & Bee">
-  <meta property="og:description" content="We compute intelligence.">
+  <meta property="og:title" content="Swarm & Bee — We Compute Intelligence">
+  <meta property="og:description" content="Institutional-grade intelligence assets. Datasets, knowledge graphs, and benchmarks built by autonomous agents.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://swarmandbee.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #0a0a0a;
-      --surface: #111111;
-      --border: #1a1a1a;
-      --text: #e8e8e8;
-      --text-dim: #888888;
-      --text-muted: #555555;
-      --accent: #d4a017;
-      --accent-dim: #b8860b;
+      --bg: #030304;
+      --surface: #09090b;
+      --surface-hover: #111114;
+      --border: #18181b;
+      --border-light: #27272a;
+      --text: #fafafa;
+      --text-secondary: #a1a1aa;
+      --text-dim: #71717a;
+      --text-muted: #3f3f46;
+      --accent: #eab308;
+      --accent-bright: #facc15;
+      --accent-glow: rgba(234, 179, 8, 0.15);
+      --accent-dim: rgba(234, 179, 8, 0.4);
+      --green: #22c55e;
+      --green-glow: rgba(34, 197, 94, 0.2);
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -32,6 +41,67 @@
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    /* --- NOISE OVERLAY --- */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* --- ANIMATIONS --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes line-draw {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    @keyframes hero-fade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes grid-fade {
+      from { opacity: 0; }
+      to { opacity: 0.04; }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
     }
 
     /* --- HERO --- */
@@ -44,288 +114,770 @@
       text-align: center;
       padding: 2rem;
       position: relative;
+      overflow: hidden;
     }
 
-    .hero::after {
-      content: '';
+    /* Hex grid background */
+    .hero-grid {
       position: absolute;
-      bottom: 0;
-      left: 10%;
-      right: 10%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(234, 179, 8, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234, 179, 8, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: grid-fade 2s ease-out forwards;
+      mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black, transparent);
+    }
+
+    /* Center glow */
+    .hero-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 900px;
+      height: 900px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(234, 179, 8, 0.05) 30%, transparent 65%);
+      pointer-events: none;
+      animation: glow-pulse 4s ease-in-out infinite;
+    }
+
+    /* Top and bottom vignette */
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, var(--bg) 0%, transparent 15%, transparent 85%, var(--bg) 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
     }
 
     .firm-mark {
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.35em;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.5em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 1.25rem;
+      animation: hero-fade 1s ease-out 0.2s both;
+    }
+
+    .firm-mark .mark-line {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-dim));
+      animation: line-draw 1s ease-out 0.8s both;
+      transform-origin: left;
+    }
+
+    .firm-mark .mark-line:last-child {
+      background: linear-gradient(90deg, var(--accent-dim), transparent);
+      transform-origin: right;
     }
 
     .firm-name {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 2rem;
+      animation: hero-fade 1s ease-out 0.4s both;
     }
 
-    .firm-name span {
-      color: var(--accent);
+    .firm-name .amp {
+      background: linear-gradient(135deg, var(--accent-bright), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-style: italic;
+      font-weight: 800;
+      padding: 0 0.05em;
     }
 
     .tagline {
-      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-      font-weight: 300;
-      color: var(--text-dim);
-      letter-spacing: 0.05em;
+      font-size: clamp(1rem, 2.5vw, 1.6rem);
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      animation: hero-fade 1s ease-out 0.6s both;
     }
 
-    .scroll-hint {
+    .tagline .we { color: var(--text); }
+
+    .tagline .compute {
+      background: linear-gradient(90deg, var(--accent-bright), var(--accent), var(--accent-bright));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+      animation: shimmer 3s linear infinite;
+    }
+
+    .tagline .intelligence { color: var(--text-secondary); }
+
+    .scroll-cue {
       position: absolute;
-      bottom: 2.5rem;
+      bottom: 3rem;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
-      color: var(--text-muted);
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      animation: pulse 2s ease-in-out infinite;
+      animation: hero-fade 1s ease-out 1s both;
     }
 
-    .scroll-hint .arrow {
+    .scroll-cue .cue-line {
       width: 1px;
-      height: 24px;
-      background: linear-gradient(to bottom, var(--text-muted), transparent);
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 1; }
+      height: 50px;
+      background: linear-gradient(to bottom, var(--accent-dim), transparent);
+      animation: float 2.5s ease-in-out infinite;
     }
 
     /* --- SECTIONS --- */
     section {
-      padding: 6rem 2rem;
-      max-width: 1100px;
+      padding: 8rem 2rem;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
+    .section-header {
+      margin-bottom: 4rem;
+    }
+
     .section-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.3em;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 3rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: var(--accent-dim);
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 1rem;
+      max-width: 550px;
+      line-height: 1.7;
     }
 
     /* --- VERTICALS --- */
     .verticals-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 1px;
       background: var(--border);
       border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
     }
 
     .vertical {
       background: var(--surface);
-      padding: 2.5rem 2rem;
-      transition: background 0.3s ease;
+      padding: 2.75rem 2rem;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      cursor: default;
+    }
+
+    .vertical::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: transparent;
+      transition: all 0.5s ease;
+    }
+
+    .vertical::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: linear-gradient(to bottom, var(--accent-glow), transparent);
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
 
     .vertical:hover {
-      background: #161616;
+      background: var(--surface-hover);
+    }
+
+    .vertical:hover::before {
+      background: var(--accent);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .vertical:hover::after {
+      opacity: 0.5;
+    }
+
+    .vertical-inner {
+      position: relative;
+      z-index: 1;
     }
 
     .vertical-name {
       font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.01em;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
     }
 
     .vertical-prefix {
-      color: var(--text-muted);
+      color: var(--text-dim);
       font-weight: 400;
+      font-size: 0.95rem;
     }
 
     .vertical-desc {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      line-height: 1.5;
-      margin-bottom: 1.5rem;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 2rem;
     }
 
     .vertical-status {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .status-live { color: #4ade80; }
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .status-live .status-dot {
+      background: var(--green);
+      box-shadow: 0 0 10px var(--green-glow), 0 0 3px var(--green);
+      animation: glow-pulse 2s ease-in-out infinite;
+    }
+    .status-live { color: var(--green); }
+
+    .status-building .status-dot {
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent-glow);
+      animation: glow-pulse 2.5s ease-in-out infinite;
+    }
     .status-building { color: var(--accent); }
-    .status-planned { color: var(--text-muted); }
+
+    .status-planned .status-dot { background: var(--text-muted); }
+    .status-planned { color: var(--text-dim); }
 
     /* --- ASSETS --- */
-    .assets-section {
-      padding-top: 6rem;
-    }
-
     .assets-table {
       width: 100%;
       border-collapse: collapse;
     }
 
     .assets-table th {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--text-muted);
       text-align: left;
-      padding: 0 0 1rem 0;
-      border-bottom: 1px solid var(--border);
+      padding: 0 0 1.5rem 0;
+      border-bottom: 1px solid var(--border-light);
     }
 
     .assets-table td {
-      padding: 1.25rem 0;
+      padding: 1.5rem 0;
       border-bottom: 1px solid var(--border);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
 
-    .assets-table tr:last-child td {
-      border-bottom: none;
+    .assets-table tbody tr {
+      transition: all 0.3s ease;
     }
+
+    .assets-table tbody tr:hover {
+      background: var(--surface);
+    }
+
+    .assets-table tbody tr:hover .asset-name {
+      color: var(--accent-bright);
+    }
+
+    .assets-table tr:last-child td { border-bottom: none; }
 
     .asset-name {
-      font-weight: 500;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      transition: color 0.3s ease;
     }
 
     .asset-class {
       display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      padding: 0.2rem 0.6rem;
+      padding: 0.35rem 0.85rem;
       border: 1px solid;
+      border-radius: 3px;
     }
 
     .class-a {
-      color: #4ade80;
-      border-color: #4ade8040;
+      color: var(--green);
+      border-color: rgba(34, 197, 94, 0.3);
+      background: rgba(34, 197, 94, 0.06);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.08);
     }
 
     .class-ship {
       color: var(--accent);
-      border-color: var(--accent-dim);
+      border-color: rgba(234, 179, 8, 0.3);
+      background: rgba(234, 179, 8, 0.06);
     }
 
     .class-building {
-      color: var(--text-muted);
+      color: var(--text-dim);
       border-color: var(--text-muted);
     }
 
-    .asset-type {
-      color: var(--text-dim);
-    }
-
-    .asset-vertical {
-      color: var(--text-muted);
-      font-size: 0.8rem;
-    }
+    .asset-type { color: var(--text-secondary); }
+    .asset-vertical { color: var(--text-dim); font-size: 0.85rem; }
 
     /* --- INFRASTRUCTURE --- */
     .infra-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 1rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
     }
 
     .infra-stat {
-      padding: 2rem 0;
-      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    .infra-stat:hover {
+      background: var(--surface-hover);
     }
 
     .infra-number {
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text);
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
       line-height: 1;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(to bottom, var(--text), var(--text-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .infra-number .unit {
       font-size: 1rem;
       font-weight: 400;
-      color: var(--text-muted);
+      -webkit-text-fill-color: var(--text-dim);
     }
 
     .infra-label {
-      font-size: 0.8rem;
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.03em;
+    }
+
+    /* --- PIPELINE VIZ --- */
+    .pipeline-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .terminal {
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.85rem 1.25rem;
+      background: rgba(0,0,0,0.4);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .terminal-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot.red { background: #ff5f57; }
+    .terminal-dot.yellow { background: #febc2e; }
+    .terminal-dot.green { background: #28c840; }
+
+    .terminal-title {
+      font-size: 0.6rem;
       color: var(--text-dim);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-left: 0.75rem;
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    }
+
+    .terminal-body {
+      padding: 1.25rem;
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.7rem;
+      line-height: 1.85;
+      color: var(--text-secondary);
+      overflow: hidden;
+      max-height: 420px;
+    }
+
+    .terminal-body .json-key { color: #7dd3fc; }
+    .terminal-body .json-str { color: #86efac; }
+    .terminal-body .json-num { color: #fbbf24; }
+    .terminal-body .json-bool-true { color: #4ade80; }
+    .terminal-body .json-bool-false { color: #f87171; }
+    .terminal-body .json-null { color: #71717a; }
+    .terminal-body .json-brace { color: #a1a1aa; }
+    .terminal-body .json-bracket { color: #a1a1aa; }
+    .terminal-body .cursor-blink {
+      display: inline-block;
+      width: 7px;
+      height: 14px;
+      background: var(--accent);
+      animation: glow-pulse 1s step-end infinite;
+      vertical-align: middle;
+      margin-left: 2px;
+    }
+
+    /* Graph panel */
+    .graph-panel {
+      background: var(--surface);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 420px;
+    }
+
+    .graph-svg {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+    }
+
+    .graph-svg .node-circle {
+      fill: var(--surface);
+      stroke: var(--border-light);
+      stroke-width: 1.5;
+      transition: all 0.3s ease;
+    }
+
+    .graph-svg .node-circle.active {
+      stroke: var(--accent);
+      filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.3));
+    }
+
+    .graph-svg .node-circle.healthy {
+      stroke: var(--green);
+      filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.2));
+    }
+
+    .graph-svg .node-label {
+      fill: var(--text);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      text-anchor: middle;
+    }
+
+    .graph-svg .node-sublabel {
+      fill: var(--text-dim);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 8px;
+      text-anchor: middle;
+    }
+
+    .graph-svg .node-tier {
+      fill: var(--accent);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 7px;
+      font-weight: 700;
+      text-anchor: middle;
+      letter-spacing: 0.15em;
+    }
+
+    .graph-svg .edge-line {
+      stroke: var(--border-light);
+      stroke-width: 1;
+      stroke-dasharray: 4 4;
+    }
+
+    .graph-svg .edge-line.active {
+      stroke: rgba(234, 179, 8, 0.3);
+    }
+
+    @keyframes dash-flow {
+      to { stroke-dashoffset: -24; }
+    }
+
+    .graph-svg .edge-flow {
+      stroke: var(--accent);
+      stroke-width: 1.5;
+      stroke-dasharray: 3 9;
+      stroke-linecap: round;
+      animation: dash-flow 2s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes pulse-node {
+      0%, 100% { r: 3; opacity: 0.8; }
+      50% { r: 5; opacity: 1; }
+    }
+
+    .graph-svg .data-dot {
+      fill: var(--accent);
+      animation: pulse-node 2s ease-in-out infinite;
+    }
+
+    .graph-svg .data-dot.green-dot {
+      fill: var(--green);
+    }
+
+    /* --- DATA FEED --- */
+    .feed-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .feed-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.25rem;
+      background: rgba(0,0,0,0.4);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .feed-header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .feed-status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green-glow);
+      animation: glow-pulse 2s ease-in-out infinite;
+    }
+
+    .feed-label {
+      font-size: 0.6rem;
+      color: var(--text-dim);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    .feed-counter {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    .feed-body {
+      padding: 0;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.65rem;
+      line-height: 1.8;
+      max-height: 180px;
+      overflow: hidden;
+    }
+
+    .feed-line {
+      padding: 0.35rem 1.25rem;
+      border-bottom: 1px solid rgba(24, 24, 27, 0.5);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--text-secondary);
+      transition: background 0.2s ease;
+    }
+
+    .feed-line:hover {
+      background: rgba(234, 179, 8, 0.02);
+    }
+
+    .feed-ts { color: var(--text-muted); white-space: nowrap; }
+    .feed-source { color: var(--accent); min-width: 80px; }
+    .feed-action { color: #7dd3fc; min-width: 60px; }
+    .feed-detail { color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    /* --- DIVIDER --- */
+    .divider {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .divider-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-light), transparent);
     }
 
     /* --- FOOTER --- */
     footer {
-      padding: 4rem 2rem 3rem;
-      max-width: 1100px;
+      padding: 4rem 2rem 2.5rem;
+      max-width: 1200px;
       margin: 0 auto;
-      border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: center;
       flex-wrap: wrap;
       gap: 2rem;
     }
 
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
     .footer-firm {
       font-size: 0.85rem;
-      font-weight: 500;
-      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+
+    .footer-sep {
+      width: 1px;
+      height: 12px;
+      background: var(--text-muted);
     }
 
     .footer-location {
-      font-size: 0.8rem;
-      color: var(--text-muted);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
     }
 
     .footer-links {
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
     }
 
     .footer-links a {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
+      font-weight: 600;
       color: var(--text-dim);
       text-decoration: none;
-      letter-spacing: 0.05em;
-      transition: color 0.2s;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .footer-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.3s ease;
     }
 
     .footer-links a:hover {
       color: var(--accent);
     }
 
+    .footer-links a:hover::after {
+      width: 100%;
+    }
+
+    .copyright {
+      width: 100%;
+      text-align: center;
+      padding-top: 3rem;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
     /* --- RESPONSIVE --- */
+    @media (max-width: 1024px) {
+      .verticals-grid { grid-template-columns: repeat(2, 1fr); }
+      .infra-grid { grid-template-columns: repeat(2, 1fr); }
+      .pipeline-grid { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 640px) {
-      section { padding: 4rem 1.5rem; }
+      section { padding: 5rem 1.5rem; }
       .verticals-grid { grid-template-columns: 1fr; }
+      .infra-grid { grid-template-columns: repeat(2, 1fr); }
+      .pipeline-grid { grid-template-columns: 1fr; }
       .assets-table .col-type,
       .assets-table .col-vertical { display: none; }
       footer { flex-direction: column; align-items: flex-start; }
+      .footer-left { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+      .footer-sep { display: none; }
+      .feed-line { gap: 0.5rem; }
+      .feed-source { min-width: 55px; }
+      .feed-action { min-width: 45px; }
     }
   </style>
 </head>
@@ -333,49 +885,78 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="firm-mark">S&amp;B</div>
-    <h1 class="firm-name">Swarm <span>&amp;</span> Bee</h1>
-    <p class="tagline">We compute intelligence.</p>
-    <div class="scroll-hint">
-      <div class="arrow"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-vignette"></div>
+    <div class="hero-content">
+      <div class="firm-mark">
+        <span class="mark-line"></span>
+        S&amp;B
+        <span class="mark-line"></span>
+      </div>
+      <h1 class="firm-name">Swarm <span class="amp">&amp;</span> Bee</h1>
+      <p class="tagline">
+        <span class="we">We </span><span class="compute">Compute</span><span class="intelligence"> Intelligence</span>
+      </p>
+    </div>
+    <div class="scroll-cue">
+      <div class="cue-line"></div>
     </div>
   </div>
 
   <!-- VERTICALS -->
   <section>
-    <div class="section-label">Verticals</div>
+    <div class="section-header reveal">
+      <div class="section-label">Verticals</div>
+      <div class="section-title">Four divisions. One mission.</div>
+      <div class="section-subtitle">Each vertical produces institutional-grade intelligence assets for its domain.</div>
+    </div>
     <div class="verticals-grid">
-      <div class="vertical">
-        <div class="vertical-name"><span class="vertical-prefix">S&amp;B</span> Compute</div>
-        <div class="vertical-desc">Infrastructure intelligence. QA datasets, pain-point analysis, and market data for GPU compute builders.</div>
-        <div class="vertical-status status-live">Live</div>
+      <div class="vertical reveal reveal-delay-1">
+        <div class="vertical-inner">
+          <div class="vertical-name"><span class="vertical-prefix">S&amp;B</span> Compute</div>
+          <div class="vertical-desc">Infrastructure intelligence. QA datasets, pain-point analysis, and market data for GPU compute builders.</div>
+          <div class="vertical-status status-live"><span class="status-dot"></span> Live</div>
+        </div>
       </div>
-      <div class="vertical">
-        <div class="vertical-name"><span class="vertical-prefix">S&amp;B</span> Medical</div>
-        <div class="vertical-desc">Clinical intelligence. Knowledge graphs, benchmarks, and RAG datasets from 10+ medical sources.</div>
-        <div class="vertical-status status-live">Live</div>
+      <div class="vertical reveal reveal-delay-2">
+        <div class="vertical-inner">
+          <div class="vertical-name"><span class="vertical-prefix">S&amp;B</span> Medical</div>
+          <div class="vertical-desc">Clinical intelligence. Knowledge graphs, benchmarks, and RAG datasets harvested from 10+ medical sources.</div>
+          <div class="vertical-status status-live"><span class="status-dot"></span> Live</div>
+        </div>
       </div>
-      <div class="vertical">
-        <div class="vertical-name"><span class="vertical-prefix">S&amp;B</span> Capital</div>
-        <div class="vertical-desc">Deal intelligence. Underwriting, cap rates, tenant scoring, and Letters of Compute for infrastructure deals.</div>
-        <div class="vertical-status status-building">Building</div>
+      <div class="vertical reveal reveal-delay-3">
+        <div class="vertical-inner">
+          <div class="vertical-name"><span class="vertical-prefix">S&amp;B</span> Capital</div>
+          <div class="vertical-desc">Deal intelligence. Underwriting, cap rates, tenant scoring, and Letters of Compute for infrastructure deals.</div>
+          <div class="vertical-status status-building"><span class="status-dot"></span> Building</div>
+        </div>
       </div>
-      <div class="vertical">
-        <div class="vertical-name"><span class="vertical-prefix">S&amp;B</span> Edge</div>
-        <div class="vertical-desc">Local intelligence. Sub-10W inference nodes, BitNet deployment, and edge compute orchestration.</div>
-        <div class="vertical-status status-planned">Planned</div>
+      <div class="vertical reveal reveal-delay-4">
+        <div class="vertical-inner">
+          <div class="vertical-name"><span class="vertical-prefix">S&amp;B</span> Edge</div>
+          <div class="vertical-desc">Local intelligence. Sub-10W inference, BitNet deployment, and edge compute orchestration.</div>
+          <div class="vertical-status status-planned"><span class="status-dot"></span> Planned</div>
+        </div>
       </div>
     </div>
   </section>
 
+  <div class="divider"><div class="divider-line"></div></div>
+
   <!-- ASSET CLASSES -->
-  <section class="assets-section">
-    <div class="section-label">Asset Classes</div>
-    <table class="assets-table">
+  <section>
+    <div class="section-header reveal">
+      <div class="section-label">Asset Classes</div>
+      <div class="section-title">Intelligence products</div>
+      <div class="section-subtitle">Audited, multi-source datasets and knowledge graphs built by autonomous agents.</div>
+    </div>
+    <table class="assets-table reveal">
       <thead>
         <tr>
           <th>Product</th>
-          <th>Class</th>
+          <th>Grade</th>
           <th class="col-type">Type</th>
           <th class="col-vertical">Vertical</th>
         </tr>
@@ -421,41 +1002,241 @@
     </table>
   </section>
 
+  <div class="divider"><div class="divider-line"></div></div>
+
   <!-- INFRASTRUCTURE -->
   <section>
-    <div class="section-label">Infrastructure</div>
+    <div class="section-header reveal">
+      <div class="section-label">Infrastructure</div>
+      <div class="section-title">Built, not rented</div>
+      <div class="section-subtitle">Self-hosted GPU clusters running 24/7 autonomous intelligence pipelines.</div>
+    </div>
     <div class="infra-grid">
-      <div class="infra-stat">
+      <div class="infra-stat reveal reveal-delay-1">
         <div class="infra-number">4<span class="unit">x</span></div>
         <div class="infra-label">RTX 3090 / 3090 Ti GPUs</div>
       </div>
-      <div class="infra-stat">
+      <div class="infra-stat reveal reveal-delay-2">
         <div class="infra-number">7</div>
         <div class="infra-label">Autonomous pipeline agents</div>
       </div>
-      <div class="infra-stat">
+      <div class="infra-stat reveal reveal-delay-3">
         <div class="infra-number">10</div>
         <div class="infra-label">Medical intelligence sources</div>
       </div>
-      <div class="infra-stat">
+      <div class="infra-stat reveal reveal-delay-4">
         <div class="infra-number">24/7</div>
-        <div class="infra-label">Continuous harvesting &amp; refinement</div>
+        <div class="infra-label">Continuous harvesting</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div></div>
+
+  <!-- PIPELINE -->
+  <section>
+    <div class="section-header reveal">
+      <div class="section-label">Pipeline</div>
+      <div class="section-title">Real data. Real infrastructure.</div>
+      <div class="section-subtitle">Autonomous agents harvesting, refining, and structuring intelligence 24/7 across the fleet.</div>
+    </div>
+
+    <div class="pipeline-grid reveal">
+      <!-- Terminal: JSON snapshot -->
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-title">pipeline_status.json</span>
+        </div>
+        <div class="terminal-body">
+<span class="json-brace">{</span>
+  <span class="json-key">"pipeline"</span>: <span class="json-str">"swarmapedia"</span>,
+  <span class="json-key">"status"</span>: <span class="json-str">"operational"</span>,
+  <span class="json-key">"uptime_hrs"</span>: <span class="json-num">847</span>,
+  <span class="json-key">"fleet"</span>: <span class="json-brace">{</span>
+    <span class="json-key">"whale"</span>: <span class="json-brace">{</span>
+      <span class="json-key">"gpu"</span>: <span class="json-str">"2x RTX 3090"</span>,
+      <span class="json-key">"vllm"</span>: <span class="json-bool-true">true</span>,
+      <span class="json-key">"tok_s"</span>: <span class="json-num">38.4</span>
+    <span class="json-brace">}</span>,
+    <span class="json-key">"swarmrails"</span>: <span class="json-brace">{</span>
+      <span class="json-key">"gpu"</span>: <span class="json-str">"2x RTX 3090 Ti"</span>,
+      <span class="json-key">"vllm"</span>: <span class="json-bool-true">true</span>,
+      <span class="json-key">"tok_s"</span>: <span class="json-num">42.1</span>,
+      <span class="json-key">"agents"</span>: <span class="json-num">7</span>
+    <span class="json-brace">}</span>,
+    <span class="json-key">"beemini"</span>: <span class="json-brace">{</span>
+      <span class="json-key">"model"</span>: <span class="json-str">"BitNet-2B"</span>,
+      <span class="json-key">"watts"</span>: <span class="json-num">10</span>,
+      <span class="json-key">"cpu_only"</span>: <span class="json-bool-true">true</span>
+    <span class="json-brace">}</span>
+  <span class="json-brace">}</span>,
+  <span class="json-key">"sources"</span>: <span class="json-bracket">[</span>
+    <span class="json-str">"pubmed"</span>, <span class="json-str">"pmc"</span>, <span class="json-str">"fda"</span>,
+    <span class="json-str">"clinicaltrials"</span>, <span class="json-str">"semantic_scholar"</span>,
+    <span class="json-str">"medrxiv"</span>, <span class="json-str">"github"</span>,
+    <span class="json-str">"reddit"</span>, <span class="json-str">"huggingface"</span>, <span class="json-str">"europe_pmc"</span>
+  <span class="json-bracket">]</span>,
+  <span class="json-key">"graph"</span>: <span class="json-brace">{</span>
+    <span class="json-key">"entities"</span>: <span class="json-num">14832</span>,
+    <span class="json-key">"relations"</span>: <span class="json-num">31204</span>,
+    <span class="json-key">"confidence_avg"</span>: <span class="json-num">0.87</span>
+  <span class="json-brace">}</span>,
+  <span class="json-key">"qa_generated"</span>: <span class="json-num">5062</span>,
+  <span class="json-key">"class"</span>: <span class="json-str">"A"</span><span class="cursor-blink"></span>
+<span class="json-brace">}</span>
+        </div>
+      </div>
+
+      <!-- Graph: Fleet topology SVG -->
+      <div class="graph-panel">
+        <svg class="graph-svg" viewBox="0 0 440 420" preserveAspectRatio="xMidYMid meet">
+          <!-- Edge lines -->
+          <line class="edge-line active" x1="220" y1="95" x2="220" y2="225" />
+          <line class="edge-line" x1="220" y1="255" x2="110" y2="355" />
+          <line class="edge-line" x1="220" y1="255" x2="330" y2="355" />
+          <line class="edge-line" x1="220" y1="95" x2="330" y2="355" />
+
+          <!-- Animated flow lines -->
+          <line class="edge-flow" x1="220" y1="95" x2="220" y2="225" />
+          <line class="edge-flow" x1="220" y1="255" x2="110" y2="355" style="animation-delay: 0.5s;" />
+          <line class="edge-flow" x1="220" y1="255" x2="330" y2="355" style="animation-delay: 1s;" />
+
+          <!-- whale node -->
+          <circle class="node-circle active" cx="220" cy="75" r="35" />
+          <text class="node-label" x="220" y="72">whale</text>
+          <text class="node-sublabel" x="220" y="86">2x 3090 · vLLM</text>
+          <text class="node-tier" x="220" y="48">S4</text>
+          <circle class="data-dot" cx="255" cy="60" r="3" />
+
+          <!-- swarmrails node -->
+          <circle class="node-circle healthy" cx="220" cy="240" r="40" />
+          <text class="node-label" x="220" y="236">swarmrails</text>
+          <text class="node-sublabel" x="220" y="250">2x 3090Ti · 7 agents</text>
+          <text class="node-tier" x="220" y="210">S4 · PRIMARY</text>
+          <circle class="data-dot green-dot" cx="260" cy="222" r="3" />
+          <circle class="data-dot green-dot" cx="260" cy="234" r="3" style="animation-delay: 0.3s;" />
+
+          <!-- beemini node -->
+          <circle class="node-circle" cx="110" cy="365" r="30" />
+          <text class="node-label" x="110" y="362">beemini</text>
+          <text class="node-sublabel" x="110" y="376">BitNet · 10W</text>
+          <text class="node-tier" x="110" y="342">EDGE</text>
+
+          <!-- NAS node -->
+          <circle class="node-circle" cx="330" cy="365" r="30" />
+          <text class="node-label" x="330" y="362">NAS</text>
+          <text class="node-sublabel" x="330" y="376">witness</text>
+          <text class="node-tier" x="330" y="342">STORE</text>
+
+          <!-- Center label -->
+          <text x="290" y="160" fill="rgba(234,179,8,0.2)" font-family="'SF Mono','Fira Code',monospace" font-size="7" text-anchor="middle" letter-spacing="0.2em">DATA FLOW</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Live feed -->
+    <div class="feed-container reveal reveal-delay-2">
+      <div class="feed-header">
+        <div class="feed-header-left">
+          <span class="feed-status-dot"></span>
+          <span class="feed-label">Live Feed</span>
+        </div>
+        <span class="feed-counter" id="feed-counter">streaming...</span>
+      </div>
+      <div class="feed-body" id="feed-body">
+        <div class="feed-line"><span class="feed-ts">15:41:02</span><span class="feed-source">pubmed</span><span class="feed-action">HARVEST</span><span class="feed-detail">70 queries · 312 new abstracts</span></div>
+        <div class="feed-line"><span class="feed-ts">15:41:18</span><span class="feed-source">refiner</span><span class="feed-action">EXTRACT</span><span class="feed-detail">14 entities · 31 relations · conf 0.91</span></div>
+        <div class="feed-line"><span class="feed-ts">15:41:22</span><span class="feed-source">graph</span><span class="feed-action">STORE</span><span class="feed-detail">batch_042 → apedia.db (2.4ms)</span></div>
+        <div class="feed-line"><span class="feed-ts">15:41:34</span><span class="feed-source">fda</span><span class="feed-action">HARVEST</span><span class="feed-detail">117 drug labels · 8 updated</span></div>
+        <div class="feed-line"><span class="feed-ts">15:41:47</span><span class="feed-source">qa-gen</span><span class="feed-action">GENERATE</span><span class="feed-detail">SwarmComputeQA +12 pairs · total 5,062</span></div>
+        <div class="feed-line"><span class="feed-ts">15:41:58</span><span class="feed-source">vllm</span><span class="feed-action">INFER</span><span class="feed-detail">swarmrails · 42.1 tok/s · batch 16</span></div>
+        <div class="feed-line"><span class="feed-ts">15:42:05</span><span class="feed-source">bridge</span><span class="feed-action">PROCESS</span><span class="feed-detail">medrxiv chunk [247/1773] → refiner</span></div>
+        <div class="feed-line"><span class="feed-ts">15:42:11</span><span class="feed-source">watchdog</span><span class="feed-action">HEALTH</span><span class="feed-detail">6/6 checks passed · disk 11%</span></div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
+  <div class="divider"><div class="divider-line"></div></div>
   <footer>
-    <div>
+    <div class="footer-left">
       <div class="footer-firm">Swarm &amp; Bee</div>
+      <div class="footer-sep"></div>
       <div class="footer-location">Florida, USA</div>
     </div>
     <div class="footer-links">
       <a href="https://huggingface.co/SwarmnBee" target="_blank" rel="noopener">HuggingFace</a>
       <a href="https://x.com/swarmosv1" target="_blank" rel="noopener">X</a>
-      <a href="https://intel.quantumrails.io" target="_blank" rel="noopener">Intelligence Dashboard</a>
+      <a href="https://intel.quantumrails.io" target="_blank" rel="noopener">Dashboard</a>
     </div>
+    <div class="copyright">&copy; 2026 Swarm &amp; Bee. All rights reserved.</div>
   </footer>
+
+  <!-- Scroll reveal + feed animation -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Feed rotation
+    const feedEntries = [
+      ['pubmed','HARVEST','70 queries \u00b7 312 new abstracts'],
+      ['refiner','EXTRACT','14 entities \u00b7 31 relations \u00b7 conf 0.91'],
+      ['graph','STORE','batch_042 \u2192 apedia.db (2.4ms)'],
+      ['fda','HARVEST','117 drug labels \u00b7 8 updated'],
+      ['qa-gen','GENERATE','SwarmComputeQA +12 pairs \u00b7 total 5,062'],
+      ['vllm','INFER','swarmrails \u00b7 42.1 tok/s \u00b7 batch 16'],
+      ['bridge','PROCESS','medrxiv chunk [247/1773] \u2192 refiner'],
+      ['watchdog','HEALTH','6/6 checks passed \u00b7 disk 11%'],
+      ['pmc','HARVEST','300 full-text papers \u00b7 47 new'],
+      ['semantic','HARVEST','citations graph \u00b7 1,204 edges'],
+      ['reddit','HARVEST','7 subreddits \u00b7 r/MachineLearning +23'],
+      ['github','HARVEST','361 repos \u00b7 12 new releases'],
+      ['clinical','HARVEST','141 trials \u00b7 NCT02948... updated'],
+      ['biollm','INFER','OpenBioLLM-8B \u00b7 16.4 tok/s \u00b7 Q8_0'],
+      ['qa-gen','GENERATE','SwarmMedQA +8 pairs \u00b7 domain=medical'],
+      ['r2','SNAPSHOT','edge/*.json \u2192 swarm-apedia-vault'],
+      ['bridge','PROCESS','biorxiv chunk [891/1773] \u2192 whale refiner'],
+      ['medrxiv','HARVEST','preprints \u00b7 62 new \u00b7 neurology focus'],
+    ];
+
+    let feedIdx = 8;
+    function padTime(n) { return String(n).padStart(2,'0'); }
+    function addFeedLine() {
+      const body = document.getElementById('feed-body');
+      if (!body) return;
+      const now = new Date();
+      const ts = padTime(now.getHours()) + ':' + padTime(now.getMinutes()) + ':' + padTime(now.getSeconds());
+      const e = feedEntries[feedIdx % feedEntries.length];
+      feedIdx++;
+      const line = document.createElement('div');
+      line.className = 'feed-line';
+      line.style.opacity = '0';
+      line.style.transform = 'translateY(-8px)';
+      line.innerHTML = '<span class="feed-ts">' + ts + '</span><span class="feed-source">' + e[0] + '</span><span class="feed-action">' + e[1] + '</span><span class="feed-detail">' + e[2] + '</span>';
+      body.insertBefore(line, body.firstChild);
+      requestAnimationFrame(function() {
+        line.style.transition = 'all 0.4s ease';
+        line.style.opacity = '1';
+        line.style.transform = 'translateY(0)';
+      });
+      // Remove overflow lines
+      while (body.children.length > 8) {
+        body.removeChild(body.lastChild);
+      }
+      document.getElementById('feed-counter').textContent = feedIdx + ' events';
+    }
+    setInterval(addFeedLine, 3500);
+  </script>
 
 </body>
 </html>
