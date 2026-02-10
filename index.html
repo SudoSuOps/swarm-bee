@@ -1009,24 +1009,24 @@
     <div class="section-header reveal">
       <div class="section-label">Infrastructure</div>
       <div class="section-title">Built, not rented</div>
-      <div class="section-subtitle">Self-hosted GPU clusters running 24/7 autonomous intelligence pipelines.</div>
+      <div class="section-subtitle">128 GPUs. 12 terabytes of VRAM. Self-hosted clusters running 24/7 autonomous intelligence pipelines.</div>
     </div>
     <div class="infra-grid">
       <div class="infra-stat reveal reveal-delay-1">
-        <div class="infra-number">4<span class="unit">x</span></div>
-        <div class="infra-label">RTX 3090 / 3090 Ti GPUs</div>
+        <div class="infra-number">128</div>
+        <div class="infra-label">RTX 6000 Pro 96GB GPUs</div>
       </div>
       <div class="infra-stat reveal reveal-delay-2">
-        <div class="infra-number">7</div>
-        <div class="infra-label">Autonomous pipeline agents</div>
+        <div class="infra-number">12.3<span class="unit">TB</span></div>
+        <div class="infra-label">Total GPU VRAM</div>
       </div>
       <div class="infra-stat reveal reveal-delay-3">
         <div class="infra-number">10</div>
-        <div class="infra-label">Medical intelligence sources</div>
+        <div class="infra-label">Intelligence sources</div>
       </div>
       <div class="infra-stat reveal reveal-delay-4">
         <div class="infra-number">24/7</div>
-        <div class="infra-label">Continuous harvesting</div>
+        <div class="infra-label">Autonomous pipeline agents</div>
       </div>
     </div>
   </section>
@@ -1048,43 +1048,31 @@
           <span class="terminal-dot red"></span>
           <span class="terminal-dot yellow"></span>
           <span class="terminal-dot green"></span>
-          <span class="terminal-title">pipeline_status.json</span>
+          <span class="terminal-title">cluster_status.json</span>
         </div>
         <div class="terminal-body">
 <span class="json-brace">{</span>
-  <span class="json-key">"pipeline"</span>: <span class="json-str">"swarmapedia"</span>,
+  <span class="json-key">"cluster"</span>: <span class="json-str">"sb-compute-01"</span>,
   <span class="json-key">"status"</span>: <span class="json-str">"operational"</span>,
-  <span class="json-key">"uptime_hrs"</span>: <span class="json-num">847</span>,
-  <span class="json-key">"fleet"</span>: <span class="json-brace">{</span>
-    <span class="json-key">"whale"</span>: <span class="json-brace">{</span>
-      <span class="json-key">"gpu"</span>: <span class="json-str">"2x RTX 3090"</span>,
-      <span class="json-key">"vllm"</span>: <span class="json-bool-true">true</span>,
-      <span class="json-key">"tok_s"</span>: <span class="json-num">38.4</span>
-    <span class="json-brace">}</span>,
-    <span class="json-key">"swarmrails"</span>: <span class="json-brace">{</span>
-      <span class="json-key">"gpu"</span>: <span class="json-str">"2x RTX 3090 Ti"</span>,
-      <span class="json-key">"vllm"</span>: <span class="json-bool-true">true</span>,
-      <span class="json-key">"tok_s"</span>: <span class="json-num">42.1</span>,
-      <span class="json-key">"agents"</span>: <span class="json-num">7</span>
-    <span class="json-brace">}</span>,
-    <span class="json-key">"beemini"</span>: <span class="json-brace">{</span>
-      <span class="json-key">"model"</span>: <span class="json-str">"BitNet-2B"</span>,
-      <span class="json-key">"watts"</span>: <span class="json-num">10</span>,
-      <span class="json-key">"cpu_only"</span>: <span class="json-bool-true">true</span>
-    <span class="json-brace">}</span>
+  <span class="json-key">"gpu_fleet"</span>: <span class="json-brace">{</span>
+    <span class="json-key">"model"</span>: <span class="json-str">"RTX 6000 Pro"</span>,
+    <span class="json-key">"vram_per_gpu"</span>: <span class="json-str">"96 GB"</span>,
+    <span class="json-key">"count"</span>: <span class="json-num">128</span>,
+    <span class="json-key">"total_vram_tb"</span>: <span class="json-num">12.288</span>,
+    <span class="json-key">"arch"</span>: <span class="json-str">"Ada Lovelace"</span>
   <span class="json-brace">}</span>,
-  <span class="json-key">"sources"</span>: <span class="json-bracket">[</span>
-    <span class="json-str">"pubmed"</span>, <span class="json-str">"pmc"</span>, <span class="json-str">"fda"</span>,
-    <span class="json-str">"clinicaltrials"</span>, <span class="json-str">"semantic_scholar"</span>,
-    <span class="json-str">"medrxiv"</span>, <span class="json-str">"github"</span>,
-    <span class="json-str">"reddit"</span>, <span class="json-str">"huggingface"</span>, <span class="json-str">"europe_pmc"</span>
-  <span class="json-bracket">]</span>,
-  <span class="json-key">"graph"</span>: <span class="json-brace">{</span>
+  <span class="json-key">"nodes"</span>: <span class="json-brace">{</span>
+    <span class="json-key">"whale"</span>: <span class="json-brace">{</span> <span class="json-key">"role"</span>: <span class="json-str">"inference"</span>, <span class="json-key">"vllm"</span>: <span class="json-bool-true">true</span> <span class="json-brace">}</span>,
+    <span class="json-key">"swarmrails"</span>: <span class="json-brace">{</span> <span class="json-key">"role"</span>: <span class="json-str">"primary"</span>, <span class="json-key">"agents"</span>: <span class="json-num">7</span> <span class="json-brace">}</span>,
+    <span class="json-key">"edge"</span>: <span class="json-brace">{</span> <span class="json-key">"role"</span>: <span class="json-str">"local"</span>, <span class="json-key">"watts"</span>: <span class="json-num">10</span> <span class="json-brace">}</span>
+  <span class="json-brace">}</span>,
+  <span class="json-key">"pipeline"</span>: <span class="json-brace">{</span>
+    <span class="json-key">"sources"</span>: <span class="json-num">10</span>,
     <span class="json-key">"entities"</span>: <span class="json-num">14832</span>,
     <span class="json-key">"relations"</span>: <span class="json-num">31204</span>,
-    <span class="json-key">"confidence_avg"</span>: <span class="json-num">0.87</span>
+    <span class="json-key">"qa_pairs"</span>: <span class="json-num">5062</span>,
+    <span class="json-key">"confidence"</span>: <span class="json-num">0.87</span>
   <span class="json-brace">}</span>,
-  <span class="json-key">"qa_generated"</span>: <span class="json-num">5062</span>,
   <span class="json-key">"class"</span>: <span class="json-str">"A"</span><span class="cursor-blink"></span>
 <span class="json-brace">}</span>
         </div>
@@ -1092,47 +1080,68 @@
 
       <!-- Graph: Fleet topology SVG -->
       <div class="graph-panel">
-        <svg class="graph-svg" viewBox="0 0 440 420" preserveAspectRatio="xMidYMid meet">
-          <!-- Edge lines -->
-          <line class="edge-line active" x1="220" y1="95" x2="220" y2="225" />
-          <line class="edge-line" x1="220" y1="255" x2="110" y2="355" />
-          <line class="edge-line" x1="220" y1="255" x2="330" y2="355" />
-          <line class="edge-line" x1="220" y1="95" x2="330" y2="355" />
+        <svg class="graph-svg" viewBox="0 0 440 440" preserveAspectRatio="xMidYMid meet">
+          <!-- Edge lines: cluster to orchestrator -->
+          <line class="edge-line active" x1="220" y1="95" x2="220" y2="195" />
+          <!-- orchestrator to worker nodes -->
+          <line class="edge-line active" x1="220" y1="235" x2="100" y2="320" />
+          <line class="edge-line active" x1="220" y1="235" x2="340" y2="320" />
+          <!-- worker to edge/store -->
+          <line class="edge-line" x1="100" y1="350" x2="100" y2="410" />
+          <line class="edge-line" x1="340" y1="350" x2="340" y2="410" />
+          <!-- cross link -->
+          <line class="edge-line" x1="100" y1="335" x2="340" y2="335" />
 
           <!-- Animated flow lines -->
-          <line class="edge-flow" x1="220" y1="95" x2="220" y2="225" />
-          <line class="edge-flow" x1="220" y1="255" x2="110" y2="355" style="animation-delay: 0.5s;" />
-          <line class="edge-flow" x1="220" y1="255" x2="330" y2="355" style="animation-delay: 1s;" />
+          <line class="edge-flow" x1="220" y1="95" x2="220" y2="195" />
+          <line class="edge-flow" x1="220" y1="235" x2="100" y2="320" style="animation-delay: 0.4s;" />
+          <line class="edge-flow" x1="220" y1="235" x2="340" y2="320" style="animation-delay: 0.8s;" />
+          <line class="edge-flow" x1="100" y1="335" x2="340" y2="335" style="animation-delay: 1.2s;" />
 
-          <!-- whale node -->
-          <circle class="node-circle active" cx="220" cy="75" r="35" />
-          <text class="node-label" x="220" y="72">whale</text>
-          <text class="node-sublabel" x="220" y="86">2x 3090 · vLLM</text>
-          <text class="node-tier" x="220" y="48">S4</text>
-          <circle class="data-dot" cx="255" cy="60" r="3" />
+          <!-- GPU CLUSTER node (top, biggest) -->
+          <rect class="node-circle active" x="155" y="30" width="130" height="60" rx="6" ry="6" style="fill:var(--surface);stroke:var(--accent);stroke-width:1.5;filter:drop-shadow(0 0 12px rgba(234,179,8,0.25));" />
+          <text class="node-label" x="220" y="56" style="font-size:12px;">128x RTX 6000</text>
+          <text class="node-sublabel" x="220" y="72">96 GB · Ada Lovelace</text>
+          <text class="node-tier" x="220" y="25">GPU CLUSTER · 12.3 TB VRAM</text>
+          <circle class="data-dot" cx="290" cy="42" r="3" />
+          <circle class="data-dot" cx="290" cy="54" r="3" style="animation-delay: 0.5s;" />
+          <circle class="data-dot" cx="290" cy="66" r="3" style="animation-delay: 1s;" />
 
-          <!-- swarmrails node -->
-          <circle class="node-circle healthy" cx="220" cy="240" r="40" />
-          <text class="node-label" x="220" y="236">swarmrails</text>
-          <text class="node-sublabel" x="220" y="250">2x 3090Ti · 7 agents</text>
-          <text class="node-tier" x="220" y="210">S4 · PRIMARY</text>
-          <circle class="data-dot green-dot" cx="260" cy="222" r="3" />
-          <circle class="data-dot green-dot" cx="260" cy="234" r="3" style="animation-delay: 0.3s;" />
+          <!-- ORCHESTRATOR node (swarmrails) -->
+          <circle class="node-circle healthy" cx="220" cy="215" r="38" />
+          <text class="node-label" x="220" y="211">swarmrails</text>
+          <text class="node-sublabel" x="220" y="225">orchestrator · 7 agents</text>
+          <text class="node-tier" x="220" y="185">PRIMARY</text>
+          <circle class="data-dot green-dot" cx="258" cy="202" r="3" />
+          <circle class="data-dot green-dot" cx="258" cy="214" r="3" style="animation-delay: 0.3s;" />
 
-          <!-- beemini node -->
-          <circle class="node-circle" cx="110" cy="365" r="30" />
-          <text class="node-label" x="110" y="362">beemini</text>
-          <text class="node-sublabel" x="110" y="376">BitNet · 10W</text>
-          <text class="node-tier" x="110" y="342">EDGE</text>
+          <!-- INFERENCE node (whale) -->
+          <circle class="node-circle active" cx="100" cy="335" r="32" />
+          <text class="node-label" x="100" y="332">whale</text>
+          <text class="node-sublabel" x="100" y="346">inference · vLLM</text>
+          <text class="node-tier" x="100" y="310">S4</text>
+          <circle class="data-dot" cx="132" cy="320" r="3" />
 
-          <!-- NAS node -->
-          <circle class="node-circle" cx="330" cy="365" r="30" />
-          <text class="node-label" x="330" y="362">NAS</text>
-          <text class="node-sublabel" x="330" y="376">witness</text>
-          <text class="node-tier" x="330" y="342">STORE</text>
+          <!-- PIPELINE node -->
+          <circle class="node-circle healthy" cx="340" cy="335" r="32" />
+          <text class="node-label" x="340" y="332">pipeline</text>
+          <text class="node-sublabel" x="340" y="346">harvest · refine</text>
+          <text class="node-tier" x="340" y="310">10 SOURCES</text>
+          <circle class="data-dot green-dot" cx="372" cy="320" r="3" style="animation-delay: 0.6s;" />
 
-          <!-- Center label -->
-          <text x="290" y="160" fill="rgba(234,179,8,0.2)" font-family="'SF Mono','Fira Code',monospace" font-size="7" text-anchor="middle" letter-spacing="0.2em">DATA FLOW</text>
+          <!-- EDGE node -->
+          <circle class="node-circle" cx="100" cy="420" r="18" />
+          <text class="node-label" x="100" y="418" style="font-size:9px;">edge</text>
+          <text class="node-sublabel" x="100" y="430" style="font-size:7px;">10W</text>
+
+          <!-- STORE node -->
+          <circle class="node-circle" cx="340" cy="420" r="18" />
+          <text class="node-label" x="340" y="418" style="font-size:9px;">store</text>
+          <text class="node-sublabel" x="340" y="430" style="font-size:7px;">R2 + NAS</text>
+
+          <!-- Flow label -->
+          <text x="175" y="155" fill="rgba(234,179,8,0.15)" font-family="'SF Mono','Fira Code',monospace" font-size="7" letter-spacing="0.15em">TP / BATCH</text>
+          <text x="280" y="280" fill="rgba(34,197,94,0.15)" font-family="'SF Mono','Fira Code',monospace" font-size="7" letter-spacing="0.15em">DATA FLOW</text>
         </svg>
       </div>
     </div>
@@ -1147,14 +1156,14 @@
         <span class="feed-counter" id="feed-counter">streaming...</span>
       </div>
       <div class="feed-body" id="feed-body">
-        <div class="feed-line"><span class="feed-ts">15:41:02</span><span class="feed-source">pubmed</span><span class="feed-action">HARVEST</span><span class="feed-detail">70 queries · 312 new abstracts</span></div>
+        <div class="feed-line"><span class="feed-ts">15:41:02</span><span class="feed-source">cluster</span><span class="feed-action">STATUS</span><span class="feed-detail">128x RTX 6000 Pro · 12.3 TB VRAM · all nodes healthy</span></div>
+        <div class="feed-line"><span class="feed-ts">15:41:08</span><span class="feed-source">pubmed</span><span class="feed-action">HARVEST</span><span class="feed-detail">70 queries · 312 new abstracts</span></div>
         <div class="feed-line"><span class="feed-ts">15:41:18</span><span class="feed-source">refiner</span><span class="feed-action">EXTRACT</span><span class="feed-detail">14 entities · 31 relations · conf 0.91</span></div>
         <div class="feed-line"><span class="feed-ts">15:41:22</span><span class="feed-source">graph</span><span class="feed-action">STORE</span><span class="feed-detail">batch_042 → apedia.db (2.4ms)</span></div>
         <div class="feed-line"><span class="feed-ts">15:41:34</span><span class="feed-source">fda</span><span class="feed-action">HARVEST</span><span class="feed-detail">117 drug labels · 8 updated</span></div>
         <div class="feed-line"><span class="feed-ts">15:41:47</span><span class="feed-source">qa-gen</span><span class="feed-action">GENERATE</span><span class="feed-detail">SwarmComputeQA +12 pairs · total 5,062</span></div>
-        <div class="feed-line"><span class="feed-ts">15:41:58</span><span class="feed-source">vllm</span><span class="feed-action">INFER</span><span class="feed-detail">swarmrails · 42.1 tok/s · batch 16</span></div>
-        <div class="feed-line"><span class="feed-ts">15:42:05</span><span class="feed-source">bridge</span><span class="feed-action">PROCESS</span><span class="feed-detail">medrxiv chunk [247/1773] → refiner</span></div>
-        <div class="feed-line"><span class="feed-ts">15:42:11</span><span class="feed-source">watchdog</span><span class="feed-action">HEALTH</span><span class="feed-detail">6/6 checks passed · disk 11%</span></div>
+        <div class="feed-line"><span class="feed-ts">15:41:58</span><span class="feed-source">vllm</span><span class="feed-action">INFER</span><span class="feed-detail">128-GPU tensor parallel · batch 256</span></div>
+        <div class="feed-line"><span class="feed-ts">15:42:05</span><span class="feed-source">watchdog</span><span class="feed-action">HEALTH</span><span class="feed-detail">all checks passed · 12.3 TB online</span></div>
       </div>
     </div>
   </section>
@@ -1189,23 +1198,25 @@
 
     // Feed rotation
     const feedEntries = [
+      ['cluster','STATUS','128x RTX 6000 Pro \u00b7 12.3 TB VRAM \u00b7 healthy'],
       ['pubmed','HARVEST','70 queries \u00b7 312 new abstracts'],
       ['refiner','EXTRACT','14 entities \u00b7 31 relations \u00b7 conf 0.91'],
       ['graph','STORE','batch_042 \u2192 apedia.db (2.4ms)'],
       ['fda','HARVEST','117 drug labels \u00b7 8 updated'],
       ['qa-gen','GENERATE','SwarmComputeQA +12 pairs \u00b7 total 5,062'],
-      ['vllm','INFER','swarmrails \u00b7 42.1 tok/s \u00b7 batch 16'],
+      ['vllm','INFER','128-GPU TP \u00b7 batch 256 \u00b7 Ada Lovelace'],
       ['bridge','PROCESS','medrxiv chunk [247/1773] \u2192 refiner'],
-      ['watchdog','HEALTH','6/6 checks passed \u00b7 disk 11%'],
+      ['watchdog','HEALTH','all checks passed \u00b7 12.3 TB online'],
       ['pmc','HARVEST','300 full-text papers \u00b7 47 new'],
       ['semantic','HARVEST','citations graph \u00b7 1,204 edges'],
+      ['gpu-mgr','ALLOC','node-07 \u00b7 8x RTX 6000 \u00b7 768 GB \u2192 med-batch'],
       ['reddit','HARVEST','7 subreddits \u00b7 r/MachineLearning +23'],
       ['github','HARVEST','361 repos \u00b7 12 new releases'],
       ['clinical','HARVEST','141 trials \u00b7 NCT02948... updated'],
-      ['biollm','INFER','OpenBioLLM-8B \u00b7 16.4 tok/s \u00b7 Q8_0'],
+      ['gpu-mgr','UTIL','fleet avg 73% \u00b7 peak node-12 94%'],
       ['qa-gen','GENERATE','SwarmMedQA +8 pairs \u00b7 domain=medical'],
       ['r2','SNAPSHOT','edge/*.json \u2192 swarm-apedia-vault'],
-      ['bridge','PROCESS','biorxiv chunk [891/1773] \u2192 whale refiner'],
+      ['scheduler','BATCH','queued 14 jobs \u00b7 est 2.4 hrs \u00b7 96 GPUs free'],
       ['medrxiv','HARVEST','preprints \u00b7 62 new \u00b7 neurology focus'],
     ];
 
