@@ -504,6 +504,114 @@
     .status-planned .status-dot { background: var(--text-muted); }
     .status-planned { color: var(--text-dim); }
 
+    /* --- ROADMAP --- */
+    .roadmap-phases {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+
+    .phase {
+      background: var(--surface);
+      padding: 2.25rem 1.5rem;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    .phase:hover { background: var(--surface-hover); }
+
+    .phase-tag {
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .phase-tag.now { color: var(--green); }
+    .phase-tag.next { color: var(--accent); }
+    .phase-tag.future { color: var(--text-dim); }
+
+    .phase-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .phase-desc {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .phase-builds {
+      list-style: none;
+      font-size: 0.7rem;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      color: var(--text-dim);
+      line-height: 2;
+    }
+
+    .phase-builds .live { color: var(--green); }
+    .phase-builds .building { color: var(--accent); }
+
+    .hw-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .hw-card {
+      background: var(--surface);
+      padding: 2rem 1.5rem;
+      transition: all 0.4s ease;
+    }
+
+    .hw-card:hover { background: var(--surface-hover); }
+
+    .hw-tier {
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .hw-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 0.25rem;
+    }
+
+    .hw-spec {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      line-height: 1.8;
+    }
+
+    .hw-spec .highlight { color: var(--accent); font-weight: 600; }
+
+    @media (max-width: 1024px) {
+      .roadmap-phases { grid-template-columns: repeat(2, 1fr); }
+      .hw-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .roadmap-phases { grid-template-columns: 1fr; }
+    }
+
     /* --- ASSETS --- */
     .assets-table {
       width: 100%;
@@ -1157,6 +1265,91 @@
         </tr>
       </tbody>
     </table>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div></div>
+
+  <!-- DEVELOPMENT PIPELINE -->
+  <section>
+    <div class="section-header reveal">
+      <div class="section-label">Development Pipeline</div>
+      <div class="section-title">Build the anchor. Stabilize. Expand.</div>
+      <div class="section-subtitle">Same discipline as a CRE development pipeline &mdash; build what the market needs now, prove the economics, then break ground on the next.</div>
+    </div>
+
+    <div class="roadmap-phases reveal">
+      <div class="phase">
+        <div class="phase-tag now">Phase 1 &mdash; Now</div>
+        <div class="phase-title">Anchor Build</div>
+        <div class="phase-desc">Medical vertical. Highest regulation, highest pain. Prove the sovereign compute chain works end to end.</div>
+        <ul class="phase-builds">
+          <li><span class="live">&#x2713;</span> SwarmMedQA-7B-v1</li>
+          <li><span class="building">&#x25CB;</span> SwarmMedQA-7B-v2</li>
+          <li><span class="building">&#x25CB;</span> SwarmMedQA-8B-v1</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-tag next">Phase 2 &mdash; Q2-Q3</div>
+        <div class="phase-title">Adjacent Specialists</div>
+        <div class="phase-desc">Expand the medical fleet. Same pipeline, different training data. Marginal cost drops with each build.</div>
+        <ul class="phase-builds">
+          <li>SwarmPharm-7B</li>
+          <li>SwarmCardio-7B</li>
+          <li>SwarmER-7B</li>
+          <li>SwarmOnco-7B</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-tag next">Phase 3 &mdash; Q4+</div>
+        <div class="phase-title">Cross-Vertical</div>
+        <div class="phase-desc">Legal, finance, compute brokerage. Leverage existing chain infrastructure into new sandboxes.</div>
+        <ul class="phase-builds">
+          <li>SwarmLegal-7B</li>
+          <li>SwarmFinance-7B</li>
+          <li>SwarmCompute-7B</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-tag future">Phase 4 &mdash; 2027</div>
+        <div class="phase-title">Next-Gen Upgrades</div>
+        <div class="phase-desc">Retrain on 10x data, upgrade base models (8B, 9B), deploy on Blackwell hardware. Trade up the fleet.</div>
+        <ul class="phase-builds">
+          <li>8B/9B base upgrades</li>
+          <li>Blackwell RTX 5000/6000</li>
+          <li>5x energy efficiency</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hw-row reveal reveal-delay-2">
+      <div class="hw-card">
+        <div class="hw-tier" style="color:var(--text-dim);">Current Fleet</div>
+        <div class="hw-name">RTX 3090 Ti</div>
+        <div class="hw-spec">
+          24 GB VRAM &middot; 350W<br>
+          40 tok/s &middot; <span class="highlight">0.11 tok/W</span><br>
+          $1,200 &middot; Class B
+        </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-tier" style="color:var(--accent);">Next Target</div>
+        <div class="hw-name">RTX 5000 BB</div>
+        <div class="hw-spec">
+          32 GB VRAM &middot; 150W<br>
+          100+ tok/s &middot; <span class="highlight">0.50 tok/W</span><br>
+          ~$4,000 &middot; Class A-
+        </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-tier" style="color:var(--green);">Trophy Asset</div>
+        <div class="hw-name">RTX 6000 BB</div>
+        <div class="hw-spec">
+          96 GB VRAM &middot; 300W<br>
+          200+ tok/s &middot; <span class="highlight">0.67 tok/W</span><br>
+          ~$7,000 &middot; Class A+
+        </div>
+      </div>
+    </div>
   </section>
 
   <div class="divider"><div class="divider-line"></div></div>
