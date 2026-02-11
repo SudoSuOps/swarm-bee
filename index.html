@@ -288,6 +288,108 @@
       line-height: 1.7;
     }
 
+    /* --- COMPUTE CHAIN --- */
+    .chain-flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      position: relative;
+      margin-top: 1rem;
+    }
+
+    .chain-link {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    .chain-link:first-child { border-radius: 4px 0 0 4px; }
+    .chain-link:last-child { border-radius: 0 4px 4px 0; }
+
+    .chain-link:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-light);
+    }
+
+    .chain-link:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      border-top: 1.5px solid var(--accent-dim);
+      border-right: 1.5px solid var(--accent-dim);
+      transform: translateY(-50%) rotate(45deg);
+      z-index: 2;
+      background: transparent;
+    }
+
+    .chain-icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      display: block;
+      filter: grayscale(0.3);
+    }
+
+    .chain-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.01em;
+    }
+
+    .chain-analogy {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .chain-desc {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .chain-rule {
+      margin-top: 2.5rem;
+      padding: 1.75rem 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--accent);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .chain-rule strong { color: var(--text); }
+    .chain-rule .accent { color: var(--accent); font-weight: 600; }
+
+    @media (max-width: 1024px) {
+      .chain-flow { grid-template-columns: repeat(3, 1fr); }
+      .chain-link:nth-child(3) { border-radius: 0 4px 0 0; }
+      .chain-link:nth-child(3)::after { display: none; }
+      .chain-link:first-child { border-radius: 4px 0 0 0; }
+      .chain-link:last-child { border-radius: 0 0 4px 0; }
+    }
+
+    @media (max-width: 640px) {
+      .chain-flow { grid-template-columns: 1fr; }
+      .chain-link { border-radius: 0 !important; }
+      .chain-link:first-child { border-radius: 4px 4px 0 0 !important; }
+      .chain-link:last-child { border-radius: 0 0 4px 4px !important; }
+      .chain-link:not(:last-child)::after { display: none; }
+    }
+
     /* --- VERTICALS --- */
     .verticals-grid {
       display: grid;
@@ -946,6 +1048,54 @@
 
   <div class="divider"><div class="divider-line"></div></div>
 
+  <!-- COMPUTE CHAIN -->
+  <section>
+    <div class="section-header reveal">
+      <div class="section-label">Compute Chain</div>
+      <div class="section-title">Farm to table for intelligence.</div>
+      <div class="section-subtitle">Five sovereign links from raw data to served inference. Break any link, the chain fails. We operate the full stack.</div>
+    </div>
+
+    <div class="chain-flow reveal">
+      <div class="chain-link">
+        <span class="chain-icon">&#x1F33E;</span>
+        <div class="chain-analogy">Farm</div>
+        <div class="chain-name">Harvest</div>
+        <div class="chain-desc">PubMed, FDA, clinical trials, 10+ sovereign sources</div>
+      </div>
+      <div class="chain-link">
+        <span class="chain-icon">&#x1F52C;</span>
+        <div class="chain-analogy">Kitchen</div>
+        <div class="chain-name">Refine</div>
+        <div class="chain-desc">Entity extraction, scoring, quality gates</div>
+      </div>
+      <div class="chain-link">
+        <span class="chain-icon">&#x1F9CA;</span>
+        <div class="chain-analogy">Cold Storage</div>
+        <div class="chain-name">Store</div>
+        <div class="chain-desc">Knowledge graphs, QA datasets, benchmarks</div>
+      </div>
+      <div class="chain-link">
+        <span class="chain-icon">&#x1F525;</span>
+        <div class="chain-analogy">Chef</div>
+        <div class="chain-name">Train</div>
+        <div class="chain-desc">Fine-tune 7B specialists on sovereign data</div>
+      </div>
+      <div class="chain-link">
+        <span class="chain-icon">&#x1F37D;&#xFE0F;</span>
+        <div class="chain-analogy">Table</div>
+        <div class="chain-name">Serve</div>
+        <div class="chain-desc">vLLM inference on your iron. Zero egress.</div>
+      </div>
+    </div>
+
+    <div class="chain-rule reveal reveal-delay-2">
+      <strong>Chain integrity rule:</strong> If data leaves your sovereign infrastructure at <span class="accent">any link</span> in the chain, the product is compromised. Same as cold chain &mdash; if the truck loses refrigeration for 20 minutes, the entire load is condemned. <strong>We don&rsquo;t use someone else&rsquo;s kitchen.</strong>
+    </div>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div></div>
+
   <!-- ASSET CLASSES -->
   <section>
     <div class="section-header reveal">
@@ -1044,8 +1194,8 @@
   <section>
     <div class="section-header reveal">
       <div class="section-label">Pipeline</div>
-      <div class="section-title">Real data. Real iron.</div>
-      <div class="section-subtitle">Autonomous agents harvesting, refining, and fine-tuning intelligence 24/7. Last mile means the models live where the work is.</div>
+      <div class="section-title">The chain, running live.</div>
+      <div class="section-subtitle">Every link in the compute chain operating 24/7 on sovereign hardware. Harvest, refine, store, train, serve &mdash; no cloud, no middlemen.</div>
     </div>
 
     <div class="pipeline-grid reveal">
