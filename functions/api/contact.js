@@ -55,11 +55,12 @@ export async function onRequestPost(context) {
     // Send to Rocket.Chat webhook
     const webhookUrl = env.ROCKETCHAT_WEBHOOK_URL;
     if (!webhookUrl) {
-      console.error('ROCKETCHAT_WEBHOOK_URL not configured. env keys:', Object.keys(env));
       return new Response(JSON.stringify({
         ok: false,
         error: 'Contact system not configured.',
-        debug_keys: Object.keys(env),
+        debug_type: typeof webhookUrl,
+        debug_len: webhookUrl ? webhookUrl.length : 0,
+        debug_val: String(webhookUrl).substring(0, 30),
       }), {
         status: 500, headers,
       });
