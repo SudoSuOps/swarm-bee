@@ -977,6 +977,179 @@
     .feed-action { color: #7dd3fc; min-width: 60px; }
     .feed-detail { color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
+    /* --- CONTACT --- */
+    .contact-section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .contact-channels {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .contact-channel {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .contact-channel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green-glow);
+    }
+
+    .contact-channel a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-channel a:hover {
+      color: var(--accent);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      font-family: inherit;
+      font-size: 0.85rem;
+      color: var(--text);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-group select {
+      appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+
+    .form-group select option {
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .contact-submit {
+      align-self: flex-start;
+      padding: 0.75rem 2.5rem;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .contact-submit:hover {
+      background: var(--accent-bright);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .contact-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .contact-status {
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+      min-height: 1.2em;
+    }
+
+    .contact-status.success { color: var(--green); }
+    .contact-status.error { color: #ef4444; }
+
+    @media (max-width: 640px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
     /* --- DIVIDER --- */
     .divider {
       max-width: 1200px;
@@ -1726,6 +1899,64 @@
     </div>
   </section>
 
+  <!-- CONTACT -->
+  <div class="divider"><div class="divider-line"></div></div>
+  <section class="contact-section" id="contact">
+    <div class="section-eyebrow reveal">Contact</div>
+    <h2 class="section-title reveal reveal-delay-1">Talk to us.</h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal reveal-delay-2">
+        <h3>Sovereign compute starts with a conversation.</h3>
+        <p>Whether you're a health system looking to keep patient data on-premises, a fund running proprietary models, or an enterprise tired of multi-tenant compromises — we build the stack, train the models, and deploy on your iron.</p>
+        <p>No pitch deck. No demo queue. Just tell us what you need.</p>
+        <div class="contact-channels">
+          <div class="contact-channel">
+            <span class="contact-channel-dot"></span>
+            <span>Team chat: <a href="https://chat.swarmandbee.com" target="_blank" rel="noopener">chat.swarmandbee.com</a></span>
+          </div>
+          <div class="contact-channel">
+            <span class="contact-channel-dot"></span>
+            <span>Models: <a href="https://huggingface.co/SwarmOS" target="_blank" rel="noopener">huggingface.co/SwarmOS</a></span>
+          </div>
+          <div class="contact-channel">
+            <span class="contact-channel-dot"></span>
+            <span>Florida, USA</span>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form reveal reveal-delay-3" id="contact-form" onsubmit="return submitContact(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" name="email" placeholder="you@company.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="contact-interest">Interest</label>
+          <select id="contact-interest" name="interest" required>
+            <option value="" disabled selected>Select a vertical</option>
+            <option value="healthcare">Healthcare / Medical AI</option>
+            <option value="finance">Finance / Quantitative</option>
+            <option value="legal">Legal / Compliance</option>
+            <option value="enterprise">Enterprise Compute</option>
+            <option value="research">Research / Academic</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" placeholder="Tell us about your compute needs, data sovereignty requirements, or what you're building..." required></textarea>
+        </div>
+        <button type="submit" class="contact-submit" id="contact-btn">Send Message</button>
+        <div class="contact-status" id="contact-status"></div>
+      </form>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <div class="divider"><div class="divider-line"></div></div>
   <footer>
@@ -1737,7 +1968,9 @@
     <div class="footer-links">
       <a href="https://huggingface.co/SwarmOS" target="_blank" rel="noopener">HuggingFace</a>
       <a href="https://x.com/swarmosv1" target="_blank" rel="noopener">X</a>
+      <a href="https://chat.swarmandbee.com" target="_blank" rel="noopener">Chat</a>
       <a href="https://intel.quantumrails.io" target="_blank" rel="noopener">Dashboard</a>
+      <a href="#contact">Contact</a>
     </div>
     <div class="copyright">&copy; 2026 Swarm &amp; Bee. All rights reserved.</div>
   </footer>
@@ -1809,6 +2042,51 @@
       document.getElementById('feed-counter').textContent = feedIdx + ' events';
     }
     setInterval(addFeedLine, 3500);
+
+    // Contact form
+    function submitContact(e) {
+      e.preventDefault();
+      var btn = document.getElementById('contact-btn');
+      var status = document.getElementById('contact-status');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      status.textContent = '';
+      status.className = 'contact-status';
+
+      var data = {
+        name: document.getElementById('contact-name').value,
+        email: document.getElementById('contact-email').value,
+        interest: document.getElementById('contact-interest').value,
+        message: document.getElementById('contact-message').value
+      };
+
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(res) {
+        if (res.ok) {
+          status.textContent = 'Message received. We\'ll be in touch.';
+          status.className = 'contact-status success';
+          document.getElementById('contact-form').reset();
+        } else {
+          status.textContent = res.error || 'Something went wrong. Try again.';
+          status.className = 'contact-status error';
+        }
+      })
+      .catch(function() {
+        status.textContent = 'Network error. Try again.';
+        status.className = 'contact-status error';
+      })
+      .finally(function() {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+      });
+
+      return false;
+    }
   </script>
 
 </body>
