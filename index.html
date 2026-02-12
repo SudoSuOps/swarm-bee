@@ -446,6 +446,364 @@
       .mri-stack-bar { flex-direction: column; gap: 0.5rem; }
     }
 
+    /* --- 70B FLAGSHIP --- */
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      15% { transform: scale(1.08); opacity: 1; }
+      30% { transform: scale(1); opacity: 0.7; }
+      45% { transform: scale(1.04); opacity: 0.9; }
+      60% { transform: scale(1); opacity: 0.6; }
+    }
+
+    @keyframes ecg-draw {
+      from { stroke-dashoffset: 800; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes breath-cycle {
+      0%, 100% { transform: scaleY(1); }
+      40% { transform: scaleY(1.03); }
+      60% { transform: scaleY(1.03); }
+    }
+
+    .flagship-section {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--bg) 0%, #08060a 5%, #0a0810 50%, #08060a 95%, var(--bg) 100%);
+    }
+
+    .flagship-bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(234,179,8,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234,179,8,0.015) 1px, transparent 1px);
+      background-size: 50px 50px;
+      mask-image: radial-gradient(ellipse 60% 60% at 70% 50%, black 0%, transparent 70%);
+    }
+
+    .flagship-glow {
+      position: absolute;
+      top: 50%;
+      right: 20%;
+      transform: translate(50%, -50%);
+      width: 900px;
+      height: 900px;
+      background: radial-gradient(circle, rgba(234,179,8,0.06) 0%, rgba(234,179,8,0.02) 30%, transparent 60%);
+      pointer-events: none;
+      animation: mri-pulse 7s ease-in-out 1s infinite;
+    }
+
+    .flagship-glow-blue {
+      position: absolute;
+      top: 30%;
+      left: 15%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(96,165,250,0.05) 0%, rgba(96,165,250,0.01) 40%, transparent 65%);
+      pointer-events: none;
+      animation: mri-pulse 9s ease-in-out 3s infinite;
+    }
+
+    .flagship-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 8rem 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .flagship-hero {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .flagship-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.5rem 1.25rem;
+      background: rgba(234,179,8,0.06);
+      border: 1px solid rgba(234,179,8,0.2);
+      border-radius: 50px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    .flagship-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: glow-pulse 2s ease-in-out infinite;
+      box-shadow: 0 0 8px rgba(234,179,8,0.6);
+    }
+
+    .flagship-model-name {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .flagship-model-name .fw-70b {
+      background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent) 40%, #d97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .flagship-tagline {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .flagship-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 1rem;
+    }
+
+    /* Chest visual */
+    .chest-frame {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      aspect-ratio: 1 / 1;
+      margin: 0 auto;
+      border: 1px solid rgba(96,165,250,0.12);
+      border-radius: 8px;
+      background: rgba(9,9,11,0.7);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      box-shadow: 0 0 80px rgba(96,165,250,0.04), inset 0 0 40px rgba(96,165,250,0.01);
+    }
+
+    .chest-corner {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      z-index: 2;
+    }
+
+    .chest-corner-tl { top: -1px; left: -1px; border-top: 2px solid rgba(96,165,250,0.35); border-left: 2px solid rgba(96,165,250,0.35); }
+    .chest-corner-tr { top: -1px; right: -1px; border-top: 2px solid rgba(96,165,250,0.35); border-right: 2px solid rgba(96,165,250,0.35); }
+    .chest-corner-bl { bottom: -1px; left: -1px; border-bottom: 2px solid rgba(96,165,250,0.35); border-left: 2px solid rgba(96,165,250,0.35); }
+    .chest-corner-br { bottom: -1px; right: -1px; border-bottom: 2px solid rgba(96,165,250,0.35); border-right: 2px solid rgba(96,165,250,0.35); }
+
+    .chest-label-tl {
+      position: absolute;
+      top: 14px;
+      left: 16px;
+      font-family: 'SF Mono','Fira Code',monospace;
+      font-size: 0.55rem;
+      color: rgba(96,165,250,0.5);
+      letter-spacing: 0.15em;
+      z-index: 2;
+    }
+
+    .chest-label-tr {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      font-family: 'SF Mono','Fira Code',monospace;
+      font-size: 0.55rem;
+      color: rgba(234,179,8,0.5);
+      letter-spacing: 0.1em;
+      text-align: right;
+      z-index: 2;
+    }
+
+    .chest-label-bottom {
+      position: absolute;
+      bottom: 14px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      font-family: 'SF Mono','Fira Code',monospace;
+      font-size: 0.5rem;
+      color: rgba(96,165,250,0.35);
+      letter-spacing: 0.1em;
+      z-index: 2;
+    }
+
+    .chest-svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 85%;
+      height: 85%;
+      z-index: 1;
+    }
+
+    .chest-ecg {
+      position: absolute;
+      bottom: 40px;
+      left: 0;
+      right: 0;
+      height: 50px;
+      z-index: 2;
+      opacity: 0.5;
+    }
+
+    .chest-ecg path {
+      stroke-dasharray: 800;
+      animation: ecg-draw 3s linear infinite;
+    }
+
+    /* Specialty cards */
+    .flagship-specs {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .flagship-spec-card {
+      padding: 1.5rem 1.75rem;
+      background: rgba(9,9,11,0.6);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+
+    .flagship-spec-card:hover {
+      border-color: var(--border-light);
+      background: rgba(17,17,20,0.8);
+    }
+
+    .flagship-spec-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .flagship-spec-icon {
+      font-size: 1.2rem;
+      filter: grayscale(0.2);
+    }
+
+    .flagship-spec-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .flagship-spec-tag {
+      margin-left: auto;
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+    }
+
+    .flagship-spec-tag.live {
+      color: var(--green);
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.2);
+    }
+
+    .flagship-spec-tag.building {
+      color: var(--accent);
+      background: rgba(234,179,8,0.08);
+      border: 1px solid rgba(234,179,8,0.2);
+    }
+
+    .flagship-spec-desc {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .flagship-spec-desc strong {
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    /* Bottom hardware bar */
+    .flagship-hardware {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+
+    .flagship-hw-card {
+      padding: 1.5rem 1.25rem;
+      background: rgba(9,9,11,0.5);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--accent-dim);
+      border-radius: 0 0 6px 6px;
+      text-align: center;
+    }
+
+    .flagship-hw-value {
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.25rem;
+    }
+
+    .flagship-hw-value.gold { color: var(--accent); }
+    .flagship-hw-value.green { color: var(--green); }
+    .flagship-hw-value.blue { color: #60a5fa; }
+    .flagship-hw-value.white { color: var(--text); }
+
+    .flagship-hw-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .flagship-bottom-line {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      letter-spacing: 0.02em;
+    }
+
+    .flagship-bottom-line strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .flagship-bottom-line em {
+      color: var(--text-secondary);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+      .flagship-grid { grid-template-columns: 1fr; }
+      .chest-frame { max-width: 360px; }
+      .flagship-hardware { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .flagship-model-name { letter-spacing: -0.03em; }
+      .flagship-hardware { grid-template-columns: 1fr 1fr; }
+      .chest-frame { max-width: 300px; }
+    }
+
     /* --- HERO --- */
     .hero {
       min-height: 100vh;
@@ -1732,6 +2090,155 @@
         <div class="mri-sovereign-line">
           Patient data <strong>never leaves your rack.</strong> HIPAA by architecture, not by promise.
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 70B FLAGSHIP -->
+  <div class="flagship-section">
+    <div class="flagship-bg-grid"></div>
+    <div class="flagship-glow"></div>
+    <div class="flagship-glow-blue"></div>
+    <div class="flagship-inner">
+      <div class="flagship-hero reveal">
+        <div class="flagship-badge"><span class="flagship-badge-dot"></span>Flagship Model</div>
+        <h2 class="flagship-model-name">SwarmMed<span class="fw-70b">-70B</span></h2>
+        <p class="flagship-tagline">Full-stack clinical reasoning. Pharma, cardiology, radiology, emergency medicine &mdash; one model, 70 billion parameters, trained on sovereign gold data. Runs on a single RTX 6000 Pro.</p>
+      </div>
+
+      <div class="flagship-grid reveal reveal-delay-1">
+        <!-- Chest Visual -->
+        <div>
+          <div class="chest-frame">
+            <div class="chest-corner chest-corner-tl"></div>
+            <div class="chest-corner chest-corner-tr"></div>
+            <div class="chest-corner chest-corner-bl"></div>
+            <div class="chest-corner chest-corner-br"></div>
+            <div class="chest-label-tl">PA CHEST &bull; CXR<br>2048 &times; 2048 &bull; 14-BIT</div>
+            <div class="chest-label-tr">SwarmMed-70B<br>FLAGSHIP &bull; 96GB</div>
+            <div class="chest-svg">
+              <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Thoracic cage outline -->
+                <path d="M200 45 Q140 55 95 110 Q65 165 60 230 Q58 260 80 290 Q120 330 200 345 Q280 330 320 290 Q342 260 340 230 Q335 165 305 110 Q260 55 200 45Z"
+                  fill="rgba(96,165,250,0.03)" stroke="rgba(96,165,250,0.12)" stroke-width="1"/>
+                <!-- Rib pairs -->
+                <path d="M170 75 Q120 85 85 130" stroke="rgba(96,165,250,0.1)" stroke-width="1.5" fill="none"/>
+                <path d="M230 75 Q280 85 315 130" stroke="rgba(96,165,250,0.1)" stroke-width="1.5" fill="none"/>
+                <path d="M165 100 Q105 115 75 165" stroke="rgba(96,165,250,0.08)" stroke-width="1.5" fill="none"/>
+                <path d="M235 100 Q295 115 325 165" stroke="rgba(96,165,250,0.08)" stroke-width="1.5" fill="none"/>
+                <path d="M162 130 Q95 150 70 205" stroke="rgba(96,165,250,0.08)" stroke-width="1.5" fill="none"/>
+                <path d="M238 130 Q305 150 330 205" stroke="rgba(96,165,250,0.08)" stroke-width="1.5" fill="none"/>
+                <path d="M160 160 Q90 185 68 240" stroke="rgba(96,165,250,0.06)" stroke-width="1.5" fill="none"/>
+                <path d="M240 160 Q310 185 332 240" stroke="rgba(96,165,250,0.06)" stroke-width="1.5" fill="none"/>
+                <path d="M158 190 Q90 215 72 265" stroke="rgba(96,165,250,0.06)" stroke-width="1.5" fill="none"/>
+                <path d="M242 190 Q310 215 328 265" stroke="rgba(96,165,250,0.06)" stroke-width="1.5" fill="none"/>
+                <!-- Spine (vertebral column) -->
+                <rect x="192" y="50" width="16" height="280" rx="4" fill="rgba(96,165,250,0.04)" stroke="rgba(96,165,250,0.12)" stroke-width="0.5"/>
+                <!-- Clavicles -->
+                <path d="M200 65 Q155 58 110 75" stroke="rgba(96,165,250,0.15)" stroke-width="2" fill="none"/>
+                <path d="M200 65 Q245 58 290 75" stroke="rgba(96,165,250,0.15)" stroke-width="2" fill="none"/>
+                <!-- Heart silhouette -->
+                <path d="M175 160 Q155 155 145 175 Q130 205 145 240 Q160 270 195 290 Q200 292 205 290 Q220 280 235 260 Q250 235 248 210 Q245 185 235 170 Q225 155 210 158 Q200 162 195 158 Q185 155 175 160Z"
+                  fill="rgba(234,179,8,0.04)" stroke="rgba(234,179,8,0.2)" stroke-width="1.5"
+                  style="transform-origin: 195px 225px; animation: heartbeat 2s ease-in-out infinite;"/>
+                <!-- Aortic arch -->
+                <path d="M198 100 Q198 130 195 155" stroke="rgba(234,179,8,0.15)" stroke-width="2" fill="none"/>
+                <path d="M198 100 Q215 90 240 95 Q260 100 270 120" stroke="rgba(234,179,8,0.1)" stroke-width="1.5" fill="none"/>
+                <!-- Lung fields - left -->
+                <path d="M110 95 Q80 150 72 220 Q68 265 85 295 Q105 320 155 330 Q168 332 175 325 Q178 280 175 230 Q172 170 168 120 Q165 100 150 85 Q130 78 110 95Z"
+                  fill="rgba(96,165,250,0.02)" stroke="rgba(96,165,250,0.06)" stroke-width="0.5"
+                  style="transform-origin: 125px 210px; animation: breath-cycle 5s ease-in-out infinite;"/>
+                <!-- Lung fields - right -->
+                <path d="M290 95 Q320 150 328 220 Q332 265 315 295 Q295 320 245 330 Q232 332 225 325 Q222 280 225 230 Q228 170 232 120 Q235 100 250 85 Q270 78 290 95Z"
+                  fill="rgba(96,165,250,0.02)" stroke="rgba(96,165,250,0.06)" stroke-width="0.5"
+                  style="transform-origin: 275px 210px; animation: breath-cycle 5s ease-in-out 0.3s infinite;"/>
+                <!-- Diaphragm -->
+                <path d="M75 280 Q140 250 200 255 Q260 250 325 280" stroke="rgba(96,165,250,0.1)" stroke-width="1" fill="none"/>
+                <!-- AI detection markers -->
+                <circle cx="140" cy="180" r="18" fill="none" stroke="rgba(34,197,94,0.3)" stroke-width="1" stroke-dasharray="3,3"/>
+                <text x="140" y="184" text-anchor="middle" fill="rgba(34,197,94,0.5)" font-family="'SF Mono','Fira Code',monospace" font-size="7">OK</text>
+                <circle cx="270" cy="190" r="18" fill="none" stroke="rgba(34,197,94,0.3)" stroke-width="1" stroke-dasharray="3,3"/>
+                <text x="270" y="194" text-anchor="middle" fill="rgba(34,197,94,0.5)" font-family="'SF Mono','Fira Code',monospace" font-size="7">OK</text>
+                <!-- Heart detection -->
+                <circle cx="195" cy="225" r="40" fill="none" stroke="rgba(234,179,8,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
+                <text x="195" y="205" text-anchor="middle" fill="rgba(234,179,8,0.4)" font-family="'SF Mono','Fira Code',monospace" font-size="6">CARDIO</text>
+                <text x="195" y="250" text-anchor="middle" fill="rgba(234,179,8,0.3)" font-family="'SF Mono','Fira Code',monospace" font-size="5">CTR 0.48 NORMAL</text>
+              </svg>
+            </div>
+            <!-- ECG trace -->
+            <div class="chest-ecg">
+              <svg viewBox="0 0 440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 25 L40 25 L50 25 L55 20 L60 25 L70 25 L75 25 L80 10 L85 42 L90 5 L95 38 L100 25 L110 25 L150 25 L160 25 L165 20 L170 25 L180 25 L185 25 L190 10 L195 42 L200 5 L205 38 L210 25 L220 25 L260 25 L270 25 L275 20 L280 25 L290 25 L295 25 L300 10 L305 42 L310 5 L315 38 L320 25 L330 25 L370 25 L380 25 L385 20 L390 25 L400 25 L405 25 L410 10 L415 42 L420 5 L425 38 L430 25 L440 25"
+                  stroke="rgba(34,197,94,0.4)" stroke-width="1.5" fill="none"/>
+              </svg>
+            </div>
+            <div class="chest-label-bottom">
+              <span>70B PARAMS &bull; FULL CLINICAL</span>
+              <span>SOVEREIGN &bull; SINGLE CARD</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Specialty Cards -->
+        <div class="flagship-specs">
+          <div class="flagship-spec-card">
+            <div class="flagship-spec-header">
+              <span class="flagship-spec-icon">&#x1F9EC;</span>
+              <span class="flagship-spec-title">Pharmacology</span>
+              <span class="flagship-spec-tag live">867 Gold</span>
+            </div>
+            <div class="flagship-spec-desc"><strong>Drug interactions, contraindications, adverse effects, dosing.</strong> Trained on FDA drug labels, PubMed pharmacology corpus, and clinical decision pairs. 93% disclaimer rate.</div>
+          </div>
+          <div class="flagship-spec-card">
+            <div class="flagship-spec-header">
+              <span class="flagship-spec-icon">&#x1FAC0;</span>
+              <span class="flagship-spec-title">Cardiology</span>
+              <span class="flagship-spec-tag live">315 Gold</span>
+            </div>
+            <div class="flagship-spec-desc"><strong>ACS protocols, heart failure GDMT, arrhythmia management, risk scoring.</strong> 5-dimension specialty rubric: dosing, contraindications, guidelines, risk scores, GDMT optimization.</div>
+          </div>
+          <div class="flagship-spec-card">
+            <div class="flagship-spec-header">
+              <span class="flagship-spec-icon">&#x1FA7B;</span>
+              <span class="flagship-spec-title">Radiology &mdash; Spinal MRI</span>
+              <span class="flagship-spec-tag building">Building</span>
+            </div>
+            <div class="flagship-spec-desc"><strong>Stenosis grading, disc pathology, foraminal narrowing, red flag detection.</strong> Vision-language model. 19,602 RSNA images across 1,975 patient studies. HIPAA by architecture.</div>
+          </div>
+          <div class="flagship-spec-card">
+            <div class="flagship-spec-header">
+              <span class="flagship-spec-icon">&#x1F6A8;</span>
+              <span class="flagship-spec-title">Chest &amp; Thoracic</span>
+              <span class="flagship-spec-tag building">Coming</span>
+            </div>
+            <div class="flagship-spec-desc"><strong>CXR interpretation, pulmonary pathology, cardiac silhouette analysis.</strong> Cardiomegaly detection, pleural effusion grading, pneumothorax screening. Second-opinion radiology on-prem.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hardware bar -->
+      <div class="flagship-hardware reveal reveal-delay-2">
+        <div class="flagship-hw-card">
+          <div class="flagship-hw-value gold">70B</div>
+          <div class="flagship-hw-label">Parameters</div>
+        </div>
+        <div class="flagship-hw-card">
+          <div class="flagship-hw-value green">96 GB</div>
+          <div class="flagship-hw-label">Single Card</div>
+        </div>
+        <div class="flagship-hw-card">
+          <div class="flagship-hw-value blue">2,182+</div>
+          <div class="flagship-hw-label">Gold Pairs</div>
+        </div>
+        <div class="flagship-hw-card">
+          <div class="flagship-hw-value white">4</div>
+          <div class="flagship-hw-label">Specialties</div>
+        </div>
+      </div>
+
+      <div class="flagship-bottom-line reveal reveal-delay-3">
+        The 7B fleet handles triage. <strong>The 70B handles the deep read.</strong><br>
+        <em>One model. One card. Your rack. Your data. Your diagnosis support.</em>
       </div>
     </div>
   </div>
