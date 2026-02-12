@@ -1073,6 +1073,9 @@
       .verticals-grid { grid-template-columns: repeat(2, 1fr); }
       .infra-grid { grid-template-columns: repeat(2, 1fr); }
       .pipeline-grid { grid-template-columns: 1fr; }
+      .marketplace-grid { grid-template-columns: 1fr !important; }
+      .fleet-stats { grid-template-columns: repeat(2, 1fr) !important; }
+      .fleet-models { grid-template-columns: 1fr !important; }
     }
 
     @media (max-width: 640px) {
@@ -1088,6 +1091,7 @@
       .feed-line { gap: 0.5rem; }
       .feed-source { min-width: 55px; }
       .feed-action { min-width: 45px; }
+      .fleet-stats { grid-template-columns: repeat(2, 1fr) !important; }
     }
   </style>
 </head>
@@ -1263,8 +1267,97 @@
           <td class="col-type asset-type">Model</td>
           <td class="col-vertical asset-vertical">Medical</td>
         </tr>
+        <tr>
+          <td class="asset-name"><a href="https://huggingface.co/SwarmOS/SwarmPharm-7B-v2" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border-light);transition:border-color 0.3s;">SwarmPharm-7B-v2</a></td>
+          <td><span class="asset-class class-a">Class A</span></td>
+          <td class="col-type asset-type">Model</td>
+          <td class="col-vertical asset-vertical">Medical</td>
+        </tr>
+        <tr>
+          <td class="asset-name"><a href="https://huggingface.co/SwarmOS/SwarmMed-7B-v3-merged" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border-light);transition:border-color 0.3s;">SwarmMed-7B-v3</a></td>
+          <td><span class="asset-class class-a">Class A</span></td>
+          <td class="col-type asset-type">Model</td>
+          <td class="col-vertical asset-vertical">Medical</td>
+        </tr>
+        <tr>
+          <td class="asset-name">SwarmMed-MRI-7B-v1</td>
+          <td><span class="asset-class class-ship">Building</span></td>
+          <td class="col-type asset-type">Vision-Language Model</td>
+          <td class="col-vertical asset-vertical">Medical</td>
+        </tr>
       </tbody>
     </table>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div></div>
+
+  <!-- CURRENT FLEET -->
+  <section>
+    <div class="section-header reveal">
+      <div class="section-label">Current Fleet</div>
+      <div class="section-title">Sovereign models. Trained on our iron.</div>
+      <div class="section-subtitle">Every model built end-to-end on personal hardware. Zero cloud dependency. Full provenance from data to deployment.</div>
+    </div>
+
+    <!-- Flagship Model -->
+    <div class="reveal" style="background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:2rem;">
+      <div style="padding:2.5rem 2.5rem 0;">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+          <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);display:inline-flex;align-items:center;gap:0.5rem;"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 10px rgba(34,197,94,0.2);display:inline-block;"></span> Flagship</span>
+          <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);">February 2026</span>
+        </div>
+        <h3 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:0.5rem;">SwarmMed-7B-v3</h3>
+        <p style="font-size:1rem;color:var(--text-secondary);margin-bottom:2rem;max-width:600px;line-height:1.7;">Unified clinical assistant &mdash; pharmacology + cardiology. 1,182 gold pairs, trained locally in 25 minutes on a single 3090Ti.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border);">
+        <div style="background:var(--surface);padding:1.75rem 1.5rem;text-align:center;">
+          <div style="font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;color:var(--text);margin-bottom:0.35rem;">0.008</div>
+          <div style="font-size:0.7rem;color:var(--text-dim);">Training Loss</div>
+        </div>
+        <div style="background:var(--surface);padding:1.75rem 1.5rem;text-align:center;">
+          <div style="font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;color:var(--green);margin-bottom:0.35rem;">100%</div>
+          <div style="font-size:0.7rem;color:var(--text-dim);">Disclaimer Rate</div>
+        </div>
+        <div style="background:var(--surface);padding:1.75rem 1.5rem;text-align:center;">
+          <div style="font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;color:var(--text);margin-bottom:0.35rem;">1,182</div>
+          <div style="font-size:0.7rem;color:var(--text-dim);">Gold Pairs</div>
+        </div>
+        <div style="background:var(--surface);padding:1.75rem 1.5rem;text-align:center;">
+          <div style="font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;color:var(--accent);margin-bottom:0.35rem;">25<span style="font-size:0.8rem;font-weight:400;color:var(--text-dim);">min</span></div>
+          <div style="font-size:0.7rem;color:var(--text-dim);">Train Time</div>
+        </div>
+      </div>
+      <div style="padding:2rem 2.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;">
+        <a href="https://huggingface.co/SwarmOS/SwarmMed-7B-v3-merged" target="_blank" rel="noopener" style="font-size:0.7rem;font-weight:600;color:var(--accent);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 1.2rem;border:1px solid rgba(234,179,8,0.3);border-radius:3px;transition:all 0.3s;">Merged Model &rarr;</a>
+        <a href="https://huggingface.co/SwarmOS/SwarmMed-7B-v3" target="_blank" rel="noopener" style="font-size:0.7rem;font-weight:600;color:var(--text-dim);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 1.2rem;border:1px solid var(--border);border-radius:3px;transition:all 0.3s;">Adapter</a>
+      </div>
+    </div>
+
+    <!-- Previous Models Grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden;" class="reveal reveal-delay-1">
+      <div style="background:var(--surface);padding:2rem 1.5rem;">
+        <div style="font-size:0.55rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);margin-bottom:0.75rem;">Shipped</div>
+        <div style="font-size:1rem;font-weight:700;margin-bottom:0.35rem;"><a href="https://huggingface.co/SwarmOS/SwarmPharm-7B-v2" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border-light);">SwarmPharm-7B-v2</a></div>
+        <div style="font-size:0.75rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1rem;">Pharmacology specialist. 867 gold pairs, loss 0.008, 93% disclaimer rate.</div>
+        <div style="font-size:0.65rem;color:var(--text-dim);font-family:'SF Mono','Fira Code',monospace;">pharma-ddi &middot; adverse &middot; dosing &middot; contraindications</div>
+      </div>
+      <div style="background:var(--surface);padding:2rem 1.5rem;">
+        <div style="font-size:0.55rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);margin-bottom:0.75rem;">Shipped</div>
+        <div style="font-size:1rem;font-weight:700;margin-bottom:0.35rem;"><a href="https://huggingface.co/SwarmOS/SwarmMedQA-7B-v1" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border-light);">SwarmMedQA-7B-v1</a></div>
+        <div style="font-size:0.75rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1rem;">Foundation medical QA. MedQA 66% (+4%), PubMedQA 53% (+53%).</div>
+        <div style="font-size:0.65rem;color:var(--text-dim);font-family:'SF Mono','Fira Code',monospace;">medqa &middot; pubmedqa &middot; clinical reasoning</div>
+      </div>
+      <div style="background:var(--surface);padding:2rem 1.5rem;">
+        <div style="font-size:0.55rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;">Building</div>
+        <div style="font-size:1rem;font-weight:700;margin-bottom:0.35rem;">SwarmMed-MRI-7B-v1</div>
+        <div style="font-size:0.75rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1rem;">Vision-language spinal MRI interpretation. Qwen2.5-VL base. First imaging model in fleet.</div>
+        <div style="font-size:0.65rem;color:var(--text-dim);font-family:'SF Mono','Fira Code',monospace;">neuroradiology &middot; lumbar &middot; stenosis &middot; VL</div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-2" style="margin-top:2rem;padding:1.75rem 2rem;background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--accent);border-radius:0 4px 4px 0;font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
+      <strong style="color:var(--text);">Medical disclaimer:</strong> Research and assistive tools only. Not licensed medical devices. Always consult a qualified healthcare provider. Outputs may contain errors.
+    </div>
   </section>
 
   <div class="divider"><div class="divider-line"></div></div>
@@ -1272,37 +1365,37 @@
   <!-- DEVELOPMENT PIPELINE -->
   <section>
     <div class="section-header reveal">
-      <div class="section-label">Development Pipeline</div>
+      <div class="section-label">Roadmap</div>
       <div class="section-title">Build the anchor. Stabilize. Expand.</div>
-      <div class="section-subtitle">Same discipline as a CRE development pipeline &mdash; build what the market needs now, prove the economics, then break ground on the next.</div>
+      <div class="section-subtitle">Proven sovereign pipeline: template &rarr; grind &rarr; audit &rarr; train &rarr; merge. Every model ships on local iron.</div>
     </div>
 
     <div class="roadmap-phases reveal">
       <div class="phase">
-        <div class="phase-tag now">Phase 1 &mdash; Now</div>
-        <div class="phase-title">Anchor Build</div>
-        <div class="phase-desc">Medical vertical. Highest regulation, highest pain. Prove the sovereign compute chain works end to end.</div>
+        <div class="phase-tag now">Phase 1 &mdash; Complete</div>
+        <div class="phase-title">Foundation</div>
+        <div class="phase-desc">Medical vertical. Proved the sovereign compute chain end to end. Pipeline is repeatable.</div>
         <ul class="phase-builds">
           <li><span class="live">&#x2713;</span> SwarmMedQA-7B-v1</li>
-          <li><span class="building">&#x25CB;</span> SwarmMedQA-7B-v2</li>
-          <li><span class="building">&#x25CB;</span> SwarmMedQA-8B-v1</li>
+          <li><span class="live">&#x2713;</span> SwarmPharm-7B-v2</li>
+          <li><span class="live">&#x2713;</span> SwarmMed-7B-v3 (unified)</li>
         </ul>
       </div>
       <div class="phase">
-        <div class="phase-tag next">Phase 2 &mdash; Q2-Q3</div>
-        <div class="phase-title">Adjacent Specialists</div>
-        <div class="phase-desc">Expand the medical fleet. Same pipeline, different training data. Marginal cost drops with each build.</div>
+        <div class="phase-tag now">Phase 2 &mdash; In Progress</div>
+        <div class="phase-title">Vertical Expansion</div>
+        <div class="phase-desc">Blended multi-specialty data. Vision-language models. Continued compounding across domains.</div>
         <ul class="phase-builds">
-          <li>SwarmPharm-7B</li>
-          <li>SwarmCardio-7B</li>
-          <li>SwarmER-7B</li>
-          <li>SwarmOnco-7B</li>
+          <li><span class="live">&#x2713;</span> SwarmMed-7B-v3 (shipped Feb &rsquo;26)</li>
+          <li><span class="building">&#x25CB;</span> SwarmMed-MRI-7B-v1</li>
+          <li><span class="building">&#x25CB;</span> SwarmER-7B</li>
+          <li><span class="building">&#x25CB;</span> SwarmOnco-7B</li>
         </ul>
       </div>
       <div class="phase">
-        <div class="phase-tag next">Phase 3 &mdash; Q4+</div>
-        <div class="phase-title">Cross-Vertical</div>
-        <div class="phase-desc">Legal, finance, compute brokerage. Leverage existing chain infrastructure into new sandboxes.</div>
+        <div class="phase-tag next">Phase 3 &mdash; Q3-Q4 2026</div>
+        <div class="phase-title">Broader Domains</div>
+        <div class="phase-desc">Legal, finance, compute specialists. Larger base models (8B&ndash;13B). Multi-agent routing.</div>
         <ul class="phase-builds">
           <li>SwarmLegal-7B</li>
           <li>SwarmFinance-7B</li>
@@ -1310,12 +1403,12 @@
         </ul>
       </div>
       <div class="phase">
-        <div class="phase-tag future">Phase 4 &mdash; 2027</div>
-        <div class="phase-title">Next-Gen Upgrades</div>
-        <div class="phase-desc">Retrain on 10x data, upgrade base models (8B, 9B), deploy on Blackwell hardware. Trade up the fleet.</div>
+        <div class="phase-tag future">Phase 4 &mdash; 2027+</div>
+        <div class="phase-title">Hardware &amp; Scale</div>
+        <div class="phase-desc">10x data volume. Blackwell-era local training. Full sovereign swarm infrastructure.</div>
         <ul class="phase-builds">
-          <li>8B/9B base upgrades</li>
-          <li>Blackwell RTX 5000/6000</li>
+          <li>8B/13B base upgrades</li>
+          <li>Blackwell RTX PRO 4500/6000</li>
           <li>5x energy efficiency</li>
         </ul>
       </div>
@@ -1323,30 +1416,30 @@
 
     <div class="hw-row reveal reveal-delay-2">
       <div class="hw-card">
-        <div class="hw-tier" style="color:var(--text-dim);">Current Fleet</div>
+        <div class="hw-tier" style="color:var(--text-dim);">Proven</div>
         <div class="hw-name">RTX 3090 Ti</div>
         <div class="hw-spec">
           24 GB VRAM &middot; 350W<br>
           40 tok/s &middot; <span class="highlight">0.11 tok/W</span><br>
-          $1,200 &middot; Class B
+          Shipped 3 models &middot; Class B
         </div>
       </div>
       <div class="hw-card">
-        <div class="hw-tier" style="color:var(--accent);">Next Target</div>
-        <div class="hw-name">RTX 5000 BB</div>
+        <div class="hw-tier" style="color:var(--accent);">Deploying</div>
+        <div class="hw-name">RTX PRO 4500</div>
         <div class="hw-spec">
-          32 GB VRAM &middot; 150W<br>
-          100+ tok/s &middot; <span class="highlight">0.50 tok/W</span><br>
-          ~$4,000 &middot; Class A-
+          32 GB GDDR7 &middot; PCIe 5.0<br>
+          10,496 CUDA &middot; <span class="highlight">Blackwell</span><br>
+          4x fleet &middot; EPYC 9004 &middot; 128 lanes
         </div>
       </div>
       <div class="hw-card">
-        <div class="hw-tier" style="color:var(--green);">Trophy Asset</div>
-        <div class="hw-name">RTX 6000 BB</div>
+        <div class="hw-tier" style="color:var(--green);">Deploying</div>
+        <div class="hw-name">RTX 6000 Pro</div>
         <div class="hw-spec">
-          96 GB VRAM &middot; 300W<br>
-          200+ tok/s &middot; <span class="highlight">0.67 tok/W</span><br>
-          ~$7,000 &middot; Class A+
+          96 GB VRAM &middot; Blackwell<br>
+          70B FP16 single card &middot; <span class="highlight">0.67 tok/W</span><br>
+          Training + serving &middot; Class A+
         </div>
       </div>
     </div>
@@ -1378,6 +1471,87 @@
         <div class="infra-number">0</div>
         <div class="infra-label">Shared tenants on our iron</div>
       </div>
+    </div>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div></div>
+
+  <!-- MARKETPLACE -->
+  <section>
+    <div class="section-header reveal">
+      <div class="section-label">Marketplace</div>
+      <div class="section-title">Own the models. Run them on your iron.</div>
+      <div class="section-subtitle">Sovereign models and datasets built by Swarm &amp; Bee. Download, deploy, own. No API keys, no usage limits, no data leaving your rack.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:2rem;" class="reveal">
+      <!-- Models -->
+      <div style="background:var(--surface);padding:2.5rem 2rem;">
+        <div style="font-size:1.4rem;margin-bottom:0.75rem;">&#x1F9E0;</div>
+        <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;">Models</div>
+        <div style="font-size:1.1rem;font-weight:700;margin-bottom:1.25rem;">Fine-Tuned Specialists</div>
+        <div style="font-size:0.78rem;color:var(--text-secondary);line-height:1.7;margin-bottom:2rem;">Domain-specific 7B models that outperform general-purpose 70B on vertical benchmarks. Merged 16-bit &mdash; no base model required.</div>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <a href="https://huggingface.co/SwarmOS/SwarmMed-7B-v3-merged" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.15);border-radius:3px;text-decoration:none;transition:all 0.3s;">
+            <span style="font-size:0.8rem;font-weight:600;color:var(--text);">SwarmMed-7B-v3</span>
+            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);">Free</span>
+          </a>
+          <a href="https://huggingface.co/SwarmOS/SwarmPharm-7B-v2" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.15);border-radius:3px;text-decoration:none;transition:all 0.3s;">
+            <span style="font-size:0.8rem;font-weight:600;color:var(--text);">SwarmPharm-7B-v2</span>
+            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);">Free</span>
+          </a>
+          <a href="https://huggingface.co/SwarmOS/SwarmMedQA-7B-v1" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.15);border-radius:3px;text-decoration:none;transition:all 0.3s;">
+            <span style="font-size:0.8rem;font-weight:600;color:var(--text);">SwarmMedQA-7B-v1</span>
+            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);">Free</span>
+          </a>
+        </div>
+      </div>
+      <!-- Datasets -->
+      <div style="background:var(--surface);padding:2.5rem 2rem;">
+        <div style="font-size:1.4rem;margin-bottom:0.75rem;">&#x1F4CA;</div>
+        <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;">Datasets</div>
+        <div style="font-size:1.1rem;font-weight:700;margin-bottom:1.25rem;">Gold-Standard Training Data</div>
+        <div style="font-size:0.78rem;color:var(--text-secondary);line-height:1.7;margin-bottom:2rem;">Multi-stage audited QA pairs. Every pair passes verify &rarr; score &rarr; safety gates. Specialty rubrics for clinical accuracy.</div>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <a href="https://huggingface.co/datasets/SwarmOS/SwarmMedQA" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.15);border-radius:3px;text-decoration:none;transition:all 0.3s;">
+            <span style="font-size:0.8rem;font-weight:600;color:var(--text);">SwarmMedQA</span>
+            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);">Free</span>
+          </a>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:3px;">
+            <span style="font-size:0.8rem;font-weight:600;color:var(--text-dim);">SwarmMedMRI</span>
+            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);">Coming Soon</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:3px;">
+            <span style="font-size:0.8rem;font-weight:600;color:var(--text-dim);">SwarmComputeQA</span>
+            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+      <!-- Tools & Kits -->
+      <div style="background:var(--surface);padding:2.5rem 2rem;">
+        <div style="font-size:1.4rem;margin-bottom:0.75rem;">&#x1F6E0;&#xFE0F;</div>
+        <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;">Tools &amp; Kits</div>
+        <div style="font-size:1.1rem;font-weight:700;margin-bottom:1.25rem;">Deploy on Your Hardware</div>
+        <div style="font-size:0.78rem;color:var(--text-secondary);line-height:1.7;margin-bottom:2rem;">Everything you need to run sovereign AI. vLLM configs, deployment scripts, training playbooks. Built for single-tenant infrastructure.</div>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:3px;">
+            <span style="font-size:0.8rem;font-weight:600;color:var(--text-dim);">Deployment Kit</span>
+            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);">Coming Soon</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:3px;">
+            <span style="font-size:0.8rem;font-weight:600;color:var(--text-dim);">Training Playbook</span>
+            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);">Coming Soon</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:3px;">
+            <span style="font-size:0.8rem;font-weight:600;color:var(--text-dim);">Sovereign Starter</span>
+            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-1" style="padding:1.75rem 2rem;background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--green);border-radius:0 4px 4px 0;font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
+      <strong style="color:var(--text);">Core principle:</strong> Every model is trained on personal hardware with zero cloud dependency. <span style="color:var(--accent);font-weight:600;">Local. No cloud. Sovereign.</span> Download once, run forever. No API keys, no rate limits, no telemetry.
     </div>
   </section>
 
