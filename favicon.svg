@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#030304"/>
+  <rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="#eab308" stroke-width="1.5" stroke-opacity="0.3"/>
+  <text x="32" y="26" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="14" font-weight="800" fill="#fafafa" letter-spacing="-0.5">S<tspan fill="#eab308" font-style="italic" font-weight="700">&amp;</tspan>B</text>
+  <line x1="14" y1="32" x2="50" y2="32" stroke="#eab308" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="32" y="46" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="6.5" font-weight="600" fill="#71717a" letter-spacing="2.5">SWARM</text>
+</svg>
