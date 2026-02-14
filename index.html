@@ -3,173 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swarm &amp; Bee — Sovereign Compute Architect</title>
-  <meta name="description" content="Swarm & Bee — Sovereign compute architecture. Dedicated infrastructure, specialized models, complete data sovereignty.">
-  <meta property="og:title" content="Swarm & Bee — Sovereign Compute Architect">
-  <meta property="og:description" content="We architect sovereign compute systems. Dedicated infrastructure, specialized models, your data never leaves your rack.">
+  <title>Swarm &amp; Bee</title>
+  <meta name="description" content="Swarm & Bee — Sovereign compute infrastructure. Dedicated hardware, specialized models, complete data sovereignty.">
+  <meta property="og:title" content="Swarm & Bee">
+  <meta property="og:description" content="Sovereign compute infrastructure. Dedicated hardware, specialized models, your data never leaves your rack.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://swarmandbee.com">
   <meta property="og:image" content="https://swarmandbee.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Swarm & Bee — Sovereign Compute Architect">
-  <meta name="twitter:description" content="We architect sovereign compute systems. Dedicated infrastructure, specialized models, your data never leaves your rack.">
+  <meta name="twitter:title" content="Swarm & Bee">
+  <meta name="twitter:description" content="Sovereign compute infrastructure. Dedicated hardware, specialized models, your data never leaves your rack.">
   <meta name="twitter:image" content="https://swarmandbee.com/og-image.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-      overflow: hidden;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; overflow: hidden; }
 
     body {
-      background-color: #0a0a0a;
-      font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Consolas', monospace;
-      color: #cccccc;
+      background: #080808;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #888;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
     }
 
-    /* ── Main Content ── */
-
-    .content {
+    .page {
       text-align: center;
-      position: relative;
-      z-index: 2;
+      max-width: 600px;
       padding: 2rem;
     }
 
-    .title {
-      font-size: clamp(2.6rem, 7vw, 5rem);
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      line-height: 1.15;
-      margin-bottom: 1.4rem;
-      color: #00ffaa;
-    }
-
-    .subtitle {
-      font-size: clamp(0.85rem, 1.8vw, 1.1rem);
-      font-weight: 500;
+    .firm {
+      font-size: clamp(2rem, 5.5vw, 3.4rem);
+      font-weight: 300;
       letter-spacing: 0.12em;
-      color: #555555;
-      margin-bottom: 3.2rem;
-      text-transform: uppercase;
+      color: #e0e0e0;
+      margin-bottom: 2rem;
     }
 
-    .footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      padding: 1.4rem 2rem;
-      z-index: 2;
-      font-size: clamp(0.82rem, 1.4vw, 0.95rem);
-      font-weight: 500;
-      color: #555555;
-      letter-spacing: 0.06em;
+    .rule {
+      width: 40px;
+      height: 1px;
+      background: #333;
+      margin: 0 auto 2rem;
+    }
+
+    .tagline {
+      font-size: clamp(0.72rem, 1.3vw, 0.82rem);
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      color: #555;
+      text-transform: uppercase;
       line-height: 1.8;
     }
 
-    .footer a {
-      color: #555555;
+    .contact {
+      position: fixed;
+      bottom: 2.2rem;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: #444;
+    }
+
+    .contact a {
+      color: #444;
       text-decoration: none;
-      transition: color 0.3s ease;
+      transition: color 0.4s ease;
     }
 
-    .footer a:hover {
-      color: #00ffaa;
+    .contact a:hover { color: #e0e0e0; }
+
+    .contact .sep {
+      margin: 0 1.2em;
+      color: #222;
     }
 
-    .footer .divider {
-      display: inline;
-      margin: 0 0.8em;
-      color: #2a2a2a;
-    }
+    /* ── Contact trigger ── */
 
-
-
-    /* ── Live Indicator ── */
-
-    .live-indicator {
+    .contact-trigger {
       position: fixed;
-      top: 1.4rem;
-      right: 1.6rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      z-index: 10;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: #555555;
+      bottom: 2.2rem;
+      right: 2.2rem;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-    }
-
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #00ffaa;
-      box-shadow: 0 0 6px #00ffaa, 0 0 12px rgba(0,255,170,0.3);
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; box-shadow: 0 0 6px #00ffaa, 0 0 12px rgba(0,255,170,0.3); }
-      50% { opacity: 0.6; box-shadow: 0 0 3px #00ffaa, 0 0 6px rgba(0,255,170,0.15); }
-    }
-
-    /* ── Chat Button ── */
-
-    .chat-btn {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background-color: #00ffaa;
-      border: none;
+      color: #444;
+      background: none;
+      border: 1px solid #222;
+      padding: 0.6rem 1.2rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      color: #0a0a0a;
-      z-index: 10;
-      transition: background-color 0.3s ease;
       font-family: inherit;
-      line-height: 1;
+      transition: all 0.4s ease;
+      z-index: 10;
     }
 
-    .chat-btn:hover {
-      background-color: #00cc88;
+    .contact-trigger:hover {
+      color: #e0e0e0;
+      border-color: #444;
     }
 
     /* ── Modal ── */
 
-    .modal-overlay {
+    .overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
+      inset: 0;
+      background: rgba(0,0,0,0.8);
       z-index: 100;
       display: none;
       align-items: center;
@@ -178,240 +128,205 @@
       transition: opacity 0.3s ease;
     }
 
-    .modal-overlay.open {
+    .overlay.open {
       display: flex;
       opacity: 1;
     }
 
-    .modal {
-      background: #111111;
+    .dialog {
+      background: #111;
       border: 1px solid #1a1a1a;
       padding: 2.8rem 2.4rem;
       width: 90%;
-      max-width: 420px;
+      max-width: 400px;
       position: relative;
-      font-family: 'JetBrains Mono', monospace;
     }
 
-    .modal-close {
+    .dialog-close {
       position: absolute;
       top: 1rem;
       right: 1.2rem;
       background: none;
       border: none;
-      font-size: 1.4rem;
-      color: #555555;
+      font-size: 1.2rem;
+      color: #444;
       cursor: pointer;
       font-family: inherit;
-      line-height: 1;
-      padding: 0.2rem;
       transition: color 0.3s ease;
     }
 
-    .modal-close:hover {
-      color: #00ffaa;
-    }
+    .dialog-close:hover { color: #e0e0e0; }
 
-    .modal h2 {
-      font-size: 1.5rem;
+    .dialog h2 {
+      font-size: 0.75rem;
       font-weight: 400;
-      letter-spacing: 0.08em;
-      margin-bottom: 1.8rem;
-      color: #00ffaa;
-    }
-
-    .modal label {
-      display: block;
-      font-size: 0.9rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      color: #555555;
-      margin-bottom: 0.4rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
+      color: #888;
+      margin-bottom: 2rem;
     }
 
-    .modal input,
-    .modal textarea {
+    .dialog label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 0.4rem;
+    }
+
+    .dialog input,
+    .dialog textarea {
       width: 100%;
-      padding: 0.7rem 0.8rem;
-      border: 1px solid #2a2a2a;
+      padding: 0.65rem 0.7rem;
+      border: 1px solid #1a1a1a;
       background: #0a0a0a;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.05rem;
-      color: #cccccc;
+      font-family: inherit;
+      font-size: 0.85rem;
+      color: #ccc;
       margin-bottom: 1.2rem;
       outline: none;
       transition: border-color 0.3s ease;
     }
 
-    .modal input:focus,
-    .modal textarea:focus {
-      border-color: #00ffaa;
+    .dialog input:focus,
+    .dialog textarea:focus {
+      border-color: #444;
     }
 
-    .modal textarea {
-      height: 100px;
+    .dialog textarea {
+      height: 90px;
       resize: vertical;
     }
 
-    .modal-send {
+    .dialog-send {
       width: 100%;
-      padding: 0.75rem;
-      background: #00ffaa;
-      color: #0a0a0a;
+      padding: 0.7rem;
+      background: #e0e0e0;
+      color: #080808;
       border: none;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.05rem;
-      letter-spacing: 0.12em;
+      font-family: inherit;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background 0.3s ease;
     }
 
-    .modal-send:hover {
-      background: #00cc88;
-    }
+    .dialog-send:hover { background: #ccc; }
 
-    .modal-success {
+    .dialog-ok {
       display: none;
       text-align: center;
       padding: 1rem 0;
-      font-size: 1.1rem;
-      color: #00cc88;
-      font-style: italic;
+      font-size: 0.85rem;
+      color: #888;
     }
 
-    /* ── Responsive ── */
-
     @media (max-width: 600px) {
-      .chat-btn {
+      .contact-trigger {
         bottom: 1.2rem;
         right: 1.2rem;
-        width: 46px;
-        height: 46px;
-        font-size: 1rem;
+        padding: 0.5rem 1rem;
       }
-
-      .modal {
-        padding: 2rem 1.6rem;
-      }
+      .dialog { padding: 2rem 1.6rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Live Indicator -->
-  <div class="live-indicator">
-    <span class="live-dot"></span>
-    <span>live</span>
-  </div>
-
-  <!-- Content -->
-  <main class="content">
-    <h1 class="title">
-      Swarm &amp; Bee &#x1F41D;
-    </h1>
-    <p class="subtitle">Sovereign Compute Architect</p>
+  <main class="page">
+    <h1 class="firm">Swarm &amp; Bee</h1>
+    <div class="rule"></div>
+    <p class="tagline">Sovereign Compute Infrastructure</p>
   </main>
 
-  <!-- Footer Contact -->
-  <footer class="footer">
+  <footer class="contact">
     <a href="mailto:hello@swarmandbee.com">hello@swarmandbee.com</a>
-    <span class="divider">|</span>
+    <span class="sep">&middot;</span>
     <a href="tel:+15615327120">561.532.7120</a>
   </footer>
 
-  <!-- Chat Button -->
-  <button class="chat-btn" id="chatBtn" aria-label="Open chat">&#x1F4AC;</button>
+  <button class="contact-trigger" id="chatBtn">Contact</button>
 
-  <!-- Chat Modal -->
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal">
-      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+  <div class="overlay" id="overlay">
+    <div class="dialog">
+      <button class="dialog-close" id="closeBtn">&times;</button>
       <h2>Get in Touch</h2>
       <form id="contactForm">
-        <label for="contactName">Name</label>
-        <input type="text" id="contactName" name="name" required autocomplete="name">
-        <label for="contactEmail">Email</label>
-        <input type="email" id="contactEmail" name="email" required autocomplete="email">
-        <label for="contactMessage">Message</label>
-        <textarea id="contactMessage" name="message" required></textarea>
-        <button type="submit" class="modal-send">Send</button>
+        <label for="cName">Name</label>
+        <input type="text" id="cName" name="name" required autocomplete="name">
+        <label for="cEmail">Email</label>
+        <input type="email" id="cEmail" name="email" required autocomplete="email">
+        <label for="cMsg">Message</label>
+        <textarea id="cMsg" name="message" required></textarea>
+        <button type="submit" class="dialog-send">Send</button>
       </form>
-      <div class="modal-success" id="modalSuccess">Thank you. We will be in touch.</div>
+      <div class="dialog-ok" id="okMsg">Thank you. We'll be in touch.</div>
     </div>
   </div>
 
   <script>
     (function() {
       var btn = document.getElementById('chatBtn');
-      var overlay = document.getElementById('modalOverlay');
-      var close = document.getElementById('modalClose');
+      var overlay = document.getElementById('overlay');
+      var close = document.getElementById('closeBtn');
       var form = document.getElementById('contactForm');
-      var success = document.getElementById('modalSuccess');
+      var ok = document.getElementById('okMsg');
 
-      btn.addEventListener('click', function() {
-        overlay.classList.add('open');
-      });
+      btn.onclick = function() { overlay.classList.add('open'); };
+      close.onclick = function() { overlay.classList.remove('open'); };
+      overlay.onclick = function(e) { if (e.target === overlay) overlay.classList.remove('open'); };
+      document.onkeydown = function(e) { if (e.key === 'Escape') overlay.classList.remove('open'); };
 
-      close.addEventListener('click', function() {
-        overlay.classList.remove('open');
-      });
-
-      overlay.addEventListener('click', function(e) {
-        if (e.target === overlay) overlay.classList.remove('open');
-      });
-
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') overlay.classList.remove('open');
-      });
-
-      form.addEventListener('submit', function(e) {
+      form.onsubmit = function(e) {
         e.preventDefault();
-        var sendBtn = form.querySelector('.modal-send');
-        sendBtn.textContent = 'Sending...';
-        sendBtn.disabled = true;
-
+        var s = form.querySelector('.dialog-send');
+        s.textContent = 'Sending...';
+        s.disabled = true;
         fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            name: document.getElementById('contactName').value,
-            email: document.getElementById('contactEmail').value,
-            message: document.getElementById('contactMessage').value,
+            name: document.getElementById('cName').value,
+            email: document.getElementById('cEmail').value,
+            message: document.getElementById('cMsg').value,
           }),
         })
-        .then(function(res) { return res.json(); })
-        .then(function(data) {
+        .then(function(r) { return r.json(); })
+        .then(function() {
           form.style.display = 'none';
-          success.style.display = 'block';
+          ok.style.display = 'block';
           setTimeout(function() {
             overlay.classList.remove('open');
             setTimeout(function() {
               form.style.display = '';
-              success.style.display = 'none';
-              sendBtn.textContent = 'Send';
-              sendBtn.disabled = false;
+              ok.style.display = 'none';
+              s.textContent = 'SEND';
+              s.disabled = false;
               form.reset();
             }, 400);
           }, 2400);
         })
         .catch(function() {
-          sendBtn.textContent = 'Send';
-          sendBtn.disabled = false;
-          success.textContent = 'Something went wrong. Please email us directly.';
-          success.style.display = 'block';
+          s.textContent = 'SEND';
+          s.disabled = false;
+          ok.textContent = 'Something went wrong. Please email us directly.';
+          ok.style.display = 'block';
           form.style.display = 'none';
           setTimeout(function() {
             overlay.classList.remove('open');
             setTimeout(function() {
               form.style.display = '';
-              success.style.display = 'none';
-              success.textContent = 'Thank you. We will be in touch.';
+              ok.style.display = 'none';
+              ok.textContent = "Thank you. We'll be in touch.";
               form.reset();
             }, 400);
           }, 3000);
         });
-      });
+      };
     })();
   </script>
 </body>
