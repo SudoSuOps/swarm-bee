@@ -2,7 +2,7 @@
  * Cloudflare Pages Function: POST /api/contact
  * Receives contact form submissions and forwards to Rocket.Chat incoming webhook.
  *
- * Environment variable (set via CF API):
+ * Environment variable (set via CF Pages settings):
  *   ROCKETCHAT_WEBHOOK_URL = https://chat.swarmandbee.com/hooks/xxx/yyy
  */
 
@@ -16,9 +16,9 @@ export async function onRequestPost(context) {
 
   try {
     const body = await request.json();
-    const { name, email, interest, message } = body;
+    const { name, email, message } = body;
 
-    if (!name || !email || !interest || !message) {
+    if (!name || !email || !message) {
       return new Response(JSON.stringify({ ok: false, error: 'All fields required.' }), {
         status: 400, headers,
       });
@@ -35,11 +35,10 @@ export async function onRequestPost(context) {
     const rcPayload = {
       text: `**New Contact — swarmandbee.com**`,
       attachments: [{
-        color: '#eab308',
+        color: '#B89B3C',
         fields: [
           { short: true, title: 'Name', value: name },
           { short: true, title: 'Email', value: email },
-          { short: true, title: 'Interest', value: interest },
           { short: true, title: 'IP', value: ip },
           { short: false, title: 'Message', value: message },
         ],

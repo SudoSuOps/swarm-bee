@@ -34,7 +34,7 @@
     }
 
     body {
-      background-color: #F4EFE6;
+      background-color: #E8E0D0;
       font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
       color: #1E1E1E;
       display: flex;
@@ -54,7 +54,7 @@
 
     .title {
       font-size: clamp(2.8rem, 7vw, 5.4rem);
-      font-weight: 300;
+      font-weight: 600;
       letter-spacing: 0.06em;
       line-height: 1.2;
       margin-bottom: 1.6rem;
@@ -70,29 +70,42 @@
 
     .subtitle {
       font-size: clamp(1rem, 2.2vw, 1.35rem);
-      font-weight: 400;
+      font-weight: 500;
       letter-spacing: 0.18em;
       color: #3A3A3A;
       margin-bottom: 3.2rem;
       font-style: italic;
     }
 
-    .contact {
-      font-size: clamp(0.85rem, 1.6vw, 1.05rem);
-      font-weight: 300;
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding: 1.4rem 2rem;
+      z-index: 2;
+      font-size: clamp(0.82rem, 1.4vw, 0.95rem);
+      font-weight: 400;
       color: #6B6560;
-      letter-spacing: 0.05em;
-      line-height: 2;
+      letter-spacing: 0.06em;
+      line-height: 1.8;
     }
 
-    .contact a {
+    .footer a {
       color: #6B6560;
       text-decoration: none;
       transition: color 0.3s ease;
     }
 
-    .contact a:hover {
+    .footer a:hover {
       color: #B89B3C;
+    }
+
+    .footer .divider {
+      display: inline;
+      margin: 0 0.8em;
+      color: #C4BBB0;
     }
 
     /* ── Bee SVG Animation ── */
@@ -110,9 +123,9 @@
 
     .bee-svg {
       position: absolute;
-      width: 38px;
-      height: 38px;
-      opacity: 0.55;
+      width: 64px;
+      height: 64px;
+      opacity: 0.7;
       animation: beeFlight 14s ease-in-out infinite;
     }
 
@@ -124,7 +137,7 @@
         opacity: 0;
       }
       6% {
-        opacity: 0.55;
+        opacity: 0.7;
       }
       25% {
         top: 42%;
@@ -147,7 +160,7 @@
         transform: rotate(6deg) scale(0.95);
       }
       92% {
-        opacity: 0.55;
+        opacity: 0.7;
       }
       100% {
         top: 44%;
@@ -221,7 +234,7 @@
     }
 
     .modal {
-      background: #FAF7F2;
+      background: #F0EBE1;
       border: 1px solid #E2DDD4;
       padding: 2.8rem 2.4rem;
       width: 90%;
@@ -321,9 +334,9 @@
 
     @media (max-width: 600px) {
       .bee-svg {
-        width: 26px;
-        height: 26px;
-        opacity: 0.4;
+        width: 42px;
+        height: 42px;
+        opacity: 0.6;
       }
 
       .chat-btn {
@@ -373,11 +386,14 @@
       <span class="ampersand">Swarm &amp;</span> <span class="bee">Bee</span>
     </h1>
     <p class="subtitle">Sovereign Compute Architect.</p>
-    <div class="contact">
-      <a href="mailto:hello@swarmandbee.com">hello@swarmandbee.com</a><br>
-      <span>310-745-0826</span>
-    </div>
   </main>
+
+  <!-- Footer Contact -->
+  <footer class="footer">
+    <a href="mailto:hello@swarmandbee.com">hello@swarmandbee.com</a>
+    <span class="divider">|</span>
+    <a href="tel:+15615327120">561.532.7120</a>
+  </footer>
 
   <!-- Chat Button -->
   <button class="chat-btn" id="chatBtn" aria-label="Open chat">&#x1F4AC;</button>
@@ -426,16 +442,50 @@
 
       form.addEventListener('submit', function(e) {
         e.preventDefault();
-        form.style.display = 'none';
-        success.style.display = 'block';
-        setTimeout(function() {
-          overlay.classList.remove('open');
+        var sendBtn = form.querySelector('.modal-send');
+        sendBtn.textContent = 'Sending...';
+        sendBtn.disabled = true;
+
+        fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: document.getElementById('contactName').value,
+            email: document.getElementById('contactEmail').value,
+            message: document.getElementById('contactMessage').value,
+          }),
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          form.style.display = 'none';
+          success.style.display = 'block';
           setTimeout(function() {
-            form.style.display = '';
-            success.style.display = 'none';
-            form.reset();
-          }, 400);
-        }, 2400);
+            overlay.classList.remove('open');
+            setTimeout(function() {
+              form.style.display = '';
+              success.style.display = 'none';
+              sendBtn.textContent = 'Send';
+              sendBtn.disabled = false;
+              form.reset();
+            }, 400);
+          }, 2400);
+        })
+        .catch(function() {
+          sendBtn.textContent = 'Send';
+          sendBtn.disabled = false;
+          success.textContent = 'Something went wrong. Please email us directly.';
+          success.style.display = 'block';
+          form.style.display = 'none';
+          setTimeout(function() {
+            overlay.classList.remove('open');
+            setTimeout(function() {
+              form.style.display = '';
+              success.style.display = 'none';
+              success.textContent = 'Thank you. We will be in touch.';
+              form.reset();
+            }, 400);
+          }, 3000);
+        });
       });
     })();
   </script>
