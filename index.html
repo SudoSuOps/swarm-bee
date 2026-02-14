@@ -34,7 +34,7 @@
     }
 
     body {
-      background-color: #E8E0D0;
+      background-color: #D5CCBB;
       font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
       color: #1E1E1E;
       display: flex;
@@ -123,9 +123,9 @@
 
     .bee-svg {
       position: absolute;
-      width: 64px;
-      height: 64px;
-      opacity: 0.7;
+      width: 80px;
+      height: 80px;
+      opacity: 0.75;
       animation: beeFlight 14s ease-in-out infinite;
     }
 
@@ -234,7 +234,7 @@
     }
 
     .modal {
-      background: #F0EBE1;
+      background: #E8E0D0;
       border: 1px solid #E2DDD4;
       padding: 2.8rem 2.4rem;
       width: 90%;
@@ -285,7 +285,7 @@
       width: 100%;
       padding: 0.7rem 0.8rem;
       border: 1px solid #DDD8CF;
-      background: #FFFDF8;
+      background: #EDE7DB;
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.05rem;
       color: #1E1E1E;
@@ -334,9 +334,9 @@
 
     @media (max-width: 600px) {
       .bee-svg {
-        width: 42px;
-        height: 42px;
-        opacity: 0.6;
+        width: 54px;
+        height: 54px;
+        opacity: 0.65;
       }
 
       .chat-btn {
@@ -357,26 +357,134 @@
 
   <!-- Bee Animation -->
   <div class="bee-container">
-    <svg class="bee-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <!-- Wings -->
-      <ellipse class="wing" cx="38" cy="34" rx="16" ry="10" fill="#D4C89A" fill-opacity="0.45" />
-      <ellipse class="wing wing-right" cx="62" cy="34" rx="16" ry="10" fill="#D4C89A" fill-opacity="0.45" />
-      <!-- Body -->
-      <ellipse cx="50" cy="54" rx="14" ry="20" fill="#B89B3C" />
-      <!-- Stripes -->
-      <rect x="36" y="48" width="28" height="4" rx="2" fill="#1E1E1E" opacity="0.55" />
-      <rect x="36" y="56" width="28" height="4" rx="2" fill="#1E1E1E" opacity="0.55" />
-      <rect x="36" y="64" width="28" height="3" rx="1.5" fill="#1E1E1E" opacity="0.55" />
+    <svg class="bee-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Abdomen gradient — warm honey to amber -->
+        <radialGradient id="abdomenGrad" cx="50%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#D4A842"/>
+          <stop offset="55%" stop-color="#B89B3C"/>
+          <stop offset="100%" stop-color="#8B7428"/>
+        </radialGradient>
+        <!-- Thorax gradient — rich brown -->
+        <radialGradient id="thoraxGrad" cx="50%" cy="45%" r="50%">
+          <stop offset="0%" stop-color="#6B5A3E"/>
+          <stop offset="100%" stop-color="#3A3020"/>
+        </radialGradient>
+        <!-- Head gradient -->
+        <radialGradient id="headGrad" cx="45%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#4A3E30"/>
+          <stop offset="100%" stop-color="#2A2218"/>
+        </radialGradient>
+        <!-- Wing gradient — translucent iridescent -->
+        <linearGradient id="wingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#E8DFC8" stop-opacity="0.5"/>
+          <stop offset="40%" stop-color="#D8CEB0" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#C8BC98" stop-opacity="0.25"/>
+        </linearGradient>
+        <!-- Wing vein stroke -->
+        <linearGradient id="veinGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#A09070" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#A09070" stop-opacity="0.2"/>
+        </linearGradient>
+        <!-- Eye shine -->
+        <radialGradient id="eyeGrad" cx="35%" cy="35%" r="50%">
+          <stop offset="0%" stop-color="#3A3020"/>
+          <stop offset="70%" stop-color="#1A1510"/>
+          <stop offset="100%" stop-color="#0D0A06"/>
+        </radialGradient>
+        <!-- Subtle body fuzz texture -->
+        <filter id="fuzz" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise"/>
+          <feColorMatrix type="saturate" values="0" in="noise" result="mono"/>
+          <feBlend in="SourceGraphic" in2="mono" mode="soft-light"/>
+        </filter>
+      </defs>
+
+      <!-- Left Wing (rear) -->
+      <g class="wing">
+        <ellipse cx="68" cy="62" rx="38" ry="22" fill="url(#wingGrad)" stroke="#B0A480" stroke-width="0.5" stroke-opacity="0.4" transform="rotate(-15 68 62)"/>
+        <!-- Wing veins -->
+        <path d="M48,62 Q58,55 78,50" fill="none" stroke="url(#veinGrad)" stroke-width="0.6"/>
+        <path d="M50,65 Q62,60 82,58" fill="none" stroke="url(#veinGrad)" stroke-width="0.5"/>
+        <path d="M55,68 Q65,65 80,63" fill="none" stroke="url(#veinGrad)" stroke-width="0.4"/>
+        <path d="M60,58 Q65,52 75,48" fill="none" stroke="url(#veinGrad)" stroke-width="0.4"/>
+      </g>
+
+      <!-- Right Wing (rear) -->
+      <g class="wing wing-right">
+        <ellipse cx="132" cy="62" rx="38" ry="22" fill="url(#wingGrad)" stroke="#B0A480" stroke-width="0.5" stroke-opacity="0.4" transform="rotate(15 132 62)"/>
+        <!-- Wing veins -->
+        <path d="M152,62 Q142,55 122,50" fill="none" stroke="url(#veinGrad)" stroke-width="0.6"/>
+        <path d="M150,65 Q138,60 118,58" fill="none" stroke="url(#veinGrad)" stroke-width="0.5"/>
+        <path d="M145,68 Q135,65 120,63" fill="none" stroke="url(#veinGrad)" stroke-width="0.4"/>
+        <path d="M140,58 Q135,52 125,48" fill="none" stroke="url(#veinGrad)" stroke-width="0.4"/>
+      </g>
+
+      <!-- Legs (3 pairs — thin, delicate) -->
+      <!-- Front legs -->
+      <path d="M88,95 Q82,102 76,112 Q74,116 70,118" fill="none" stroke="#3A3020" stroke-width="1" stroke-linecap="round"/>
+      <path d="M112,95 Q118,102 124,112 Q126,116 130,118" fill="none" stroke="#3A3020" stroke-width="1" stroke-linecap="round"/>
+      <!-- Middle legs -->
+      <path d="M86,108 Q78,116 72,128 Q70,132 66,136" fill="none" stroke="#3A3020" stroke-width="1" stroke-linecap="round"/>
+      <path d="M114,108 Q122,116 128,128 Q130,132 134,136" fill="none" stroke="#3A3020" stroke-width="1" stroke-linecap="round"/>
+      <!-- Hind legs (thicker, pollen baskets) -->
+      <path d="M90,125 Q82,134 76,146 Q74,152 72,156" fill="none" stroke="#3A3020" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M110,125 Q118,134 124,146 Q126,152 128,156" fill="none" stroke="#3A3020" stroke-width="1.2" stroke-linecap="round"/>
+      <!-- Tiny foot hooks -->
+      <path d="M70,118 L68,120" stroke="#3A3020" stroke-width="0.7" stroke-linecap="round"/>
+      <path d="M130,118 L132,120" stroke="#3A3020" stroke-width="0.7" stroke-linecap="round"/>
+      <path d="M66,136 L64,138" stroke="#3A3020" stroke-width="0.7" stroke-linecap="round"/>
+      <path d="M134,136 L136,138" stroke="#3A3020" stroke-width="0.7" stroke-linecap="round"/>
+
+      <!-- Abdomen — teardrop with segments -->
+      <ellipse cx="100" cy="135" rx="22" ry="32" fill="url(#abdomenGrad)" filter="url(#fuzz)"/>
+      <!-- Abdomen stripes — curved to follow body -->
+      <path d="M80,122 Q100,118 120,122" fill="none" stroke="#2A2218" stroke-width="3.5" stroke-opacity="0.6" stroke-linecap="round"/>
+      <path d="M78,131 Q100,127 122,131" fill="none" stroke="#2A2218" stroke-width="3.5" stroke-opacity="0.6" stroke-linecap="round"/>
+      <path d="M79,140 Q100,136 121,140" fill="none" stroke="#2A2218" stroke-width="3" stroke-opacity="0.55" stroke-linecap="round"/>
+      <path d="M81,149 Q100,146 119,149" fill="none" stroke="#2A2218" stroke-width="2.5" stroke-opacity="0.5" stroke-linecap="round"/>
+      <!-- Abdomen tip -->
+      <ellipse cx="100" cy="165" rx="6" ry="4" fill="#8B7428" opacity="0.7"/>
+      <!-- Subtle abdomen highlight -->
+      <ellipse cx="96" cy="128" rx="8" ry="14" fill="#E0C860" opacity="0.15"/>
+
+      <!-- Thorax — fuzzy rounded -->
+      <ellipse cx="100" cy="95" rx="18" ry="15" fill="url(#thoraxGrad)" filter="url(#fuzz)"/>
+      <!-- Thorax fuzz highlight -->
+      <ellipse cx="96" cy="90" rx="8" ry="6" fill="#8B7A58" opacity="0.25"/>
+
+      <!-- Petiole (waist) -->
+      <ellipse cx="100" cy="108" rx="8" ry="5" fill="#5A4A30"/>
+
       <!-- Head -->
-      <circle cx="50" cy="32" r="9" fill="#3A3632" />
-      <!-- Eyes -->
-      <circle cx="46" cy="30" r="1.8" fill="#F4EFE6" opacity="0.8" />
-      <circle cx="54" cy="30" r="1.8" fill="#F4EFE6" opacity="0.8" />
-      <!-- Antennae -->
-      <line x1="46" y1="24" x2="40" y2="14" stroke="#3A3632" stroke-width="1.2" stroke-linecap="round" />
-      <line x1="54" y1="24" x2="60" y2="14" stroke="#3A3632" stroke-width="1.2" stroke-linecap="round" />
-      <circle cx="40" cy="13" r="2" fill="#3A3632" />
-      <circle cx="60" cy="13" r="2" fill="#3A3632" />
+      <ellipse cx="100" cy="72" rx="14" ry="12" fill="url(#headGrad)" filter="url(#fuzz)"/>
+
+      <!-- Compound eyes -->
+      <ellipse cx="90" cy="70" rx="6" ry="7" fill="url(#eyeGrad)"/>
+      <ellipse cx="110" cy="70" rx="6" ry="7" fill="url(#eyeGrad)"/>
+      <!-- Eye shine -->
+      <ellipse cx="88" cy="68" rx="2" ry="2.5" fill="#F4EFE6" opacity="0.2"/>
+      <ellipse cx="108" cy="68" rx="2" ry="2.5" fill="#F4EFE6" opacity="0.2"/>
+
+      <!-- Mandibles -->
+      <path d="M95,80 Q92,84 90,85" fill="none" stroke="#3A3020" stroke-width="1" stroke-linecap="round"/>
+      <path d="M105,80 Q108,84 110,85" fill="none" stroke="#3A3020" stroke-width="1" stroke-linecap="round"/>
+
+      <!-- Proboscis (tongue) — subtle -->
+      <path d="M99,82 Q100,90 100,94" fill="none" stroke="#5A4A30" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
+
+      <!-- Antennae — elegant curved -->
+      <path d="M94,62 Q88,50 82,40 Q78,34 76,28" fill="none" stroke="#3A3020" stroke-width="1.3" stroke-linecap="round"/>
+      <path d="M106,62 Q112,50 118,40 Q122,34 124,28" fill="none" stroke="#3A3020" stroke-width="1.3" stroke-linecap="round"/>
+      <!-- Antenna tips (flagellum clubs) -->
+      <ellipse cx="75" cy="27" rx="2.5" ry="3.5" fill="#3A3020" transform="rotate(-15 75 27)"/>
+      <ellipse cx="125" cy="27" rx="2.5" ry="3.5" fill="#3A3020" transform="rotate(15 125 27)"/>
+      <!-- Antenna segments -->
+      <circle cx="86" cy="48" r="0.8" fill="#3A3020" opacity="0.4"/>
+      <circle cx="114" cy="48" r="0.8" fill="#3A3020" opacity="0.4"/>
+
+      <!-- Stinger — tiny, subtle -->
+      <path d="M100,166 L100,172" stroke="#2A2218" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
     </svg>
   </div>
 
