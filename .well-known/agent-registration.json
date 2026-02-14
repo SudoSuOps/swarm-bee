@@ -1,0 +1,53 @@
+{
+  "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
+
+  "name": "SwarmBroker",
+  "description": "Sovereign compute brokerage agent. Registers dedicated GPU nodes, publishes capacity listings, routes inference jobs, meters usage, and settles payments via x402. Specializes in last-mile intelligence infrastructure for regulated industries — medical, legal, financial. Single-tenant sovereignty: your data never leaves your rack.",
+
+  "image": "ipfs://QmToXs6uhDDHLks9XyYi819i6iYBCfiTtwaENy1aPS7kdp",
+
+  "services": [
+    {
+      "name": "web",
+      "endpoint": "https://swarmandbee.com"
+    },
+    {
+      "name": "A2A",
+      "endpoint": "https://swarmi2a.eth.limo/.well-known/agent-card.json",
+      "version": "0.3.0"
+    },
+    {
+      "name": "MCP",
+      "endpoint": "https://swarmi2a.eth.limo/mcp",
+      "version": "2025-06-18"
+    },
+    {
+      "name": "ENS",
+      "endpoint": "swarmi2a.eth",
+      "version": "v1"
+    },
+    {
+      "name": "DID",
+      "endpoint": "did:swarm:d09836bc3a98a32f",
+      "version": "v1"
+    },
+    {
+      "name": "email",
+      "endpoint": "hello@swarmandbee.com"
+    }
+  ],
+
+  "x402Support": true,
+  "active": true,
+
+  "registrations": [
+    {
+      "agentRegistry": "eip155:8453:0x8004A169FB4a3325136EB29fA0ceB6D2e539a432",
+      "agentId": null
+    }
+  ],
+
+  "supportedTrust": [
+    "reputation"
+  ]
+}
