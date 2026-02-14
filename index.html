@@ -3,3099 +3,441 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swarm &amp; Bee — Last Mile Intelligence</title>
-  <meta name="description" content="Swarm & Bee — Last mile compute intelligence. Sovereign AI models, datasets, and knowledge graphs for healthcare, finance, and enterprise.">
-  <meta property="og:title" content="Swarm & Bee — Last Mile Intelligence">
-  <meta property="og:description" content="Last mile compute. Specialized 7B models that outperform general-purpose 70B on domain benchmarks. Built by autonomous agents, served at the edge.">
+  <title>Swarm &amp; Bee — Sovereign Compute Architect</title>
+  <meta name="description" content="Swarm & Bee — Sovereign compute architecture. Dedicated infrastructure, specialized models, complete data sovereignty.">
+  <meta property="og:title" content="Swarm & Bee — Sovereign Compute Architect">
+  <meta property="og:description" content="We architect sovereign compute systems. Dedicated infrastructure, specialized models, your data never leaves your rack.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://swarmandbee.com">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <meta property="og:image" content="https://swarmandbee.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Swarm & Bee — Last Mile Intelligence">
-  <meta name="twitter:description" content="Sovereign compute. Specialized models. Your data never leaves your rack.">
+  <meta name="twitter:title" content="Swarm & Bee — Sovereign Compute Architect">
+  <meta name="twitter:description" content="We architect sovereign compute systems. Dedicated infrastructure, specialized models, your data never leaves your rack.">
   <meta name="twitter:image" content="https://swarmandbee.com/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --bg: #030304;
-      --surface: #09090b;
-      --surface-hover: #111114;
-      --border: #18181b;
-      --border-light: #27272a;
-      --text: #fafafa;
-      --text-secondary: #a1a1aa;
-      --text-dim: #71717a;
-      --text-muted: #3f3f46;
-      --accent: #eab308;
-      --accent-bright: #facc15;
-      --accent-glow: rgba(234, 179, 8, 0.15);
-      --accent-dim: rgba(234, 179, 8, 0.4);
-      --green: #22c55e;
-      --green-glow: rgba(34, 197, 94, 0.2);
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html { scroll-behavior: smooth; }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-      overflow-x: hidden;
-    }
-
-    /* --- GLOBAL BACKGROUND --- */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(34,197,94,0.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(34,197,94,0.018) 1px, transparent 1px);
-      background-size: 40px 40px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 75%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* --- NOISE OVERLAY --- */
-    body::after {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-    }
-
-    /* --- GLOBAL AMBIENT GLOWS --- */
-    .global-glow-1 {
-      position: fixed;
-      top: 20%;
-      left: -10%;
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(34,197,94,0.04) 0%, rgba(34,197,94,0.01) 35%, transparent 65%);
-      pointer-events: none;
-      z-index: 0;
-      animation: mri-pulse 8s ease-in-out infinite;
-    }
-
-    .global-glow-2 {
-      position: fixed;
-      top: 60%;
-      right: -10%;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(234,179,8,0.035) 0%, rgba(234,179,8,0.01) 35%, transparent 65%);
-      pointer-events: none;
-      z-index: 0;
-      animation: mri-pulse 10s ease-in-out 3s infinite;
-    }
-
-    .global-glow-3 {
-      position: fixed;
-      bottom: 10%;
-      left: 30%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(96,165,250,0.025) 0%, rgba(96,165,250,0.008) 40%, transparent 65%);
-      pointer-events: none;
-      z-index: 0;
-      animation: mri-pulse 12s ease-in-out 5s infinite;
-    }
-
-    /* --- ANIMATIONS --- */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    @keyframes glow-pulse {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 1; }
-    }
-
-    @keyframes line-draw {
-      from { transform: scaleX(0); }
-      to { transform: scaleX(1); }
-    }
-
-    @keyframes hero-fade {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes grid-fade {
-      from { opacity: 0; }
-      to { opacity: 0.04; }
-    }
-
-    @keyframes shimmer {
-      0% { background-position: -200% center; }
-      100% { background-position: 200% center; }
-    }
-
-    @keyframes mri-scan {
-      0% { top: -2px; opacity: 0; }
-      5% { opacity: 1; }
-      95% { opacity: 1; }
-      100% { top: 100%; opacity: 0; }
-    }
-
-    @keyframes mri-pulse {
-      0%, 100% { opacity: 0.15; transform: scale(1); }
-      50% { opacity: 0.35; transform: scale(1.02); }
-    }
-
-    @keyframes data-flow {
-      0% { transform: translateY(0); opacity: 0.6; }
-      50% { opacity: 1; }
-      100% { transform: translateY(-20px); opacity: 0; }
-    }
-
-    @keyframes vertebra-glow {
-      0%, 100% { filter: drop-shadow(0 0 2px rgba(234,179,8,0.2)); }
-      50% { filter: drop-shadow(0 0 8px rgba(234,179,8,0.6)); }
-    }
-
-    /* --- MRI SHOWCASE --- */
-    .mri-showcase {
-      position: relative;
-      overflow: hidden;
-      padding: 0;
-      z-index: 1;
-    }
-
-    .mri-bg-grid {
-      display: none; /* Uses global background grid */
-    }
-
-    .mri-bg-glow {
-      position: absolute;
-      top: 50%;
-      left: 25%;
-      transform: translate(-50%, -50%);
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(34,197,94,0.08) 0%, rgba(34,197,94,0.02) 35%, transparent 65%);
-      pointer-events: none;
-      animation: mri-pulse 6s ease-in-out infinite;
-    }
-
-    .mri-bg-glow-accent {
-      position: absolute;
-      top: 40%;
-      right: 10%;
-      transform: translate(50%, -50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(234,179,8,0.02) 40%, transparent 65%);
-      pointer-events: none;
-      animation: mri-pulse 8s ease-in-out 2s infinite;
-    }
-
-    .mri-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 8rem 2rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .mri-visual {
-      position: relative;
+      background-color: #F4EFE6;
+      font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
+      color: #1E1E1E;
       display: flex;
+      align-items: center;
       justify-content: center;
-      align-items: center;
-    }
-
-    .mri-frame {
       position: relative;
-      width: 320px;
-      height: 420px;
-      border: 1px solid rgba(34,197,94,0.15);
-      border-radius: 8px;
-      background: rgba(9,9,11,0.8);
-      backdrop-filter: blur(10px);
-      overflow: hidden;
-      box-shadow: 0 0 60px rgba(34,197,94,0.05), inset 0 0 30px rgba(34,197,94,0.02);
     }
 
-    .mri-scan-line {
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(34,197,94,0.8), rgba(34,197,94,0.4), transparent);
-      box-shadow: 0 0 15px rgba(34,197,94,0.5), 0 0 30px rgba(34,197,94,0.2);
-      animation: mri-scan 4s ease-in-out infinite;
-      z-index: 3;
-    }
+    /* ── Main Content ── */
 
-    .mri-scan-line::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 2px;
-      height: 40px;
-      background: linear-gradient(180deg, rgba(34,197,94,0.06), transparent);
-    }
-
-    .mri-spine-svg {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 200px;
-      height: 340px;
-      z-index: 1;
-    }
-
-    .mri-frame-label {
-      position: absolute;
-      top: 12px;
-      left: 14px;
-      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-      font-size: 0.55rem;
-      color: rgba(34,197,94,0.6);
-      letter-spacing: 0.15em;
-      z-index: 2;
-    }
-
-    .mri-frame-label-right {
-      position: absolute;
-      top: 12px;
-      right: 14px;
-      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-      font-size: 0.55rem;
-      color: rgba(234,179,8,0.5);
-      letter-spacing: 0.1em;
-      text-align: right;
-      z-index: 2;
-    }
-
-    .mri-frame-bottom {
-      position: absolute;
-      bottom: 12px;
-      left: 14px;
-      right: 14px;
-      display: flex;
-      justify-content: space-between;
-      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-      font-size: 0.5rem;
-      color: rgba(34,197,94,0.4);
-      letter-spacing: 0.1em;
-      z-index: 2;
-    }
-
-    .mri-corner {
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      z-index: 2;
-    }
-
-    .mri-corner-tl { top: -1px; left: -1px; border-top: 2px solid rgba(34,197,94,0.4); border-left: 2px solid rgba(34,197,94,0.4); }
-    .mri-corner-tr { top: -1px; right: -1px; border-top: 2px solid rgba(34,197,94,0.4); border-right: 2px solid rgba(34,197,94,0.4); }
-    .mri-corner-bl { bottom: -1px; left: -1px; border-bottom: 2px solid rgba(34,197,94,0.4); border-left: 2px solid rgba(34,197,94,0.4); }
-    .mri-corner-br { bottom: -1px; right: -1px; border-bottom: 2px solid rgba(34,197,94,0.4); border-right: 2px solid rgba(34,197,94,0.4); }
-
-    .mri-data-points {
-      position: absolute;
-      right: -60px;
-      top: 20%;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .mri-data-point {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .mri-data-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 6px rgba(34,197,94,0.6);
-    }
-
-    .mri-data-label {
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      font-size: 0.5rem;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
-    }
-
-    .mri-content {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .mri-eyebrow {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--green);
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .mri-eyebrow::after {
-      content: '';
-      flex: 1;
-      max-width: 60px;
-      height: 1px;
-      background: rgba(34,197,94,0.3);
-    }
-
-    .mri-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-    }
-
-    .mri-title .mri-green {
-      background: linear-gradient(135deg, #4ade80, #22c55e, #16a34a);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .mri-subtitle {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      line-height: 1.8;
-      max-width: 480px;
-    }
-
-    .mri-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 0.5rem;
-    }
-
-    .mri-stat {
-      padding: 1.25rem;
-      background: rgba(9,9,11,0.6);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      backdrop-filter: blur(5px);
-    }
-
-    .mri-stat-value {
-      font-size: 1.4rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.25rem;
-    }
-
-    .mri-stat-value.green { color: var(--green); }
-    .mri-stat-value.gold { color: var(--accent); }
-
-    .mri-stat-label {
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-    }
-
-    .mri-stack-bar {
-      display: flex;
-      gap: 1rem;
-      margin-top: 0.5rem;
-      padding: 1.25rem 1.5rem;
-      background: rgba(9,9,11,0.6);
-      border: 1px solid var(--border);
-      border-left: 2px solid var(--green);
-      border-radius: 0 6px 6px 0;
-    }
-
-    .mri-stack-item {
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      letter-spacing: 0.05em;
-    }
-
-    .mri-stack-item strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .mri-stack-item .sep {
-      color: var(--text-muted);
-      margin: 0 0.5rem;
-    }
-
-    .mri-sovereign-line {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-dim);
-      font-style: italic;
-      padding-left: 1rem;
-      border-left: 2px solid var(--accent-dim);
-    }
-
-    .mri-sovereign-line strong {
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    @media (max-width: 1024px) {
-      .mri-inner { grid-template-columns: 1fr; text-align: center; }
-      .mri-visual { order: -1; }
-      .mri-content { align-items: center; }
-      .mri-subtitle { max-width: 100%; }
-      .mri-data-points { display: none; }
-      .mri-sovereign-line { border-left: none; padding-left: 0; text-align: center; }
-    }
-
-    @media (max-width: 640px) {
-      .mri-frame { width: 260px; height: 350px; }
-      .mri-stats { grid-template-columns: repeat(2, 1fr); }
-      .mri-stack-bar { flex-direction: column; gap: 0.5rem; }
-    }
-
-    /* --- 70B FLAGSHIP --- */
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); opacity: 0.6; }
-      15% { transform: scale(1.08); opacity: 1; }
-      30% { transform: scale(1); opacity: 0.7; }
-      45% { transform: scale(1.04); opacity: 0.9; }
-      60% { transform: scale(1); opacity: 0.6; }
-    }
-
-    @keyframes ecg-draw {
-      from { stroke-dashoffset: 800; }
-      to { stroke-dashoffset: 0; }
-    }
-
-    @keyframes breath-cycle {
-      0%, 100% { transform: scaleY(1); }
-      40% { transform: scaleY(1.03); }
-      60% { transform: scaleY(1.03); }
-    }
-
-    .flagship-section {
+    .content {
+      text-align: center;
       position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .flagship-bg-grid {
-      display: none; /* Uses global background grid */
-    }
-
-    .flagship-glow {
-      position: absolute;
-      top: 50%;
-      right: 20%;
-      transform: translate(50%, -50%);
-      width: 900px;
-      height: 900px;
-      background: radial-gradient(circle, rgba(234,179,8,0.06) 0%, rgba(234,179,8,0.02) 30%, transparent 60%);
-      pointer-events: none;
-      animation: mri-pulse 7s ease-in-out 1s infinite;
-    }
-
-    .flagship-glow-blue {
-      position: absolute;
-      top: 30%;
-      left: 15%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(96,165,250,0.05) 0%, rgba(96,165,250,0.01) 40%, transparent 65%);
-      pointer-events: none;
-      animation: mri-pulse 9s ease-in-out 3s infinite;
-    }
-
-    .flagship-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 8rem 2rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .flagship-hero {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .flagship-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.5rem 1.25rem;
-      background: rgba(234,179,8,0.06);
-      border: 1px solid rgba(234,179,8,0.2);
-      border-radius: 50px;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 2rem;
-    }
-
-    .flagship-badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: glow-pulse 2s ease-in-out infinite;
-      box-shadow: 0 0 8px rgba(234,179,8,0.6);
-    }
-
-    .flagship-model-name {
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      font-weight: 900;
-      letter-spacing: -0.05em;
-      line-height: 1;
-      margin-bottom: 1.5rem;
-    }
-
-    .flagship-model-name .fw-70b {
-      background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent) 40%, #d97706 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .flagship-tagline {
-      font-size: clamp(1rem, 2vw, 1.3rem);
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-
-    .flagship-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-top: 1rem;
-    }
-
-    /* Chest visual */
-    .chest-frame {
-      position: relative;
-      width: 100%;
-      max-width: 440px;
-      aspect-ratio: 1 / 1;
-      margin: 0 auto;
-      border: 1px solid rgba(96,165,250,0.12);
-      border-radius: 8px;
-      background: rgba(9,9,11,0.7);
-      backdrop-filter: blur(10px);
-      overflow: hidden;
-      box-shadow: 0 0 80px rgba(96,165,250,0.04), inset 0 0 40px rgba(96,165,250,0.01);
-    }
-
-    .chest-corner {
-      position: absolute;
-      width: 20px;
-      height: 20px;
       z-index: 2;
-    }
-
-    .chest-corner-tl { top: -1px; left: -1px; border-top: 2px solid rgba(96,165,250,0.35); border-left: 2px solid rgba(96,165,250,0.35); }
-    .chest-corner-tr { top: -1px; right: -1px; border-top: 2px solid rgba(96,165,250,0.35); border-right: 2px solid rgba(96,165,250,0.35); }
-    .chest-corner-bl { bottom: -1px; left: -1px; border-bottom: 2px solid rgba(96,165,250,0.35); border-left: 2px solid rgba(96,165,250,0.35); }
-    .chest-corner-br { bottom: -1px; right: -1px; border-bottom: 2px solid rgba(96,165,250,0.35); border-right: 2px solid rgba(96,165,250,0.35); }
-
-    .chest-label-tl {
-      position: absolute;
-      top: 14px;
-      left: 16px;
-      font-family: 'SF Mono','Fira Code',monospace;
-      font-size: 0.55rem;
-      color: rgba(96,165,250,0.5);
-      letter-spacing: 0.15em;
-      z-index: 2;
-    }
-
-    .chest-label-tr {
-      position: absolute;
-      top: 14px;
-      right: 16px;
-      font-family: 'SF Mono','Fira Code',monospace;
-      font-size: 0.55rem;
-      color: rgba(234,179,8,0.5);
-      letter-spacing: 0.1em;
-      text-align: right;
-      z-index: 2;
-    }
-
-    .chest-label-bottom {
-      position: absolute;
-      bottom: 14px;
-      left: 16px;
-      right: 16px;
-      display: flex;
-      justify-content: space-between;
-      font-family: 'SF Mono','Fira Code',monospace;
-      font-size: 0.5rem;
-      color: rgba(96,165,250,0.35);
-      letter-spacing: 0.1em;
-      z-index: 2;
-    }
-
-    .chest-svg {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 85%;
-      height: 85%;
-      z-index: 1;
-    }
-
-    .chest-ecg {
-      position: absolute;
-      bottom: 40px;
-      left: 0;
-      right: 0;
-      height: 50px;
-      z-index: 2;
-      opacity: 0.5;
-    }
-
-    .chest-ecg path {
-      stroke-dasharray: 800;
-      animation: ecg-draw 3s linear infinite;
-    }
-
-    /* Specialty cards */
-    .flagship-specs {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      justify-content: center;
-    }
-
-    .flagship-spec-card {
-      padding: 1.5rem 1.75rem;
-      background: rgba(9,9,11,0.6);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      backdrop-filter: blur(5px);
-      transition: all 0.3s ease;
-    }
-
-    .flagship-spec-card:hover {
-      border-color: var(--border-light);
-      background: rgba(17,17,20,0.8);
-    }
-
-    .flagship-spec-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .flagship-spec-icon {
-      font-size: 1.2rem;
-      filter: grayscale(0.2);
-    }
-
-    .flagship-spec-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-
-    .flagship-spec-tag {
-      margin-left: auto;
-      font-size: 0.55rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.6rem;
-      border-radius: 3px;
-    }
-
-    .flagship-spec-tag.live {
-      color: var(--green);
-      background: rgba(34,197,94,0.1);
-      border: 1px solid rgba(34,197,94,0.2);
-    }
-
-    .flagship-spec-tag.building {
-      color: var(--accent);
-      background: rgba(234,179,8,0.08);
-      border: 1px solid rgba(234,179,8,0.2);
-    }
-
-    .flagship-spec-desc {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-      line-height: 1.7;
-    }
-
-    .flagship-spec-desc strong {
-      color: var(--text-secondary);
-      font-weight: 600;
-    }
-
-    /* Bottom hardware bar */
-    .flagship-hardware {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.25rem;
-      margin-top: 3rem;
-    }
-
-    .flagship-hw-card {
-      padding: 1.5rem 1.25rem;
-      background: rgba(9,9,11,0.5);
-      border: 1px solid var(--border);
-      border-top: 2px solid var(--accent-dim);
-      border-radius: 0 0 6px 6px;
-      text-align: center;
-    }
-
-    .flagship-hw-value {
-      font-size: 1.6rem;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.25rem;
-    }
-
-    .flagship-hw-value.gold { color: var(--accent); }
-    .flagship-hw-value.green { color: var(--green); }
-    .flagship-hw-value.blue { color: #60a5fa; }
-    .flagship-hw-value.white { color: var(--text); }
-
-    .flagship-hw-label {
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .flagship-bottom-line {
-      text-align: center;
-      margin-top: 3rem;
-      font-size: 0.95rem;
-      color: var(--text-dim);
-      letter-spacing: 0.02em;
-    }
-
-    .flagship-bottom-line strong {
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .flagship-bottom-line em {
-      color: var(--text-secondary);
-      font-style: normal;
-      font-weight: 600;
-    }
-
-    @media (max-width: 1024px) {
-      .flagship-grid { grid-template-columns: 1fr; }
-      .chest-frame { max-width: 360px; }
-      .flagship-hardware { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 640px) {
-      .flagship-model-name { letter-spacing: -0.03em; }
-      .flagship-hardware { grid-template-columns: 1fr 1fr; }
-      .chest-frame { max-width: 300px; }
-    }
-
-    /* --- HERO --- */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
       padding: 2rem;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
     }
 
-    /* Hero grid — uses global bg grid, add local accent glow only */
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    /* Center glow */
-    .hero-glow {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 900px;
-      height: 900px;
-      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(234, 179, 8, 0.05) 30%, transparent 65%);
-      pointer-events: none;
-      animation: glow-pulse 4s ease-in-out infinite;
-    }
-
-    /* Top and bottom vignette */
-    .hero-vignette {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, var(--bg) 0%, transparent 15%, transparent 85%, var(--bg) 100%);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .firm-mark {
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.5em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 2.5rem;
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 1.25rem;
-      animation: hero-fade 1s ease-out 0.2s both;
-    }
-
-    .firm-mark .mark-line {
-      width: 40px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent-dim));
-      animation: line-draw 1s ease-out 0.8s both;
-      transform-origin: left;
-    }
-
-    .firm-mark .mark-line:last-child {
-      background: linear-gradient(90deg, var(--accent-dim), transparent);
-      transform-origin: right;
-    }
-
-    .firm-name {
-      font-size: clamp(3.5rem, 9vw, 7rem);
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      margin-bottom: 2rem;
-      animation: hero-fade 1s ease-out 0.4s both;
-    }
-
-    .firm-name .amp {
-      background: linear-gradient(135deg, var(--accent-bright), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-style: italic;
-      font-weight: 800;
-      padding: 0 0.05em;
-    }
-
-    .tagline {
-      font-size: clamp(1rem, 2.5vw, 1.6rem);
-      font-weight: 500;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      animation: hero-fade 1s ease-out 0.6s both;
-    }
-
-    .tagline .we { color: var(--text); }
-
-    .tagline .compute {
-      background: linear-gradient(90deg, var(--accent-bright), var(--accent), var(--accent-bright));
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 700;
-      animation: shimmer 3s linear infinite;
-    }
-
-    .tagline .intelligence { color: var(--text-secondary); }
-
-    .scroll-cue {
-      position: absolute;
-      bottom: 3rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      animation: hero-fade 1s ease-out 1s both;
-    }
-
-    .scroll-cue .cue-line {
-      width: 1px;
-      height: 50px;
-      background: linear-gradient(to bottom, var(--accent-dim), transparent);
-      animation: float 2.5s ease-in-out infinite;
-    }
-
-    /* --- SECTIONS --- */
-    section {
-      padding: 8rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .section-header {
-      margin-bottom: 4rem;
-    }
-
-    .section-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      max-width: 60px;
-      height: 1px;
-      background: var(--accent-dim);
-    }
-
-    .section-title {
-      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      color: var(--text);
+    .title {
+      font-size: clamp(2.8rem, 7vw, 5.4rem);
+      font-weight: 300;
+      letter-spacing: 0.06em;
       line-height: 1.2;
+      margin-bottom: 1.6rem;
     }
 
-    .section-subtitle {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      margin-top: 1rem;
-      max-width: 550px;
-      line-height: 1.7;
+    .title .ampersand {
+      color: #1E1E1E;
     }
 
-    /* --- COMPUTE CHAIN --- */
-    .chain-flow {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0;
-      position: relative;
-      margin-top: 1rem;
+    .title .bee {
+      color: #B89B3C;
     }
 
-    .chain-link {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 2.5rem 1.5rem 2rem;
-      text-align: center;
-      position: relative;
-      transition: all 0.4s ease;
-    }
-
-    .chain-link:first-child { border-radius: 4px 0 0 4px; }
-    .chain-link:last-child { border-radius: 0 4px 4px 0; }
-
-    .chain-link:hover {
-      background: var(--surface-hover);
-      border-color: var(--border-light);
-    }
-
-    .chain-link:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      right: -8px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 16px;
-      height: 16px;
-      border-top: 1.5px solid var(--accent-dim);
-      border-right: 1.5px solid var(--accent-dim);
-      transform: translateY(-50%) rotate(45deg);
-      z-index: 2;
-      background: transparent;
-    }
-
-    .chain-icon {
-      font-size: 1.4rem;
-      margin-bottom: 0.75rem;
-      display: block;
-      filter: grayscale(0.3);
-    }
-
-    .chain-name {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.35rem;
-      letter-spacing: -0.01em;
-    }
-
-    .chain-analogy {
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .chain-desc {
-      font-size: 0.72rem;
-      color: var(--text-dim);
-      line-height: 1.6;
-    }
-
-    .chain-rule {
-      margin-top: 2.5rem;
-      padding: 1.75rem 2rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 2px solid var(--accent);
-      border-radius: 0 4px 4px 0;
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-
-    .chain-rule strong { color: var(--text); }
-    .chain-rule .accent { color: var(--accent); font-weight: 600; }
-
-    @media (max-width: 1024px) {
-      .chain-flow { grid-template-columns: repeat(3, 1fr); }
-      .chain-link:nth-child(3) { border-radius: 0 4px 0 0; }
-      .chain-link:nth-child(3)::after { display: none; }
-      .chain-link:first-child { border-radius: 4px 0 0 0; }
-      .chain-link:last-child { border-radius: 0 0 4px 0; }
-    }
-
-    @media (max-width: 640px) {
-      .chain-flow { grid-template-columns: 1fr; }
-      .chain-link { border-radius: 0 !important; }
-      .chain-link:first-child { border-radius: 4px 4px 0 0 !important; }
-      .chain-link:last-child { border-radius: 0 0 4px 4px !important; }
-      .chain-link:not(:last-child)::after { display: none; }
-    }
-
-    /* --- VERTICALS --- */
-    .verticals-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .vertical {
-      background: var(--surface);
-      padding: 2.75rem 2rem;
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-      cursor: default;
-    }
-
-    .vertical::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: transparent;
-      transition: all 0.5s ease;
-    }
-
-    .vertical::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 100px;
-      background: linear-gradient(to bottom, var(--accent-glow), transparent);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    .vertical:hover {
-      background: var(--surface-hover);
-    }
-
-    .vertical:hover::before {
-      background: var(--accent);
-      box-shadow: 0 0 20px var(--accent-glow);
-    }
-
-    .vertical:hover::after {
-      opacity: 0.5;
-    }
-
-    .vertical-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .vertical-name {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.01em;
-    }
-
-    .vertical-prefix {
-      color: var(--text-dim);
+    .subtitle {
+      font-size: clamp(1rem, 2.2vw, 1.35rem);
       font-weight: 400;
-      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      color: #3A3A3A;
+      margin-bottom: 3.2rem;
+      font-style: italic;
     }
 
-    .vertical-desc {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      line-height: 1.65;
-      margin-bottom: 2rem;
-    }
-
-    .vertical-status {
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      display: inline-block;
-    }
-
-    .status-live .status-dot {
-      background: var(--green);
-      box-shadow: 0 0 10px var(--green-glow), 0 0 3px var(--green);
-      animation: glow-pulse 2s ease-in-out infinite;
-    }
-    .status-live { color: var(--green); }
-
-    .status-building .status-dot {
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--accent-glow);
-      animation: glow-pulse 2.5s ease-in-out infinite;
-    }
-    .status-building { color: var(--accent); }
-
-    .status-planned .status-dot { background: var(--text-muted); }
-    .status-planned { color: var(--text-dim); }
-
-    /* --- ROADMAP --- */
-    .roadmap-phases {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 2.5rem;
-    }
-
-    .phase {
-      background: var(--surface);
-      padding: 2.25rem 1.5rem;
-      position: relative;
-      transition: all 0.4s ease;
-    }
-
-    .phase:hover { background: var(--surface-hover); }
-
-    .phase-tag {
-      font-size: 0.55rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-    }
-
-    .phase-tag.now { color: var(--green); }
-    .phase-tag.next { color: var(--accent); }
-    .phase-tag.future { color: var(--text-dim); }
-
-    .phase-title {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
-    }
-
-    .phase-desc {
-      font-size: 0.75rem;
-      color: var(--text-secondary);
-      line-height: 1.65;
-      margin-bottom: 1.25rem;
-    }
-
-    .phase-builds {
-      list-style: none;
-      font-size: 0.7rem;
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      color: var(--text-dim);
+    .contact {
+      font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+      font-weight: 300;
+      color: #6B6560;
+      letter-spacing: 0.05em;
       line-height: 2;
     }
 
-    .phase-builds .live { color: var(--green); }
-    .phase-builds .building { color: var(--accent); }
-
-    .hw-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .hw-card {
-      background: var(--surface);
-      padding: 2rem 1.5rem;
-      transition: all 0.4s ease;
-    }
-
-    .hw-card:hover { background: var(--surface-hover); }
-
-    .hw-tier {
-      font-size: 0.55rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .hw-name {
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-bottom: 0.25rem;
-    }
-
-    .hw-spec {
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      line-height: 1.8;
-    }
-
-    .hw-spec .highlight { color: var(--accent); font-weight: 600; }
-
-    @media (max-width: 1024px) {
-      .roadmap-phases { grid-template-columns: repeat(2, 1fr); }
-      .hw-row { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 640px) {
-      .roadmap-phases { grid-template-columns: 1fr; }
-    }
-
-    /* --- ASSETS --- */
-    .assets-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .assets-table th {
-      font-size: 0.55rem;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      text-align: left;
-      padding: 0 0 1.5rem 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    .assets-table td {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.95rem;
-    }
-
-    .assets-table tbody tr {
-      transition: all 0.3s ease;
-    }
-
-    .assets-table tbody tr:hover {
-      background: var(--surface);
-    }
-
-    .assets-table tbody tr:hover .asset-name {
-      color: var(--accent-bright);
-    }
-
-    .assets-table tr:last-child td { border-bottom: none; }
-
-    .asset-name {
-      font-weight: 600;
-      letter-spacing: -0.01em;
+    .contact a {
+      color: #6B6560;
+      text-decoration: none;
       transition: color 0.3s ease;
     }
 
-    .asset-class {
-      display: inline-block;
-      font-size: 0.55rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.35rem 0.85rem;
-      border: 1px solid;
-      border-radius: 3px;
+    .contact a:hover {
+      color: #B89B3C;
     }
 
-    .class-a {
-      color: var(--green);
-      border-color: rgba(34, 197, 94, 0.3);
-      background: rgba(34, 197, 94, 0.06);
-      box-shadow: 0 0 12px rgba(34, 197, 94, 0.08);
-    }
+    /* ── Bee SVG Animation ── */
 
-    .class-ship {
-      color: var(--accent);
-      border-color: rgba(234, 179, 8, 0.3);
-      background: rgba(234, 179, 8, 0.06);
-    }
-
-    .class-building {
-      color: var(--text-dim);
-      border-color: var(--text-muted);
-    }
-
-    .asset-type { color: var(--text-secondary); }
-    .asset-vertical { color: var(--text-dim); font-size: 0.85rem; }
-
-    /* --- INFRASTRUCTURE --- */
-    .infra-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 4px;
+    .bee-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
       overflow: hidden;
     }
 
-    .infra-stat {
-      background: var(--surface);
-      padding: 3.5rem 2rem;
-      text-align: center;
-      position: relative;
-      transition: all 0.4s ease;
+    .bee-svg {
+      position: absolute;
+      width: 38px;
+      height: 38px;
+      opacity: 0.55;
+      animation: beeFlight 14s ease-in-out infinite;
     }
 
-    .infra-stat:hover {
-      background: var(--surface-hover);
+    @keyframes beeFlight {
+      0% {
+        top: 52%;
+        left: -6%;
+        transform: rotate(8deg) scale(0.9);
+        opacity: 0;
+      }
+      6% {
+        opacity: 0.55;
+      }
+      25% {
+        top: 42%;
+        left: 28%;
+        transform: rotate(-3deg) scale(1);
+      }
+      45% {
+        top: 38%;
+        left: 52%;
+        transform: rotate(5deg) scale(1.02);
+      }
+      55% {
+        top: 40%;
+        left: 58%;
+        transform: rotate(-2deg) scale(1);
+      }
+      75% {
+        top: 46%;
+        left: 78%;
+        transform: rotate(6deg) scale(0.95);
+      }
+      92% {
+        opacity: 0.55;
+      }
+      100% {
+        top: 44%;
+        left: 108%;
+        transform: rotate(3deg) scale(0.9);
+        opacity: 0;
+      }
     }
 
-    .infra-number {
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      margin-bottom: 0.75rem;
-      background: linear-gradient(to bottom, var(--text), var(--text-secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .bee-svg .wing {
+      animation: wingFlutter 0.35s ease-in-out infinite alternate;
+      transform-origin: 50% 80%;
     }
 
-    .infra-number .unit {
-      font-size: 1rem;
-      font-weight: 400;
-      -webkit-text-fill-color: var(--text-dim);
+    .bee-svg .wing-right {
+      animation-delay: 0.08s;
     }
 
-    .infra-label {
-      font-size: 0.72rem;
-      color: var(--text-secondary);
-      letter-spacing: 0.03em;
+    @keyframes wingFlutter {
+      0% { transform: scaleY(1) rotate(0deg); }
+      100% { transform: scaleY(0.82) rotate(4deg); }
     }
 
-    /* --- PIPELINE VIZ --- */
-    .pipeline-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
+    /* ── Chat Button ── */
 
-    .terminal {
-      background: var(--surface);
-      overflow: hidden;
-    }
-
-    .terminal-header {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 0.85rem 1.25rem;
-      background: rgba(0,0,0,0.4);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .terminal-dot {
-      width: 8px;
-      height: 8px;
+    .chat-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
-    }
-
-    .terminal-dot.red { background: #ff5f57; }
-    .terminal-dot.yellow { background: #febc2e; }
-    .terminal-dot.green { background: #28c840; }
-
-    .terminal-title {
-      font-size: 0.6rem;
-      color: var(--text-dim);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-left: 0.75rem;
-      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
-    }
-
-    .terminal-body {
-      padding: 1.25rem;
-      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
-      font-size: 0.7rem;
-      line-height: 1.85;
-      color: var(--text-secondary);
-      overflow: hidden;
-      max-height: 420px;
-    }
-
-    .terminal-body .json-key { color: #7dd3fc; }
-    .terminal-body .json-str { color: #86efac; }
-    .terminal-body .json-num { color: #fbbf24; }
-    .terminal-body .json-bool-true { color: #4ade80; }
-    .terminal-body .json-bool-false { color: #f87171; }
-    .terminal-body .json-null { color: #71717a; }
-    .terminal-body .json-brace { color: #a1a1aa; }
-    .terminal-body .json-bracket { color: #a1a1aa; }
-    .terminal-body .cursor-blink {
-      display: inline-block;
-      width: 7px;
-      height: 14px;
-      background: var(--accent);
-      animation: glow-pulse 1s step-end infinite;
-      vertical-align: middle;
-      margin-left: 2px;
-    }
-
-    /* Graph panel */
-    .graph-panel {
-      background: var(--surface);
-      position: relative;
+      background-color: #B89B3C;
+      border: none;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 420px;
+      font-size: 1.1rem;
+      color: #FFFDF8;
+      z-index: 10;
+      transition: background-color 0.3s ease;
+      font-family: inherit;
+      line-height: 1;
     }
 
-    .graph-svg {
+    .chat-btn:hover {
+      background-color: #A68A30;
+    }
+
+    /* ── Modal ── */
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      min-height: 420px;
-    }
-
-    .graph-svg .node-circle {
-      fill: var(--surface);
-      stroke: var(--border-light);
-      stroke-width: 1.5;
-      transition: all 0.3s ease;
-    }
-
-    .graph-svg .node-circle.active {
-      stroke: var(--accent);
-      filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.3));
-    }
-
-    .graph-svg .node-circle.healthy {
-      stroke: var(--green);
-      filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.2));
-    }
-
-    .graph-svg .node-label {
-      fill: var(--text);
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      font-size: 11px;
-      font-weight: 600;
-      text-anchor: middle;
-    }
-
-    .graph-svg .node-sublabel {
-      fill: var(--text-dim);
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      font-size: 8px;
-      text-anchor: middle;
-    }
-
-    .graph-svg .node-tier {
-      fill: var(--accent);
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      font-size: 7px;
-      font-weight: 700;
-      text-anchor: middle;
-      letter-spacing: 0.15em;
-    }
-
-    .graph-svg .edge-line {
-      stroke: var(--border-light);
-      stroke-width: 1;
-      stroke-dasharray: 4 4;
-    }
-
-    .graph-svg .edge-line.active {
-      stroke: rgba(234, 179, 8, 0.3);
-    }
-
-    @keyframes dash-flow {
-      to { stroke-dashoffset: -24; }
-    }
-
-    .graph-svg .edge-flow {
-      stroke: var(--accent);
-      stroke-width: 1.5;
-      stroke-dasharray: 3 9;
-      stroke-linecap: round;
-      animation: dash-flow 2s linear infinite;
-      opacity: 0.6;
-    }
-
-    @keyframes pulse-node {
-      0%, 100% { r: 3; opacity: 0.8; }
-      50% { r: 5; opacity: 1; }
-    }
-
-    .graph-svg .data-dot {
-      fill: var(--accent);
-      animation: pulse-node 2s ease-in-out infinite;
-    }
-
-    .graph-svg .data-dot.green-dot {
-      fill: var(--green);
-    }
-
-    /* --- DATA FEED --- */
-    .feed-container {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-top: 2rem;
-    }
-
-    .feed-header {
-      display: flex;
+      background: rgba(30, 30, 30, 0.25);
+      z-index: 100;
+      display: none;
       align-items: center;
-      justify-content: space-between;
-      padding: 0.85rem 1.25rem;
-      background: rgba(0,0,0,0.4);
-      border-bottom: 1px solid var(--border);
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
-    .feed-header-left {
+    .modal-overlay.open {
       display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      opacity: 1;
     }
 
-    .feed-status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 8px var(--green-glow);
-      animation: glow-pulse 2s ease-in-out infinite;
-    }
-
-    .feed-label {
-      font-size: 0.6rem;
-      color: var(--text-dim);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      font-weight: 600;
-      font-family: 'SF Mono', 'Fira Code', monospace;
-    }
-
-    .feed-counter {
-      font-size: 0.6rem;
-      color: var(--text-muted);
-      font-family: 'SF Mono', 'Fira Code', monospace;
-    }
-
-    .feed-body {
-      padding: 0;
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      font-size: 0.65rem;
-      line-height: 1.8;
-      max-height: 180px;
-      overflow: hidden;
-    }
-
-    .feed-line {
-      padding: 0.35rem 1.25rem;
-      border-bottom: 1px solid rgba(24, 24, 27, 0.5);
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      color: var(--text-secondary);
-      transition: background 0.2s ease;
-    }
-
-    .feed-line:hover {
-      background: rgba(234, 179, 8, 0.02);
-    }
-
-    .feed-ts { color: var(--text-muted); white-space: nowrap; }
-    .feed-source { color: var(--accent); min-width: 80px; }
-    .feed-action { color: #7dd3fc; min-width: 60px; }
-    .feed-detail { color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-
-    /* --- CONTACT --- */
-    .contact-section {
-      padding: 6rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
+    .modal {
+      background: #FAF7F2;
+      border: 1px solid #E2DDD4;
+      padding: 2.8rem 2.4rem;
+      width: 90%;
+      max-width: 420px;
       position: relative;
-      z-index: 1;
+      font-family: 'Cormorant Garamond', serif;
     }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      margin-top: 3rem;
-    }
-
-    .contact-info h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-info p {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-
-    .contact-channels {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-top: 2rem;
-    }
-
-    .contact-channel {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.8rem;
-      color: var(--text-dim);
-    }
-
-    .contact-channel-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 8px var(--green-glow);
-    }
-
-    .contact-channel a {
-      color: var(--text-secondary);
-      text-decoration: none;
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: #6B6560;
+      cursor: pointer;
+      font-family: inherit;
+      line-height: 1;
+      padding: 0.2rem;
       transition: color 0.3s ease;
     }
 
-    .contact-channel a:hover {
-      color: var(--accent);
+    .modal-close:hover {
+      color: #1E1E1E;
     }
 
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-
-    .form-group label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--text-dim);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 0.75rem 1rem;
-      font-family: inherit;
-      font-size: 0.85rem;
-      color: var(--text);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      outline: none;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-glow);
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: var(--text-muted);
-    }
-
-    .form-group select {
-      appearance: none;
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 1rem center;
-      padding-right: 2.5rem;
-    }
-
-    .form-group select option {
-      background: var(--surface);
-      color: var(--text);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    .contact-submit {
-      align-self: flex-start;
-      padding: 0.75rem 2.5rem;
-      background: var(--accent);
-      color: var(--bg);
-      border: none;
-      border-radius: 6px;
-      font-family: inherit;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .contact-submit:hover {
-      background: var(--accent-bright);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 20px var(--accent-glow);
-    }
-
-    .contact-submit:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .contact-status {
-      font-size: 0.8rem;
-      margin-top: 0.25rem;
-      min-height: 1.2em;
-    }
-
-    .contact-status.success { color: var(--green); }
-    .contact-status.error { color: #ef4444; }
-
-    @media (max-width: 640px) {
-      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .form-row { grid-template-columns: 1fr; }
-    }
-
-    /* --- DIVIDER --- */
-    .divider {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .divider-line {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border-light), transparent);
-    }
-
-    /* --- FOOTER --- */
-    footer {
-      padding: 4rem 2rem 2.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-
-    .footer-left {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .footer-firm {
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    .footer-sep {
-      width: 1px;
-      height: 12px;
-      background: var(--text-muted);
-    }
-
-    .footer-location {
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      letter-spacing: 0.05em;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2.5rem;
-    }
-
-    .footer-links a {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--text-dim);
-      text-decoration: none;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .footer-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--accent);
-      transition: width 0.3s ease;
-    }
-
-    .footer-links a:hover {
-      color: var(--accent);
-    }
-
-    .footer-links a:hover::after {
-      width: 100%;
-    }
-
-    .copyright {
-      width: 100%;
-      text-align: center;
-      padding-top: 3rem;
-      font-size: 0.65rem;
-      color: var(--text-muted);
+    .modal h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
       letter-spacing: 0.08em;
+      margin-bottom: 1.8rem;
+      color: #1E1E1E;
     }
 
-    /* --- RESPONSIVE --- */
-    @media (max-width: 1024px) {
-      .verticals-grid { grid-template-columns: repeat(2, 1fr); }
-      .infra-grid { grid-template-columns: repeat(2, 1fr); }
-      .pipeline-grid { grid-template-columns: 1fr; }
-      .marketplace-grid { grid-template-columns: 1fr !important; }
-      .fleet-stats { grid-template-columns: repeat(2, 1fr) !important; }
-      .fleet-models { grid-template-columns: 1fr !important; }
+    .modal label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: #6B6560;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
     }
 
-    @media (max-width: 640px) {
-      section { padding: 5rem 1.5rem; }
-      .verticals-grid { grid-template-columns: 1fr; }
-      .infra-grid { grid-template-columns: repeat(2, 1fr); }
-      .pipeline-grid { grid-template-columns: 1fr; }
-      .assets-table .col-type,
-      .assets-table .col-vertical { display: none; }
-      footer { flex-direction: column; align-items: flex-start; }
-      .footer-left { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
-      .footer-sep { display: none; }
-      .feed-line { gap: 0.5rem; }
-      .feed-source { min-width: 55px; }
-      .feed-action { min-width: 45px; }
-      .fleet-stats { grid-template-columns: repeat(2, 1fr) !important; }
+    .modal input,
+    .modal textarea {
+      width: 100%;
+      padding: 0.7rem 0.8rem;
+      border: 1px solid #DDD8CF;
+      background: #FFFDF8;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: #1E1E1E;
+      margin-bottom: 1.2rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .modal input:focus,
+    .modal textarea:focus {
+      border-color: #B89B3C;
+    }
+
+    .modal textarea {
+      height: 100px;
+      resize: vertical;
+    }
+
+    .modal-send {
+      width: 100%;
+      padding: 0.75rem;
+      background: #1E1E1E;
+      color: #F4EFE6;
+      border: none;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal-send:hover {
+      background: #333;
+    }
+
+    .modal-success {
+      display: none;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 1.1rem;
+      color: #6B6560;
+      font-style: italic;
+    }
+
+    /* ── Responsive ── */
+
+    @media (max-width: 600px) {
+      .bee-svg {
+        width: 26px;
+        height: 26px;
+        opacity: 0.4;
+      }
+
+      .chat-btn {
+        bottom: 1.2rem;
+        right: 1.2rem;
+        width: 46px;
+        height: 46px;
+        font-size: 1rem;
+      }
+
+      .modal {
+        padding: 2rem 1.6rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- GLOBAL AMBIENT GLOWS -->
-  <div class="global-glow-1"></div>
-  <div class="global-glow-2"></div>
-  <div class="global-glow-3"></div>
-
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-grid"></div>
-    <div class="hero-glow"></div>
-    <div class="hero-vignette"></div>
-    <div class="hero-content">
-      <div class="firm-mark">
-        <span class="mark-line"></span>
-        S&amp;B
-        <span class="mark-line"></span>
-      </div>
-      <h1 class="firm-name">Swarm <span class="amp">&amp;</span> Bee</h1>
-      <p class="tagline">
-        <span class="we">Last Mile </span><span class="compute">Intelligence</span>
-      </p>
-      <p class="hero-sub" style="font-size:clamp(0.8rem,1.5vw,1rem);color:var(--text-secondary);margin-top:1.5rem;max-width:520px;line-height:1.7;animation:hero-fade 1s ease-out 0.8s both;letter-spacing:0.02em;">Sovereign compute. Specialized models. Your data never leaves your rack.</p>
-    </div>
-    <div class="scroll-cue">
-      <div class="cue-line"></div>
-    </div>
+  <!-- Bee Animation -->
+  <div class="bee-container">
+    <svg class="bee-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <!-- Wings -->
+      <ellipse class="wing" cx="38" cy="34" rx="16" ry="10" fill="#D4C89A" fill-opacity="0.45" />
+      <ellipse class="wing wing-right" cx="62" cy="34" rx="16" ry="10" fill="#D4C89A" fill-opacity="0.45" />
+      <!-- Body -->
+      <ellipse cx="50" cy="54" rx="14" ry="20" fill="#B89B3C" />
+      <!-- Stripes -->
+      <rect x="36" y="48" width="28" height="4" rx="2" fill="#1E1E1E" opacity="0.55" />
+      <rect x="36" y="56" width="28" height="4" rx="2" fill="#1E1E1E" opacity="0.55" />
+      <rect x="36" y="64" width="28" height="3" rx="1.5" fill="#1E1E1E" opacity="0.55" />
+      <!-- Head -->
+      <circle cx="50" cy="32" r="9" fill="#3A3632" />
+      <!-- Eyes -->
+      <circle cx="46" cy="30" r="1.8" fill="#F4EFE6" opacity="0.8" />
+      <circle cx="54" cy="30" r="1.8" fill="#F4EFE6" opacity="0.8" />
+      <!-- Antennae -->
+      <line x1="46" y1="24" x2="40" y2="14" stroke="#3A3632" stroke-width="1.2" stroke-linecap="round" />
+      <line x1="54" y1="24" x2="60" y2="14" stroke="#3A3632" stroke-width="1.2" stroke-linecap="round" />
+      <circle cx="40" cy="13" r="2" fill="#3A3632" />
+      <circle cx="60" cy="13" r="2" fill="#3A3632" />
+    </svg>
   </div>
 
-  <!-- MRI SHOWCASE -->
-  <div class="mri-showcase">
-    <div class="mri-bg-grid"></div>
-    <div class="mri-bg-glow"></div>
-    <div class="mri-bg-glow-accent"></div>
-    <div class="mri-inner">
-      <div class="mri-visual reveal">
-        <div class="mri-frame">
-          <div class="mri-scan-line"></div>
-          <div class="mri-corner mri-corner-tl"></div>
-          <div class="mri-corner mri-corner-tr"></div>
-          <div class="mri-corner mri-corner-bl"></div>
-          <div class="mri-corner mri-corner-br"></div>
-          <div class="mri-frame-label">SAG T2 &bull; L-SPINE<br>512 &times; 512 &bull; DICOM</div>
-          <div class="mri-frame-label-right">SwarmMed-MRI<br>7B-VL &bull; LIVE</div>
-          <div class="mri-spine-svg">
-            <svg viewBox="0 0 200 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Spinal canal line -->
-              <path d="M100 10 Q98 60 102 120 Q100 180 98 240 Q100 290 100 330" stroke="rgba(34,197,94,0.12)" stroke-width="28" stroke-linecap="round"/>
-              <!-- Vertebrae L1-L5 -->
-              <rect x="60" y="30" width="80" height="32" rx="6" fill="rgba(34,197,94,0.06)" stroke="rgba(34,197,94,0.25)" stroke-width="1"/>
-              <text x="100" y="51" text-anchor="middle" fill="rgba(34,197,94,0.5)" font-family="'SF Mono','Fira Code',monospace" font-size="10" font-weight="600">L1</text>
-              <!-- L1/L2 disc -->
-              <ellipse cx="100" cy="72" rx="32" ry="5" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.15)" stroke-width="0.5"/>
-              <rect x="58" y="82" width="84" height="34" rx="6" fill="rgba(34,197,94,0.06)" stroke="rgba(34,197,94,0.25)" stroke-width="1"/>
-              <text x="100" y="104" text-anchor="middle" fill="rgba(34,197,94,0.5)" font-family="'SF Mono','Fira Code',monospace" font-size="10" font-weight="600">L2</text>
-              <!-- L2/L3 disc -->
-              <ellipse cx="100" cy="126" rx="34" ry="5" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.15)" stroke-width="0.5"/>
-              <rect x="56" y="136" width="88" height="36" rx="6" fill="rgba(34,197,94,0.06)" stroke="rgba(34,197,94,0.25)" stroke-width="1"/>
-              <text x="100" y="159" text-anchor="middle" fill="rgba(34,197,94,0.5)" font-family="'SF Mono','Fira Code',monospace" font-size="10" font-weight="600">L3</text>
-              <!-- L3/L4 disc -->
-              <ellipse cx="100" cy="182" rx="35" ry="5" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.2)" stroke-width="0.5"/>
-              <!-- L4 — highlighted (common pathology level) -->
-              <rect x="54" y="192" width="92" height="38" rx="6" fill="rgba(234,179,8,0.06)" stroke="rgba(234,179,8,0.35)" stroke-width="1.5" style="animation: vertebra-glow 3s ease-in-out infinite;"/>
-              <text x="100" y="216" text-anchor="middle" fill="rgba(234,179,8,0.7)" font-family="'SF Mono','Fira Code',monospace" font-size="10" font-weight="700">L4</text>
-              <!-- Stenosis marker -->
-              <circle cx="155" cy="210" r="3" fill="rgba(234,179,8,0.6)"/>
-              <text x="165" y="213" fill="rgba(234,179,8,0.5)" font-family="'SF Mono','Fira Code',monospace" font-size="7">MOD</text>
-              <!-- L4/L5 disc — highlighted -->
-              <ellipse cx="100" cy="240" rx="36" ry="6" fill="rgba(234,179,8,0.1)" stroke="rgba(234,179,8,0.3)" stroke-width="1"/>
-              <rect x="52" y="252" width="96" height="40" rx="6" fill="rgba(34,197,94,0.06)" stroke="rgba(34,197,94,0.25)" stroke-width="1"/>
-              <text x="100" y="277" text-anchor="middle" fill="rgba(34,197,94,0.5)" font-family="'SF Mono','Fira Code',monospace" font-size="10" font-weight="600">L5</text>
-              <!-- L5/S1 disc -->
-              <ellipse cx="100" cy="302" rx="34" ry="5" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.15)" stroke-width="0.5"/>
-              <!-- S1 -->
-              <path d="M48 312 Q100 310 152 312 Q152 335 100 340 Q48 335 48 312 Z" fill="rgba(34,197,94,0.04)" stroke="rgba(34,197,94,0.2)" stroke-width="1"/>
-              <text x="100" y="330" text-anchor="middle" fill="rgba(34,197,94,0.4)" font-family="'SF Mono','Fira Code',monospace" font-size="10" font-weight="600">S1</text>
-              <!-- Neural foramina indicators -->
-              <circle cx="42" cy="100" r="2" fill="rgba(34,197,94,0.3)"/>
-              <circle cx="158" cy="100" r="2" fill="rgba(34,197,94,0.3)"/>
-              <circle cx="40" cy="155" r="2" fill="rgba(34,197,94,0.3)"/>
-              <circle cx="160" cy="155" r="2" fill="rgba(34,197,94,0.3)"/>
-              <circle cx="38" cy="210" r="2.5" fill="rgba(234,179,8,0.5)"/>
-              <circle cx="162" cy="210" r="2" fill="rgba(34,197,94,0.3)"/>
-              <circle cx="36" cy="270" r="2" fill="rgba(34,197,94,0.3)"/>
-              <circle cx="164" cy="270" r="2" fill="rgba(34,197,94,0.3)"/>
-            </svg>
-          </div>
-          <div class="mri-frame-bottom">
-            <span>SOVEREIGN &bull; ON-PREM</span>
-            <span>FOV 280mm &bull; 3mm</span>
-          </div>
-        </div>
-        <div class="mri-data-points">
-          <div class="mri-data-point"><div class="mri-data-dot"></div><span class="mri-data-label">L1/L2 NORMAL</span></div>
-          <div class="mri-data-point"><div class="mri-data-dot"></div><span class="mri-data-label">L2/L3 NORMAL</span></div>
-          <div class="mri-data-point"><div class="mri-data-dot"></div><span class="mri-data-label">L3/L4 MILD</span></div>
-          <div class="mri-data-point"><div class="mri-data-dot" style="background:var(--accent);box-shadow:0 0 6px rgba(234,179,8,0.6)"></div><span class="mri-data-label" style="color:var(--accent-dim)">L4/L5 MODERATE</span></div>
-          <div class="mri-data-point"><div class="mri-data-dot"></div><span class="mri-data-label">L5/S1 MILD</span></div>
-        </div>
-      </div>
-      <div class="mri-content reveal reveal-delay-2">
-        <div class="mri-eyebrow">S&amp;B Medical</div>
-        <h2 class="mri-title">Sovereign <span class="mri-green">MRI Intelligence</span></h2>
-        <p class="mri-subtitle">Board-certified level spinal MRI interpretation that never leaves your facility. Structured reports with stenosis grading, disc pathology classification, and clinical correlation &mdash; in seconds, not days.</p>
-        <div class="mri-stats">
-          <div class="mri-stat">
-            <div class="mri-stat-value green">19,602</div>
-            <div class="mri-stat-label">Training Images</div>
-          </div>
-          <div class="mri-stat">
-            <div class="mri-stat-value gold">1,975</div>
-            <div class="mri-stat-label">Patient Studies</div>
-          </div>
-          <div class="mri-stat">
-            <div class="mri-stat-value green">5 Levels</div>
-            <div class="mri-stat-label">L1/L2 &mdash; L5/S1</div>
-          </div>
-        </div>
-        <div class="mri-stack-bar">
-          <span class="mri-stack-item"><strong>128x</strong> RTX 6000 Pro</span>
-          <span class="mri-stack-item"><span class="sep">&bull;</span> <strong>12.3 TB</strong> VRAM</span>
-          <span class="mri-stack-item"><span class="sep">&bull;</span> <strong>Qwen2.5-VL-7B</strong></span>
-          <span class="mri-stack-item"><span class="sep">&bull;</span> <strong>LoRA</strong> Vision+Lang</span>
-        </div>
-        <div class="mri-sovereign-line">
-          Patient data <strong>never leaves your rack.</strong> HIPAA by architecture, not by promise.
-        </div>
-      </div>
+  <!-- Content -->
+  <main class="content">
+    <h1 class="title">
+      <span class="ampersand">Swarm &amp;</span> <span class="bee">Bee</span>
+    </h1>
+    <p class="subtitle">Sovereign Compute Architect.</p>
+    <div class="contact">
+      <a href="mailto:hello@swarmandbee.com">hello@swarmandbee.com</a><br>
+      <span>310-745-0826</span>
     </div>
-  </div>
+  </main>
 
-  <!-- 70B FLAGSHIP -->
-  <div class="flagship-section">
-    <div class="flagship-bg-grid"></div>
-    <div class="flagship-glow"></div>
-    <div class="flagship-glow-blue"></div>
-    <div class="flagship-inner">
-      <div class="flagship-hero reveal">
-        <div class="flagship-badge"><span class="flagship-badge-dot"></span>Flagship Model</div>
-        <h2 class="flagship-model-name">SwarmMed<span class="fw-70b">-70B</span></h2>
-        <p class="flagship-tagline">Full-stack clinical reasoning. Pharma, cardiology, radiology, emergency medicine &mdash; one model, 70 billion parameters, trained on sovereign gold data. Runs on a single RTX 6000 Pro.</p>
-      </div>
+  <!-- Chat Button -->
+  <button class="chat-btn" id="chatBtn" aria-label="Open chat">&#x1F4AC;</button>
 
-      <div class="flagship-grid reveal reveal-delay-1">
-        <!-- Chest Visual -->
-        <div>
-          <div class="chest-frame">
-            <div class="chest-corner chest-corner-tl"></div>
-            <div class="chest-corner chest-corner-tr"></div>
-            <div class="chest-corner chest-corner-bl"></div>
-            <div class="chest-corner chest-corner-br"></div>
-            <div class="chest-label-tl">PA CHEST &bull; CXR<br>2048 &times; 2048 &bull; 14-BIT</div>
-            <div class="chest-label-tr">SwarmMed-70B<br>FLAGSHIP &bull; 96GB</div>
-            <div class="chest-svg">
-              <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Thoracic cage outline -->
-                <path d="M200 45 Q140 55 95 110 Q65 165 60 230 Q58 260 80 290 Q120 330 200 345 Q280 330 320 290 Q342 260 340 230 Q335 165 305 110 Q260 55 200 45Z"
-                  fill="rgba(96,165,250,0.03)" stroke="rgba(96,165,250,0.12)" stroke-width="1"/>
-                <!-- Rib pairs -->
-                <path d="M170 75 Q120 85 85 130" stroke="rgba(96,165,250,0.1)" stroke-width="1.5" fill="none"/>
-                <path d="M230 75 Q280 85 315 130" stroke="rgba(96,165,250,0.1)" stroke-width="1.5" fill="none"/>
-                <path d="M165 100 Q105 115 75 165" stroke="rgba(96,165,250,0.08)" stroke-width="1.5" fill="none"/>
-                <path d="M235 100 Q295 115 325 165" stroke="rgba(96,165,250,0.08)" stroke-width="1.5" fill="none"/>
-                <path d="M162 130 Q95 150 70 205" stroke="rgba(96,165,250,0.08)" stroke-width="1.5" fill="none"/>
-                <path d="M238 130 Q305 150 330 205" stroke="rgba(96,165,250,0.08)" stroke-width="1.5" fill="none"/>
-                <path d="M160 160 Q90 185 68 240" stroke="rgba(96,165,250,0.06)" stroke-width="1.5" fill="none"/>
-                <path d="M240 160 Q310 185 332 240" stroke="rgba(96,165,250,0.06)" stroke-width="1.5" fill="none"/>
-                <path d="M158 190 Q90 215 72 265" stroke="rgba(96,165,250,0.06)" stroke-width="1.5" fill="none"/>
-                <path d="M242 190 Q310 215 328 265" stroke="rgba(96,165,250,0.06)" stroke-width="1.5" fill="none"/>
-                <!-- Spine (vertebral column) -->
-                <rect x="192" y="50" width="16" height="280" rx="4" fill="rgba(96,165,250,0.04)" stroke="rgba(96,165,250,0.12)" stroke-width="0.5"/>
-                <!-- Clavicles -->
-                <path d="M200 65 Q155 58 110 75" stroke="rgba(96,165,250,0.15)" stroke-width="2" fill="none"/>
-                <path d="M200 65 Q245 58 290 75" stroke="rgba(96,165,250,0.15)" stroke-width="2" fill="none"/>
-                <!-- Heart silhouette -->
-                <path d="M175 160 Q155 155 145 175 Q130 205 145 240 Q160 270 195 290 Q200 292 205 290 Q220 280 235 260 Q250 235 248 210 Q245 185 235 170 Q225 155 210 158 Q200 162 195 158 Q185 155 175 160Z"
-                  fill="rgba(234,179,8,0.04)" stroke="rgba(234,179,8,0.2)" stroke-width="1.5"
-                  style="transform-origin: 195px 225px; animation: heartbeat 2s ease-in-out infinite;"/>
-                <!-- Aortic arch -->
-                <path d="M198 100 Q198 130 195 155" stroke="rgba(234,179,8,0.15)" stroke-width="2" fill="none"/>
-                <path d="M198 100 Q215 90 240 95 Q260 100 270 120" stroke="rgba(234,179,8,0.1)" stroke-width="1.5" fill="none"/>
-                <!-- Lung fields - left -->
-                <path d="M110 95 Q80 150 72 220 Q68 265 85 295 Q105 320 155 330 Q168 332 175 325 Q178 280 175 230 Q172 170 168 120 Q165 100 150 85 Q130 78 110 95Z"
-                  fill="rgba(96,165,250,0.02)" stroke="rgba(96,165,250,0.06)" stroke-width="0.5"
-                  style="transform-origin: 125px 210px; animation: breath-cycle 5s ease-in-out infinite;"/>
-                <!-- Lung fields - right -->
-                <path d="M290 95 Q320 150 328 220 Q332 265 315 295 Q295 320 245 330 Q232 332 225 325 Q222 280 225 230 Q228 170 232 120 Q235 100 250 85 Q270 78 290 95Z"
-                  fill="rgba(96,165,250,0.02)" stroke="rgba(96,165,250,0.06)" stroke-width="0.5"
-                  style="transform-origin: 275px 210px; animation: breath-cycle 5s ease-in-out 0.3s infinite;"/>
-                <!-- Diaphragm -->
-                <path d="M75 280 Q140 250 200 255 Q260 250 325 280" stroke="rgba(96,165,250,0.1)" stroke-width="1" fill="none"/>
-                <!-- AI detection markers -->
-                <circle cx="140" cy="180" r="18" fill="none" stroke="rgba(34,197,94,0.3)" stroke-width="1" stroke-dasharray="3,3"/>
-                <text x="140" y="184" text-anchor="middle" fill="rgba(34,197,94,0.5)" font-family="'SF Mono','Fira Code',monospace" font-size="7">OK</text>
-                <circle cx="270" cy="190" r="18" fill="none" stroke="rgba(34,197,94,0.3)" stroke-width="1" stroke-dasharray="3,3"/>
-                <text x="270" y="194" text-anchor="middle" fill="rgba(34,197,94,0.5)" font-family="'SF Mono','Fira Code',monospace" font-size="7">OK</text>
-                <!-- Heart detection -->
-                <circle cx="195" cy="225" r="40" fill="none" stroke="rgba(234,179,8,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
-                <text x="195" y="205" text-anchor="middle" fill="rgba(234,179,8,0.4)" font-family="'SF Mono','Fira Code',monospace" font-size="6">CARDIO</text>
-                <text x="195" y="250" text-anchor="middle" fill="rgba(234,179,8,0.3)" font-family="'SF Mono','Fira Code',monospace" font-size="5">CTR 0.48 NORMAL</text>
-              </svg>
-            </div>
-            <!-- ECG trace -->
-            <div class="chest-ecg">
-              <svg viewBox="0 0 440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 25 L40 25 L50 25 L55 20 L60 25 L70 25 L75 25 L80 10 L85 42 L90 5 L95 38 L100 25 L110 25 L150 25 L160 25 L165 20 L170 25 L180 25 L185 25 L190 10 L195 42 L200 5 L205 38 L210 25 L220 25 L260 25 L270 25 L275 20 L280 25 L290 25 L295 25 L300 10 L305 42 L310 5 L315 38 L320 25 L330 25 L370 25 L380 25 L385 20 L390 25 L400 25 L405 25 L410 10 L415 42 L420 5 L425 38 L430 25 L440 25"
-                  stroke="rgba(34,197,94,0.4)" stroke-width="1.5" fill="none"/>
-              </svg>
-            </div>
-            <div class="chest-label-bottom">
-              <span>70B PARAMS &bull; FULL CLINICAL</span>
-              <span>SOVEREIGN &bull; SINGLE CARD</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Specialty Cards -->
-        <div class="flagship-specs">
-          <div class="flagship-spec-card">
-            <div class="flagship-spec-header">
-              <span class="flagship-spec-icon">&#x1F9EC;</span>
-              <span class="flagship-spec-title">Pharmacology</span>
-              <span class="flagship-spec-tag live">867 Gold</span>
-            </div>
-            <div class="flagship-spec-desc"><strong>Drug interactions, contraindications, adverse effects, dosing.</strong> Trained on FDA drug labels, PubMed pharmacology corpus, and clinical decision pairs. 93% disclaimer rate.</div>
-          </div>
-          <div class="flagship-spec-card">
-            <div class="flagship-spec-header">
-              <span class="flagship-spec-icon">&#x1FAC0;</span>
-              <span class="flagship-spec-title">Cardiology</span>
-              <span class="flagship-spec-tag live">315 Gold</span>
-            </div>
-            <div class="flagship-spec-desc"><strong>ACS protocols, heart failure GDMT, arrhythmia management, risk scoring.</strong> 5-dimension specialty rubric: dosing, contraindications, guidelines, risk scores, GDMT optimization.</div>
-          </div>
-          <div class="flagship-spec-card">
-            <div class="flagship-spec-header">
-              <span class="flagship-spec-icon">&#x1FA7B;</span>
-              <span class="flagship-spec-title">Radiology &mdash; Spinal MRI</span>
-              <span class="flagship-spec-tag building">Building</span>
-            </div>
-            <div class="flagship-spec-desc"><strong>Stenosis grading, disc pathology, foraminal narrowing, red flag detection.</strong> Vision-language model. 19,602 RSNA images across 1,975 patient studies. HIPAA by architecture.</div>
-          </div>
-          <div class="flagship-spec-card">
-            <div class="flagship-spec-header">
-              <span class="flagship-spec-icon">&#x1F6A8;</span>
-              <span class="flagship-spec-title">Chest &amp; Thoracic</span>
-              <span class="flagship-spec-tag building">Coming</span>
-            </div>
-            <div class="flagship-spec-desc"><strong>CXR interpretation, pulmonary pathology, cardiac silhouette analysis.</strong> Cardiomegaly detection, pleural effusion grading, pneumothorax screening. Second-opinion radiology on-prem.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Hardware bar -->
-      <div class="flagship-hardware reveal reveal-delay-2">
-        <div class="flagship-hw-card">
-          <div class="flagship-hw-value gold">70B</div>
-          <div class="flagship-hw-label">Parameters</div>
-        </div>
-        <div class="flagship-hw-card">
-          <div class="flagship-hw-value green">96 GB</div>
-          <div class="flagship-hw-label">Single Card</div>
-        </div>
-        <div class="flagship-hw-card">
-          <div class="flagship-hw-value blue">2,182+</div>
-          <div class="flagship-hw-label">Gold Pairs</div>
-        </div>
-        <div class="flagship-hw-card">
-          <div class="flagship-hw-value white">4</div>
-          <div class="flagship-hw-label">Specialties</div>
-        </div>
-      </div>
-
-      <div class="flagship-bottom-line reveal reveal-delay-3">
-        The 7B fleet handles triage. <strong>The 70B handles the deep read.</strong><br>
-        <em>One model. One card. Your rack. Your data. Your diagnosis support.</em>
-      </div>
-    </div>
-  </div>
-
-  <!-- VERTICALS -->
-  <section>
-    <div class="section-header reveal">
-      <div class="section-label">Verticals</div>
-      <div class="section-title">Four sandboxes. Total domain knowledge.</div>
-      <div class="section-subtitle">Each vertical is a territory we own &mdash; every data source mapped, every pain point scored, every opportunity tracked. Deep sandbox beats wide surface.</div>
-    </div>
-    <div class="verticals-grid">
-      <div class="vertical reveal reveal-delay-1">
-        <div class="vertical-inner">
-          <div class="vertical-name"><span class="vertical-prefix">S&amp;B</span> Compute</div>
-          <div class="vertical-desc">We know every rack, every operator, every deal that closed. Market intelligence, tenant scoring, and placement for GPU compute.</div>
-          <div class="vertical-status status-live"><span class="status-dot"></span> Live</div>
-        </div>
-      </div>
-      <div class="vertical reveal reveal-delay-2">
-        <div class="vertical-inner">
-          <div class="vertical-name"><span class="vertical-prefix">S&amp;B</span> Medical</div>
-          <div class="vertical-desc">We walk the healthcare territory 24/7. PubMed, FDA, clinical trials &mdash; sovereign models and knowledge graphs from 10+ sources. Your patient data stays home.</div>
-          <div class="vertical-status status-live"><span class="status-dot"></span> Live</div>
-        </div>
-      </div>
-      <div class="vertical reveal reveal-delay-3">
-        <div class="vertical-inner">
-          <div class="vertical-name"><span class="vertical-prefix">S&amp;B</span> Capital</div>
-          <div class="vertical-desc">We know the comps, the cap rates, the deal flow. Underwriting, tenant scoring, and Letters of Compute for infrastructure deals.</div>
-          <div class="vertical-status status-building"><span class="status-dot"></span> Building</div>
-        </div>
-      </div>
-      <div class="vertical reveal reveal-delay-4">
-        <div class="vertical-inner">
-          <div class="vertical-name"><span class="vertical-prefix">S&amp;B</span> Edge</div>
-          <div class="vertical-desc">We map the last mile. Sub-10W inference, air-gapped deployment. Intelligence that runs where your data lives &mdash; no cloud, no middlemen.</div>
-          <div class="vertical-status status-planned"><span class="status-dot"></span> Planned</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"><div class="divider-line"></div></div>
-
-  <!-- COMPUTE CHAIN -->
-  <section>
-    <div class="section-header reveal">
-      <div class="section-label">Compute Chain</div>
-      <div class="section-title">Farm to table for intelligence.</div>
-      <div class="section-subtitle">Five sovereign links from raw data to served inference. Break any link, the chain fails. We operate the full stack.</div>
-    </div>
-
-    <div class="chain-flow reveal">
-      <div class="chain-link">
-        <span class="chain-icon">&#x1F33E;</span>
-        <div class="chain-analogy">Farm</div>
-        <div class="chain-name">Harvest</div>
-        <div class="chain-desc">PubMed, FDA, clinical trials, 10+ sovereign sources</div>
-      </div>
-      <div class="chain-link">
-        <span class="chain-icon">&#x1F52C;</span>
-        <div class="chain-analogy">Kitchen</div>
-        <div class="chain-name">Refine</div>
-        <div class="chain-desc">Entity extraction, scoring, quality gates</div>
-      </div>
-      <div class="chain-link">
-        <span class="chain-icon">&#x1F9CA;</span>
-        <div class="chain-analogy">Cold Storage</div>
-        <div class="chain-name">Store</div>
-        <div class="chain-desc">Knowledge graphs, QA datasets, benchmarks</div>
-      </div>
-      <div class="chain-link">
-        <span class="chain-icon">&#x1F525;</span>
-        <div class="chain-analogy">Chef</div>
-        <div class="chain-name">Train</div>
-        <div class="chain-desc">Fine-tune 7B specialists on sovereign data</div>
-      </div>
-      <div class="chain-link">
-        <span class="chain-icon">&#x1F37D;&#xFE0F;</span>
-        <div class="chain-analogy">Table</div>
-        <div class="chain-name">Serve</div>
-        <div class="chain-desc">vLLM inference on your iron. Zero egress.</div>
-      </div>
-    </div>
-
-    <div class="chain-rule reveal reveal-delay-2">
-      <strong>Chain integrity rule:</strong> If data leaves your sovereign infrastructure at <span class="accent">any link</span> in the chain, the product is compromised. Same as cold chain &mdash; if the truck loses refrigeration for 20 minutes, the entire load is condemned. <strong>We don&rsquo;t use someone else&rsquo;s kitchen.</strong>
-    </div>
-  </section>
-
-  <div class="divider"><div class="divider-line"></div></div>
-
-  <!-- ASSET CLASSES -->
-  <section>
-    <div class="section-header reveal">
-      <div class="section-label">Asset Classes</div>
-      <div class="section-title">Intelligence products</div>
-      <div class="section-subtitle">Sovereign datasets, fine-tuned models, and knowledge graphs. Built by autonomous agents, owned by you.</div>
-    </div>
-    <table class="assets-table reveal">
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Grade</th>
-          <th class="col-type">Type</th>
-          <th class="col-vertical">Vertical</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="asset-name">SwarmComputeQA</td>
-          <td><span class="asset-class class-a">Class A</span></td>
-          <td class="col-type asset-type">Dataset</td>
-          <td class="col-vertical asset-vertical">Compute</td>
-        </tr>
-        <tr>
-          <td class="asset-name">SwarmComputePain</td>
-          <td><span class="asset-class class-ship">Ship</span></td>
-          <td class="col-type asset-type">Dataset</td>
-          <td class="col-vertical asset-vertical">Compute</td>
-        </tr>
-        <tr>
-          <td class="asset-name">SwarmMedGraph</td>
-          <td><span class="asset-class class-ship">Ship</span></td>
-          <td class="col-type asset-type">Knowledge Graph</td>
-          <td class="col-vertical asset-vertical">Medical</td>
-        </tr>
-        <tr>
-          <td class="asset-name">SwarmMedBench</td>
-          <td><span class="asset-class class-ship">Ship</span></td>
-          <td class="col-type asset-type">Benchmark</td>
-          <td class="col-vertical asset-vertical">Medical</td>
-        </tr>
-        <tr>
-          <td class="asset-name">SwarmMedRAG</td>
-          <td><span class="asset-class class-ship">Ship</span></td>
-          <td class="col-type asset-type">Dataset</td>
-          <td class="col-vertical asset-vertical">Medical</td>
-        </tr>
-        <tr>
-          <td class="asset-name"><a href="https://huggingface.co/datasets/SwarmOS/SwarmMedQA" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border-light);transition:border-color 0.3s;">SwarmMedQA</a></td>
-          <td><span class="asset-class class-a">Class A</span></td>
-          <td class="col-type asset-type">Dataset</td>
-          <td class="col-vertical asset-vertical">Medical</td>
-        </tr>
-        <tr>
-          <td class="asset-name"><a href="https://huggingface.co/SwarmOS/SwarmMedQA-7B-v1" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border-light);transition:border-color 0.3s;">SwarmMedQA-7B-v1</a></td>
-          <td><span class="asset-class class-a">Class A</span></td>
-          <td class="col-type asset-type">Model</td>
-          <td class="col-vertical asset-vertical">Medical</td>
-        </tr>
-        <tr>
-          <td class="asset-name"><a href="https://huggingface.co/SwarmOS/SwarmPharm-7B-v2" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border-light);transition:border-color 0.3s;">SwarmPharm-7B-v2</a></td>
-          <td><span class="asset-class class-a">Class A</span></td>
-          <td class="col-type asset-type">Model</td>
-          <td class="col-vertical asset-vertical">Medical</td>
-        </tr>
-        <tr>
-          <td class="asset-name"><a href="https://huggingface.co/SwarmOS/SwarmMed-7B-v3-merged" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border-light);transition:border-color 0.3s;">SwarmMed-7B-v3</a></td>
-          <td><span class="asset-class class-a">Class A</span></td>
-          <td class="col-type asset-type">Model</td>
-          <td class="col-vertical asset-vertical">Medical</td>
-        </tr>
-        <tr>
-          <td class="asset-name">SwarmMed-MRI-7B-v1</td>
-          <td><span class="asset-class class-ship">Building</span></td>
-          <td class="col-type asset-type">Vision-Language Model</td>
-          <td class="col-vertical asset-vertical">Medical</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <div class="divider"><div class="divider-line"></div></div>
-
-  <!-- CURRENT FLEET -->
-  <section>
-    <div class="section-header reveal">
-      <div class="section-label">Current Fleet</div>
-      <div class="section-title">Sovereign models. Trained on our iron.</div>
-      <div class="section-subtitle">Every model built end-to-end on personal hardware. Zero cloud dependency. Full provenance from data to deployment.</div>
-    </div>
-
-    <!-- Flagship Model -->
-    <div class="reveal" style="background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:2rem;">
-      <div style="padding:2.5rem 2.5rem 0;">
-        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;">
-          <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);display:inline-flex;align-items:center;gap:0.5rem;"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 10px rgba(34,197,94,0.2);display:inline-block;"></span> Flagship</span>
-          <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);">February 2026</span>
-        </div>
-        <h3 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:0.5rem;">SwarmMed-7B-v3</h3>
-        <p style="font-size:1rem;color:var(--text-secondary);margin-bottom:2rem;max-width:600px;line-height:1.7;">Unified clinical assistant &mdash; pharmacology + cardiology. 1,182 gold pairs, trained locally in 25 minutes on a single 3090Ti.</p>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border);">
-        <div style="background:var(--surface);padding:1.75rem 1.5rem;text-align:center;">
-          <div style="font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;color:var(--text);margin-bottom:0.35rem;">0.008</div>
-          <div style="font-size:0.7rem;color:var(--text-dim);">Training Loss</div>
-        </div>
-        <div style="background:var(--surface);padding:1.75rem 1.5rem;text-align:center;">
-          <div style="font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;color:var(--green);margin-bottom:0.35rem;">100%</div>
-          <div style="font-size:0.7rem;color:var(--text-dim);">Disclaimer Rate</div>
-        </div>
-        <div style="background:var(--surface);padding:1.75rem 1.5rem;text-align:center;">
-          <div style="font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;color:var(--text);margin-bottom:0.35rem;">1,182</div>
-          <div style="font-size:0.7rem;color:var(--text-dim);">Gold Pairs</div>
-        </div>
-        <div style="background:var(--surface);padding:1.75rem 1.5rem;text-align:center;">
-          <div style="font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;color:var(--accent);margin-bottom:0.35rem;">25<span style="font-size:0.8rem;font-weight:400;color:var(--text-dim);">min</span></div>
-          <div style="font-size:0.7rem;color:var(--text-dim);">Train Time</div>
-        </div>
-      </div>
-      <div style="padding:2rem 2.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;">
-        <a href="https://huggingface.co/SwarmOS/SwarmMed-7B-v3-merged" target="_blank" rel="noopener" style="font-size:0.7rem;font-weight:600;color:var(--accent);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 1.2rem;border:1px solid rgba(234,179,8,0.3);border-radius:3px;transition:all 0.3s;">Merged Model &rarr;</a>
-        <a href="https://huggingface.co/SwarmOS/SwarmMed-7B-v3" target="_blank" rel="noopener" style="font-size:0.7rem;font-weight:600;color:var(--text-dim);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 1.2rem;border:1px solid var(--border);border-radius:3px;transition:all 0.3s;">Adapter</a>
-      </div>
-    </div>
-
-    <!-- Previous Models Grid -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden;" class="reveal reveal-delay-1">
-      <div style="background:var(--surface);padding:2rem 1.5rem;">
-        <div style="font-size:0.55rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);margin-bottom:0.75rem;">Shipped</div>
-        <div style="font-size:1rem;font-weight:700;margin-bottom:0.35rem;"><a href="https://huggingface.co/SwarmOS/SwarmPharm-7B-v2" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border-light);">SwarmPharm-7B-v2</a></div>
-        <div style="font-size:0.75rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1rem;">Pharmacology specialist. 867 gold pairs, loss 0.008, 93% disclaimer rate.</div>
-        <div style="font-size:0.65rem;color:var(--text-dim);font-family:'SF Mono','Fira Code',monospace;">pharma-ddi &middot; adverse &middot; dosing &middot; contraindications</div>
-      </div>
-      <div style="background:var(--surface);padding:2rem 1.5rem;">
-        <div style="font-size:0.55rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);margin-bottom:0.75rem;">Shipped</div>
-        <div style="font-size:1rem;font-weight:700;margin-bottom:0.35rem;"><a href="https://huggingface.co/SwarmOS/SwarmMedQA-7B-v1" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--border-light);">SwarmMedQA-7B-v1</a></div>
-        <div style="font-size:0.75rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1rem;">Foundation medical QA. MedQA 66% (+4%), PubMedQA 53% (+53%).</div>
-        <div style="font-size:0.65rem;color:var(--text-dim);font-family:'SF Mono','Fira Code',monospace;">medqa &middot; pubmedqa &middot; clinical reasoning</div>
-      </div>
-      <div style="background:var(--surface);padding:2rem 1.5rem;">
-        <div style="font-size:0.55rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;">Building</div>
-        <div style="font-size:1rem;font-weight:700;margin-bottom:0.35rem;">SwarmMed-MRI-7B-v1</div>
-        <div style="font-size:0.75rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1rem;">Vision-language spinal MRI interpretation. Qwen2.5-VL base. First imaging model in fleet.</div>
-        <div style="font-size:0.65rem;color:var(--text-dim);font-family:'SF Mono','Fira Code',monospace;">neuroradiology &middot; lumbar &middot; stenosis &middot; VL</div>
-      </div>
-    </div>
-
-    <div class="reveal reveal-delay-2" style="margin-top:2rem;padding:1.75rem 2rem;background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--accent);border-radius:0 4px 4px 0;font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
-      <strong style="color:var(--text);">Medical disclaimer:</strong> Research and assistive tools only. Not licensed medical devices. Always consult a qualified healthcare provider. Outputs may contain errors.
-    </div>
-  </section>
-
-  <div class="divider"><div class="divider-line"></div></div>
-
-  <!-- DEVELOPMENT PIPELINE -->
-  <section>
-    <div class="section-header reveal">
-      <div class="section-label">Roadmap</div>
-      <div class="section-title">Build the anchor. Stabilize. Expand.</div>
-      <div class="section-subtitle">Proven sovereign pipeline: template &rarr; grind &rarr; audit &rarr; train &rarr; merge. Every model ships on local iron.</div>
-    </div>
-
-    <div class="roadmap-phases reveal">
-      <div class="phase">
-        <div class="phase-tag now">Phase 1 &mdash; Complete</div>
-        <div class="phase-title">Foundation</div>
-        <div class="phase-desc">Medical vertical. Proved the sovereign compute chain end to end. Pipeline is repeatable.</div>
-        <ul class="phase-builds">
-          <li><span class="live">&#x2713;</span> SwarmMedQA-7B-v1</li>
-          <li><span class="live">&#x2713;</span> SwarmPharm-7B-v2</li>
-          <li><span class="live">&#x2713;</span> SwarmMed-7B-v3 (unified)</li>
-        </ul>
-      </div>
-      <div class="phase">
-        <div class="phase-tag now">Phase 2 &mdash; In Progress</div>
-        <div class="phase-title">Vertical Expansion</div>
-        <div class="phase-desc">Blended multi-specialty data. Vision-language models. Continued compounding across domains.</div>
-        <ul class="phase-builds">
-          <li><span class="live">&#x2713;</span> SwarmMed-7B-v3 (shipped Feb &rsquo;26)</li>
-          <li><span class="building">&#x25CB;</span> SwarmMed-MRI-7B-v1</li>
-          <li><span class="building">&#x25CB;</span> SwarmER-7B</li>
-          <li><span class="building">&#x25CB;</span> SwarmOnco-7B</li>
-        </ul>
-      </div>
-      <div class="phase">
-        <div class="phase-tag next">Phase 3 &mdash; Q3-Q4 2026</div>
-        <div class="phase-title">Broader Domains</div>
-        <div class="phase-desc">Legal, finance, compute specialists. Larger base models (8B&ndash;13B). Multi-agent routing.</div>
-        <ul class="phase-builds">
-          <li>SwarmLegal-7B</li>
-          <li>SwarmFinance-7B</li>
-          <li>SwarmCompute-7B</li>
-        </ul>
-      </div>
-      <div class="phase">
-        <div class="phase-tag future">Phase 4 &mdash; 2027+</div>
-        <div class="phase-title">Hardware &amp; Scale</div>
-        <div class="phase-desc">10x data volume. Blackwell-era local training. Full sovereign swarm infrastructure.</div>
-        <ul class="phase-builds">
-          <li>8B/13B base upgrades</li>
-          <li>Blackwell RTX PRO 4500/6000</li>
-          <li>5x energy efficiency</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="hw-row reveal reveal-delay-2">
-      <div class="hw-card">
-        <div class="hw-tier" style="color:var(--text-dim);">Proven</div>
-        <div class="hw-name">RTX 3090 Ti</div>
-        <div class="hw-spec">
-          24 GB VRAM &middot; 350W<br>
-          40 tok/s &middot; <span class="highlight">0.11 tok/W</span><br>
-          Shipped 3 models &middot; Class B
-        </div>
-      </div>
-      <div class="hw-card">
-        <div class="hw-tier" style="color:var(--accent);">Deploying</div>
-        <div class="hw-name">RTX PRO 4500</div>
-        <div class="hw-spec">
-          32 GB GDDR7 &middot; PCIe 5.0<br>
-          10,496 CUDA &middot; <span class="highlight">Blackwell</span><br>
-          4x fleet &middot; EPYC 9004 &middot; 128 lanes
-        </div>
-      </div>
-      <div class="hw-card">
-        <div class="hw-tier" style="color:var(--green);">Deploying</div>
-        <div class="hw-name">RTX 6000 Pro</div>
-        <div class="hw-spec">
-          96 GB VRAM &middot; Blackwell<br>
-          70B FP16 single card &middot; <span class="highlight">0.67 tok/W</span><br>
-          Training + serving &middot; Class A+
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"><div class="divider-line"></div></div>
-
-  <!-- INFRASTRUCTURE -->
-  <section>
-    <div class="section-header reveal">
-      <div class="section-label">Infrastructure</div>
-      <div class="section-title">Single-tenant compute</div>
-      <div class="section-subtitle">Not a shared cluster. Not a multi-tenant cloud. Dedicated hardware, dedicated models, dedicated inference. Your data is the only data that ever touches this iron.</div>
-    </div>
-    <div class="infra-grid">
-      <div class="infra-stat reveal reveal-delay-1">
-        <div class="infra-number">128</div>
-        <div class="infra-label">RTX 6000 Pro 96GB GPUs</div>
-      </div>
-      <div class="infra-stat reveal reveal-delay-2">
-        <div class="infra-number">12.3<span class="unit">TB</span></div>
-        <div class="infra-label">Total GPU VRAM</div>
-      </div>
-      <div class="infra-stat reveal reveal-delay-3">
-        <div class="infra-number">10</div>
-        <div class="infra-label">Intelligence sources</div>
-      </div>
-      <div class="infra-stat reveal reveal-delay-4">
-        <div class="infra-number">0</div>
-        <div class="infra-label">Shared tenants on our iron</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"><div class="divider-line"></div></div>
-
-  <!-- MARKETPLACE -->
-  <section>
-    <div class="section-header reveal">
-      <div class="section-label">Marketplace</div>
-      <div class="section-title">Own the models. Run them on your iron.</div>
-      <div class="section-subtitle">Sovereign models and datasets built by Swarm &amp; Bee. Download, deploy, own. No API keys, no usage limits, no data leaving your rack.</div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:2rem;" class="reveal">
-      <!-- Models -->
-      <div style="background:var(--surface);padding:2.5rem 2rem;">
-        <div style="font-size:1.4rem;margin-bottom:0.75rem;">&#x1F9E0;</div>
-        <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;">Models</div>
-        <div style="font-size:1.1rem;font-weight:700;margin-bottom:1.25rem;">Fine-Tuned Specialists</div>
-        <div style="font-size:0.78rem;color:var(--text-secondary);line-height:1.7;margin-bottom:2rem;">Domain-specific 7B models that outperform general-purpose 70B on vertical benchmarks. Merged 16-bit &mdash; no base model required.</div>
-        <div style="display:flex;flex-direction:column;gap:0.75rem;">
-          <a href="https://huggingface.co/SwarmOS/SwarmMed-7B-v3-merged" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.15);border-radius:3px;text-decoration:none;transition:all 0.3s;">
-            <span style="font-size:0.8rem;font-weight:600;color:var(--text);">SwarmMed-7B-v3</span>
-            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);">Free</span>
-          </a>
-          <a href="https://huggingface.co/SwarmOS/SwarmPharm-7B-v2" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.15);border-radius:3px;text-decoration:none;transition:all 0.3s;">
-            <span style="font-size:0.8rem;font-weight:600;color:var(--text);">SwarmPharm-7B-v2</span>
-            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);">Free</span>
-          </a>
-          <a href="https://huggingface.co/SwarmOS/SwarmMedQA-7B-v1" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.15);border-radius:3px;text-decoration:none;transition:all 0.3s;">
-            <span style="font-size:0.8rem;font-weight:600;color:var(--text);">SwarmMedQA-7B-v1</span>
-            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);">Free</span>
-          </a>
-        </div>
-      </div>
-      <!-- Datasets -->
-      <div style="background:var(--surface);padding:2.5rem 2rem;">
-        <div style="font-size:1.4rem;margin-bottom:0.75rem;">&#x1F4CA;</div>
-        <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;">Datasets</div>
-        <div style="font-size:1.1rem;font-weight:700;margin-bottom:1.25rem;">Gold-Standard Training Data</div>
-        <div style="font-size:0.78rem;color:var(--text-secondary);line-height:1.7;margin-bottom:2rem;">Multi-stage audited QA pairs. Every pair passes verify &rarr; score &rarr; safety gates. Specialty rubrics for clinical accuracy.</div>
-        <div style="display:flex;flex-direction:column;gap:0.75rem;">
-          <a href="https://huggingface.co/datasets/SwarmOS/SwarmMedQA" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.15);border-radius:3px;text-decoration:none;transition:all 0.3s;">
-            <span style="font-size:0.8rem;font-weight:600;color:var(--text);">SwarmMedQA</span>
-            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);">Free</span>
-          </a>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:3px;">
-            <span style="font-size:0.8rem;font-weight:600;color:var(--text-dim);">SwarmMedMRI</span>
-            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);">Coming Soon</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:3px;">
-            <span style="font-size:0.8rem;font-weight:600;color:var(--text-dim);">SwarmComputeQA</span>
-            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);">Coming Soon</span>
-          </div>
-        </div>
-      </div>
-      <!-- Tools & Kits -->
-      <div style="background:var(--surface);padding:2.5rem 2rem;">
-        <div style="font-size:1.4rem;margin-bottom:0.75rem;">&#x1F6E0;&#xFE0F;</div>
-        <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;">Tools &amp; Kits</div>
-        <div style="font-size:1.1rem;font-weight:700;margin-bottom:1.25rem;">Deploy on Your Hardware</div>
-        <div style="font-size:0.78rem;color:var(--text-secondary);line-height:1.7;margin-bottom:2rem;">Everything you need to run sovereign AI. vLLM configs, deployment scripts, training playbooks. Built for single-tenant infrastructure.</div>
-        <div style="display:flex;flex-direction:column;gap:0.75rem;">
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:3px;">
-            <span style="font-size:0.8rem;font-weight:600;color:var(--text-dim);">Deployment Kit</span>
-            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);">Coming Soon</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:3px;">
-            <span style="font-size:0.8rem;font-weight:600;color:var(--text-dim);">Training Playbook</span>
-            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);">Coming Soon</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:3px;">
-            <span style="font-size:0.8rem;font-weight:600;color:var(--text-dim);">Sovereign Starter</span>
-            <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);">Coming Soon</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="reveal reveal-delay-1" style="padding:1.75rem 2rem;background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--green);border-radius:0 4px 4px 0;font-size:0.85rem;color:var(--text-secondary);line-height:1.7;">
-      <strong style="color:var(--text);">Core principle:</strong> Every model is trained on personal hardware with zero cloud dependency. <span style="color:var(--accent);font-weight:600;">Local. No cloud. Sovereign.</span> Download once, run forever. No API keys, no rate limits, no telemetry.
-    </div>
-  </section>
-
-  <div class="divider"><div class="divider-line"></div></div>
-
-  <!-- GO TO MARKET -->
-  <section>
-    <div class="section-header reveal">
-      <div class="section-label">Go To Market</div>
-      <div class="section-title">We know the sandbox. That&rsquo;s why the phone rings.</div>
-      <div class="section-subtitle">We don&rsquo;t cold-pitch. We lead with market intelligence from walking the territory &mdash; then close with a sovereign deployment. Intel gets the sit. Sovereignty gets the signature.</div>
-    </div>
-    <div class="chain-flow reveal" style="grid-template-columns: repeat(3, 1fr);">
-      <div class="chain-link">
-        <span class="chain-icon">&#x1F4DE;</span>
-        <div class="chain-analogy">200 Dials</div>
-        <div class="chain-name">Intel &amp; Outreach</div>
-        <div class="chain-desc">Agents scan regulated industries for pain. Real-time market intelligence identifies who needs sovereign compute.</div>
-      </div>
-      <div class="chain-link">
-        <span class="chain-icon">&#x1F4CB;</span>
-        <div class="chain-analogy">Book the Sit</div>
-        <div class="chain-name">Proposal &amp; LOC</div>
-        <div class="chain-desc">Walk in with the numbers. ROI model, deployment plan, Letter of Compute. Multiple qualified LOCs on the table.</div>
-      </div>
-      <div class="chain-link">
-        <span class="chain-icon">&#x1F969;</span>
-        <div class="chain-analogy">Close</div>
-        <div class="chain-name">Deploy &amp; Stream</div>
-        <div class="chain-desc">Single-tenant deployment goes live. Fee + stream begins. Steak dinner. Referrals flow.</div>
-      </div>
-    </div>
-    <div class="chain-rule reveal reveal-delay-2">
-      <strong>The flywheel:</strong> Pipeline produces intelligence &rarr; intelligence identifies pain &rarr; pain creates the sit &rarr; sit creates the proposal &rarr; proposal generates LOC &rarr; LOC goes to close &rarr; <span class="accent">close generates stream</span> &rarr; stream funds more pipeline capacity &rarr; repeat.
-    </div>
-  </section>
-
-  <div class="divider"><div class="divider-line"></div></div>
-
-  <!-- PIPELINE -->
-  <section>
-    <div class="section-header reveal">
-      <div class="section-label">Pipeline</div>
-      <div class="section-title">The chain, running live.</div>
-      <div class="section-subtitle">Every link in the compute chain operating 24/7 on sovereign hardware. Harvest, refine, store, train, serve &mdash; no cloud, no middlemen.</div>
-    </div>
-
-    <div class="pipeline-grid reveal">
-      <!-- Terminal: JSON snapshot -->
-      <div class="terminal">
-        <div class="terminal-header">
-          <span class="terminal-dot red"></span>
-          <span class="terminal-dot yellow"></span>
-          <span class="terminal-dot green"></span>
-          <span class="terminal-title">cluster_status.json</span>
-        </div>
-        <div class="terminal-body">
-<span class="json-brace">{</span>
-  <span class="json-key">"cluster"</span>: <span class="json-str">"sb-compute-01"</span>,
-  <span class="json-key">"status"</span>: <span class="json-str">"operational"</span>,
-  <span class="json-key">"gpu_fleet"</span>: <span class="json-brace">{</span>
-    <span class="json-key">"model"</span>: <span class="json-str">"RTX 6000 Pro"</span>,
-    <span class="json-key">"vram_per_gpu"</span>: <span class="json-str">"96 GB"</span>,
-    <span class="json-key">"count"</span>: <span class="json-num">128</span>,
-    <span class="json-key">"total_vram_tb"</span>: <span class="json-num">12.288</span>,
-    <span class="json-key">"arch"</span>: <span class="json-str">"Blackwell"</span>
-  <span class="json-brace">}</span>,
-  <span class="json-key">"nodes"</span>: <span class="json-brace">{</span>
-    <span class="json-key">"whale"</span>: <span class="json-brace">{</span> <span class="json-key">"role"</span>: <span class="json-str">"inference"</span>, <span class="json-key">"vllm"</span>: <span class="json-bool-true">true</span> <span class="json-brace">}</span>,
-    <span class="json-key">"swarmrails"</span>: <span class="json-brace">{</span> <span class="json-key">"role"</span>: <span class="json-str">"primary"</span>, <span class="json-key">"agents"</span>: <span class="json-num">7</span> <span class="json-brace">}</span>,
-    <span class="json-key">"edge"</span>: <span class="json-brace">{</span> <span class="json-key">"role"</span>: <span class="json-str">"local"</span>, <span class="json-key">"watts"</span>: <span class="json-num">10</span> <span class="json-brace">}</span>
-  <span class="json-brace">}</span>,
-  <span class="json-key">"pipeline"</span>: <span class="json-brace">{</span>
-    <span class="json-key">"sources"</span>: <span class="json-num">10</span>,
-    <span class="json-key">"entities"</span>: <span class="json-num">14832</span>,
-    <span class="json-key">"relations"</span>: <span class="json-num">31204</span>,
-    <span class="json-key">"qa_pairs"</span>: <span class="json-num">5062</span>,
-    <span class="json-key">"confidence"</span>: <span class="json-num">0.87</span>
-  <span class="json-brace">}</span>,
-  <span class="json-key">"class"</span>: <span class="json-str">"A"</span><span class="cursor-blink"></span>
-<span class="json-brace">}</span>
-        </div>
-      </div>
-
-      <!-- Graph: Fleet topology SVG -->
-      <div class="graph-panel">
-        <svg class="graph-svg" viewBox="0 0 440 440" preserveAspectRatio="xMidYMid meet">
-          <!-- Edge lines: cluster to orchestrator -->
-          <line class="edge-line active" x1="220" y1="95" x2="220" y2="195" />
-          <!-- orchestrator to worker nodes -->
-          <line class="edge-line active" x1="220" y1="235" x2="100" y2="320" />
-          <line class="edge-line active" x1="220" y1="235" x2="340" y2="320" />
-          <!-- worker to edge/store -->
-          <line class="edge-line" x1="100" y1="350" x2="100" y2="410" />
-          <line class="edge-line" x1="340" y1="350" x2="340" y2="410" />
-          <!-- cross link -->
-          <line class="edge-line" x1="100" y1="335" x2="340" y2="335" />
-
-          <!-- Animated flow lines -->
-          <line class="edge-flow" x1="220" y1="95" x2="220" y2="195" />
-          <line class="edge-flow" x1="220" y1="235" x2="100" y2="320" style="animation-delay: 0.4s;" />
-          <line class="edge-flow" x1="220" y1="235" x2="340" y2="320" style="animation-delay: 0.8s;" />
-          <line class="edge-flow" x1="100" y1="335" x2="340" y2="335" style="animation-delay: 1.2s;" />
-
-          <!-- GPU CLUSTER node (top, biggest) -->
-          <rect class="node-circle active" x="155" y="30" width="130" height="60" rx="6" ry="6" style="fill:var(--surface);stroke:var(--accent);stroke-width:1.5;filter:drop-shadow(0 0 12px rgba(234,179,8,0.25));" />
-          <text class="node-label" x="220" y="56" style="font-size:12px;">128x RTX 6000</text>
-          <text class="node-sublabel" x="220" y="72">96 GB · Blackwell</text>
-          <text class="node-tier" x="220" y="25">GPU CLUSTER · 12.3 TB VRAM</text>
-          <circle class="data-dot" cx="290" cy="42" r="3" />
-          <circle class="data-dot" cx="290" cy="54" r="3" style="animation-delay: 0.5s;" />
-          <circle class="data-dot" cx="290" cy="66" r="3" style="animation-delay: 1s;" />
-
-          <!-- ORCHESTRATOR node (swarmrails) -->
-          <circle class="node-circle healthy" cx="220" cy="215" r="38" />
-          <text class="node-label" x="220" y="211">swarmrails</text>
-          <text class="node-sublabel" x="220" y="225">orchestrator · 7 agents</text>
-          <text class="node-tier" x="220" y="185">PRIMARY</text>
-          <circle class="data-dot green-dot" cx="258" cy="202" r="3" />
-          <circle class="data-dot green-dot" cx="258" cy="214" r="3" style="animation-delay: 0.3s;" />
-
-          <!-- INFERENCE node (whale) -->
-          <circle class="node-circle active" cx="100" cy="335" r="32" />
-          <text class="node-label" x="100" y="332">whale</text>
-          <text class="node-sublabel" x="100" y="346">inference · vLLM</text>
-          <text class="node-tier" x="100" y="310">S4</text>
-          <circle class="data-dot" cx="132" cy="320" r="3" />
-
-          <!-- PIPELINE node -->
-          <circle class="node-circle healthy" cx="340" cy="335" r="32" />
-          <text class="node-label" x="340" y="332">pipeline</text>
-          <text class="node-sublabel" x="340" y="346">harvest · refine</text>
-          <text class="node-tier" x="340" y="310">10 SOURCES</text>
-          <circle class="data-dot green-dot" cx="372" cy="320" r="3" style="animation-delay: 0.6s;" />
-
-          <!-- EDGE node -->
-          <circle class="node-circle" cx="100" cy="420" r="18" />
-          <text class="node-label" x="100" y="418" style="font-size:9px;">edge</text>
-          <text class="node-sublabel" x="100" y="430" style="font-size:7px;">10W</text>
-
-          <!-- STORE node -->
-          <circle class="node-circle" cx="340" cy="420" r="18" />
-          <text class="node-label" x="340" y="418" style="font-size:9px;">store</text>
-          <text class="node-sublabel" x="340" y="430" style="font-size:7px;">R2 + NAS</text>
-
-          <!-- Flow label -->
-          <text x="175" y="155" fill="rgba(234,179,8,0.15)" font-family="'SF Mono','Fira Code',monospace" font-size="7" letter-spacing="0.15em">TP / BATCH</text>
-          <text x="280" y="280" fill="rgba(34,197,94,0.15)" font-family="'SF Mono','Fira Code',monospace" font-size="7" letter-spacing="0.15em">DATA FLOW</text>
-        </svg>
-      </div>
-    </div>
-
-    <!-- Live feed -->
-    <div class="feed-container reveal reveal-delay-2">
-      <div class="feed-header">
-        <div class="feed-header-left">
-          <span class="feed-status-dot"></span>
-          <span class="feed-label">Live Feed</span>
-        </div>
-        <span class="feed-counter" id="feed-counter">streaming...</span>
-      </div>
-      <div class="feed-body" id="feed-body">
-        <div class="feed-line"><span class="feed-ts">15:41:02</span><span class="feed-source">cluster</span><span class="feed-action">STATUS</span><span class="feed-detail">128x RTX 6000 Pro · 12.3 TB VRAM · all nodes healthy</span></div>
-        <div class="feed-line"><span class="feed-ts">15:41:08</span><span class="feed-source">pubmed</span><span class="feed-action">HARVEST</span><span class="feed-detail">70 queries · 312 new abstracts</span></div>
-        <div class="feed-line"><span class="feed-ts">15:41:18</span><span class="feed-source">refiner</span><span class="feed-action">EXTRACT</span><span class="feed-detail">14 entities · 31 relations · conf 0.91</span></div>
-        <div class="feed-line"><span class="feed-ts">15:41:22</span><span class="feed-source">graph</span><span class="feed-action">STORE</span><span class="feed-detail">batch_042 → apedia.db (2.4ms)</span></div>
-        <div class="feed-line"><span class="feed-ts">15:41:34</span><span class="feed-source">fda</span><span class="feed-action">HARVEST</span><span class="feed-detail">117 drug labels · 8 updated</span></div>
-        <div class="feed-line"><span class="feed-ts">15:41:47</span><span class="feed-source">qa-gen</span><span class="feed-action">GENERATE</span><span class="feed-detail">SwarmComputeQA +12 pairs · total 5,062</span></div>
-        <div class="feed-line"><span class="feed-ts">15:41:58</span><span class="feed-source">vllm</span><span class="feed-action">INFER</span><span class="feed-detail">128-GPU tensor parallel · batch 256</span></div>
-        <div class="feed-line"><span class="feed-ts">15:42:05</span><span class="feed-source">watchdog</span><span class="feed-action">HEALTH</span><span class="feed-detail">all checks passed · 12.3 TB online</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <div class="divider"><div class="divider-line"></div></div>
-  <section class="contact-section" id="contact">
-    <div class="section-eyebrow reveal">Contact</div>
-    <h2 class="section-title reveal reveal-delay-1">Talk to us.</h2>
-    <div class="contact-grid">
-      <div class="contact-info reveal reveal-delay-2">
-        <h3>Sovereign compute starts with a conversation.</h3>
-        <p>Whether you're a health system looking to keep patient data on-premises, a fund running proprietary models, or an enterprise tired of multi-tenant compromises — we build the stack, train the models, and deploy on your iron.</p>
-        <p>No pitch deck. No demo queue. Just tell us what you need.</p>
-        <div class="contact-channels">
-          <div class="contact-channel">
-            <span class="contact-channel-dot"></span>
-            <span>Team chat: <a href="https://chat.swarmandbee.com" target="_blank" rel="noopener">chat.swarmandbee.com</a></span>
-          </div>
-          <div class="contact-channel">
-            <span class="contact-channel-dot"></span>
-            <span>Models: <a href="https://huggingface.co/SwarmOS" target="_blank" rel="noopener">huggingface.co/SwarmOS</a></span>
-          </div>
-          <div class="contact-channel">
-            <span class="contact-channel-dot"></span>
-            <span>Florida, USA</span>
-          </div>
-        </div>
-      </div>
-      <form class="contact-form reveal reveal-delay-3" id="contact-form" onsubmit="return submitContact(event)">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="contact-name">Name</label>
-            <input type="text" id="contact-name" name="name" placeholder="Your name" required>
-          </div>
-          <div class="form-group">
-            <label for="contact-email">Email</label>
-            <input type="email" id="contact-email" name="email" placeholder="you@company.com" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="contact-interest">Interest</label>
-          <select id="contact-interest" name="interest" required>
-            <option value="" disabled selected>Select a vertical</option>
-            <option value="healthcare">Healthcare / Medical AI</option>
-            <option value="finance">Finance / Quantitative</option>
-            <option value="legal">Legal / Compliance</option>
-            <option value="enterprise">Enterprise Compute</option>
-            <option value="research">Research / Academic</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="contact-message">Message</label>
-          <textarea id="contact-message" name="message" placeholder="Tell us about your compute needs, data sovereignty requirements, or what you're building..." required></textarea>
-        </div>
-        <button type="submit" class="contact-submit" id="contact-btn">Send Message</button>
-        <div class="contact-status" id="contact-status"></div>
+  <!-- Chat Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <h2>Get in Touch</h2>
+      <form id="contactForm">
+        <label for="contactName">Name</label>
+        <input type="text" id="contactName" name="name" required autocomplete="name">
+        <label for="contactEmail">Email</label>
+        <input type="email" id="contactEmail" name="email" required autocomplete="email">
+        <label for="contactMessage">Message</label>
+        <textarea id="contactMessage" name="message" required></textarea>
+        <button type="submit" class="modal-send">Send</button>
       </form>
+      <div class="modal-success" id="modalSuccess">Thank you. We will be in touch.</div>
     </div>
-  </section>
+  </div>
 
-  <!-- FOOTER -->
-  <div class="divider"><div class="divider-line"></div></div>
-  <footer>
-    <div class="footer-left">
-      <div class="footer-firm">Swarm &amp; Bee</div>
-      <div class="footer-sep"></div>
-      <div class="footer-location">Florida, USA</div>
-    </div>
-    <div class="footer-links">
-      <a href="https://huggingface.co/SwarmOS" target="_blank" rel="noopener">HuggingFace</a>
-      <a href="https://x.com/swarmosv1" target="_blank" rel="noopener">X</a>
-      <a href="https://chat.swarmandbee.com" target="_blank" rel="noopener">Chat</a>
-      <a href="https://intel.quantumrails.io" target="_blank" rel="noopener">Dashboard</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <div class="copyright">&copy; 2026 Swarm &amp; Bee. All rights reserved.</div>
-  </footer>
-
-  <!-- Scroll reveal + feed animation -->
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    (function() {
+      var btn = document.getElementById('chatBtn');
+      var overlay = document.getElementById('modalOverlay');
+      var close = document.getElementById('modalClose');
+      var form = document.getElementById('contactForm');
+      var success = document.getElementById('modalSuccess');
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // Feed rotation
-    const feedEntries = [
-      ['cluster','STATUS','128x RTX 6000 Pro \u00b7 12.3 TB VRAM \u00b7 healthy'],
-      ['pubmed','HARVEST','70 queries \u00b7 312 new abstracts'],
-      ['refiner','EXTRACT','14 entities \u00b7 31 relations \u00b7 conf 0.91'],
-      ['graph','STORE','batch_042 \u2192 apedia.db (2.4ms)'],
-      ['fda','HARVEST','117 drug labels \u00b7 8 updated'],
-      ['qa-gen','GENERATE','SwarmComputeQA +12 pairs \u00b7 total 5,062'],
-      ['vllm','INFER','128-GPU TP \u00b7 batch 256 \u00b7 Blackwell'],
-      ['bridge','PROCESS','medrxiv chunk [247/1773] \u2192 refiner'],
-      ['watchdog','HEALTH','all checks passed \u00b7 12.3 TB online'],
-      ['pmc','HARVEST','300 full-text papers \u00b7 47 new'],
-      ['semantic','HARVEST','citations graph \u00b7 1,204 edges'],
-      ['gpu-mgr','ALLOC','node-07 \u00b7 8x RTX 6000 \u00b7 768 GB \u2192 med-batch'],
-      ['reddit','HARVEST','7 subreddits \u00b7 r/MachineLearning +23'],
-      ['github','HARVEST','361 repos \u00b7 12 new releases'],
-      ['clinical','HARVEST','141 trials \u00b7 NCT02948... updated'],
-      ['gpu-mgr','UTIL','fleet avg 73% \u00b7 peak node-12 94%'],
-      ['qa-gen','GENERATE','SwarmMedQA +8 pairs \u00b7 domain=medical'],
-      ['r2','SNAPSHOT','edge/*.json \u2192 swarm-apedia-vault'],
-      ['scheduler','BATCH','queued 14 jobs \u00b7 est 2.4 hrs \u00b7 96 GPUs free'],
-      ['medrxiv','HARVEST','preprints \u00b7 62 new \u00b7 neurology focus'],
-      ['dials','SCAN','healthcare vertical \u00b7 23 prospects \u00b7 4 qualified'],
-      ['intel','DELIVER','sovereignty gap report \u2192 regional health system'],
-      ['loc','GENERATE','Letter of Compute \u00b7 single-tenant \u00b7 S&B Medical'],
-      ['deal','STAGE','proposal → LOC → deployment review \u00b7 pipeline active'],
-    ];
-
-    let feedIdx = 8;
-    function padTime(n) { return String(n).padStart(2,'0'); }
-    function addFeedLine() {
-      const body = document.getElementById('feed-body');
-      if (!body) return;
-      const now = new Date();
-      const ts = padTime(now.getHours()) + ':' + padTime(now.getMinutes()) + ':' + padTime(now.getSeconds());
-      const e = feedEntries[feedIdx % feedEntries.length];
-      feedIdx++;
-      const line = document.createElement('div');
-      line.className = 'feed-line';
-      line.style.opacity = '0';
-      line.style.transform = 'translateY(-8px)';
-      line.innerHTML = '<span class="feed-ts">' + ts + '</span><span class="feed-source">' + e[0] + '</span><span class="feed-action">' + e[1] + '</span><span class="feed-detail">' + e[2] + '</span>';
-      body.insertBefore(line, body.firstChild);
-      requestAnimationFrame(function() {
-        line.style.transition = 'all 0.4s ease';
-        line.style.opacity = '1';
-        line.style.transform = 'translateY(0)';
-      });
-      // Remove overflow lines
-      while (body.children.length > 8) {
-        body.removeChild(body.lastChild);
-      }
-      document.getElementById('feed-counter').textContent = feedIdx + ' events';
-    }
-    setInterval(addFeedLine, 3500);
-
-    // Contact form
-    function submitContact(e) {
-      e.preventDefault();
-      var btn = document.getElementById('contact-btn');
-      var status = document.getElementById('contact-status');
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-      status.textContent = '';
-      status.className = 'contact-status';
-
-      var data = {
-        name: document.getElementById('contact-name').value,
-        email: document.getElementById('contact-email').value,
-        interest: document.getElementById('contact-interest').value,
-        message: document.getElementById('contact-message').value
-      };
-
-      fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      })
-      .then(function(r) { return r.json(); })
-      .then(function(res) {
-        if (res.ok) {
-          status.textContent = 'Message received. We\'ll be in touch.';
-          status.className = 'contact-status success';
-          document.getElementById('contact-form').reset();
-        } else {
-          status.textContent = res.error || 'Something went wrong. Try again.';
-          status.className = 'contact-status error';
-        }
-      })
-      .catch(function() {
-        status.textContent = 'Network error. Try again.';
-        status.className = 'contact-status error';
-      })
-      .finally(function() {
-        btn.disabled = false;
-        btn.textContent = 'Send Message';
+      btn.addEventListener('click', function() {
+        overlay.classList.add('open');
       });
 
-      return false;
-    }
+      close.addEventListener('click', function() {
+        overlay.classList.remove('open');
+      });
+
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) overlay.classList.remove('open');
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') overlay.classList.remove('open');
+      });
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        form.style.display = 'none';
+        success.style.display = 'block';
+        setTimeout(function() {
+          overlay.classList.remove('open');
+          setTimeout(function() {
+            form.style.display = '';
+            success.style.display = 'none';
+            form.reset();
+          }, 400);
+        }, 2400);
+      });
+    })();
   </script>
-
 </body>
 </html>
