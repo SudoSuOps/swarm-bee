@@ -1,9 +1,11 @@
 /**
  * Cloudflare Pages Function: POST /api/contact
- * Receives contact form submissions and forwards to Rocket.Chat incoming webhook.
+ * Receives contact form submissions and forwards to Discord webhook.
+ * Falls back to Rocket.Chat if Discord fails.
  *
- * Environment variable (set via CF Pages settings):
- *   ROCKETCHAT_WEBHOOK_URL = https://chat.swarmandbee.com/hooks/xxx/yyy
+ * Environment variables (set via CF Pages settings):
+ *   DISCORD_WEBHOOK_URL  = https://discord.com/api/webhooks/xxx/yyy
+ *   ROCKETCHAT_WEBHOOK_URL = https://chat.swarmandbee.com/hooks/xxx/yyy (fallback)
  */
 
 export async function onRequestPost(context) {
@@ -31,37 +33,81 @@ export async function onRequestPost(context) {
     }
 
     const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+    const ts = new Date().toISOString();
 
-    const rcPayload = {
-      text: `**New Contact — swarmandbee.com**`,
-      attachments: [{
-        color: '#B89B3C',
-        fields: [
-          { short: true, title: 'Name', value: name },
-          { short: true, title: 'Email', value: email },
-          { short: true, title: 'IP', value: ip },
-          { short: false, title: 'Message', value: message },
-        ],
-        ts: new Date().toISOString(),
-      }],
-    };
+    // ─── Discord Webhook (primary) ──────────────────────────────
+    let delivered = false;
 
-    const webhookUrl = env.ROCKETCHAT_WEBHOOK_URL;
-    if (!webhookUrl) {
-      console.error('ROCKETCHAT_WEBHOOK_URL not configured');
-      return new Response(JSON.stringify({ ok: false, error: 'Contact system not configured.' }), {
-        status: 500, headers,
-      });
+    const discordUrl = env.DISCORD_WEBHOOK_URL;
+    if (discordUrl) {
+      const discordPayload = {
+        embeds: [{
+          title: 'New Contact — swarmandbee.com',
+          color: 0xB89B3C,
+          fields: [
+            { name: 'Name', value: name, inline: true },
+            { name: 'Email', value: email, inline: true },
+            { name: 'IP', value: ip, inline: true },
+            { name: 'Message', value: message.slice(0, 1024), inline: false },
+          ],
+          timestamp: ts,
+          footer: { text: 'swarmandbee.com contact form' },
+        }],
+      };
+
+      try {
+        const discordResp = await fetch(discordUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(discordPayload),
+        });
+        if (discordResp.ok || discordResp.status === 204) {
+          delivered = true;
+        } else {
+          console.error('Discord webhook failed:', discordResp.status);
+        }
+      } catch (err) {
+        console.error('Discord webhook error:', err);
+      }
     }
 
-    const rcResponse = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(rcPayload),
-    });
+    // ─── Rocket.Chat Webhook (fallback) ─────────────────────────
+    if (!delivered) {
+      const rcUrl = env.ROCKETCHAT_WEBHOOK_URL;
+      if (rcUrl) {
+        const rcPayload = {
+          text: `**New Contact — swarmandbee.com**`,
+          attachments: [{
+            color: '#B89B3C',
+            fields: [
+              { short: true, title: 'Name', value: name },
+              { short: true, title: 'Email', value: email },
+              { short: true, title: 'IP', value: ip },
+              { short: false, title: 'Message', value: message },
+            ],
+            ts,
+          }],
+        };
 
-    if (!rcResponse.ok) {
-      console.error('RC webhook failed:', rcResponse.status);
+        try {
+          const rcResp = await fetch(rcUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(rcPayload),
+          });
+          if (rcResp.ok) {
+            delivered = true;
+          } else {
+            console.error('RC webhook failed:', rcResp.status);
+          }
+        } catch (err) {
+          console.error('RC webhook error:', err);
+        }
+      }
+    }
+
+    if (!delivered) {
+      console.error('All delivery methods failed');
       return new Response(JSON.stringify({ ok: false, error: 'Delivery failed. Try again.' }), {
         status: 502, headers,
       });
