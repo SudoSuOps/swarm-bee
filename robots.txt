@@ -1,4 +1,33 @@
 User-agent: *
 Allow: /
 
+# AI Crawlers — welcome, read llms.txt for structured inventory
+# llms.txt: https://swarmandbee.com/llms.txt
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
 Sitemap: https://swarmandbee.com/sitemap.xml
+
+# AI agent discovery
+# llms.txt: https://swarmandbee.com/llms.txt

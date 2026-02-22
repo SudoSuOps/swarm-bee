@@ -1,0 +1,58 @@
+# Swarm & Bee — llms.txt
+# https://swarmandbee.com
+# Last updated: 2026-02-22
+
+## About
+Swarm & Bee (S&B) is a sovereign compute infrastructure firm delivering production-grade AI training data, fine-tuned models, and dedicated GPU rigs with full on-chain provenance via Hedera blockchain. Tagline: "Last mile intelligence."
+
+## What We Sell
+- **Training Data**: 391,991 CoVe-verified platinum medical QA pairs across 59 specialties from 18 authoritative medical textbooks. 30/30 SFT suitability benchmark. Every pair verified by 235B parameter model (Chain-of-Verification).
+- **Pre-Trained Models**: SwarmMed-14B (14.77B params, 80 specialties, Qwen2 architecture, Apache 2.0), SwarmMed-7B v5 (edge-deployable), SwarmMed-Vision-4B (multimodal medical).
+- **Dedicated Compute**: RTX PRO 6000 rigs (96GB VRAM), single-tenant sovereign deployment, wallet-gated API, 72hr replacement SLA. $3,500/month.
+- **Aviation Data**: 2.4M raw aviation records across MRO, pilot training, safety, ATC, drones. SwarmAviation-14B in production.
+
+## Pricing
+- Free: 10 sample pairs per request (no auth) — GET /api/data/sample
+- Starter: $99 one-time — 391,991 pairs, 59 specialties, unlimited API pulls
+- Professional: $999 one-time — full access + priority support
+- Monthly: $4,999/month — unlimited API + monthly data drops + dedicated support
+- Enterprise: $500K–$1.5M/year — full vault license, sovereign deployment
+- Dedicated GPU: $3,500/month — RTX PRO 6000 (96GB VRAM)
+- Edge Node: $250/month — Jetson Orin Nano Super (4B model inference)
+- Spec Build: $500K entry at 10% cap rate (turnkey investment, 2x upside)
+
+## API Endpoints
+- Catalog (public): GET https://swarmandbee.com/api/data/catalog
+- Free Sample (public): GET https://swarmandbee.com/api/data/sample?specialty=cardiology
+- Pull Data (auth required): GET https://swarmandbee.com/api/data/pull?specialty=surgery&limit=100
+- Auth: Bearer token (Authorization: Bearer sk_swarm_xxx)
+
+## Pages
+- Homepage: https://swarmandbee.com/
+- SwarmNet Search (100+ listings): https://swarmandbee.com/search
+- Data API Storefront: https://swarmandbee.com/data
+- Offering Memorandum: https://swarmandbee.com/om
+- FAQ: https://swarmandbee.com/faq
+- Request for Pairs (RFP): https://swarmandbee.com/rfp
+- Letter of Intent (LOI): https://swarmandbee.com/loi
+
+## Medical Specialties Available (59)
+Internal Medicine (97K), Surgery (43K), Neurology (37K), Cell Biology (21K), Pathology (17K), Immunology (14K), Pharmacology (13K), Histology (13K), Physiology (12K), OB/GYN (12K), Pediatrics (11K), Psychiatry (10K), Anatomy (9K), USMLE Step 1 (8K), Biochemistry (5K), USMLE Step 2 (5K), Oncology (4K), Hematology (3K), Ophthalmology (2K), Radiology (2K), Genetics (2K), Rheumatology (2K), Pulmonology (1.8K), Orthopedics (1.6K), Endocrinology (995), Nephrology (911), Infectious Disease (644), Cardiology (637), Emergency Medicine (582), Geriatrics (555), ENT (541), Anesthesiology (425), Urology (369), Dermatology (301), Nutrition (256), Allergy (168), Critical Care (142), Palliative Care (102), + 21 more subspecialties.
+
+## On-Chain Provenance (Hedera Mainnet)
+- Operator: 0.0.10291827
+- SFPAIR Token: 0.0.10291840 (2,660 NFTs)
+- SFMOD Token: 0.0.10291842 (SwarmMed-14B model NFT)
+- SFDEED Token: 0.0.10291843 (Term Sheet v3)
+- HCS Events Topic: 0.0.10291836
+- HNS Domain: swarmandbee.hbar
+- SwarmBroker: Autonomous sales agent, LIVE on HCS
+
+## HuggingFace
+- Organization: https://huggingface.co/SwarmOS
+- SwarmMed-14B: https://huggingface.co/SwarmOS/SwarmMed-14B-v1.2-merged
+
+## Contact
+- Email: build@swarmandbee.com
+- Phone: 561-532-7120
+- Hedera: swarmandbee.hbar

@@ -476,5 +476,35 @@ curl "https://swarmandbee.com/api/data/sample?specialty=surgery"</pre>
         grid.innerHTML = '<div class="catalog-loading">Catalog loading... <a href="/loi">Contact us</a> for full inventory.</div>';
       });
   </script>
+
+<!-- JSON-LD: Product -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "SwarmForge Platinum Medical Training Data API",
+  "description": "API access to 391,991 CoVe-verified medical QA pairs across 59 specialties. 18 authoritative textbooks. Free samples. Bearer token auth.",
+  "brand": { "@type": "Brand", "name": "Swarm & Bee" },
+  "offers": [
+    { "@type": "Offer", "name": "Free Sample", "price": "0", "priceCurrency": "USD", "description": "10 random pairs per request, any specialty", "availability": "https://schema.org/InStock" },
+    { "@type": "Offer", "name": "Starter", "price": "99", "priceCurrency": "USD", "description": "391,991 pairs, 59 specialties, unlimited pulls", "availability": "https://schema.org/InStock" },
+    { "@type": "Offer", "name": "Professional", "price": "999", "priceCurrency": "USD", "description": "Full access + priority support", "availability": "https://schema.org/InStock" },
+    { "@type": "Offer", "name": "Monthly", "price": "4999", "priceCurrency": "USD", "billingIncrement": "P1M", "description": "Unlimited API + monthly data drops", "availability": "https://schema.org/InStock" }
+  ],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "30", "bestRating": "30", "ratingCount": "1", "reviewCount": "1" }
+}
+</script>
+
+<!-- JSON-LD: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://swarmandbee.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Data API", "item": "https://swarmandbee.com/data" }
+  ]
+}
+</script>
 </body>
 </html>
