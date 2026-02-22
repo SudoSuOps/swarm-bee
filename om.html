@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offering Memorandum — Swarm &amp; Bee | Sovereign Medical AI Infrastructure</title>
+  <meta name="description" content="Swarm & Bee Offering Memorandum — 391,991 CoVe-verified medical QA pairs, SwarmMed-14B model, dedicated RTX PRO 6000 compute, on-chain provenance via Hedera.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #080808;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #888; line-height: 1.7;
+    }
+    a { color: #B89B3C; text-decoration: none; }
+    a:hover { color: #e0e0e0; }
+
+    .om { max-width: 780px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+    /* ── Header ── */
+    .om-header {
+      text-align: center;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid #1a1a1a;
+      margin-bottom: 3rem;
+    }
+    .om-badge {
+      display: inline-block;
+      font-size: 0.55rem; font-weight: 500; letter-spacing: 0.25em;
+      text-transform: uppercase; color: #B89B3C;
+      border: 1px solid #2a2210; padding: 0.3rem 1rem;
+      margin-bottom: 1.6rem;
+    }
+    .om-header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 300; color: #e0e0e0;
+      letter-spacing: 0.06em; margin-bottom: 0.8rem;
+    }
+    .om-header .sub {
+      font-size: 0.82rem; color: #555;
+      letter-spacing: 0.04em;
+    }
+    .om-header .date {
+      font-size: 0.68rem; color: #333;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 1.2rem;
+    }
+
+    /* ── Sections ── */
+    .om-section { margin-bottom: 3rem; }
+    .om-section h2 {
+      font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: #555; margin-bottom: 1.4rem;
+      padding-bottom: 0.6rem; border-bottom: 1px solid #151515;
+    }
+    .om-section h3 {
+      font-size: 0.88rem; font-weight: 400;
+      color: #ccc; margin: 1.4rem 0 0.6rem;
+    }
+    .om-section p { font-size: 0.82rem; color: #777; margin-bottom: 0.8rem; }
+    .om-section ul {
+      list-style: none; padding: 0;
+    }
+    .om-section li {
+      font-size: 0.8rem; color: #777;
+      padding: 0.3rem 0 0.3rem 1.2rem;
+      position: relative;
+    }
+    .om-section li::before {
+      content: ''; position: absolute; left: 0; top: 0.75rem;
+      width: 4px; height: 4px; background: #333;
+    }
+
+    /* ── Stats Grid ── */
+    .stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1px; background: #1a1a1a; border: 1px solid #1a1a1a;
+      margin: 1.4rem 0;
+    }
+    .stat {
+      background: #0a0a0a; padding: 1.2rem 1rem; text-align: center;
+    }
+    .stat .num {
+      font-size: 1.6rem; font-weight: 300; color: #e0e0e0;
+      letter-spacing: 0.02em;
+    }
+    .stat .label {
+      font-size: 0.6rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #555; margin-top: 0.3rem;
+    }
+
+    /* ── Pricing Table ── */
+    .pricing-table {
+      width: 100%; border-collapse: collapse;
+      margin: 1.2rem 0; font-size: 0.78rem;
+    }
+    .pricing-table th {
+      text-align: left; font-weight: 500;
+      font-size: 0.6rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: #555;
+      padding: 0.6rem 0.8rem; border-bottom: 1px solid #1a1a1a;
+    }
+    .pricing-table td {
+      padding: 0.7rem 0.8rem; color: #888;
+      border-bottom: 1px solid #111;
+    }
+    .pricing-table tr:hover td { color: #ccc; }
+    .pricing-table .price { color: #B89B3C; font-weight: 500; }
+
+    /* ── Proof Box ── */
+    .proof-box {
+      background: #0a0a0a; border: 1px solid #1a1a1a;
+      padding: 1.2rem; margin: 1rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; color: #666; line-height: 2;
+    }
+    .proof-box .key { color: #555; }
+    .proof-box .val { color: #B89B3C; }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center; padding: 3rem 0;
+      border-top: 1px solid #1a1a1a; margin-top: 2rem;
+    }
+    .cta-section h2 {
+      font-size: 1.2rem; font-weight: 300; color: #e0e0e0;
+      letter-spacing: 0.04em; margin-bottom: 1rem;
+    }
+    .cta-section p { font-size: 0.8rem; color: #555; margin-bottom: 1.6rem; }
+    .cta-btn {
+      display: inline-block; padding: 0.75rem 2.4rem;
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      font-family: inherit; text-decoration: none;
+      transition: all 0.3s;
+    }
+    .cta-btn.gold { background: #B89B3C; color: #080808; }
+    .cta-btn.gold:hover { background: #d4b44a; color: #080808; }
+    .cta-btn.outline {
+      background: none; color: #888;
+      border: 1px solid #333; margin-left: 1rem;
+    }
+    .cta-btn.outline:hover { color: #e0e0e0; border-color: #555; }
+
+    /* ── Footer ── */
+    .om-footer {
+      text-align: center; padding-top: 2rem;
+      font-size: 0.65rem; color: #333;
+      letter-spacing: 0.08em;
+    }
+    .om-footer a { color: #444; }
+
+    /* ── Green accent for compute ── */
+    .green { color: #5a9a6a; }
+
+    @media (max-width: 600px) {
+      .om { padding: 2rem 1.2rem 4rem; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .cta-btn.outline { margin-left: 0; margin-top: 0.8rem; display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="om">
+
+  <!-- ── Header ── -->
+  <header class="om-header">
+    <div class="om-badge">Confidential Offering Memorandum</div>
+    <h1>Swarm &amp; Bee</h1>
+    <p class="sub">Sovereign Medical AI Infrastructure &mdash; Data, Models &amp; Compute</p>
+    <p class="date">February 2026 &middot; swarmandbee.hbar &middot; swarmandbee.com</p>
+  </header>
+
+  <!-- ── Executive Summary ── -->
+  <section class="om-section">
+    <h2>Executive Summary</h2>
+    <p>Swarm &amp; Bee (S&amp;B) is a sovereign compute infrastructure firm delivering production-grade medical AI assets &mdash; training data, fine-tuned models, and dedicated GPU rigs &mdash; with full on-chain provenance via Hedera.</p>
+    <p>Every data pair is CoVe-verified by a 235B parameter model. Every asset is anchored to Hedera Consensus Service. Every deployment is single-tenant sovereign &mdash; your data never leaves your rack.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="num">391,991</div><div class="label">Platinum QA Pairs</div></div>
+      <div class="stat"><div class="num">59</div><div class="label">Medical Specialties</div></div>
+      <div class="stat"><div class="num">30/30</div><div class="label">SFT Benchmark</div></div>
+      <div class="stat"><div class="num">2,660</div><div class="label">NFTs on Hedera</div></div>
+      <div class="stat"><div class="num">14.77B</div><div class="label">Model Parameters</div></div>
+      <div class="stat"><div class="num">96 GB</div><div class="label">Dedicated VRAM</div></div>
+    </div>
+  </section>
+
+  <!-- ── The Data Asset ── -->
+  <section class="om-section">
+    <h2>The Data Asset</h2>
+    <p>391,991 CoVe-verified platinum medical question-answer pairs spanning 59 clinical specialties. Sourced from 18 authoritative medical textbooks. Every pair passes a 4-stage quality gate with Chain-of-Verification by Qwen3-235B.</p>
+
+    <h3>Data Quality</h3>
+    <ul>
+      <li>30/30 SFT suitability benchmark &mdash; highest score of any medical dataset evaluated</li>
+      <li>93.6% CoVe conversion rate (57% direct PASS, 42% FLAG&rarr;rewrite)</li>
+      <li>MD5-fingerprinted for deduplication and provenance tracking</li>
+      <li>Not scraped, not synthetic, not ChatGPT-generated</li>
+    </ul>
+
+    <h3>Coverage Highlights</h3>
+    <ul>
+      <li>Internal Medicine (97K pairs) &middot; Surgery (43K) &middot; Neurology (37K)</li>
+      <li>Cardiology &middot; Oncology &middot; Radiology &middot; Pharmacology &middot; Emergency Medicine</li>
+      <li>Pathology &middot; Pediatrics &middot; Psychiatry &middot; Ophthalmology &middot; Dermatology</li>
+      <li>Obstetrics &middot; Endocrinology &middot; Nephrology &middot; Pulmonology &middot; +42 more</li>
+    </ul>
+
+    <h3>Access Methods</h3>
+    <ul>
+      <li><strong>REST API</strong> &mdash; Pull pairs by specialty with pagination. Bearer token auth.</li>
+      <li><strong>Free samples</strong> &mdash; 10 random pairs per request, any specialty, no auth required</li>
+      <li><strong>Bulk download</strong> &mdash; Full specialty JSONL files via API key</li>
+      <li><strong>Live catalog</strong> &mdash; <a href="/api/data/catalog">swarmandbee.com/api/data/catalog</a></li>
+    </ul>
+  </section>
+
+  <!-- ── The Model ── -->
+  <section class="om-section">
+    <h2>The Model &mdash; SwarmMed-14B</h2>
+    <p>Crown Jewel. 14.77 billion parameter medical language model fine-tuned on 10,008 platinum pairs across 80 specialties. Qwen2 architecture. Apache 2.0 license.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="num">14.77B</div><div class="label">Parameters</div></div>
+      <div class="stat"><div class="num">80</div><div class="label">Specialties</div></div>
+      <div class="stat"><div class="num">60%</div><div class="label">Multi-Specialty Eval</div></div>
+      <div class="stat"><div class="num">34.6</div><div class="label">Tokens/sec (2x 3090Ti)</div></div>
+    </div>
+
+    <ul>
+      <li>HuggingFace: <a href="https://huggingface.co/SwarmOS/SwarmMed-14B-v1.2-merged">SwarmOS/SwarmMed-14B-v1.2-merged</a></li>
+      <li>Model NFT: Hedera token 0.0.10291842 (SFMOD) Serial #1</li>
+      <li>On-chain model card with 43 properties and 24 traits</li>
+    </ul>
+
+    <h3>Models in Training</h3>
+    <ul>
+      <li><strong>SwarmMed-Vision-4B v2</strong> &mdash; Full 391K pair cook on RTX PRO 6000. Edge-deployable multimodal medical model. Training NOW.</li>
+      <li><strong>SwarmAviation-14B</strong> &mdash; First production aviation LLM. 2.4M raw records from FAA/ASRS/AviationQA. Grinding NOW.</li>
+    </ul>
+  </section>
+
+  <!-- ── Compute Infrastructure ── -->
+  <section class="om-section">
+    <h2>Compute Infrastructure</h2>
+    <p>Single-tenant sovereign deployment. Your model, your rack, your data. S&amp;B operates the hardware &mdash; you own the inference.</p>
+
+    <h3>Dedicated Rig Specification</h3>
+    <ul>
+      <li><strong>GPU:</strong> 2x NVIDIA RTX PRO 6000 (48GB each, 96GB total VRAM)</li>
+      <li><strong>Deployment:</strong> 100% holder-dedicated, no shared tenancy</li>
+      <li><strong>Access:</strong> Wallet-gated API &mdash; only your systems query your model</li>
+      <li><strong>SLA:</strong> 72-hour hardware replacement guarantee</li>
+      <li><strong class="green">Incoming:</strong> 8x RTX 6000 Blackwell + 24x PNY RTX 4500 Blackwell (32GB)</li>
+    </ul>
+
+    <h3>Fleet</h3>
+    <ul>
+      <li>42+ GPUs across 6 nodes (1,856 GB total VRAM)</li>
+      <li>vLLM serving infrastructure on swarmrails (2x RTX 3090Ti)</li>
+      <li>12x Zima Edge nodes for distributed inference</li>
+      <li>10x Jetson Orin Nano Super for edge deployment</li>
+    </ul>
+  </section>
+
+  <!-- ── Pricing ── -->
+  <section class="om-section">
+    <h2>Pricing</h2>
+
+    <h3>Data API Access</h3>
+    <table class="pricing-table">
+      <thead>
+        <tr><th>Tier</th><th>Price</th><th>Includes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sample</td><td>Free</td><td>10 random pairs per request, any specialty</td></tr>
+        <tr><td>Starter</td><td class="price">$99</td><td>391,991 pairs. 59 specialties. Unlimited API pulls.</td></tr>
+        <tr><td>Professional</td><td class="price">$999</td><td>Full access + priority Discord support</td></tr>
+        <tr><td>Monthly</td><td class="price">$4,999/mo</td><td>Unlimited API + monthly data drops + dedicated support</td></tr>
+        <tr><td>Enterprise</td><td class="price">$500K&ndash;$1.5M/yr</td><td>Full vault license. Sovereign deployment. Custom grinding.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Dedicated Compute</h3>
+    <table class="pricing-table">
+      <thead>
+        <tr><th>Offering</th><th>Price</th><th>Includes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>RTX PRO 6000 Rig</td><td class="price">$3,500/mo</td><td>96GB VRAM, wallet-gated API, 72hr replacement SLA</td></tr>
+        <tr><td>Custom Fine-Tune</td><td class="price">$50K+</td><td>Your specialty, your data, your model. Sovereign.</td></tr>
+        <tr><td>Edge Node (Jetson)</td><td class="price">$250/mo</td><td>10W, 4B model, edge inference for clinics</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Spec Build &mdash; Turnkey Investment</h3>
+    <table class="pricing-table">
+      <thead>
+        <tr><th>Metric</th><th>Value</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Entry Price</td><td class="price">$500,000 (10% cap rate)</td></tr>
+        <tr><td>Stabilized Value</td><td class="price">$1,000,000 (5% cap rate)</td></tr>
+        <tr><td>Upside</td><td>2x on tenant backfill</td></tr>
+        <tr><td>Term</td><td>10 years, 5% annual NOI bumps</td></tr>
+        <tr><td>Year 1 NOI</td><td>$50,000</td></tr>
+        <tr><td>Year 10 NOI</td><td>$77,566</td></tr>
+        <tr><td>Deferred Maintenance</td><td>120K new platinum pairs/year (10K/mo)</td></tr>
+        <tr><td>Total Data Over Term</td><td>1.2M pairs</td></tr>
+        <tr><td>Hardware</td><td>2x RTX PRO 6000 (96GB VRAM), S&amp;B owned</td></tr>
+        <tr><td>Escrow</td><td>Monthly delivery proofs on Hedera HCS</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── On-Chain Provenance ── -->
+  <section class="om-section">
+    <h2>On-Chain Provenance &mdash; Hedera Mainnet</h2>
+    <p>Every S&amp;B asset is anchored to Hedera &mdash; tamper-proof, timestamped, verifiable. No promises, only proofs.</p>
+
+    <div class="proof-box">
+      <span class="key">Operator</span>&emsp;<span class="val">0.0.10291827</span><br>
+      <span class="key">HNS Domain</span>&emsp;<span class="val">swarmandbee.hbar</span><br>
+      <span class="key">SFPAIR Token</span>&emsp;<span class="val">0.0.10291840</span> &mdash; 2,660 NFTs<br>
+      <span class="key">SFMOD Token</span>&emsp;<span class="val">0.0.10291842</span> &mdash; Crown Jewel model NFT<br>
+      <span class="key">SFDEED Token</span>&emsp;<span class="val">0.0.10291843</span> &mdash; Term Sheet v3<br>
+      <span class="key">SFDATA Token</span>&emsp;<span class="val">0.0.10291844</span> &mdash; Dataset token<br>
+      <span class="key">HCS Events</span>&emsp;<span class="val">0.0.10291836</span> &mdash; Agent activity log<br>
+      <span class="key">HCS Receipts</span>&emsp;<span class="val">0.0.10291834</span> &mdash; Sale/transfer proofs<br>
+      <span class="key">HCS Escrow</span>&emsp;<span class="val">0.0.10294205</span> &mdash; Monthly data delivery<br>
+      <span class="key">Genesis Block</span>&emsp;ETH L1 block 24,491,448<br>
+      <span class="key">Block 0 IPFS</span>&emsp;<span class="val">bafkreibzvif3n...evbynu</span> &mdash; 19,672 pairs<br>
+      <span class="key">SwarmBroker</span>&emsp;<span class="val">LIVE</span> &mdash; Autonomous agent on HCS
+    </div>
+  </section>
+
+  <!-- ── About ── -->
+  <section class="om-section">
+    <h2>About S&amp;B</h2>
+    <p>Swarm &amp; Bee is a sovereign compute infrastructure firm built on 30 years of commercial real estate brokerage pattern recognition. The founder closed $8B+ in industrial CRE at Marcus &amp; Millichap, built a 23-broker team, and now applies the same asset management discipline to AI compute infrastructure.</p>
+    <p>M&amp;M had 2,000 human brokers. S&amp;B has autonomous agents on Hedera.</p>
+    <ul>
+      <li>Cold chain logistics &rarr; Compute chain logistics</li>
+      <li>Last mile delivery &rarr; Last mile intelligence</li>
+      <li>Net lease industrial &rarr; Single-tenant sovereign compute</li>
+      <li>200 dials a day &rarr; 200 autonomous agent dials a day</li>
+    </ul>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section">
+    <h2>Ready to move?</h2>
+    <p>API key in 5 minutes. Dedicated rig in 72 hours. Spec build in 30 days.</p>
+    <a href="/data" class="cta-btn gold">Buy Training Data</a>
+    <a href="/loi" class="cta-btn outline">Submit LOI</a>
+    <a href="/rfp" class="cta-btn outline">Request Fine-Tuning</a>
+    <div style="margin-top:1.6rem;">
+      <a href="mailto:build@swarmandbee.com" style="font-size:0.75rem;color:#666;">build@swarmandbee.com</a>
+      <span style="margin:0 0.8em;color:#222;">&middot;</span>
+      <a href="tel:+15615327120" style="font-size:0.75rem;color:#666;">561.532.7120</a>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="om-footer">
+    <a href="/">Swarm &amp; Bee</a>
+    <span style="margin:0 0.6em;color:#1a1a1a;">&middot;</span>
+    <span>swarmandbee.hbar</span>
+    <span style="margin:0 0.6em;color:#1a1a1a;">&middot;</span>
+    <span>Hedera Mainnet</span>
+    <span style="margin:0 0.6em;color:#1a1a1a;">&middot;</span>
+    <span>February 2026</span>
+  </footer>
+
+</div>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Swarm & Bee — Sovereign Medical AI Infrastructure",
+  "description": "391,991 CoVe-verified medical QA pairs, SwarmMed-14B model, and dedicated RTX PRO 6000 compute. On-chain provenance via Hedera.",
+  "brand": { "@type": "Brand", "name": "Swarm & Bee" },
+  "offers": [
+    { "@type": "Offer", "name": "Starter API Access", "price": "99", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Professional API Access", "price": "999", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Monthly Subscription", "price": "4999", "priceCurrency": "USD", "billingIncrement": "P1M" },
+    { "@type": "Offer", "name": "Dedicated RTX PRO 6000", "price": "3500", "priceCurrency": "USD", "billingIncrement": "P1M" }
+  ]
+}
+</script>
+</body>
+</html>
