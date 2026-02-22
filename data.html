@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SwarmForge Data API | Platinum Medical Training Data — Swarm &amp; Bee</title>
+  <meta name="description" content="API access to 391,991 CoVe-verified platinum medical QA pairs across 59 specialties. 18 authoritative textbooks. Free sample endpoint. Enterprise licensing.">
+  <meta name="keywords" content="medical AI training data, medical QA pairs, CoVe verified, fine-tuning data, medical language model, platinum pairs, data API, medical AI, training dataset">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://swarmandbee.com/data">
+
+  <meta property="og:title" content="SwarmForge Data API | Platinum Medical Training Data">
+  <meta property="og:description" content="391,991 CoVe-verified medical QA pairs. 59 specialties. 18 textbooks. Free samples. API access.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://swarmandbee.com/data">
+  <meta property="og:image" content="https://swarmandbee.com/og-image.png">
+  <meta property="og:site_name" content="Swarm &amp; Bee">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SwarmForge Data API | Platinum Medical Training Data">
+  <meta name="twitter:description" content="391,991 CoVe-verified medical QA pairs. 59 specialties. Free samples. Enterprise licensing.">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #080808;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    a { color: #B89B3C; text-decoration: none; transition: color 0.3s; }
+    a:hover { color: #e0e0e0; }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 2.4rem;
+      background: rgba(8,8,8,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #151515;
+    }
+    .nav-brand { font-size: 1rem; font-weight: 300; color: #e0e0e0; letter-spacing: 0.1em; }
+    .nav-links { display: flex; gap: 1.6rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .nav-links a { color: #555; }
+    .nav-links a:hover { color: #e0e0e0; }
+    .nav-links a.active { color: #B89B3C; }
+
+    /* ── Sections ── */
+    .section { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; }
+    .section:first-of-type { padding-top: 7rem; }
+
+    /* ── Hero ── */
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #B89B3C; border: 1px solid #2a2210; padding: 0.35rem 0.8rem; margin-bottom: 1.4rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 300; color: #e0e0e0;
+      letter-spacing: 0.04em; margin-bottom: 1rem;
+    }
+    .hero p { font-size: 0.9rem; color: #666; max-width: 620px; }
+
+    /* ── Stats ── */
+    .stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1px; background: #151515; border: 1px solid #151515; margin: 3rem 0;
+    }
+    .stat {
+      background: #0a0a0a; padding: 1.4rem 1rem; text-align: center;
+    }
+    .stat-val { font-size: 1.3rem; font-weight: 300; color: #e0e0e0; }
+    .stat-label { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #555; margin-top: 0.3rem; }
+
+    /* ── Catalog Grid ── */
+    .catalog-header {
+      font-size: 0.65rem; font-weight: 400; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #555; margin-bottom: 1.4rem;
+    }
+    .catalog-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1px; background: #151515; border: 1px solid #151515;
+    }
+    .spec-card {
+      background: #0a0a0a; padding: 1rem; cursor: default; transition: background 0.3s;
+    }
+    .spec-card:hover { background: #111; }
+    .spec-name { font-size: 0.75rem; color: #ccc; font-weight: 400; margin-bottom: 0.3rem; }
+    .spec-count { font-size: 1.1rem; font-weight: 300; color: #B89B3C; }
+    .spec-tier { font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: #444; margin-top: 0.2rem; }
+    .catalog-loading { color: #333; font-size: 0.8rem; padding: 2rem; text-align: center; }
+
+    /* ── Pricing ── */
+    .price-table { width: 100%; border-collapse: collapse; margin: 1.4rem 0; }
+    .price-table th {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+      color: #555; text-align: left; padding: 0.8rem; border-bottom: 1px solid #1a1a1a;
+    }
+    .price-table td {
+      padding: 0.8rem; border-bottom: 1px solid #111; font-size: 0.85rem; color: #999;
+    }
+    .price-table td:nth-child(2) { color: #B89B3C; font-weight: 400; }
+    .price-table tr:hover td { background: #0c0c0c; }
+
+    /* ── API Docs ── */
+    .api-block {
+      background: #0a0a0a; border: 1px solid #1a1a1a; padding: 1.4rem; margin: 1rem 0;
+    }
+    .api-method {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; color: #5a9a6a; margin-bottom: 0.5rem;
+    }
+    .api-method.auth { color: #B89B3C; }
+    .api-url { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: #ccc; margin-bottom: 0.6rem; }
+    .api-desc { font-size: 0.78rem; color: #666; }
+    code {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
+      background: #111; padding: 0.15rem 0.4rem; color: #B89B3C;
+    }
+    pre {
+      background: #0a0a0a; border: 1px solid #1a1a1a; padding: 1rem;
+      overflow-x: auto; margin: 0.8rem 0;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #888; line-height: 1.7;
+    }
+
+    /* ── RTX Section ── */
+    .rtx-section {
+      background: #0a0a0a; border: 1px solid #1a2a1e; padding: 2.4rem; margin: 3rem 0;
+    }
+    .rtx-badge {
+      display: inline-block;
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #5a9a6a; border: 1px solid #1a2a1e; padding: 0.35rem 0.8rem; margin-bottom: 1rem;
+    }
+    .rtx-section h2 { font-size: 1.3rem; font-weight: 300; color: #e0e0e0; margin-bottom: 0.8rem; }
+    .rtx-section p { font-size: 0.85rem; color: #666; margin-bottom: 0.6rem; }
+    .rtx-specs {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; margin: 1.4rem 0;
+    }
+    .rtx-spec { font-size: 0.78rem; color: #888; }
+    .rtx-spec strong { color: #ccc; font-weight: 400; }
+    .rtx-price { font-size: 1.6rem; font-weight: 300; color: #5a9a6a; margin: 1rem 0 0.3rem; }
+    .rtx-price-note { font-size: 0.7rem; color: #555; }
+
+    /* ── CTA ── */
+    .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; margin: 2rem 0; }
+    .cta-btn {
+      display: inline-block; padding: 0.75rem 1.8rem;
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+      font-family: inherit; cursor: pointer; transition: all 0.3s;
+    }
+    .cta-gold { background: #B89B3C; color: #080808; border: none; }
+    .cta-gold:hover { background: #d4b44a; color: #080808; }
+    .cta-outline { background: none; color: #888; border: 1px solid #333; }
+    .cta-outline:hover { color: #e0e0e0; border-color: #555; }
+    .cta-green { background: #5a9a6a; color: #080808; border: none; }
+    .cta-green:hover { background: #6db87e; color: #080808; }
+
+    /* ── Section headings ── */
+    .sh {
+      font-size: 0.65rem; font-weight: 400; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #555; margin-bottom: 1.4rem;
+    }
+    .sh2 { font-size: 1.1rem; font-weight: 300; color: #ccc; margin-bottom: 1rem; }
+    .divider { height: 1px; background: #151515; margin: 3rem 0; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center; padding: 2rem; font-size: 0.65rem; color: #333;
+      border-top: 1px solid #111;
+    }
+    .footer a { color: #444; }
+    .footer .sep { margin: 0 0.8em; color: #1a1a1a; }
+
+    @media (max-width: 600px) {
+      .nav { padding: 1rem 1.2rem; }
+      .nav-links { gap: 0.8rem; font-size: 0.6rem; }
+      .section { padding: 2.5rem 1.2rem; }
+      .cta-row { flex-direction: column; }
+      .cta-btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="/" class="nav-brand">Swarm &amp; Bee</a>
+    <div class="nav-links">
+      <a href="/data" class="active">Data</a>
+      <a href="/loi">LOI</a>
+      <a href="/rfp">RFP</a>
+      <a href="mailto:build@swarmandbee.com">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <div class="section hero">
+    <div class="hero-badge">SwarmForge Platinum Data</div>
+    <h1>391,991 Verified Medical QA Pairs</h1>
+    <p>CoVe-verified against a 235B-parameter model. Sourced from 18 authoritative medical textbooks. 59 specialties. Zero patient data. Commercially licensable. API access.</p>
+  </div>
+
+  <!-- ── Stats ── -->
+  <div class="section" style="padding-top:0;">
+    <div class="stats">
+      <div class="stat"><div class="stat-val">391,991</div><div class="stat-label">Platinum Pairs</div></div>
+      <div class="stat"><div class="stat-val">59</div><div class="stat-label">Specialties</div></div>
+      <div class="stat"><div class="stat-val">18</div><div class="stat-label">Textbooks</div></div>
+      <div class="stat"><div class="stat-val">235B</div><div class="stat-label">CoVe Verifier</div></div>
+      <div class="stat"><div class="stat-val">0</div><div class="stat-label">Patient Data</div></div>
+    </div>
+  </div>
+
+  <!-- ── Live Catalog ── -->
+  <div class="section" style="padding-top:0;">
+    <div class="catalog-header">Specialty Catalog</div>
+    <div class="catalog-grid" id="catalogGrid">
+      <div class="catalog-loading">Loading catalog...</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="divider"></div>
+
+    <!-- ── Pricing ── -->
+    <div class="sh">Pricing</div>
+    <div class="sh2">Per-pair pricing backed by market comps</div>
+    <table class="price-table">
+      <thead>
+        <tr><th>Tier</th><th>Price</th><th>Access</th><th>Volume</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sample</td><td>Free</td><td>No auth required</td><td>10 pairs/request</td></tr>
+        <tr><td>Volume</td><td>$2/pair</td><td>API key + LOI</td><td>100K+ pairs</td></tr>
+        <tr><td>Standard</td><td>$5 &ndash; $10/pair</td><td>API key + LOI</td><td>10K &ndash; 100K pairs</td></tr>
+        <tr><td>Specialty</td><td>$15 &ndash; $25/pair</td><td>API key + LOI</td><td>&lt;10K pairs</td></tr>
+        <tr><td>Enterprise Annual</td><td>$500K &ndash; $1.5M/yr</td><td>Full vault license</td><td>All 391,991 pairs</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.72rem;color:#444;margin-top:0.6rem;">Replacement cost: $7&ndash;$13/pair. Underwriting memo available on request.</p>
+
+    <div class="divider"></div>
+
+    <!-- ── API Docs ── -->
+    <div class="sh">API Documentation</div>
+    <div class="sh2">Three endpoints. JSON responses. CORS enabled.</div>
+
+    <div class="api-block">
+      <div class="api-method">GET &mdash; Public</div>
+      <div class="api-url">/api/data/catalog</div>
+      <div class="api-desc">Returns the full specialty catalog with pair counts, pricing tiers, and metadata.</div>
+    </div>
+
+    <pre>curl https://swarmandbee.com/api/data/catalog</pre>
+
+    <div class="api-block">
+      <div class="api-method">GET &mdash; Public</div>
+      <div class="api-url">/api/data/sample?specialty=neurology</div>
+      <div class="api-desc">Returns 10 random platinum pairs. Optional <code>specialty</code> filter. No authentication required.</div>
+    </div>
+
+    <pre>curl https://swarmandbee.com/api/data/sample
+curl "https://swarmandbee.com/api/data/sample?specialty=surgery"</pre>
+
+    <div class="api-block">
+      <div class="api-method auth">GET &mdash; API Key Required</div>
+      <div class="api-url">/api/data/pull?specialty=surgery&amp;limit=100&amp;offset=0</div>
+      <div class="api-desc">Paginated access to platinum pairs by specialty. Max 1,000 pairs per request. Requires <code>Authorization: Bearer sk_swarm_xxx</code> header.</div>
+    </div>
+
+    <pre>curl -H "Authorization: Bearer YOUR_API_KEY" \
+  "https://swarmandbee.com/api/data/pull?specialty=cardiology&amp;limit=50&amp;offset=0"</pre>
+
+    <p style="font-size:0.78rem;color:#666;margin:1rem 0;">
+      <strong style="color:#ccc;font-weight:400;">Response format:</strong> All endpoints return JSON with <code>ok</code>, <code>count</code>, <code>pairs[]</code>, and pagination metadata (<code>total</code>, <code>offset</code>, <code>has_more</code>).
+    </p>
+
+    <div class="cta-row">
+      <a href="/loi" class="cta-btn cta-gold">Get API Key</a>
+      <a href="mailto:build@swarmandbee.com" class="cta-btn cta-outline">Questions</a>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── RTX 6000 Pro ── -->
+    <div class="rtx-section">
+      <div class="rtx-badge">Managed Compute</div>
+      <h2>RTX PRO 6000 Blackwell &mdash; Dedicated Cooking</h2>
+      <p>Your own dedicated fine-tuning rig. 2x NVIDIA RTX PRO 6000 Blackwell GPUs. 96GB VRAM each. Single-tenant. Your data never leaves your rack.</p>
+
+      <div class="rtx-specs">
+        <div class="rtx-spec"><strong>GPU:</strong> 2x RTX PRO 6000 Blackwell</div>
+        <div class="rtx-spec"><strong>VRAM:</strong> 192GB total (96GB each)</div>
+        <div class="rtx-spec"><strong>Tenancy:</strong> Single-tenant, dedicated</div>
+        <div class="rtx-spec"><strong>SLA:</strong> 72hr replacement guarantee</div>
+        <div class="rtx-spec"><strong>API:</strong> Wallet-gated inference endpoint</div>
+        <div class="rtx-spec"><strong>Data:</strong> Your data never leaves your rack</div>
+      </div>
+
+      <div class="rtx-price">$3,500<span style="font-size:0.8rem;color:#666;">/month</span></div>
+      <div class="rtx-price-note">Includes managed fine-tuning, monitoring, and model delivery. Spec-build turnkey available from $500K.</div>
+
+      <div class="cta-row" style="margin-top:1.4rem;">
+        <a href="/rfp" class="cta-btn cta-green">Request Fine-Tuning</a>
+        <a href="/loi" class="cta-btn cta-outline">License Data First</a>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── Provenance ── -->
+    <div class="sh">Provenance</div>
+    <div class="sh2">Every pair is traceable</div>
+    <p style="font-size:0.85rem;color:#666;margin-bottom:1rem;">
+      All platinum pairs are anchored to <strong style="color:#ccc;font-weight:400;">Hedera Hashgraph</strong> via HCS (Hashgraph Consensus Service) with IPFS-pinned metadata following HIP-412 v2. Each pair carries an MD5 fingerprint for deduplication and provenance lookup. SwarmChain genesis block anchored on Ethereum L1.
+    </p>
+    <p style="font-size:0.78rem;color:#555;">
+      HTS Token: <code>0.0.10291840</code> SFPAIR &nbsp;|&nbsp;
+      HCS Blocks: <code>0.0.10291833</code> &nbsp;|&nbsp;
+      Operator: <code>0.0.10291827</code> &nbsp;|&nbsp;
+      HNS: <code>swarmandbee.hbar</code>
+    </p>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <a href="/">Home</a>
+    <span class="sep">&middot;</span>
+    <a href="/data">Data API</a>
+    <span class="sep">&middot;</span>
+    <a href="/loi">License Data</a>
+    <span class="sep">&middot;</span>
+    <a href="/rfp">Fine-Tuning</a>
+    <span class="sep">&middot;</span>
+    <a href="mailto:build@swarmandbee.com">build@swarmandbee.com</a>
+    <span class="sep">&middot;</span>
+    <a href="tel:+15615327120">561.532.7120</a>
+    <span class="sep">&middot;</span>
+    <a href="https://data.swarmandbee.com/terms.html">Terms</a>
+    <span class="sep">&middot;</span>
+    <a href="https://data.swarmandbee.com/privacy.html">Privacy</a>
+    <br><br>
+    &copy; 2026 Swarm &amp; Bee. Last mile intelligence.
+  </footer>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "SwarmForge Platinum Medical Training Data",
+    "description": "391,991 CoVe-verified medical QA pairs across 59 specialties from 18 authoritative textbooks. API access for fine-tuning medical language models.",
+    "brand": { "@type": "Brand", "name": "Swarm & Bee" },
+    "url": "https://swarmandbee.com/data",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free Sample",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "10 random platinum pairs per request via API"
+      },
+      {
+        "@type": "Offer",
+        "name": "Volume License",
+        "price": "2.00",
+        "priceCurrency": "USD",
+        "unitText": "per pair",
+        "description": "100K+ pairs, API key access"
+      },
+      {
+        "@type": "Offer",
+        "name": "Enterprise Annual License",
+        "price": "500000",
+        "priceCurrency": "USD",
+        "description": "Full vault access, 391,991 pairs, annual license"
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    // Load live catalog from API
+    fetch('/api/data/catalog')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var grid = document.getElementById('catalogGrid');
+        if (!data.specialties) {
+          grid.innerHTML = '<div class="catalog-loading">Catalog unavailable. <a href="/loi">Contact us</a> for inventory.</div>';
+          return;
+        }
+        var entries = Object.entries(data.specialties)
+          .sort(function(a, b) { return b[1].pair_count - a[1].pair_count; });
+        grid.innerHTML = '';
+        entries.forEach(function(entry) {
+          var key = entry[0];
+          var info = entry[1];
+          var card = document.createElement('div');
+          card.className = 'spec-card';
+          card.innerHTML =
+            '<div class="spec-name">' + info.display_name + '</div>' +
+            '<div class="spec-count">' + info.pair_count.toLocaleString() + '</div>' +
+            '<div class="spec-tier">' + info.pricing_tier + '</div>';
+          grid.appendChild(card);
+        });
+      })
+      .catch(function() {
+        var grid = document.getElementById('catalogGrid');
+        grid.innerHTML = '<div class="catalog-loading">Catalog loading... <a href="/loi">Contact us</a> for full inventory.</div>';
+      });
+  </script>
+</body>
+</html>
