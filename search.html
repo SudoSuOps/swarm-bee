@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwarmNet Search — Active Listings | Swarm &amp; Bee</title>
+  <meta name="description" content="SwarmNet Search — Browse active dataset listings, pre-trained models, and compute offerings from Swarm & Bee. 100+ asset classes across medical, aviation, and compute verticals.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #080808;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #888; line-height: 1.6;
+    }
+    a { color: #B89B3C; text-decoration: none; }
+    a:hover { color: #e0e0e0; }
+
+    /* ── Header ── */
+    .header {
+      max-width: 1100px; margin: 0 auto;
+      padding: 2.4rem 2rem 0;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-size: 0.7rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: #555;
+    }
+    .logo a { color: #555; }
+    .logo a:hover { color: #e0e0e0; }
+    .header-links { font-size: 0.65rem; letter-spacing: 0.1em; }
+    .header-links a { color: #444; margin-left: 1.4rem; }
+    .header-links a:hover { color: #e0e0e0; }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 1100px; margin: 0 auto;
+      padding: 3rem 2rem 1rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 300; color: #e0e0e0;
+      letter-spacing: 0.06em; margin-bottom: 0.6rem;
+    }
+    .hero .sub {
+      font-size: 0.78rem; color: #555;
+      letter-spacing: 0.04em; margin-bottom: 0.3rem;
+    }
+    .hero .flow {
+      font-size: 0.62rem; color: #333;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-top: 0.8rem;
+    }
+    .hero .flow span { color: #B89B3C; }
+
+    /* ── Search ── */
+    .search-wrap {
+      max-width: 680px; margin: 1.8rem auto 0;
+      position: relative;
+    }
+    .search-input {
+      width: 100%; padding: 0.85rem 1.2rem 0.85rem 2.8rem;
+      background: #0a0a0a; border: 1px solid #1a1a1a;
+      font-family: inherit; font-size: 0.85rem;
+      color: #ccc; outline: none;
+      transition: border-color 0.3s;
+    }
+    .search-input:focus { border-color: #333; }
+    .search-input::placeholder { color: #333; }
+    .search-icon {
+      position: absolute; left: 1rem; top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.9rem; color: #333;
+    }
+
+    /* ── Filters ── */
+    .filters {
+      max-width: 1100px; margin: 1.4rem auto 0;
+      padding: 0 2rem;
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      justify-content: center;
+    }
+    .filter-btn {
+      padding: 0.4rem 1rem;
+      font-family: inherit; font-size: 0.62rem;
+      font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; cursor: pointer;
+      background: none; border: 1px solid #1a1a1a;
+      color: #555; transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: #333; color: #888; }
+    .filter-btn.active { border-color: #B89B3C; color: #B89B3C; }
+
+    /* ── Results bar ── */
+    .results-bar {
+      max-width: 1100px; margin: 1.4rem auto 0;
+      padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .results-count {
+      font-size: 0.65rem; color: #444;
+      letter-spacing: 0.08em;
+    }
+    .results-sort {
+      font-size: 0.62rem; color: #444;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .results-sort select {
+      background: #0a0a0a; border: 1px solid #1a1a1a;
+      color: #888; font-family: inherit; font-size: 0.65rem;
+      padding: 0.3rem 0.5rem; margin-left: 0.4rem; outline: none;
+    }
+
+    /* ── Listings Grid ── */
+    .listings {
+      max-width: 1100px; margin: 1rem auto 4rem;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1px; background: #111;
+    }
+    .listing {
+      background: #0a0a0a; padding: 1.4rem;
+      transition: background 0.2s; cursor: pointer;
+      position: relative;
+    }
+    .listing:hover { background: #0e0e0e; }
+    .listing-cat {
+      font-size: 0.55rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .listing-cat.medical { color: #B89B3C; }
+    .listing-cat.aviation { color: #4A90D9; }
+    .listing-cat.compute { color: #5a9a6a; }
+    .listing-cat.models { color: #9a6a9a; }
+    .listing-cat.verticals { color: #d97a4a; }
+    .listing h3 {
+      font-size: 0.88rem; font-weight: 400;
+      color: #ccc; margin-bottom: 0.4rem;
+      letter-spacing: 0.01em;
+    }
+    .listing .desc {
+      font-size: 0.72rem; color: #555;
+      margin-bottom: 0.8rem; line-height: 1.5;
+    }
+    .listing-meta {
+      display: flex; gap: 1.2rem; flex-wrap: wrap;
+      font-size: 0.62rem; letter-spacing: 0.06em;
+    }
+    .listing-meta .key { color: #444; }
+    .listing-meta .val { color: #888; }
+    .listing-meta .val.gold { color: #B89B3C; }
+    .listing-meta .val.green { color: #5a9a6a; }
+
+    .listing-status {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      font-size: 0.5rem; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+    }
+    .listing-status.active { color: #5a9a6a; border: 1px solid #1a2a1e; }
+    .listing-status.cooking { color: #B89B3C; border: 1px solid #2a2210; }
+    .listing-status.coming { color: #555; border: 1px solid #1a1a1a; }
+
+    .listing-cta {
+      display: inline-block; margin-top: 0.8rem;
+      font-size: 0.6rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border: 1px solid #222; color: #888;
+      transition: all 0.2s;
+    }
+    .listing-cta:hover { border-color: #B89B3C; color: #B89B3C; }
+
+    /* ── Footer ── */
+    .footer {
+      max-width: 1100px; margin: 0 auto;
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.65rem; color: #333;
+      letter-spacing: 0.08em;
+      border-top: 1px solid #111;
+    }
+    .footer a { color: #444; margin: 0 0.6em; }
+
+    /* ── Empty state ── */
+    .empty {
+      grid-column: 1 / -1; text-align: center;
+      padding: 4rem 2rem;
+      font-size: 0.85rem; color: #333;
+    }
+
+    @media (max-width: 600px) {
+      .header { flex-direction: column; gap: 0.8rem; text-align: center; }
+      .header-links a { margin-left: 0; margin-right: 1rem; }
+      .listings { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header class="header">
+    <div class="logo"><a href="/">Swarm &amp; Bee</a> &mdash; SwarmNet Search</div>
+    <div class="header-links">
+      <a href="/data">Data API</a>
+      <a href="/om">Offering Memo</a>
+      <a href="/rfp">Request Pairs</a>
+      <a href="/loi">License (LOI)</a>
+    </div>
+  </header>
+
+  <!-- ── Hero ── -->
+  <div class="hero">
+    <h1>Active Listings</h1>
+    <p class="sub">Search datasets, models, and compute offerings across all S&amp;B verticals.</p>
+    <p class="flow">Search &rarr; <span>RFP</span> &rarr; Proposal &rarr; <span>LOI</span> &rarr; Cook &rarr; <span>Ship</span></p>
+  </div>
+
+  <!-- ── Search ── -->
+  <div class="search-wrap">
+    <span class="search-icon">&#x2315;</span>
+    <input type="text" class="search-input" id="searchInput"
+           placeholder="Search listings... e.g. cardiology, aviation, RTX 6000, radiology">
+  </div>
+
+  <!-- ── Filters ── -->
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="medical">Medical</button>
+    <button class="filter-btn" data-filter="aviation">Aviation</button>
+    <button class="filter-btn" data-filter="compute">Compute</button>
+    <button class="filter-btn" data-filter="models">Models</button>
+    <button class="filter-btn" data-filter="verticals">New Verticals</button>
+  </div>
+
+  <!-- ── Results bar ── -->
+  <div class="results-bar">
+    <div class="results-count" id="resultsCount"></div>
+    <div class="results-sort">
+      Sort:
+      <select id="sortSelect">
+        <option value="pairs-desc">Pairs (High)</option>
+        <option value="pairs-asc">Pairs (Low)</option>
+        <option value="alpha">A-Z</option>
+        <option value="status">Status</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ── Listings Grid ── -->
+  <div class="listings" id="listingsGrid"></div>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <a href="/">Home</a>
+    <a href="/om">OM</a>
+    <a href="/data">API</a>
+    <a href="/rfp">RFP</a>
+    <a href="/loi">LOI</a>
+    <a href="mailto:build@swarmandbee.com">build@swarmandbee.com</a>
+    <a href="tel:+15615327120">561.532.7120</a>
+  </footer>
+
+<script>
+(function() {
+
+  // ══════════════════════════════════════════════════════════════════════
+  // ASSET CLASS LISTINGS — 100+ active listings across all S&B verticals
+  // ══════════════════════════════════════════════════════════════════════
+
+  var LISTINGS = [
+
+    // ── MEDICAL DATASETS (59 live specialties + expansion) ────────────
+
+    // Core Medical — ACTIVE (live in R2, available via API)
+    { name: 'Internal Medicine', cat: 'medical', pairs: 97488, status: 'active', desc: 'Comprehensive internal medicine QA. Harrison\'s Principles.', price: '$2/pair (volume)', tags: 'internist hospitalist diagnosis treatment' },
+    { name: 'Surgery', cat: 'medical', pairs: 43284, status: 'active', desc: 'General and specialty surgery. Schwartz\'s Principles.', price: '$2/pair (volume)', tags: 'surgical procedures operative' },
+    { name: 'Neurology', cat: 'medical', pairs: 37024, status: 'active', desc: 'Neurological disorders, diagnostics, treatment. Adams & Victor\'s.', price: '$2/pair (volume)', tags: 'neuro brain stroke seizure' },
+    { name: 'Cell Biology', cat: 'medical', pairs: 21130, status: 'active', desc: 'Cellular mechanisms, molecular pathways. Alberts\' Molecular Biology.', price: '$5/pair (standard)', tags: 'cell molecular signaling' },
+    { name: 'Pathology', cat: 'medical', pairs: 17608, status: 'active', desc: 'Disease mechanisms and histopathology. Robbins & Cotran.', price: '$5/pair (standard)', tags: 'pathologic disease mechanism biopsy' },
+    { name: 'Immunology', cat: 'medical', pairs: 14264, status: 'active', desc: 'Immune system, autoimmunity, immunotherapy. Janeway\'s.', price: '$5/pair (standard)', tags: 'immune antibody autoimmune vaccine' },
+    { name: 'Pharmacology', cat: 'medical', pairs: 13823, status: 'active', desc: 'Drug mechanisms, interactions, therapeutics. Katzung\'s.', price: '$5/pair (standard)', tags: 'drug pharma dosing interactions' },
+    { name: 'Histology', cat: 'medical', pairs: 13104, status: 'active', desc: 'Tissue structure and microscopic anatomy. Ross Histology.', price: '$5/pair (standard)', tags: 'tissue microscopic staining' },
+    { name: 'Physiology', cat: 'medical', pairs: 12919, status: 'active', desc: 'Human physiology systems. Levy Principles.', price: '$5/pair (standard)', tags: 'physio organ systems homeostasis' },
+    { name: 'Obstetrics & Gynecology', cat: 'medical', pairs: 12459, status: 'active', desc: 'OB/GYN, maternal-fetal, reproductive. Williams + Novak\'s.', price: '$5/pair (standard)', tags: 'obstetrics gynecology pregnancy labor' },
+    { name: 'Pediatrics', cat: 'medical', pairs: 11682, status: 'active', desc: 'Pediatric medicine, neonatology, development. Nelson\'s.', price: '$5/pair (standard)', tags: 'pediatric child neonatal growth' },
+    { name: 'Psychiatry', cat: 'medical', pairs: 10810, status: 'active', desc: 'Mental health, DSM-5 diagnostics, psychopharmacology.', price: '$5/pair (standard)', tags: 'mental health dsm depression anxiety' },
+    { name: 'Anatomy', cat: 'medical', pairs: 9065, status: 'active', desc: 'Human anatomy, clinical correlations. Gray\'s Anatomy.', price: '$10/pair (specialty)', tags: 'anatomy structure dissection' },
+    { name: 'USMLE Step 1', cat: 'medical', pairs: 8925, status: 'active', desc: 'Board prep, basic science review. First Aid Step 1.', price: '$10/pair (specialty)', tags: 'usmle board exam step1 review' },
+    { name: 'Biochemistry', cat: 'medical', pairs: 5797, status: 'active', desc: 'Metabolic pathways, enzymology. Lippincott Biochemistry.', price: '$10/pair (specialty)', tags: 'biochem metabolism enzyme pathway' },
+    { name: 'USMLE Step 2', cat: 'medical', pairs: 5529, status: 'active', desc: 'Clinical knowledge board prep. First Aid Step 2 CK.', price: '$10/pair (specialty)', tags: 'usmle board exam step2 clinical' },
+    { name: 'Oncology', cat: 'medical', pairs: 4710, status: 'active', desc: 'Cancer biology, treatment protocols, staging.', price: '$10/pair (specialty)', tags: 'cancer tumor chemotherapy radiation' },
+    { name: 'Hematology', cat: 'medical', pairs: 3649, status: 'active', desc: 'Blood disorders, coagulation, transfusion medicine.', price: '$10/pair (specialty)', tags: 'blood anemia coagulation transfusion' },
+    { name: 'Ophthalmology', cat: 'medical', pairs: 2717, status: 'active', desc: 'Eye diseases, surgical ophthalmology, retina.', price: '$15/pair (specialty)', tags: 'eye retina glaucoma cataract vision' },
+    { name: 'Radiology', cat: 'medical', pairs: 2513, status: 'active', desc: 'Diagnostic imaging, CT, MRI, X-ray interpretation.', price: '$15/pair (specialty)', tags: 'imaging xray ct mri ultrasound' },
+    { name: 'Genetics', cat: 'medical', pairs: 2429, status: 'active', desc: 'Medical genetics, genomics, hereditary conditions.', price: '$15/pair (specialty)', tags: 'gene dna genomic hereditary mutation' },
+    { name: 'Rheumatology', cat: 'medical', pairs: 2140, status: 'active', desc: 'Autoimmune and musculoskeletal diseases.', price: '$15/pair (specialty)', tags: 'autoimmune joint arthritis lupus' },
+    { name: 'Pulmonology', cat: 'medical', pairs: 1802, status: 'active', desc: 'Respiratory diseases, critical care pulmonary.', price: '$15/pair (specialty)', tags: 'lung respiratory asthma copd ventilator' },
+    { name: 'Orthopedics', cat: 'medical', pairs: 1691, status: 'active', desc: 'Musculoskeletal surgery, fractures, sports medicine.', price: '$15/pair (specialty)', tags: 'bone fracture joint sports surgery' },
+    { name: 'General Medicine', cat: 'medical', pairs: 1023, status: 'active', desc: 'Broad clinical medicine, differential diagnosis.', price: '$15/pair (specialty)', tags: 'general clinical primary care' },
+    { name: 'Endocrinology', cat: 'medical', pairs: 995, status: 'active', desc: 'Hormone disorders, diabetes, thyroid, metabolic.', price: '$15/pair (specialty)', tags: 'hormone diabetes thyroid adrenal metabolic' },
+    { name: 'Nephrology', cat: 'medical', pairs: 911, status: 'active', desc: 'Kidney diseases, dialysis, electrolyte disorders.', price: '$15/pair (specialty)', tags: 'kidney renal dialysis electrolyte' },
+    { name: 'Infectious Disease', cat: 'medical', pairs: 644, status: 'active', desc: 'Bacterial, viral, fungal, parasitic infections.', price: '$15/pair (specialty)', tags: 'infection bacteria virus antibiotic' },
+    { name: 'Cardiology', cat: 'medical', pairs: 637, status: 'active', desc: 'Heart disease, interventional, electrophysiology.', price: '$20/pair (specialty)', tags: 'heart cardiac ecg arrhythmia coronary' },
+    { name: 'Emergency Medicine', cat: 'medical', pairs: 582, status: 'active', desc: 'Acute care, trauma, triage, resuscitation.', price: '$20/pair (specialty)', tags: 'emergency acute trauma triage resuscitation' },
+    { name: 'Geriatrics', cat: 'medical', pairs: 555, status: 'active', desc: 'Elderly care, polypharmacy, cognitive decline.', price: '$20/pair (specialty)', tags: 'elderly aging dementia polypharmacy' },
+    { name: 'ENT / Otolaryngology', cat: 'medical', pairs: 541, status: 'active', desc: 'Ear, nose, throat disorders and surgery.', price: '$20/pair (specialty)', tags: 'ear nose throat hearing sinus' },
+    { name: 'Anesthesiology', cat: 'medical', pairs: 425, status: 'active', desc: 'Anesthesia, pain management, perioperative.', price: '$20/pair (specialty)', tags: 'anesthesia pain perioperative sedation' },
+    { name: 'Urology', cat: 'medical', pairs: 369, status: 'active', desc: 'Urological conditions, surgical urology.', price: '$20/pair (specialty)', tags: 'urinary bladder prostate kidney stone' },
+    { name: 'Dermatology', cat: 'medical', pairs: 301, status: 'active', desc: 'Skin diseases, dermatologic surgery, cosmetic.', price: '$20/pair (specialty)', tags: 'skin rash melanoma eczema psoriasis' },
+    { name: 'Nutrition', cat: 'medical', pairs: 256, status: 'active', desc: 'Clinical nutrition, dietetics, metabolic support.', price: '$20/pair (specialty)', tags: 'nutrition diet metabolic vitamins' },
+    { name: 'Allergy', cat: 'medical', pairs: 168, status: 'active', desc: 'Allergic disorders, immunotherapy, anaphylaxis.', price: '$25/pair (specialty)', tags: 'allergy immunotherapy anaphylaxis' },
+    { name: 'Critical Care', cat: 'medical', pairs: 142, status: 'active', desc: 'ICU management, ventilation, hemodynamic support.', price: '$25/pair (specialty)', tags: 'icu critical ventilator hemodynamic sepsis' },
+    { name: 'Palliative Care', cat: 'medical', pairs: 102, status: 'active', desc: 'End-of-life care, symptom management, hospice.', price: '$25/pair (specialty)', tags: 'palliative hospice end-of-life pain' },
+    { name: 'EM Subspecialties', cat: 'medical', pairs: 92, status: 'active', desc: 'EM Cardiac, Trauma, Toxicology, Neuro-EM, Peds-EM, Respiratory.', price: '$25/pair (specialty)', tags: 'emergency subspecialty trauma toxicology' },
+
+    // Medical — COOKING (grind in progress)
+    { name: 'Medical Imaging (MRI)', cat: 'medical', pairs: 1026, status: 'cooking', desc: 'MRI interpretation, multimodal vision-language pairs. Gold tier.', price: 'Custom quote', tags: 'mri imaging vision multimodal radiology' },
+
+    // Medical — COMING SOON (next grind targets)
+    { name: 'Sports Medicine', cat: 'medical', pairs: 0, status: 'coming', desc: 'Athletic injuries, rehabilitation, performance medicine.', price: 'RFP', tags: 'sports injury rehabilitation athlete' },
+    { name: 'Forensic Medicine', cat: 'medical', pairs: 0, status: 'coming', desc: 'Forensic pathology, toxicology, medicolegal.', price: 'RFP', tags: 'forensic autopsy medicolegal toxicology' },
+    { name: 'Pain Medicine', cat: 'medical', pairs: 0, status: 'coming', desc: 'Chronic pain management, interventional pain.', price: 'RFP', tags: 'pain chronic interventional nerve block' },
+    { name: 'Sleep Medicine', cat: 'medical', pairs: 0, status: 'coming', desc: 'Sleep disorders, polysomnography, circadian.', price: 'RFP', tags: 'sleep apnea insomnia circadian' },
+    { name: 'Medical Ethics', cat: 'medical', pairs: 0, status: 'coming', desc: 'Bioethics, informed consent, clinical decision-making.', price: 'RFP', tags: 'ethics bioethics consent autonomy' },
+    { name: 'Wound Care', cat: 'medical', pairs: 0, status: 'coming', desc: 'Wound healing, debridement, chronic wounds.', price: 'RFP', tags: 'wound healing chronic debridement' },
+    { name: 'Clinical Trials', cat: 'medical', pairs: 0, status: 'coming', desc: 'Trial design, endpoints, regulatory submissions.', price: 'RFP', tags: 'clinical trial fda regulatory endpoint' },
+    { name: 'Telemedicine', cat: 'medical', pairs: 0, status: 'coming', desc: 'Remote diagnostics, virtual care protocols.', price: 'RFP', tags: 'telehealth virtual care remote' },
+    { name: 'Nuclear Medicine', cat: 'medical', pairs: 0, status: 'coming', desc: 'Radioactive diagnostics, PET/SPECT imaging.', price: 'RFP', tags: 'nuclear pet spect radioactive imaging' },
+    { name: 'Transplant Medicine', cat: 'medical', pairs: 0, status: 'coming', desc: 'Organ transplant, immunosuppression, donor matching.', price: 'RFP', tags: 'transplant organ donor immunosuppression' },
+
+    // ── AVIATION DATASETS ─────────────────────────────────────────────
+
+    { name: 'Aviation Safety (ASRS)', cat: 'aviation', pairs: 47000, status: 'cooking', desc: 'NASA ASRS safety reports. Incident analysis, contributing factors.', price: '$5/pair (standard)', tags: 'safety incident asrs nasa report' },
+    { name: 'Aviation QA', cat: 'aviation', pairs: 1080000, status: 'cooking', desc: '1.08M question-answer pairs from aviation knowledge bases.', price: '$2/pair (volume)', tags: 'aviation qa knowledge general' },
+    { name: 'Pilot Training (PHAK)', cat: 'aviation', pairs: 0, status: 'cooking', desc: 'FAA Pilot\'s Handbook of Aeronautical Knowledge. Ground school.', price: '$10/pair (specialty)', tags: 'pilot training phak faa ground school' },
+    { name: 'Instrument Flying', cat: 'aviation', pairs: 0, status: 'cooking', desc: 'FAA Instrument Flying Handbook. IFR procedures.', price: '$10/pair (specialty)', tags: 'instrument ifr procedures approach' },
+    { name: 'Aircraft Maintenance (MRO)', cat: 'aviation', pairs: 0, status: 'cooking', desc: 'Maintenance, repair, overhaul procedures and regulations.', price: '$10/pair (specialty)', tags: 'maintenance mro repair overhaul mechanic' },
+    { name: 'ATC Communications', cat: 'aviation', pairs: 0, status: 'cooking', desc: 'Air traffic control procedures, phraseology, separation.', price: '$15/pair (specialty)', tags: 'atc tower approach communications' },
+    { name: 'Drone / sUAS Operations', cat: 'aviation', pairs: 0, status: 'cooking', desc: 'FAA Part 107, drone operations, UAS regulations.', price: '$10/pair (specialty)', tags: 'drone uas suas part107 remote pilot' },
+    { name: 'Helicopter Operations', cat: 'aviation', pairs: 0, status: 'cooking', desc: 'FAA Helicopter Flying Handbook. Rotor aerodynamics.', price: '$10/pair (specialty)', tags: 'helicopter rotor hovering autorotation' },
+    { name: 'Aviation Weather', cat: 'aviation', pairs: 0, status: 'cooking', desc: 'Meteorology for pilots, METARs, TAFs, convective hazards.', price: '$10/pair (specialty)', tags: 'weather metar taf convective icing turbulence' },
+    { name: 'Avionics Systems', cat: 'aviation', pairs: 0, status: 'cooking', desc: 'Navigation, communication, glass cockpit systems.', price: '$15/pair (specialty)', tags: 'avionics gps navigation glass cockpit' },
+    { name: 'Aerodynamics', cat: 'aviation', pairs: 0, status: 'cooking', desc: 'Flight dynamics, performance, stability and control.', price: '$10/pair (specialty)', tags: 'aerodynamics lift drag performance stability' },
+    { name: 'Aviation Risk Management', cat: 'aviation', pairs: 0, status: 'cooking', desc: 'FAA Risk Management Handbook. ADM, CRM, TEM.', price: '$10/pair (specialty)', tags: 'risk management adm crm safety human factors' },
+    { name: 'Weight & Balance', cat: 'aviation', pairs: 0, status: 'cooking', desc: 'Aircraft loading, CG calculations, performance charts.', price: '$10/pair (specialty)', tags: 'weight balance cg loading performance' },
+    { name: 'Flight Operations', cat: 'aviation', pairs: 0, status: 'cooking', desc: 'Standard operating procedures, checklists, dispatch.', price: '$10/pair (specialty)', tags: 'operations sop checklist dispatch' },
+
+    // ── COMPUTE OFFERINGS ─────────────────────────────────────────────
+
+    { name: 'RTX PRO 6000 Dedicated Rig', cat: 'compute', pairs: 0, status: 'active', desc: '2x RTX PRO 6000 (96GB VRAM). Single-tenant. Wallet-gated API. 72hr replacement SLA.', price: '$3,500/mo', tags: 'gpu rtx6000 dedicated sovereign vram' },
+    { name: 'RTX 6000 Blackwell Rig', cat: 'compute', pairs: 0, status: 'coming', desc: 'Next-gen Blackwell architecture. Arriving Feb 2026.', price: '$4,500/mo (est)', tags: 'gpu blackwell rtx6000 next-gen' },
+    { name: 'RTX 4500 Blackwell Workstation', cat: 'compute', pairs: 0, status: 'coming', desc: 'PNY RTX 4500 Blackwell (32GB). Workstation-class inference.', price: '$1,800/mo (est)', tags: 'gpu rtx4500 blackwell workstation inference' },
+    { name: 'Edge Inference Node (Jetson)', cat: 'compute', pairs: 0, status: 'active', desc: 'Jetson Orin Nano Super. 10W, 4B model inference. Clinic/bedside deployment.', price: '$250/mo', tags: 'edge jetson orin inference clinic iot' },
+    { name: 'Zima Edge Cluster', cat: 'compute', pairs: 0, status: 'active', desc: '12-node Zima edge cluster. Distributed inference and verification.', price: '$800/mo', tags: 'edge cluster distributed zima verification' },
+    { name: 'Custom Fine-Tune Service', cat: 'compute', pairs: 0, status: 'active', desc: 'We fine-tune on your data, your specialty. Sovereign output.', price: '$50K+ project', tags: 'finetune custom training sovereign' },
+    { name: 'Spec Build Turnkey', cat: 'compute', pairs: 0, status: 'active', desc: '$500K entry at 10% cap. 2x upside on stabilization. 10yr term, 5% bumps.', price: '$500K entry', tags: 'spec build cre investment cap rate turnkey' },
+    { name: 'Managed Inference API', cat: 'compute', pairs: 0, status: 'active', desc: 'Hosted inference on S&B fleet. Pay per token. HIPAA-ready.', price: 'Per-token pricing', tags: 'inference api hosted managed hipaa' },
+    { name: 'CoVe Verification Service', cat: 'compute', pairs: 0, status: 'active', desc: 'Chain-of-Verification on your data. 235B verifier. 93.6% conversion.', price: '$0.02/pair', tags: 'cove verification quality assurance' },
+
+    // ── PRE-TRAINED MODELS ────────────────────────────────────────────
+
+    { name: 'SwarmMed-14B v1.2', cat: 'models', pairs: 10008, status: 'active', desc: 'Crown Jewel. 14.77B params, 80 specialties, Qwen2 arch. Apache 2.0.', price: 'Included w/ data license', tags: 'swarmmed 14b medical llm qwen' },
+    { name: 'SwarmMed-7B v5', cat: 'models', pairs: 1191, status: 'active', desc: 'Edge-deployable 7B medical model. 52.5% concept coverage.', price: 'Included w/ data license', tags: 'swarmmed 7b edge medical compact' },
+    { name: 'SwarmMed-Vision-4B v1', cat: 'models', pairs: 1026, status: 'active', desc: 'First medical vision-language model. MRI gold pairs. 4.4B params.', price: 'Custom quote', tags: 'vision multimodal 4b mri medical imaging' },
+    { name: 'SwarmMed-Vision-4B v2', cat: 'models', pairs: 391991, status: 'cooking', desc: 'Full 391K pair cook. Training NOW on RTX PRO 6000. Edge-deployable.', price: 'Custom quote', tags: 'vision multimodal 4b full cook medical' },
+    { name: 'SwarmAviation-14B', cat: 'models', pairs: 0, status: 'cooking', desc: 'First production aviation LLM. 2.4M raw records. Grinding NOW.', price: 'Custom quote', tags: 'aviation 14b llm pilot mro' },
+
+    // ── NEW VERTICALS (Coming Soon — RFP driven) ──────────────────────
+
+    { name: 'Legal / Contract Analysis', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Legal document analysis, contract review, compliance.', price: 'RFP', tags: 'legal contract compliance regulatory' },
+    { name: 'Construction / Building Code', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Building codes, inspections, safety regulations.', price: 'RFP', tags: 'construction building code inspection' },
+    { name: 'Oil & Gas Operations', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Upstream/downstream operations, safety, environmental.', price: 'RFP', tags: 'oil gas energy upstream downstream drilling' },
+    { name: 'Manufacturing QC', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Quality control, process optimization, Six Sigma.', price: 'RFP', tags: 'manufacturing quality control process' },
+    { name: 'Agriculture / Precision Farming', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Crop science, precision agriculture, soil analysis.', price: 'RFP', tags: 'agriculture farming crop soil precision' },
+    { name: 'Cybersecurity', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Threat analysis, incident response, compliance frameworks.', price: 'RFP', tags: 'cybersecurity threat incident response compliance' },
+    { name: 'Veterinary Medicine', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Animal health, diagnostics, treatment protocols.', price: 'RFP', tags: 'veterinary animal health diagnostics' },
+    { name: 'Insurance Underwriting', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Risk assessment, claims analysis, actuarial.', price: 'RFP', tags: 'insurance underwriting risk claims actuarial' },
+    { name: 'Supply Chain / Logistics', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Logistics optimization, routing, warehouse operations.', price: 'RFP', tags: 'supply chain logistics routing warehouse' },
+    { name: 'Real Estate (CRE)', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Commercial real estate analysis, underwriting, market comps.', price: 'RFP', tags: 'real estate cre commercial underwriting' },
+    { name: 'Environmental Compliance', cat: 'verticals', pairs: 0, status: 'coming', desc: 'EPA regulations, environmental impact, remediation.', price: 'RFP', tags: 'environmental epa compliance remediation' },
+    { name: 'Dental', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Dental procedures, oral surgery, orthodontics.', price: 'RFP', tags: 'dental oral surgery orthodontics' },
+    { name: 'Nursing', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Nursing protocols, patient care, NCLEX prep.', price: 'RFP', tags: 'nursing patient care nclex protocols' },
+    { name: 'Physical Therapy', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Rehabilitation, exercise science, musculoskeletal.', price: 'RFP', tags: 'physical therapy rehab exercise musculoskeletal' },
+    { name: 'Pharmacy', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Dispensing, drug interactions, clinical pharmacy.', price: 'RFP', tags: 'pharmacy dispensing drug interaction clinical' },
+  ];
+
+  // ══════════════════════════════════════════════════════════════════════
+  // RENDER + SEARCH + FILTER
+  // ══════════════════════════════════════════════════════════════════════
+
+  var grid = document.getElementById('listingsGrid');
+  var searchInput = document.getElementById('searchInput');
+  var filters = document.getElementById('filters');
+  var resultsCount = document.getElementById('resultsCount');
+  var sortSelect = document.getElementById('sortSelect');
+  var currentFilter = 'all';
+
+  function renderListings(items) {
+    if (items.length === 0) {
+      grid.innerHTML = '<div class="empty">No listings match your search. Try a different term or <a href="/rfp">submit an RFP</a> for custom data.</div>';
+      resultsCount.textContent = '0 listings';
+      return;
+    }
+
+    resultsCount.textContent = items.length + ' listing' + (items.length !== 1 ? 's' : '');
+
+    grid.innerHTML = items.map(function(l) {
+      var pairsDisplay = l.pairs > 0 ? l.pairs.toLocaleString() + ' pairs' : 'RFP for quote';
+      var statusClass = l.status;
+      var statusLabel = l.status === 'active' ? 'Active' : l.status === 'cooking' ? 'Cooking' : 'Coming Soon';
+      var ctaText = l.status === 'active' ? (l.pairs > 0 ? 'Pull Data' : 'Get Quote') : 'Request (RFP)';
+      var ctaHref = l.status === 'active' && l.pairs > 0 ? '/data' : '/rfp';
+
+      return '<div class="listing" data-cat="' + l.cat + '">' +
+        '<span class="listing-status ' + statusClass + '">' + statusLabel + '</span>' +
+        '<div class="listing-cat ' + l.cat + '">' + l.cat + '</div>' +
+        '<h3>' + l.name + '</h3>' +
+        '<p class="desc">' + l.desc + '</p>' +
+        '<div class="listing-meta">' +
+          '<div><span class="key">Pairs: </span><span class="val">' + pairsDisplay + '</span></div>' +
+          '<div><span class="key">Price: </span><span class="val gold">' + l.price + '</span></div>' +
+        '</div>' +
+        '<a href="' + ctaHref + '" class="listing-cta">' + ctaText + '</a>' +
+      '</div>';
+    }).join('');
+  }
+
+  function getFiltered() {
+    var query = searchInput.value.toLowerCase().trim();
+    var sortVal = sortSelect.value;
+
+    var filtered = LISTINGS.filter(function(l) {
+      var matchFilter = currentFilter === 'all' || l.cat === currentFilter;
+      if (!matchFilter) return false;
+      if (!query) return true;
+      var searchable = (l.name + ' ' + l.desc + ' ' + l.cat + ' ' + (l.tags || '')).toLowerCase();
+      return searchable.indexOf(query) !== -1;
+    });
+
+    // Sort
+    filtered.sort(function(a, b) {
+      if (sortVal === 'pairs-desc') return b.pairs - a.pairs;
+      if (sortVal === 'pairs-asc') return a.pairs - b.pairs;
+      if (sortVal === 'alpha') return a.name.localeCompare(b.name);
+      if (sortVal === 'status') {
+        var order = { active: 0, cooking: 1, coming: 2 };
+        return (order[a.status] || 3) - (order[b.status] || 3);
+      }
+      return 0;
+    });
+
+    return filtered;
+  }
+
+  function update() { renderListings(getFiltered()); }
+
+  // Events
+  searchInput.addEventListener('input', update);
+  sortSelect.addEventListener('change', update);
+
+  filters.addEventListener('click', function(e) {
+    if (!e.target.classList.contains('filter-btn')) return;
+    filters.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    e.target.classList.add('active');
+    currentFilter = e.target.getAttribute('data-filter');
+    update();
+  });
+
+  // Initial render
+  update();
+
+})();
+</script>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SearchResultsPage",
+  "name": "SwarmNet Search — Active Listings",
+  "description": "Browse active dataset listings, pre-trained models, and compute offerings from Swarm & Bee.",
+  "url": "https://swarmandbee.com/search",
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": 100,
+    "itemListElement": [
+      { "@type": "Product", "name": "Internal Medicine Dataset", "description": "97,488 CoVe-verified QA pairs" },
+      { "@type": "Product", "name": "Surgery Dataset", "description": "43,284 CoVe-verified QA pairs" },
+      { "@type": "Product", "name": "SwarmMed-14B", "description": "14.77B parameter medical language model" }
+    ]
+  }
+}
+</script>
+</body>
+</html>
