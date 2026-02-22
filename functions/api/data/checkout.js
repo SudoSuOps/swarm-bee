@@ -1,18 +1,26 @@
 /**
  * Cloudflare Pages Function: POST /api/data/checkout
  * Creates a Stripe Checkout Session for data API access.
- * Body: { "tier": "starter" | "professional" }
+ * Body: { "tier": "starter" | "professional" | "monthly" }
  */
 const TIERS = {
   starter: {
     name: 'SwarmForge Starter — API Access',
     description: '391,991 platinum medical QA pairs. 59 specialties. Unlimited pulls.',
     price: 9900,
+    mode: 'payment',
   },
   professional: {
     name: 'SwarmForge Professional — API Access + Priority Support',
     description: '391,991 platinum medical QA pairs. 59 specialties. Unlimited pulls. Priority Discord support.',
     price: 99900,
+    mode: 'payment',
+  },
+  monthly: {
+    name: 'SwarmForge Monthly — Unlimited API + Fresh Drops',
+    description: 'All 59 specialties. Unlimited pulls. Monthly data drops. Priority Discord. Dedicated support.',
+    price: 499900,
+    mode: 'subscription',
   },
 };
 
@@ -31,7 +39,7 @@ export async function onRequestPost(context) {
     if (!tier) {
       return new Response(JSON.stringify({
         ok: false,
-        error: 'Invalid tier. Use "starter" or "professional".',
+        error: 'Invalid tier. Use "starter", "professional", or "monthly".',
       }), { status: 400, headers });
     }
 
@@ -43,7 +51,7 @@ export async function onRequestPost(context) {
     }
 
     const params = new URLSearchParams();
-    params.append('mode', 'payment');
+    params.append('mode', tier.mode);
     params.append('success_url', 'https://swarmandbee.com/data-success?session_id={CHECKOUT_SESSION_ID}');
     params.append('cancel_url', 'https://swarmandbee.com/data');
     params.append('line_items[0][price_data][currency]', 'usd');
@@ -51,6 +59,9 @@ export async function onRequestPost(context) {
     params.append('line_items[0][price_data][product_data][description]', tier.description);
     params.append('line_items[0][price_data][unit_amount]', String(tier.price));
     params.append('line_items[0][quantity]', '1');
+    if (tier.mode === 'subscription') {
+      params.append('line_items[0][price_data][recurring][interval]', 'month');
+    }
     params.append('metadata[tier]', tierKey);
     params.append('metadata[product]', 'swarmforge-data-api');
 
