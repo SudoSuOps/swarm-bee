@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — Swarm &amp; Bee | Why Datasets, Why Sovereign, Why Us</title>
+  <meta name="description" content="Swarm & Bee FAQ — Why sovereign compute matters, why training data is the asset, why search-driven data brokerage changes everything.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #080808;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #888; line-height: 1.7;
+    }
+    a { color: #B89B3C; text-decoration: none; }
+    a:hover { color: #e0e0e0; }
+
+    .page { max-width: 720px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+
+    /* ── Header ── */
+    .nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 3rem; padding-bottom: 1.4rem;
+      border-bottom: 1px solid #151515;
+    }
+    .nav-logo {
+      font-size: 0.68rem; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase; color: #555;
+    }
+    .nav-logo a { color: #555; }
+    .nav-logo a:hover { color: #e0e0e0; }
+    .nav-links { font-size: 0.62rem; letter-spacing: 0.1em; }
+    .nav-links a { color: #444; margin-left: 1.2rem; }
+    .nav-links a:hover { color: #e0e0e0; }
+
+    /* ── Title ── */
+    .title {
+      text-align: center; margin-bottom: 3rem;
+    }
+    .title h1 {
+      font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+      font-weight: 300; color: #e0e0e0;
+      letter-spacing: 0.06em; margin-bottom: 0.6rem;
+    }
+    .title p {
+      font-size: 0.78rem; color: #444;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── FAQ Items ── */
+    .faq-section {
+      margin-bottom: 2.8rem;
+    }
+    .faq-section-label {
+      font-size: 0.55rem; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      padding: 0.3rem 0.8rem; display: inline-block;
+      margin-bottom: 1.6rem;
+    }
+    .faq-section-label.gold { color: #B89B3C; border: 1px solid #2a2210; }
+    .faq-section-label.green { color: #5a9a6a; border: 1px solid #1a2a1e; }
+    .faq-section-label.blue { color: #4A90D9; border: 1px solid #1a2040; }
+    .faq-section-label.white { color: #888; border: 1px solid #222; }
+
+    .faq-item {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #111;
+    }
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-q {
+      font-size: 1rem; font-weight: 400;
+      color: #ccc; letter-spacing: 0.01em;
+      margin-bottom: 0.8rem;
+    }
+    .faq-a {
+      font-size: 0.82rem; color: #666;
+    }
+    .faq-a p { margin-bottom: 0.7rem; }
+    .faq-a strong { color: #999; font-weight: 500; }
+    .faq-a ul {
+      list-style: none; padding: 0; margin: 0.6rem 0;
+    }
+    .faq-a li {
+      padding: 0.25rem 0 0.25rem 1.2rem;
+      position: relative; font-size: 0.8rem;
+    }
+    .faq-a li::before {
+      content: ''; position: absolute; left: 0; top: 0.65rem;
+      width: 4px; height: 4px; background: #333;
+    }
+
+    .callout {
+      background: #0a0a0a; border-left: 2px solid #B89B3C;
+      padding: 1rem 1.2rem; margin: 1rem 0;
+      font-size: 0.78rem; color: #777;
+    }
+
+    /* ── CTA ── */
+    .cta {
+      text-align: center; padding: 2.4rem 0;
+      border-top: 1px solid #151515; margin-top: 1rem;
+    }
+    .cta p { font-size: 0.8rem; color: #555; margin-bottom: 1.2rem; }
+    .cta-btn {
+      display: inline-block; padding: 0.7rem 2rem;
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      font-family: inherit; text-decoration: none;
+      transition: all 0.3s;
+    }
+    .cta-btn.gold { background: #B89B3C; color: #080808; }
+    .cta-btn.gold:hover { background: #d4b44a; }
+    .cta-btn.outline { background: none; color: #666; border: 1px solid #222; margin-left: 0.8rem; }
+    .cta-btn.outline:hover { color: #e0e0e0; border-color: #444; }
+
+    /* ── Footer ── */
+    .foot {
+      text-align: center; padding-top: 1.6rem;
+      font-size: 0.62rem; color: #333; letter-spacing: 0.08em;
+    }
+    .foot a { color: #444; margin: 0 0.5em; }
+
+    @media (max-width: 600px) {
+      .page { padding: 2rem 1.2rem 4rem; }
+      .nav { flex-direction: column; gap: 0.6rem; text-align: center; }
+      .nav-links a { margin-left: 0; margin-right: 0.8rem; }
+      .cta-btn.outline { margin-left: 0; margin-top: 0.6rem; display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ── Nav ── -->
+  <nav class="nav">
+    <div class="nav-logo"><a href="/">Swarm &amp; Bee</a></div>
+    <div class="nav-links">
+      <a href="/search">Search</a>
+      <a href="/data">Data API</a>
+      <a href="/om">OM</a>
+      <a href="/rfp">RFP</a>
+      <a href="/loi">LOI</a>
+    </div>
+  </nav>
+
+  <!-- ── Title ── -->
+  <div class="title">
+    <h1>Frequently Asked Questions</h1>
+    <p>What we do, why we do it, and why it matters.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- WHY DATASETS -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="faq-section">
+    <div class="faq-section-label gold">Why Datasets</div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why is training data the real asset?</div>
+      <div class="faq-a">
+        <p>Models depreciate. Data appreciates. Every foundation model released makes the last one obsolete &mdash; but the training data that makes a model useful in a specific domain only gets more valuable over time.</p>
+        <p>A model is a delivery vehicle. The data is the product. If you own the data, you can retrain on every new architecture that drops. If you only own the model, you're one release cycle from irrelevance.</p>
+        <div class="callout">Scale AI charges $100 per training example. We have 391,991 at $0.25/pair. The data is the moat.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What makes S&amp;B data different from public datasets?</div>
+      <div class="faq-a">
+        <p>Three things: <strong>source</strong>, <strong>verification</strong>, and <strong>provenance</strong>.</p>
+        <ul>
+          <li><strong>Source:</strong> 18 authoritative medical textbooks (Harrison's, Schwartz's, Robbins, Gray's, etc). Not scraped from Reddit, not generated by ChatGPT, not pulled from forums.</li>
+          <li><strong>Verification:</strong> Every pair passes a 4-stage quality gate with Chain-of-Verification by a 235B parameter model (Qwen3-235B). 93.6% conversion rate. The pairs that don't pass get rewritten until they do.</li>
+          <li><strong>Provenance:</strong> Every pair is MD5-fingerprinted and anchored to Hedera blockchain. You can verify the origin, timestamp, and integrity of any pair in the vault. Try that with MedQA.</li>
+        </ul>
+        <p>We scored <strong>30/30 on SFT suitability</strong> &mdash; the highest score of any medical dataset benchmarked. That's not marketing. That's measured.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why 59 specialties instead of one deep vertical?</div>
+      <div class="faq-a">
+        <p>Because the buyer decides what they need, not us. A cardiology startup needs cardiology. A hospital system needs everything. A researcher needs the specialty their grant is focused on.</p>
+        <p>Broad inventory lets us serve every buyer that walks in the door. Then we go deep on demand &mdash; someone submits an RFP for 10,000 pediatric cardiology pairs, we grind it. The breadth is the storefront. The depth is the custom work.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do you verify 391,991 pairs?</div>
+      <div class="faq-a">
+        <p><strong>Chain-of-Verification (CoVe).</strong> Every pair goes through:</p>
+        <ul>
+          <li><strong>Stage 1:</strong> Generation from authoritative source material using clinical templates</li>
+          <li><strong>Stage 2:</strong> Structural validation (format, completeness, deduplication)</li>
+          <li><strong>Stage 3:</strong> CoVe verification by Qwen3-235B &mdash; the verifier checks factual accuracy, clinical reasoning, and answer completeness</li>
+          <li><strong>Stage 4:</strong> Pairs that FLAG get rewritten and re-verified. 42% of pairs go through at least one rewrite cycle.</li>
+        </ul>
+        <p>57% pass on first verification. 93.6% pass after rewrite. The remaining 6.4% are discarded. Zero garbage makes it to the vault.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- WHY SEARCH -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="faq-section">
+    <div class="faq-section-label blue">Why SwarmNet Search</div>
+
+    <div class="faq-item">
+      <div class="faq-q">What is SwarmNet Search?</div>
+      <div class="faq-a">
+        <p>SwarmNet is our active listings platform &mdash; like an MLS for AI training data, models, and compute. You search by category, specialty, or keyword. You find what you need. You submit an RFP or buy directly.</p>
+        <p>Think of it as the storefront. 100+ asset classes across medical, aviation, compute, and emerging verticals. Everything has a status: <strong>Active</strong> (buy now), <strong>Cooking</strong> (in production), or <strong>Coming Soon</strong> (RFP to trigger).</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How does the buy flow work?</div>
+      <div class="faq-a">
+        <p>Six steps. Same flow whether you're buying 10 pairs or licensing the full vault:</p>
+        <ul>
+          <li><strong>Search</strong> &mdash; Find your asset class on <a href="/search">SwarmNet</a></li>
+          <li><strong>RFP</strong> &mdash; Submit a <a href="/rfp">Request for Pairs</a> with your specs</li>
+          <li><strong>Proposal</strong> &mdash; We drop a proposal within 48 hours: scope, pricing, timeline</li>
+          <li><strong>LOI</strong> &mdash; You submit a <a href="/loi">Letter of Intent</a> to lock the deal</li>
+          <li><strong>Cook</strong> &mdash; We grind, verify, and deliver</li>
+          <li><strong>Ship</strong> &mdash; Data delivered via API, bulk download, or dedicated deployment</li>
+        </ul>
+        <p>For active listings ($99&ndash;$999), skip straight to <a href="/data">checkout</a> &mdash; API key in 5 minutes.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why list asset classes that aren't built yet?</div>
+      <div class="faq-a">
+        <p>Because the market tells us what to cook. If nobody searches for "veterinary medicine," we don't grind veterinary data. If 50 people search for it in a month, that's a signal &mdash; and we fire up the grinder.</p>
+        <p>The "Coming Soon" listings are demand signals. Your RFP is a vote. Enough votes and we allocate GPU time, source material, and verification cycles. That's how you build inventory that the market actually wants.</p>
+        <div class="callout">In CRE, you don't build a warehouse and hope someone leases it. You get letters of intent first. Same principle. Different asset class.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- WHY COMPUTE -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="faq-section">
+    <div class="faq-section-label green">Why Compute</div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why dedicated hardware instead of cloud?</div>
+      <div class="faq-a">
+        <p>Cloud GPU is a time-share. You share the hardware, you share the risk, and your data transits through someone else's network. That's fine for a weekend hackathon. It's unacceptable for clinical AI.</p>
+        <p><strong>Dedicated means:</strong></p>
+        <ul>
+          <li>Your rig. Nobody else touches it. No noisy neighbors.</li>
+          <li>Your data never leaves the box. Not in transit, not at rest, not ever.</li>
+          <li>Wallet-gated API &mdash; cryptographic proof that only your systems can query your model.</li>
+          <li>72-hour hardware replacement SLA &mdash; not a ticket in a queue, a swap.</li>
+        </ul>
+        <p>AWS charges $32/hr for an A100. That's $23,000/month. We deliver 96GB of dedicated VRAM for $3,500/month with an SLA and no data leaving your control.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What's a spec build?</div>
+      <div class="faq-a">
+        <p>In commercial real estate, a spec build is a property built on speculation &mdash; you construct it before you have a tenant, betting that the market will fill it. The buyer enters at a higher cap rate (lower price) because the building isn't stabilized yet. They backfill the tenant, stabilize the NOI, and the value doubles.</p>
+        <p><strong>S&amp;B spec build, same economics:</strong></p>
+        <ul>
+          <li>Entry at $500K (10% cap rate) &mdash; the rig is built, the data is flowing, but there's no tenant yet</li>
+          <li>You backfill the tenant (find the hospital, the startup, the enterprise buyer)</li>
+          <li>Stabilized at $1M (5% cap rate) &mdash; 2x on your entry</li>
+          <li>10-year term, 5% annual NOI bumps, 120K new pairs/year as deferred maintenance</li>
+        </ul>
+        <div class="callout">You can't sell a spec build at a stabilized cap rate. The value-add is the whole point. That's where the 2x lives.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What hardware do you run?</div>
+      <div class="faq-a">
+        <ul>
+          <li><strong>Production:</strong> 2x RTX PRO 6000 (96GB VRAM) &mdash; primary inference and fine-tuning</li>
+          <li><strong>Training fleet:</strong> 2x RTX 3090Ti, 2x RTX 3090 &mdash; vLLM serving, model cooking</li>
+          <li><strong>Edge:</strong> 12x Zima nodes + 10x Jetson Orin Nano Super &mdash; distributed inference</li>
+          <li><strong>Incoming:</strong> 8x RTX 6000 Blackwell + 24x PNY RTX 4500 Blackwell (32GB)</li>
+        </ul>
+        <p>Total fleet: 42+ GPUs, 1,856 GB VRAM, ~$144K hardware. And growing.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- WHY SOVEREIGN -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="faq-section">
+    <div class="faq-section-label white">Why Sovereign</div>
+
+    <div class="faq-item">
+      <div class="faq-q">What does "sovereign" actually mean?</div>
+      <div class="faq-a">
+        <p>Three guarantees:</p>
+        <ul>
+          <li><strong>Your data never leaves your rack.</strong> Not for training, not for inference, not for logging. The model lives on your hardware or hardware dedicated to you. No cloud hop.</li>
+          <li><strong>Your model is yours.</strong> We fine-tune it on your data, your specialty, your use case. The weights belong to you. We can't use them, sell them, or train on them.</li>
+          <li><strong>Your access is cryptographic.</strong> Wallet-gated API means a private key controls who queries the model. Not a username and password. A key pair. Verifiable on Hedera.</li>
+        </ul>
+        <p>Sovereign isn't a marketing word. It's an architecture decision. Every piece of the stack &mdash; data, model, hardware, access &mdash; is single-tenant by design.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why does sovereignty matter for healthcare?</div>
+      <div class="faq-a">
+        <p>Because a hospital CIO who sends patient-adjacent data to a cloud API is one breach away from a career-ending headline.</p>
+        <p><strong>HIPAA doesn't care about your vendor's SOC 2 report.</strong> It cares about whether protected health information left your control. With sovereign deployment, it never does. The model runs in your data center. The inference happens on your network. The logs stay on your box.</p>
+        <p>That's not a compliance checkbox. That's a fundamental architecture guarantee. Your compliance officer doesn't need to review our security posture because your data never touches our systems.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why Hedera for on-chain provenance?</div>
+      <div class="faq-a">
+        <p>Because provenance without proof is just a promise. And promises don't survive audits.</p>
+        <ul>
+          <li><strong>Hedera Consensus Service (HCS):</strong> Every agent action, every sale, every data delivery is logged to a tamper-proof, timestamped topic. You can independently verify any claim we make.</li>
+          <li><strong>Hedera Token Service (HTS):</strong> Every data bundle, every model, every term sheet is an NFT with on-chain metadata. The provenance travels with the asset.</li>
+          <li><strong>Why not Ethereum/Base?</strong> We started there. Genesis block is on ETH L1. But Hedera is enterprise-grade: $0.0001 per transaction, 3-second finality, no MEV, no gas wars. It's where the adults build.</li>
+        </ul>
+        <div class="callout">2,660 NFTs on Hedera mainnet. 47 HCS messages and counting. Every pair fingerprinted. Every delivery anchored. Provenance, not promises.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What's "last mile intelligence"?</div>
+      <div class="faq-a">
+        <p>Amazon didn't win retail by having the biggest warehouse. They won by getting the package to your door faster than anyone else. The last mile is where the margin lives.</p>
+        <p>Same principle, different asset class. OpenAI has the biggest models. NVIDIA has the best chips. But neither of them can put a fine-tuned, domain-specific, sovereign model on a hospital's rack, loaded with verified data from their specialty, running inference at the point of care.</p>
+        <p><strong>That's the last mile.</strong> The 14B model on a $3,500/month rig in a hospital's server room, answering cardiology questions at 34 tokens per second with zero data leakage. That's what we deliver. That's where the margin is.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- ABOUT S&B -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="faq-section">
+    <div class="faq-section-label white">About S&amp;B</div>
+
+    <div class="faq-item">
+      <div class="faq-q">Who is behind Swarm &amp; Bee?</div>
+      <div class="faq-a">
+        <p>A 30-year commercial real estate broker who closed $8B+ at Marcus &amp; Millichap, built a 23-broker team, and retired. Then realized that AI compute infrastructure is the same asset class as industrial real estate &mdash; just with different tenants.</p>
+        <p>M&amp;M had 2,000 human brokers making 200 dials a day. S&amp;B has autonomous agents on Hedera making dials 24/7. Same playbook. Zero payroll.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What does "two guys and a truck" mean?</div>
+      <div class="faq-a">
+        <p>It means we're not a 500-person startup burning VC money. We're a lean operation with serious hardware, serious data, and serious infrastructure. No marketing department. No growth team. No $50K booth at a conference.</p>
+        <p>Just inventory, infrastructure, and the grind. You call, we answer. You need data, we deliver. You need compute, we rack it. That's the business.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I get started?</div>
+      <div class="faq-a">
+        <ul>
+          <li><strong>Browse inventory:</strong> <a href="/search">SwarmNet Search</a></li>
+          <li><strong>Try free samples:</strong> <a href="/api/data/sample">swarmandbee.com/api/data/sample</a></li>
+          <li><strong>Buy API access:</strong> <a href="/data">From $99</a></li>
+          <li><strong>Request custom data:</strong> <a href="/rfp">Submit an RFP</a></li>
+          <li><strong>License the vault:</strong> <a href="/loi">Submit an LOI</a></li>
+          <li><strong>Read the full offering:</strong> <a href="/om">Offering Memorandum</a></li>
+          <li><strong>Talk to us:</strong> <a href="mailto:build@swarmandbee.com">build@swarmandbee.com</a> &middot; <a href="tel:+15615327120">561.532.7120</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CTA ── -->
+  <div class="cta">
+    <p>Still have questions? We answer the phone.</p>
+    <a href="/search" class="cta-btn gold">Search Listings</a>
+    <a href="mailto:build@swarmandbee.com" class="cta-btn outline">Email Us</a>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="foot">
+    <a href="/">Home</a>
+    <a href="/search">Search</a>
+    <a href="/data">API</a>
+    <a href="/om">OM</a>
+    <a href="/rfp">RFP</a>
+    <a href="/loi">LOI</a>
+    <a href="mailto:build@swarmandbee.com">build@swarmandbee.com</a>
+  </footer>
+
+</div>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is training data the real asset?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Models depreciate. Data appreciates. Every foundation model released makes the last one obsolete — but the training data that makes a model useful in a specific domain only gets more valuable over time. A model is a delivery vehicle. The data is the product." }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes S&B data different from public datasets?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Three things: source (18 authoritative medical textbooks), verification (Chain-of-Verification by 235B parameter model, 93.6% conversion), and provenance (MD5-fingerprinted, anchored to Hedera blockchain). 30/30 SFT suitability benchmark." }
+    },
+    {
+      "@type": "Question",
+      "name": "What does sovereign actually mean?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Three guarantees: your data never leaves your rack, your model is yours, and your access is cryptographic (wallet-gated API on Hedera). Single-tenant by design at every layer." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why dedicated hardware instead of cloud?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Cloud GPU is a time-share. Dedicated means your rig, nobody else touches it, your data never leaves the box, wallet-gated API, and 72-hour hardware replacement SLA. 96GB VRAM for $3,500/month vs AWS A100 at $23,000/month." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is SwarmNet Search?",
+      "acceptedAnswer": { "@type": "Answer", "text": "SwarmNet is our active listings platform — like an MLS for AI training data, models, and compute. 100+ asset classes across medical, aviation, compute, and emerging verticals. Search, find, RFP, LOI, cook, ship." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why Hedera for on-chain provenance?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Enterprise-grade: $0.0001 per transaction, 3-second finality, no MEV, no gas wars. 2,660 NFTs on mainnet. Every pair fingerprinted. Every delivery anchored to HCS. Provenance, not promises." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is last mile intelligence?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A fine-tuned, domain-specific, sovereign model on a hospital's rack, loaded with verified data, running inference at the point of care. The last mile is where the margin lives." }
+    }
+  ]
+}
+</script>
+</body>
+</html>
