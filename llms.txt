@@ -55,4 +55,5 @@ Internal Medicine (97K), Surgery (43K), Neurology (37K), Cell Biology (21K), Pat
 ## Contact
 - Email: build@swarmandbee.com
 - Phone: 561-532-7120
+- Discord: https://discord.gg/H7cyEHFHgu
 - Hedera: swarmandbee.hbar
