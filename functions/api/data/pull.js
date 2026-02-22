@@ -22,8 +22,20 @@ export async function onRequestGet(context) {
       status: 401, headers,
     });
   }
+  // Check env var keys (manual/admin keys)
   const validKeys = (env.API_KEYS || '').split(',').map(k => k.trim()).filter(Boolean);
-  if (!validKeys.includes(token)) {
+  let keyValid = validKeys.includes(token);
+  // Check R2-stored keys (Stripe-issued)
+  if (!keyValid) {
+    try {
+      const keysObj = await env.DATA_BUCKET.get('platinum/keys.json');
+      if (keysObj) {
+        const keysData = JSON.parse(await keysObj.text());
+        keyValid = keysData.keys.some(function(k) { return k.key === token; });
+      }
+    } catch (_) {}
+  }
+  if (!keyValid) {
     return new Response(JSON.stringify({ ok: false, error: 'Invalid API key.' }), {
       status: 403, headers,
     });
