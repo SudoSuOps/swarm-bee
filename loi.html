@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letter of Intent — Platinum Data Licensing | Swarm &amp; Bee</title>
+  <meta name="description" content="License 375,000+ CoVe-verified medical QA training pairs. Sovereign, HIPAA-exempt synthetic data for fine-tuning healthcare AI models.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://swarmandbee.com/loi">
+  <meta property="og:title" content="License Platinum Medical Training Data — Swarm &amp; Bee">
+  <meta property="og:description" content="375,000+ CoVe-verified medical QA pairs across 80 specialties. Sovereign data licensing for healthcare AI.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://swarmandbee.com/loi">
+  <meta property="og:image" content="https://swarmandbee.com/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #080808;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #999;
+      min-height: 100vh;
+    }
+
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 2.4rem;
+      background: rgba(8,8,8,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #151515;
+    }
+    .nav-brand { color: #e0e0e0; font-size: 0.85rem; font-weight: 300; letter-spacing: 0.1em; text-decoration: none; }
+    .nav-links a { color: #555; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; margin-left: 2rem; transition: color 0.3s; }
+    .nav-links a:hover { color: #e0e0e0; }
+
+    .hero {
+      padding: 8rem 2rem 3rem;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .hero-label {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase;
+      color: #B89B3C; margin-bottom: 1.2rem;
+    }
+    .hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 300; color: #e0e0e0; letter-spacing: 0.05em; margin-bottom: 1rem; }
+    .hero p { font-size: 0.85rem; line-height: 1.7; color: #666; max-width: 540px; margin: 0 auto; }
+
+    .stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1px; background: #151515; border: 1px solid #151515;
+      max-width: 700px; margin: 2rem auto 3rem;
+    }
+    .stat { background: #0a0a0a; padding: 1.4rem 1rem; text-align: center; }
+    .stat-num { font-size: 1.4rem; font-weight: 300; color: #e0e0e0; letter-spacing: 0.02em; }
+    .stat-label { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: #555; margin-top: 0.3rem; }
+
+    .tiers {
+      max-width: 700px; margin: 0 auto 3rem; padding: 0 2rem;
+    }
+    .tiers h2 {
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase;
+      color: #666; margin-bottom: 1.5rem; text-align: center;
+    }
+    .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: #151515; border: 1px solid #151515; }
+    .tier { background: #0a0a0a; padding: 1.6rem 1.2rem; }
+    .tier-name { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #B89B3C; margin-bottom: 0.6rem; }
+    .tier-pairs { font-size: 1.1rem; font-weight: 300; color: #e0e0e0; margin-bottom: 0.3rem; }
+    .tier-price { font-size: 0.75rem; color: #666; }
+    .tier-desc { font-size: 0.7rem; color: #444; margin-top: 0.5rem; line-height: 1.5; }
+
+    .form-section {
+      max-width: 560px; margin: 0 auto 4rem; padding: 0 2rem;
+    }
+    .form-section h2 {
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase;
+      color: #666; margin-bottom: 2rem; text-align: center;
+    }
+
+    .field { margin-bottom: 1.4rem; }
+    .field label {
+      display: block; font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #555; margin-bottom: 0.4rem;
+    }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 0.7rem 0.8rem; border: 1px solid #1a1a1a; background: #0a0a0a;
+      font-family: inherit; font-size: 0.82rem; color: #ccc; outline: none; transition: border-color 0.3s;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: #B89B3C; }
+    .field select { appearance: none; cursor: pointer; }
+    .field textarea { height: 100px; resize: vertical; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .checks { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1rem; margin-top: 0.4rem; }
+    .checks label {
+      display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; color: #888;
+      letter-spacing: 0; text-transform: none; cursor: pointer;
+    }
+    .checks input[type="checkbox"] {
+      width: 14px; height: 14px; accent-color: #B89B3C; cursor: pointer;
+    }
+
+    .submit-btn {
+      width: 100%; padding: 0.85rem; background: #B89B3C; color: #080808;
+      border: none; font-family: inherit; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
+      transition: background 0.3s; margin-top: 0.5rem;
+    }
+    .submit-btn:hover { background: #d4b44a; }
+    .submit-btn:disabled { background: #333; color: #666; cursor: not-allowed; }
+
+    .msg { text-align: center; padding: 1rem; font-size: 0.82rem; display: none; }
+    .msg.ok { color: #B89B3C; }
+    .msg.err { color: #c44; }
+
+    .note {
+      max-width: 560px; margin: 0 auto 3rem; padding: 0 2rem;
+      font-size: 0.68rem; line-height: 1.7; color: #444; text-align: center;
+    }
+
+    .footer {
+      border-top: 1px solid #111; padding: 2rem; text-align: center;
+      font-size: 0.6rem; letter-spacing: 0.1em; color: #333;
+    }
+    .footer a { color: #444; text-decoration: none; }
+    .footer a:hover { color: #e0e0e0; }
+
+    @media (max-width: 600px) {
+      .nav { padding: 1rem 1.2rem; }
+      .hero { padding: 6rem 1.2rem 2rem; }
+      .field-row { grid-template-columns: 1fr; }
+      .checks { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="/" class="nav-brand">Swarm &amp; Bee</a>
+    <div class="nav-links">
+      <a href="/loi">LOI</a>
+      <a href="/rfp">RFP</a>
+      <a href="mailto:build@swarmandbee.com">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-label">Letter of Intent</div>
+    <h1>License Platinum Medical Training Data</h1>
+    <p>375,000+ CoVe-verified medical QA pairs across 80 specialties. Synthetic, HIPAA-exempt, chain-of-custody provenance on Hedera. Built for fine-tuning sovereign healthcare AI.</p>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-num">375,000+</div><div class="stat-label">Platinum Pairs</div></div>
+    <div class="stat"><div class="stat-num">80</div><div class="stat-label">Specialties</div></div>
+    <div class="stat"><div class="stat-num">CoVe</div><div class="stat-label">235B Verified</div></div>
+    <div class="stat"><div class="stat-num">0</div><div class="stat-label">Patient Data</div></div>
+  </div>
+
+  <div class="tiers">
+    <h2>Licensing Tiers</h2>
+    <div class="tier-grid">
+      <div class="tier">
+        <div class="tier-name">Evaluation</div>
+        <div class="tier-pairs">1,000 pairs</div>
+        <div class="tier-price">Free</div>
+        <div class="tier-desc">90-day eval license. Prove quality before you commit.</div>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Specialty</div>
+        <div class="tier-pairs">5,000 &ndash; 25,000</div>
+        <div class="tier-price">From $15,000</div>
+        <div class="tier-desc">Single or multi-specialty. Non-exclusive, 1-year term.</div>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Enterprise</div>
+        <div class="tier-pairs">100,000+</div>
+        <div class="tier-price">From $250,000</div>
+        <div class="tier-desc">Full catalog access. Volume pricing. 3-year term with annual refresh.</div>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Exclusive</div>
+        <div class="tier-pairs">375,000</div>
+        <div class="tier-price">Custom</div>
+        <div class="tier-desc">Vertical or full exclusive. Includes 120K new pairs/year.</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="form-section">
+    <h2>Submit Letter of Intent</h2>
+    <form id="loiForm">
+      <div class="field-row">
+        <div class="field">
+          <label>Company</label>
+          <input type="text" name="company" required>
+        </div>
+        <div class="field">
+          <label>Contact Name</label>
+          <input type="text" name="name" required>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Email</label>
+          <input type="email" name="email" required>
+        </div>
+        <div class="field">
+          <label>Phone</label>
+          <input type="tel" name="phone">
+        </div>
+      </div>
+      <div class="field">
+        <label>Company Type</label>
+        <select name="companyType" required>
+          <option value="">Select...</option>
+          <option value="hospital">Hospital System</option>
+          <option value="healthtech">Health Tech Startup</option>
+          <option value="pharma">Pharma / Biotech</option>
+          <option value="insurance">Insurance / Payer</option>
+          <option value="research">Research Institution</option>
+          <option value="govdefense">Government / Defense</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Licensing Tier</label>
+        <select name="tier" required>
+          <option value="">Select...</option>
+          <option value="eval">Evaluation (1,000 pairs - Free)</option>
+          <option value="specialty">Specialty (5K-25K pairs)</option>
+          <option value="enterprise">Enterprise (100K+ pairs)</option>
+          <option value="exclusive">Exclusive License</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Specialties Needed</label>
+        <div class="checks">
+          <label><input type="checkbox" name="spec" value="cardiology"> Cardiology</label>
+          <label><input type="checkbox" name="spec" value="radiology"> Radiology</label>
+          <label><input type="checkbox" name="spec" value="oncology"> Oncology</label>
+          <label><input type="checkbox" name="spec" value="neurology"> Neurology</label>
+          <label><input type="checkbox" name="spec" value="emergency"> Emergency Med</label>
+          <label><input type="checkbox" name="spec" value="surgery"> Surgery</label>
+          <label><input type="checkbox" name="spec" value="pharmacology"> Pharmacology</label>
+          <label><input type="checkbox" name="spec" value="pathology"> Pathology</label>
+          <label><input type="checkbox" name="spec" value="pediatrics"> Pediatrics</label>
+          <label><input type="checkbox" name="spec" value="psychiatry"> Psychiatry</label>
+          <label><input type="checkbox" name="spec" value="internal"> Internal Medicine</label>
+          <label><input type="checkbox" name="spec" value="all"> All 80 Specialties</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Intended Use</label>
+        <select name="use" required>
+          <option value="">Select...</option>
+          <option value="finetune">Fine-Tuning</option>
+          <option value="pretrain">Pre-Training</option>
+          <option value="rag">RAG / Retrieval</option>
+          <option value="eval">Evaluation / Benchmarking</option>
+          <option value="research">Research</option>
+          <option value="commercial">Commercial Deployment</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Base Model (if known)</label>
+        <input type="text" name="baseModel" placeholder="e.g. Qwen2, Llama 3, MedMO-4B, etc.">
+      </div>
+      <div class="field">
+        <label>Budget Range</label>
+        <select name="budget">
+          <option value="">Select...</option>
+          <option value="eval">Evaluation (Free)</option>
+          <option value="<25k">Under $25,000</option>
+          <option value="25-100k">$25,000 - $100,000</option>
+          <option value="100-500k">$100,000 - $500,000</option>
+          <option value="500k-1m">$500,000 - $1,000,000</option>
+          <option value="1m+">$1,000,000+</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Additional Details</label>
+        <textarea name="details" placeholder="Tell us about your project, timeline, and requirements..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn" id="loiSubmit">Submit Letter of Intent</button>
+      <div class="msg ok" id="okMsg">Received. We'll send a term sheet within 48 hours.</div>
+      <div class="msg err" id="errMsg">Something went wrong. Email us at build@swarmandbee.com</div>
+    </form>
+  </section>
+
+  <div class="note">
+    All data is 100% synthetic, derived from public medical literature. Zero patient data. HIPAA does not apply. No BAA required.<br>
+    Provenance verified on Hedera (HCS) with IPFS content addressing. Every pair is traceable to source.
+  </div>
+
+  <footer class="footer">
+    <a href="/">Swarm &amp; Bee</a> &nbsp;&middot;&nbsp;
+    <a href="/loi">LOI</a> &nbsp;&middot;&nbsp;
+    <a href="/rfp">RFP</a> &nbsp;&middot;&nbsp;
+    <a href="mailto:build@swarmandbee.com">build@swarmandbee.com</a> &nbsp;&middot;&nbsp;
+    <a href="tel:+15615327120">561.532.7120</a>
+  </footer>
+
+  <script>
+    (function() {
+      var form = document.getElementById('loiForm');
+      var btn = document.getElementById('loiSubmit');
+      var ok = document.getElementById('okMsg');
+      var err = document.getElementById('errMsg');
+
+      form.onsubmit = function(e) {
+        e.preventDefault();
+        btn.textContent = 'Submitting...';
+        btn.disabled = true;
+        ok.style.display = 'none';
+        err.style.display = 'none';
+
+        var specs = [];
+        form.querySelectorAll('input[name="spec"]:checked').forEach(function(c) { specs.push(c.value); });
+
+        var payload = {
+          type: 'LOI',
+          company: form.company.value,
+          name: form.name.value,
+          email: form.email.value,
+          phone: form.phone.value,
+          companyType: form.companyType.value,
+          tier: form.tier.value,
+          specialties: specs,
+          use: form.use.value,
+          baseModel: form.baseModel.value,
+          budget: form.budget.value,
+          details: form.details.value,
+        };
+
+        fetch('/api/loi', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.ok) {
+            form.style.display = 'none';
+            ok.style.display = 'block';
+          } else {
+            err.style.display = 'block';
+            btn.textContent = 'Submit Letter of Intent';
+            btn.disabled = false;
+          }
+        })
+        .catch(function() {
+          err.style.display = 'block';
+          btn.textContent = 'Submit Letter of Intent';
+          btn.disabled = false;
+        });
+      };
+    })();
+  </script>
+</body>
+</html>
