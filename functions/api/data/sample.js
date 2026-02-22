@@ -14,7 +14,7 @@ export async function onRequestGet(context) {
   };
 
   try {
-    const obj = await env.DATA_BUCKET.get('platinum/samples.jsonl');
+    const obj = await env.DATA_BUCKET.get('samples.jsonl');
     if (!obj) {
       return new Response(JSON.stringify({ ok: false, error: 'Samples not available.' }), {
         status: 404, headers,

@@ -1,11 +1,11 @@
 /**
  * Cloudflare Pages Function: GET /api/data/pull
- * API-key-gated access to platinum pairs by specialty with pagination.
+ * API-key-gated access to pairs by vault/specialty with pagination.
  * Auth: Authorization: Bearer sk_swarm_xxxx
- * Params: ?specialty=surgery&limit=100&offset=0
+ * Params: ?specialty=surgery&vault=med-vault&tier=platinum&limit=100&offset=0
+ *
+ * Default vault: med-vault, default tier: platinum
  */
-const CHUNK_SIZE = 50000;
-
 export async function onRequestGet(context) {
   const { request, env } = context;
   const url = new URL(request.url);
@@ -22,13 +22,11 @@ export async function onRequestGet(context) {
       status: 401, headers,
     });
   }
-  // Check env var keys (manual/admin keys)
   const validKeys = (env.API_KEYS || '').split(',').map(k => k.trim()).filter(Boolean);
   let keyValid = validKeys.includes(token);
-  // Check R2-stored keys (Stripe-issued)
   if (!keyValid) {
     try {
-      const keysObj = await env.DATA_BUCKET.get('platinum/keys.json');
+      const keysObj = await env.DATA_BUCKET.get('keys.json');
       if (keysObj) {
         const keysData = JSON.parse(await keysObj.text());
         keyValid = keysData.keys.some(function(k) { return k.key === token; });
@@ -49,93 +47,69 @@ export async function onRequestGet(context) {
     });
   }
 
+  const vault = url.searchParams.get('vault') || 'med-vault';
+  const tier = url.searchParams.get('tier') || 'platinum';
   const limit = Math.min(Math.max(parseInt(url.searchParams.get('limit') || '100', 10) || 100, 1), 1000);
   const offset = Math.max(parseInt(url.searchParams.get('offset') || '0', 10) || 0, 0);
 
   try {
-    // Load catalog to validate specialty
-    const catObj = await env.DATA_BUCKET.get('platinum/catalog.json');
-    if (!catObj) {
-      return new Response(JSON.stringify({ ok: false, error: 'Catalog unavailable.' }), {
-        status: 500, headers,
-      });
-    }
-    const catalog = JSON.parse(await catObj.text());
-    const specInfo = catalog.specialties[specialty];
-    if (!specInfo) {
+    // Read the specialty chunk directly from R2
+    // Layout: {vault}/{tier}/{specialty}.jsonl
+    const r2Key = vault + '/' + tier + '/' + specialty + '.jsonl';
+    const chunkObj = await env.DATA_BUCKET.get(r2Key);
+
+    if (!chunkObj) {
+      // Try to help: load catalog for valid specialties
+      const catObj = await env.DATA_BUCKET.get('catalog.json');
+      let available = [];
+      if (catObj) {
+        try {
+          const catalog = JSON.parse(await catObj.text());
+          const vaultData = catalog.vaults[vault];
+          if (vaultData && vaultData.tiers[tier]) {
+            available = vaultData.tiers[tier].specialties.map(s => s.specialty);
+          }
+        } catch (_) {}
+      }
       return new Response(JSON.stringify({
         ok: false,
-        error: 'Unknown specialty: ' + specialty,
-        available: Object.keys(catalog.specialties).sort(),
-      }), { status: 400, headers });
-    }
-
-    if (offset >= specInfo.pair_count) {
-      return new Response(JSON.stringify({
-        ok: true, pairs: [], count: 0, total: specInfo.pair_count,
-        offset, limit, has_more: false,
-      }), { status: 200, headers });
-    }
-
-    // Determine chunk to read
-    const startChunk = Math.floor(offset / CHUNK_SIZE);
-    const withinChunkOffset = offset % CHUNK_SIZE;
-
-    const chunkKey = 'platinum/' + specialty + '/chunk-' + startChunk + '.jsonl';
-    const chunkObj = await env.DATA_BUCKET.get(chunkKey);
-    if (!chunkObj) {
-      return new Response(JSON.stringify({ ok: false, error: 'Data chunk not found.' }), {
-        status: 404, headers,
-      });
+        error: 'Specialty not found: ' + specialty,
+        vault, tier,
+        available: available.length > 0 ? available : undefined,
+      }), { status: 404, headers });
     }
 
     const text = await chunkObj.text();
     const lines = text.trim().split('\n');
-    let pairs = lines.slice(withinChunkOffset, withinChunkOffset + limit)
-      .map(line => {
-        const d = JSON.parse(line);
-        return {
-          question: d.question,
-          answer: d.answer,
-          specialty: d.specialty,
-          fingerprint: d.fingerprint,
-          tier: d.tier || 'platinum',
-        };
-      });
+    const total = lines.length;
 
-    // Cross-chunk boundary
-    const remaining = limit - pairs.length;
-    if (remaining > 0 && (startChunk + 1) * CHUNK_SIZE < specInfo.pair_count) {
-      const nextKey = 'platinum/' + specialty + '/chunk-' + (startChunk + 1) + '.jsonl';
-      const nextObj = await env.DATA_BUCKET.get(nextKey);
-      if (nextObj) {
-        const nextText = await nextObj.text();
-        const nextLines = nextText.trim().split('\n');
-        const morePairs = nextLines.slice(0, remaining).map(l => {
-          const d = JSON.parse(l);
-          return {
-            question: d.question,
-            answer: d.answer,
-            specialty: d.specialty,
-            fingerprint: d.fingerprint,
-            tier: d.tier || 'platinum',
-          };
-        });
-        pairs = pairs.concat(morePairs);
-      }
+    if (offset >= total) {
+      return new Response(JSON.stringify({
+        ok: true, pairs: [], count: 0, total, offset, limit, has_more: false,
+      }), { status: 200, headers });
     }
 
-    const has_more = (offset + pairs.length) < specInfo.pair_count;
+    const pairs = lines.slice(offset, offset + limit).map(line => {
+      const d = JSON.parse(line);
+      return {
+        question: d.question,
+        answer: d.answer,
+        specialty: d.specialty,
+        fingerprint: d.fingerprint,
+        tier: d.tier || tier,
+      };
+    });
+
+    const has_more = (offset + pairs.length) < total;
 
     // Log to Discord (fire-and-forget)
-    logPull(env, request, token, specialty, offset, limit, pairs.length).catch(() => {});
+    logPull(env, request, token, vault, tier, specialty, offset, limit, pairs.length).catch(() => {});
 
     return new Response(JSON.stringify({
       ok: true,
-      specialty,
-      total: specInfo.pair_count,
-      offset,
-      limit,
+      vault, tier, specialty,
+      total,
+      offset, limit,
       count: pairs.length,
       has_more,
       pairs,
@@ -149,7 +123,7 @@ export async function onRequestGet(context) {
   }
 }
 
-async function logPull(env, request, token, specialty, offset, limit, returned) {
+async function logPull(env, request, token, vault, tier, specialty, offset, limit, returned) {
   const discordUrl = env.DISCORD_DATA_WEBHOOK_URL;
   if (!discordUrl) return;
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
@@ -163,6 +137,7 @@ async function logPull(env, request, token, specialty, offset, limit, returned) 
         color: 0xB89B3C,
         fields: [
           { name: 'API Key', value: keyPrefix, inline: true },
+          { name: 'Vault', value: vault + '/' + tier, inline: true },
           { name: 'Specialty', value: specialty, inline: true },
           { name: 'Offset/Limit', value: offset + '/' + limit, inline: true },
           { name: 'Returned', value: String(returned), inline: true },

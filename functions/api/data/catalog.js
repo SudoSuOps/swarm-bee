@@ -12,7 +12,7 @@ export async function onRequestGet(context) {
   };
 
   try {
-    const obj = await env.DATA_BUCKET.get('platinum/catalog.json');
+    const obj = await env.DATA_BUCKET.get('catalog.json');
     if (!obj) {
       return new Response(JSON.stringify({ ok: false, error: 'Catalog not found.' }), {
         status: 404, headers,
