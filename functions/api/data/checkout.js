@@ -1,32 +1,15 @@
 /**
  * Cloudflare Pages Function: POST /api/data/checkout
- * Creates a Stripe Checkout Session for data API access.
- * Body: { "tier": "starter" | "professional" | "monthly" }
+ * Creates a Stripe Checkout Session for Featured Data Packs.
+ * Body: { "tier": "starter" }
+ * All packs are $99 / 1,000 pairs. Category handled client-side via metadata.
  */
 const TIERS = {
   starter: {
-    name: 'SwarmForge Starter — 1,000 Pairs',
-    description: 'Any single specialty. 1,000 CoVe-verified QA pairs. API key. Instant access.',
+    name: 'SwarmForge Featured Pack — 1,000 Pairs',
+    description: '1,000 CoVe-verified QA pairs. Any category (Medical, Aviation, or CRE). API key. Instant access.',
     price: 9900,
     mode: 'payment',
-  },
-  professional: {
-    name: 'SwarmForge Professional — 10,000 Pairs',
-    description: 'Up to 5 specialties. 10,000 CoVe-verified QA pairs. API key. Priority Discord support.',
-    price: 49900,
-    mode: 'payment',
-  },
-  volume: {
-    name: 'SwarmForge Volume — 50,000 Pairs',
-    description: 'Up to 20 specialties. 50,000 CoVe-verified QA pairs. API key. Priority support.',
-    price: 199900,
-    mode: 'payment',
-  },
-  monthly: {
-    name: 'SwarmForge Monthly — Unlimited API + Fresh Drops',
-    description: 'All verticals, all specialties. Unlimited pulls. Monthly data drops. Dedicated support channel.',
-    price: 499900,
-    mode: 'subscription',
   },
 };
 
@@ -45,7 +28,7 @@ export async function onRequestPost(context) {
     if (!tier) {
       return new Response(JSON.stringify({
         ok: false,
-        error: 'Invalid tier. Use "starter", "professional", or "monthly".',
+        error: 'Invalid tier. Use "starter".',
       }), { status: 400, headers });
     }
 
