@@ -289,37 +289,44 @@
   <section class="om-section">
     <h2>Pricing</h2>
 
-    <h3>Featured Data Packs &mdash; $99 Each</h3>
-    <p style="font-size:0.85rem;color:#999;margin-bottom:1rem;">One pack per category. 1,000 CoVe-verified platinum pairs. API key included. Instant access.</p>
+    <h3>Training Data Packs</h3>
+    <p style="font-size:0.85rem;color:#999;margin-bottom:1rem;">Four tiers. Any vertical &mdash; medical, aviation, CRE. Scale up when you're ready.</p>
     <table class="pricing-table">
       <thead>
-        <tr><th>Pack</th><th>Price</th><th>What&rsquo;s Inside</th></tr>
+        <tr><th>Tier</th><th>Pairs</th><th>Price</th><th>What&rsquo;s Inside</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>Medical Pack</strong></td><td class="price">$99</td><td>1,000 pairs from any of 59 medical specialties. 391K platinum vault. 18 authoritative textbooks. 30/30 SFT benchmark.</td></tr>
-        <tr><td><strong>Aviation Pack</strong></td><td class="price">$99</td><td>1,000 pairs across FAA handbooks, NASA ASRS reports, safety/compliance, MRO, drone ops. 12K+ and growing.</td></tr>
-        <tr><td><strong>CRE Pack</strong></td><td class="price">$99</td><td>1,000 pairs covering capital markets, industrial &amp; logistics, cold chain, supply chain, document intelligence. 2.6K+ and growing.</td></tr>
+        <tr><td><strong>Fine-Tune</strong></td><td>1,000</td><td class="price">$99</td><td>Any single specialty or vertical. API key. Instant access. Perfect for testing a cook.</td></tr>
+        <tr><td><strong>Pro</strong></td><td>50,000</td><td class="price">$499</td><td>Multi-specialty. Cross-vertical. Production-grade training volume. Priority support.</td></tr>
+        <tr><td><strong>Custom Build</strong></td><td>100,000</td><td class="price">$999</td><td>Full vertical coverage. Custom specialty grinds. Dedicated support channel.</td></tr>
+        <tr><td><strong>Enterprise</strong></td><td>250,000</td><td class="price">$1,995</td><td>Full vault access. All verticals. All specialties. Sovereign deployment.</td></tr>
       </tbody>
     </table>
 
     <h3 style="margin-top:1.5rem;">Every Pack Includes</h3>
     <ul>
-      <li>1,000 CoVe-verified platinum QA pairs &mdash; verified by Qwen3-235B</li>
-      <li>API key for programmatic access &mdash; JSON responses, CORS enabled</li>
-      <li>MD5-fingerprinted provenance &mdash; every pair traceable to source</li>
-      <li>Hedera-anchored integrity proofs &mdash; tamper-evident, on-chain</li>
-      <li>Apache 2.0 commercial license &mdash; train, deploy, monetize</li>
-      <li>Free sample before purchase &mdash; 10 random pairs at <code>/api/data/sample</code></li>
+      <li>CoVe-verified platinum QA pairs &mdash; verified by Qwen3-235B (93.6% conversion, 30/30 SFT benchmark)</li>
+      <li>API key for programmatic access &mdash; JSON responses, CORS enabled, paginated pulls</li>
+      <li>MD5-fingerprinted provenance &mdash; every pair traceable to source textbook/document</li>
+      <li>Hedera-anchored integrity proofs &mdash; tamper-evident, on-chain (HCS topics + HTS NFTs)</li>
+      <li>Apache 2.0 commercial license &mdash; train, deploy, monetize, no restrictions</li>
+      <li>Free sample before purchase &mdash; 10 random pairs at <code>/api/data/sample</code>, no auth</li>
+      <li>Priority Discord support &mdash; Pro tier and above</li>
+      <li>Dedicated support channel &mdash; Custom Build and Enterprise</li>
     </ul>
 
-    <h3 style="margin-top:1.5rem;">Need More?</h3>
+    <h3 style="margin-top:1.5rem;">Data Inventory (Audited Feb 2026)</h3>
     <table class="pricing-table">
       <thead>
-        <tr><th>Option</th><th>Price</th><th>Includes</th></tr>
+        <tr><th>Vertical</th><th>Pairs</th><th>Specialties</th><th>Status</th></tr>
       </thead>
       <tbody>
-        <tr><td>Custom Volume</td><td class="price">RFP</td><td>10K&ndash;100K+ pairs. Multi-category. Custom specialty grinds. <a href="/rfp" style="color:#B89B3C;">Submit RFP &rarr;</a></td></tr>
-        <tr><td>Full Vault License</td><td class="price">LOI</td><td>442K+ pairs. All categories. Sovereign deployment. <a href="/loi" style="color:#B89B3C;">Submit LOI &rarr;</a></td></tr>
+        <tr><td>Medical Platinum</td><td>391,991</td><td>59</td><td>Live</td></tr>
+        <tr><td>Aviation</td><td>12,400+</td><td>13</td><td>Growing</td></tr>
+        <tr><td>CRE</td><td>2,611</td><td>5</td><td>Growing</td></tr>
+        <tr><td>Brain Research</td><td>1,405</td><td>5</td><td>Growing</td></tr>
+        <tr><td>Router / SwarmCore</td><td>14,760</td><td>6</td><td>Active</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>442,000+</strong></td><td>&mdash;</td><td>&mdash;</td></tr>
       </tbody>
     </table>
 
@@ -431,9 +438,10 @@
   "description": "442,000+ CoVe-verified QA pairs, SwarmMed-14B model, and dedicated RTX PRO 6000 compute. On-chain provenance via Hedera.",
   "brand": { "@type": "Brand", "name": "Swarm & Bee" },
   "offers": [
-    { "@type": "Offer", "name": "Featured Medical Pack — 1,000 Pairs", "price": "99", "priceCurrency": "USD" },
-    { "@type": "Offer", "name": "Featured Aviation Pack — 1,000 Pairs", "price": "99", "priceCurrency": "USD" },
-    { "@type": "Offer", "name": "Featured CRE Pack — 1,000 Pairs", "price": "99", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Fine-Tune — 1,000 Pairs", "price": "99", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Pro — 50,000 Pairs", "price": "499", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Custom Build — 100,000 Pairs", "price": "999", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Enterprise — 250,000 Pairs", "price": "1995", "priceCurrency": "USD" },
     { "@type": "Offer", "name": "Dedicated RTX PRO 6000", "price": "3500", "priceCurrency": "USD", "billingIncrement": "P1M" }
   ]
 }

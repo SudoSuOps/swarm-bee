@@ -254,17 +254,17 @@
     <div class="divider"></div>
 
     <!-- ── Pricing ── -->
-    <div class="sh">Featured Data Packs</div>
-    <div class="sh2">1,000 CoVe-verified pairs per pack. One per category. $99.</div>
+    <div class="sh">Training Data Packs</div>
+    <div class="sh2">CoVe-verified platinum pairs. Any vertical. Scale up when you're ready.</div>
     <table class="price-table">
       <thead>
-        <tr><th>Pack</th><th>Price</th><th>Pairs</th><th>What You Get</th></tr>
+        <tr><th>Tier</th><th>Pairs</th><th>Price</th><th>What You Get</th></tr>
       </thead>
       <tbody>
-        <tr><td>Medical</td><td>$99</td><td>1,000</td><td>Any single specialty from 59 medical specialties. API key. Instant access.</td></tr>
-        <tr><td>Aviation</td><td>$99</td><td>1,000</td><td>FAA/ASRS/safety data across 13 aviation verticals. API key. Instant access.</td></tr>
-        <tr><td>CRE</td><td>$99</td><td>1,000</td><td>Capital markets, industrial, cold chain, supply chain. API key. Instant access.</td></tr>
-        <tr><td>Custom</td><td>RFP</td><td>Custom</td><td>Larger volumes, multi-category, or full vault access. <a href="/rfp" style="color:#B89B3C;">Submit RFP</a></td></tr>
+        <tr><td><strong>Fine-Tune</strong></td><td>1,000</td><td>$99</td><td>Any single specialty or vertical. API key. Instant access. Perfect for testing a cook.</td></tr>
+        <tr><td><strong>Pro</strong></td><td>50,000</td><td>$499</td><td>Multi-specialty. Cross-vertical. Production-grade training volume. Priority support.</td></tr>
+        <tr><td><strong>Custom Build</strong></td><td>100,000</td><td>$999</td><td>Full vertical coverage. Custom specialty grinds. Dedicated support channel.</td></tr>
+        <tr><td><strong>Enterprise</strong></td><td>250,000</td><td>$1,995</td><td>Full vault access. Sovereign deployment. All verticals. All specialties.</td></tr>
       </tbody>
     </table>
     <p style="font-size:0.72rem;color:#444;margin-top:0.6rem;">Replacement cost: $7&ndash;$13/pair. Free sample: 10 random pairs at <span style="color:#888;">/api/data/sample</span> &mdash; no auth required.</p>
@@ -305,32 +305,39 @@ curl "https://swarmandbee.com/api/data/sample?specialty=surgery"</pre>
       <strong style="color:#ccc;font-weight:400;">Response format:</strong> All endpoints return JSON with <code>ok</code>, <code>count</code>, <code>pairs[]</code>, and pagination metadata (<code>total</code>, <code>offset</code>, <code>has_more</code>).
     </p>
 
-    <div class="sh" style="margin-top:2rem;">Buy a Featured Pack</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:#151515;border:1px solid #151515;margin:1rem 0;">
+    <div class="sh" style="margin-top:2rem;">Buy Now</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:#151515;border:1px solid #151515;margin:1rem 0;">
       <div style="background:#0c0c0c;padding:1.6rem;border:1px solid #2a2210;">
-        <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#B89B3C;margin-bottom:0.6rem;">Medical Pack</div>
+        <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#B89B3C;margin-bottom:0.6rem;">Fine-Tune</div>
         <div style="font-size:1.6rem;font-weight:300;color:#B89B3C;">$99</div>
-        <div style="font-size:0.6rem;color:#444;">1,000 pairs &middot; any specialty</div>
-        <div style="font-size:0.72rem;color:#666;margin:0.6rem 0;">391K platinum pairs. 59 medical specialties. Pick one. API key included.</div>
-        <button onclick="checkout('starter')" class="cta-btn cta-gold" style="width:100%;margin-top:0.6rem;">Buy Medical Pack</button>
+        <div style="font-size:0.6rem;color:#444;">1,000 pairs</div>
+        <div style="font-size:0.72rem;color:#666;margin:0.6rem 0;">Any single specialty or vertical. Test a cook. API key included.</div>
+        <button onclick="checkout('finetune')" class="cta-btn cta-gold" style="width:100%;margin-top:0.6rem;">Buy Fine-Tune</button>
       </div>
-      <div style="background:#0c0c0c;padding:1.6rem;border:1px solid #162640;">
-        <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#4A90D9;margin-bottom:0.6rem;">Aviation Pack</div>
-        <div style="font-size:1.6rem;font-weight:300;color:#4A90D9;">$99</div>
-        <div style="font-size:0.6rem;color:#444;">1,000 pairs &middot; any vertical</div>
-        <div style="font-size:0.72rem;color:#666;margin:0.6rem 0;">12K+ aviation pairs. FAA, ASRS, safety, MRO, drones. Pick one. API key included.</div>
-        <button onclick="checkout('starter')" class="cta-btn cta-gold" style="width:100%;margin-top:0.6rem;">Buy Aviation Pack</button>
+      <div style="background:#0c0c0c;padding:1.6rem;border:1px solid #2a2210;">
+        <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#B89B3C;margin-bottom:0.6rem;">Pro</div>
+        <div style="font-size:1.6rem;font-weight:300;color:#B89B3C;">$499</div>
+        <div style="font-size:0.6rem;color:#444;">50,000 pairs</div>
+        <div style="font-size:0.72rem;color:#666;margin:0.6rem 0;">Multi-specialty. Cross-vertical. Production training volume. Priority support.</div>
+        <button onclick="checkout('pro')" class="cta-btn cta-gold" style="width:100%;margin-top:0.6rem;">Buy Pro</button>
       </div>
-      <div style="background:#0c0c0c;padding:1.6rem;border:1px solid #2d1c10;">
-        <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#d97a4a;margin-bottom:0.6rem;">CRE Pack</div>
-        <div style="font-size:1.6rem;font-weight:300;color:#d97a4a;">$99</div>
-        <div style="font-size:0.6rem;color:#444;">1,000 pairs &middot; any vertical</div>
-        <div style="font-size:0.72rem;color:#666;margin:0.6rem 0;">2.6K+ CRE pairs. Cap markets, industrial, cold chain. Pick one. API key included.</div>
-        <button onclick="checkout('starter')" class="cta-btn cta-gold" style="width:100%;margin-top:0.6rem;">Buy CRE Pack</button>
+      <div style="background:#0c0c0c;padding:1.6rem;border:1px solid #2a2210;">
+        <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#B89B3C;margin-bottom:0.6rem;">Custom Build</div>
+        <div style="font-size:1.6rem;font-weight:300;color:#B89B3C;">$999</div>
+        <div style="font-size:0.6rem;color:#444;">100,000 pairs</div>
+        <div style="font-size:0.72rem;color:#666;margin:0.6rem 0;">Full vertical coverage. Custom specialty grinds. Dedicated support channel.</div>
+        <button onclick="checkout('custom')" class="cta-btn cta-gold" style="width:100%;margin-top:0.6rem;">Buy Custom Build</button>
+      </div>
+      <div style="background:#0c0c0c;padding:1.6rem;border:1px solid #B89B3C33;">
+        <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#B89B3C;margin-bottom:0.6rem;">Enterprise</div>
+        <div style="font-size:1.6rem;font-weight:300;color:#B89B3C;">$1,995</div>
+        <div style="font-size:0.6rem;color:#444;">250,000 pairs</div>
+        <div style="font-size:0.72rem;color:#666;margin:0.6rem 0;">Full vault. All verticals. All specialties. Sovereign deployment.</div>
+        <button onclick="checkout('enterprise')" class="cta-btn cta-gold" style="width:100%;margin-top:0.6rem;">Buy Enterprise</button>
       </div>
     </div>
-    <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:1.2rem;margin:0.8rem 0;text-align:center;">
-      <div style="font-size:0.72rem;color:#666;">Need more than 1,000 pairs? Multi-category? Full vault?</div>
+    <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:1rem;margin:0.8rem 0;text-align:center;">
+      <div style="font-size:0.72rem;color:#666;">Need something custom? Sovereign deployment? Dedicated rig?</div>
       <div style="margin-top:0.6rem;display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap;">
         <a href="/rfp" class="cta-btn cta-gold" style="font-size:0.72rem;">Submit RFP</a>
         <a href="/loi" class="cta-btn cta-outline" style="font-size:0.72rem;">Submit LOI</a>
@@ -417,24 +424,31 @@ curl "https://swarmandbee.com/api/data/sample?specialty=surgery"</pre>
     "offers": [
       {
         "@type": "Offer",
-        "name": "Featured Medical Pack",
+        "name": "Fine-Tune — 1,000 Pairs",
         "price": "99",
         "priceCurrency": "USD",
-        "description": "1,000 CoVe-verified medical pairs, any specialty, API key"
+        "description": "1,000 CoVe-verified pairs, any specialty or vertical, API key"
       },
       {
         "@type": "Offer",
-        "name": "Featured Aviation Pack",
-        "price": "99",
+        "name": "Pro — 50,000 Pairs",
+        "price": "499",
         "priceCurrency": "USD",
-        "description": "1,000 CoVe-verified aviation pairs, FAA/ASRS/safety, API key"
+        "description": "50,000 pairs, multi-specialty, cross-vertical, priority support"
       },
       {
         "@type": "Offer",
-        "name": "Featured CRE Pack",
-        "price": "99",
+        "name": "Custom Build — 100,000 Pairs",
+        "price": "999",
         "priceCurrency": "USD",
-        "description": "1,000 CoVe-verified CRE pairs, any vertical, API key"
+        "description": "100,000 pairs, full vertical coverage, custom grinds, dedicated support"
+      },
+      {
+        "@type": "Offer",
+        "name": "Enterprise — 250,000 Pairs",
+        "price": "1995",
+        "priceCurrency": "USD",
+        "description": "250,000 pairs, full vault, all verticals, sovereign deployment"
       }
     ]
   }

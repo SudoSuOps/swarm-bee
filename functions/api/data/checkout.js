@@ -1,14 +1,31 @@
 /**
  * Cloudflare Pages Function: POST /api/data/checkout
- * Creates a Stripe Checkout Session for Featured Data Packs.
- * Body: { "tier": "starter" }
- * All packs are $99 / 1,000 pairs. Category handled client-side via metadata.
+ * Creates a Stripe Checkout Session for training data packs.
+ * Body: { "tier": "finetune" | "pro" | "custom" | "enterprise" }
  */
 const TIERS = {
-  starter: {
-    name: 'SwarmForge Featured Pack — 1,000 Pairs',
-    description: '1,000 CoVe-verified QA pairs. Any category (Medical, Aviation, or CRE). API key. Instant access.',
+  finetune: {
+    name: 'SwarmForge Fine-Tune — 1,000 Pairs',
+    description: '1,000 CoVe-verified QA pairs. Any single specialty or vertical. API key. Instant access.',
     price: 9900,
+    mode: 'payment',
+  },
+  pro: {
+    name: 'SwarmForge Pro — 50,000 Pairs',
+    description: '50,000 CoVe-verified QA pairs. Multi-specialty. Cross-vertical. Priority support.',
+    price: 49900,
+    mode: 'payment',
+  },
+  custom: {
+    name: 'SwarmForge Custom Build — 100,000 Pairs',
+    description: '100,000 CoVe-verified QA pairs. Full vertical coverage. Custom grinds. Dedicated support.',
+    price: 99900,
+    mode: 'payment',
+  },
+  enterprise: {
+    name: 'SwarmForge Enterprise — 250,000 Pairs',
+    description: '250,000 CoVe-verified QA pairs. Full vault. All verticals. Sovereign deployment.',
+    price: 199500,
     mode: 'payment',
   },
 };
@@ -28,7 +45,7 @@ export async function onRequestPost(context) {
     if (!tier) {
       return new Response(JSON.stringify({
         ok: false,
-        error: 'Invalid tier. Use "starter".',
+        error: 'Invalid tier. Use "finetune", "pro", "custom", or "enterprise".',
       }), { status: 400, headers });
     }
 
