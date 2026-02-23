@@ -5,31 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Primary SEO -->
-  <title>Swarm &amp; Bee | Sovereign Compute Infrastructure &mdash; Dedicated GPU, Medical AI, Training Data</title>
-  <meta name="description" content="Swarm &amp; Bee — Sovereign compute infrastructure. Dedicated RTX 6000 Pro Blackwell GPUs, CoVe-verified medical AI training data, and specialized models. Your data never leaves your rack.">
-  <meta name="keywords" content="sovereign compute, GPU infrastructure, medical AI, training data, CoVe verification, RTX 6000 Pro, dedicated GPU, fine-tuning, HIPAA, on-premises AI, sovereign AI, edge compute, last mile compute, medical language model, data sovereignty">
+  <title>Swarm &amp; Bee | Last Mile Compute &mdash; Sovereign GPU Infrastructure, Medical AI, Training Data</title>
+  <meta name="description" content="Swarm &amp; Bee — Last mile compute. Sovereign compute infrastructure with dedicated RTX 6000 Pro Blackwell GPUs, CoVe-verified training data, and specialized models. Your data never leaves your rack.">
+  <meta name="keywords" content="sovereign compute, GPU infrastructure, medical AI, training data, CoVe verification, RTX 6000 Pro, dedicated GPU, fine-tuning, HIPAA, on-premises AI, sovereign AI, edge compute, last mile compute, medical language model, data sovereignty, aviation AI">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="author" content="Swarm &amp; Bee">
   <link rel="canonical" href="https://swarmandbee.com">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Swarm &amp; Bee | Sovereign Compute Infrastructure">
-  <meta property="og:description" content="Dedicated RTX 6000 Pro Blackwell GPUs, CoVe-verified medical AI training data, and specialized models. Your data never leaves your rack.">
+  <meta property="og:title" content="Swarm &amp; Bee | Last Mile Compute">
+  <meta property="og:description" content="Sovereign compute infrastructure. Dedicated RTX 6000 Pro Blackwell GPUs, CoVe-verified training data, and specialized models. Your data never leaves your rack.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://swarmandbee.com">
   <meta property="og:image" content="https://swarmandbee.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Swarm &amp; Bee — Sovereign Compute Infrastructure">
+  <meta property="og:image:alt" content="Swarm &amp; Bee — Last Mile Compute">
   <meta property="og:site_name" content="Swarm &amp; Bee">
   <meta property="og:locale" content="en_US">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Swarm &amp; Bee | Sovereign Compute Infrastructure">
-  <meta name="twitter:description" content="Dedicated RTX 6000 Pro Blackwell GPUs, CoVe-verified medical AI training data, and specialized models. Your data never leaves your rack.">
+  <meta name="twitter:title" content="Swarm &amp; Bee | Last Mile Compute">
+  <meta name="twitter:description" content="Sovereign compute infrastructure. Dedicated RTX 6000 Pro Blackwell GPUs, CoVe-verified training data, and specialized models. Your data never leaves your rack.">
   <meta name="twitter:image" content="https://swarmandbee.com/og-image.png">
-  <meta name="twitter:image:alt" content="Swarm &amp; Bee — Sovereign Compute Infrastructure">
+  <meta name="twitter:image:alt" content="Swarm &amp; Bee — Last Mile Compute">
 
   <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -38,77 +38,219 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; overflow: hidden; }
 
     body {
       background: #080808;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #888;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      color: #aaa;
+      min-height: 100vh;
     }
 
-    .page {
+    /* ── Hero ── */
+
+    .hero {
       text-align: center;
       max-width: 600px;
-      padding: 2rem;
+      margin: 0 auto;
+      padding: 6rem 2rem 3rem;
     }
 
     .firm {
       font-size: clamp(2rem, 5.5vw, 3.4rem);
       font-weight: 300;
       letter-spacing: 0.12em;
-      color: #e0e0e0;
-      margin-bottom: 2rem;
+      color: #f0f0f0;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      color: #B89B3C;
+      text-transform: uppercase;
+      margin-bottom: 1.6rem;
     }
 
     .rule {
       width: 40px;
       height: 1px;
-      background: #333;
-      margin: 0 auto 2rem;
+      background: #555;
+      margin: 0 auto 1.6rem;
     }
 
     .tagline {
       font-size: clamp(0.72rem, 1.3vw, 0.82rem);
       font-weight: 400;
-      letter-spacing: 0.22em;
-      color: #555;
+      letter-spacing: 0.18em;
+      color: #999;
       text-transform: uppercase;
       line-height: 1.8;
     }
 
-    .contact {
-      position: fixed;
-      bottom: 2.2rem;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      font-size: 0.72rem;
-      font-weight: 400;
+    .stats {
+      font-size: 0.7rem;
+      color: #777;
+      margin-top: 1.4rem;
       letter-spacing: 0.08em;
-      color: #444;
     }
 
-    .contact a {
-      color: #444;
+    /* ── Product Grid ── */
+
+    .products {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .products-label {
+      text-align: center;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .card {
+      display: block;
+      background: #111;
+      border: 1px solid #1a1a1a;
+      border-left: 3px solid var(--accent);
+      padding: 1.4rem 1.2rem;
       text-decoration: none;
-      transition: color 0.4s ease;
+      transition: all 0.3s ease;
+      position: relative;
     }
 
-    .contact a:hover { color: #e0e0e0; }
-
-    .contact .sep {
-      margin: 0 1.2em;
-      color: #222;
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      background: #141414;
     }
 
-    /* ── Contact trigger ── */
+    .card-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: #e8e8e8;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-desc {
+      font-size: 0.7rem;
+      line-height: 1.5;
+      color: #888;
+      letter-spacing: 0.02em;
+    }
+
+    .card-arrow {
+      position: absolute;
+      top: 1.4rem;
+      right: 1rem;
+      font-size: 0.85rem;
+      color: var(--accent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover .card-arrow { opacity: 1; }
+
+    /* ── Buy CTA ── */
+
+    .cta-section {
+      text-align: center;
+      padding: 2rem 2rem 4rem;
+    }
+
+    .cta-buy {
+      display: inline-block;
+      padding: 0.8rem 3rem;
+      background: #B89B3C;
+      color: #080808;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: inherit;
+      transition: background 0.3s ease;
+    }
+
+    .cta-buy:hover { background: #c9ab4c; }
+
+    .cta-browse {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      text-decoration: none;
+      font-family: inherit;
+      transition: color 0.3s ease;
+    }
+
+    .cta-browse:hover { color: #e0e0e0; }
+
+    /* ── Footer ── */
+
+    .footer {
+      border-top: 1px solid #1a1a1a;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 3rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .footer-col h4 {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 0.72rem;
+      color: #888;
+      text-decoration: none;
+      padding: 0.25rem 0;
+      letter-spacing: 0.04em;
+      transition: color 0.3s ease;
+    }
+
+    .footer-col a:hover { color: #f0f0f0; }
+
+    .footer-col a.gold { color: #B89B3C; }
+    .footer-col a.green { color: #5a9a6a; }
+    .footer-col a.blue { color: #4A90D9; }
+    .footer-col a.discord { color: #5865F2; }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 0 2rem 2rem;
+      font-size: 0.6rem;
+      color: #444;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Contact Trigger ── */
 
     .contact-trigger {
       position: fixed;
@@ -118,9 +260,9 @@
       font-weight: 400;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: #444;
-      background: none;
-      border: 1px solid #222;
+      color: #888;
+      background: #111;
+      border: 1px solid #333;
       padding: 0.6rem 1.2rem;
       cursor: pointer;
       font-family: inherit;
@@ -129,8 +271,9 @@
     }
 
     .contact-trigger:hover {
-      color: #e0e0e0;
-      border-color: #444;
+      color: #f0f0f0;
+      border-color: #555;
+      background: #1a1a1a;
     }
 
     /* ── Modal ── */
@@ -168,20 +311,20 @@
       background: none;
       border: none;
       font-size: 1.2rem;
-      color: #444;
+      color: #666;
       cursor: pointer;
       font-family: inherit;
       transition: color 0.3s ease;
     }
 
-    .dialog-close:hover { color: #e0e0e0; }
+    .dialog-close:hover { color: #f0f0f0; }
 
     .dialog h2 {
       font-size: 0.75rem;
       font-weight: 400;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #888;
+      color: #aaa;
       margin-bottom: 2rem;
     }
 
@@ -191,7 +334,7 @@
       font-weight: 400;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: #555;
+      color: #777;
       margin-bottom: 0.4rem;
     }
 
@@ -203,7 +346,7 @@
       background: #0a0a0a;
       font-family: inherit;
       font-size: 0.85rem;
-      color: #ccc;
+      color: #ddd;
       margin-bottom: 1.2rem;
       outline: none;
       transition: border-color 0.3s ease;
@@ -211,7 +354,7 @@
 
     .dialog input:focus,
     .dialog textarea:focus {
-      border-color: #444;
+      border-color: #555;
     }
 
     .dialog textarea {
@@ -222,7 +365,7 @@
     .dialog-send {
       width: 100%;
       padding: 0.7rem;
-      background: #e0e0e0;
+      background: #f0f0f0;
       color: #080808;
       border: none;
       font-family: inherit;
@@ -234,17 +377,38 @@
       transition: background 0.3s ease;
     }
 
-    .dialog-send:hover { background: #ccc; }
+    .dialog-send:hover { background: #ddd; }
 
     .dialog-ok {
       display: none;
       text-align: center;
       padding: 1rem 0;
       font-size: 0.85rem;
-      color: #888;
+      color: #aaa;
     }
 
-    @media (max-width: 600px) {
+    /* ── Responsive ── */
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+      .hero { padding: 4rem 1.5rem 2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero { padding: 3rem 1.2rem 2rem; }
       .contact-trigger {
         bottom: 1.2rem;
         right: 1.2rem;
@@ -256,55 +420,108 @@
 </head>
 <body>
 
-  <main class="page">
+  <!-- Hero -->
+  <header class="hero">
     <h1 class="firm">Swarm &amp; Bee</h1>
+    <p class="subtitle">Last Mile Compute</p>
     <div class="rule"></div>
-    <p class="tagline">Sovereign Compute Infrastructure</p>
+    <p class="tagline">Last mile intelligence.<br>Your data never leaves your rack.</p>
+    <p class="stats">805,313 CoVe-verified pairs &middot; 196 specialties &middot; API access from $99</p>
+  </header>
 
-    <div style="margin-top:3rem;display:flex;flex-direction:column;gap:0.8rem;align-items:center;">
-      <a href="/data" style="display:inline-block;padding:0.7rem 2.4rem;background:#B89B3C;color:#080808;font-size:0.7rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;font-family:inherit;transition:background 0.3s;">Buy Training Data</a>
-      <div style="display:flex;gap:1.4rem;margin-top:0.4rem;">
-        <a href="/rfp" style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#5a9a6a;text-decoration:none;font-family:inherit;">Request Fine-Tuning</a>
-        <a href="/loi" style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#888;text-decoration:none;font-family:inherit;">License Data (LOI)</a>
-      </div>
-      <p style="font-size:0.6rem;color:#333;margin-top:0.6rem;letter-spacing:0.08em;">805,313 CoVe-verified medical QA pairs &middot; 196 specialties &middot; API access from $99</p>
+  <!-- Product Grid -->
+  <section class="products">
+    <p class="products-label">Product Lines</p>
+    <div class="grid">
+
+      <a href="/search" class="card" style="--accent:#B89B3C;">
+        <div class="card-name">SwarmMed</div>
+        <div class="card-desc">Medical AI training data. 805K+ verified pairs across 196 specialties.</div>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+
+      <a href="/search" class="card" style="--accent:#4A90D9;">
+        <div class="card-name">SwarmAviation</div>
+        <div class="card-desc">Aviation intelligence. Pilot training, MRO, safety, ATC, drones.</div>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+
+      <a href="/search" class="card" style="--accent:#d97a4a;">
+        <div class="card-name">SwarmCRE</div>
+        <div class="card-desc">Commercial real estate analytics, underwriting &amp; deal intelligence.</div>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+
+      <a href="/search" class="card" style="--accent:#5a9a6a;">
+        <div class="card-name">SwarmCompute</div>
+        <div class="card-desc">Dedicated RTX PRO 6000 Blackwell. Single-tenant GPU sovereignty.</div>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+
+      <a href="/search" class="card" style="--accent:#e0e0e0;">
+        <div class="card-name">SwarmNet</div>
+        <div class="card-desc">Browse 100+ active listings. Data, models, compute &mdash; all verticals.</div>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+
+      <a href="/data" class="card" style="--accent:#9a6a9a;">
+        <div class="card-name">SwarmResearch</div>
+        <div class="card-desc">Data API. Buy datasets via Stripe. Checkout from $99.</div>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+
+      <a href="/om" class="card" style="--accent:#4a9a9a;">
+        <div class="card-name">SwarmOM</div>
+        <div class="card-desc">Offering memorandum. Full asset details &amp; spec build pricing.</div>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+
+      <a href="/rfp" class="card" style="--accent:#5a9a6a;">
+        <div class="card-name">SwarmRFP</div>
+        <div class="card-desc">Request fine-tuning. Managed cook, dedicated rig, or spec build.</div>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+
     </div>
-  </main>
+  </section>
 
-  <footer class="contact">
-    <a href="/search" style="color:#e0e0e0;">SwarmNet Search</a>
-    <span class="sep">&middot;</span>
-    <a href="/data" style="color:#4A90D9;">Data API</a>
-    <span class="sep">&middot;</span>
-    <a href="https://build.swarmandbee.com" style="color:#e0e0e0;">Store</a>
-    <span class="sep">&middot;</span>
-    <a href="https://medical.swarmandbee.com">Medical</a>
-    <span class="sep">&middot;</span>
-    <a href="https://compute.swarmandbee.com">Compute</a>
-    <span class="sep">&middot;</span>
-    <a href="https://data.swarmandbee.com">Platinum Data</a>
-    <span class="sep">&middot;</span>
-    <a href="/om">Offering Memorandum</a>
-    <span class="sep">&middot;</span>
-    <a href="/faq">FAQ</a>
-    <span class="sep">&middot;</span>
-    <a href="https://discord.gg/H7cyEHFHgu" target="_blank" style="color:#5865F2;">Discord</a>
-    <span class="sep">&middot;</span>
-    <a href="/loi" style="color:#B89B3C;">License Data (LOI)</a>
-    <span class="sep">&middot;</span>
-    <a href="/rfp" style="color:#5a9a6a;">Request Fine-Tuning (RFP)</a>
-    <span class="sep">&middot;</span>
-    <a href="mailto:build@swarmandbee.com">build@swarmandbee.com</a>
-    <span class="sep">&middot;</span>
-    <a href="tel:+15615327120">561.532.7120</a>
-    <span class="sep">&middot;</span>
-    <a href="https://data.swarmandbee.com/terms.html">Terms</a>
-    <span class="sep">&middot;</span>
-    <a href="https://data.swarmandbee.com/privacy.html">Privacy</a>
+  <!-- Buy CTA -->
+  <div class="cta-section">
+    <a href="/data" class="cta-buy">Buy Training Data</a>
+    <a href="/search" class="cta-browse">Browse All Listings &rarr;</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="/search">SwarmNet Search</a>
+      <a href="/data" class="blue">Data API</a>
+      <a href="/om">Offering Memorandum</a>
+      <a href="/faq">FAQ</a>
+      <a href="https://build.swarmandbee.com">Store</a>
+    </div>
+    <div class="footer-col">
+      <h4>Actions</h4>
+      <a href="/loi" class="gold">License Data (LOI)</a>
+      <a href="/rfp" class="green">Request Fine-Tuning (RFP)</a>
+      <a href="https://discord.gg/H7cyEHFHgu" target="_blank" class="discord">Discord</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="mailto:build@swarmandbee.com">build@swarmandbee.com</a>
+      <a href="tel:+15615327120">561.532.7120</a>
+      <a href="https://huggingface.co/SwarmOS" target="_blank">HuggingFace</a>
+      <a href="https://github.com/SudoSuOps" target="_blank">GitHub</a>
+    </div>
   </footer>
 
+  <p class="footer-bottom">&copy; 2026 Swarm &amp; Bee. All rights reserved.</p>
+
+  <!-- Contact Button -->
   <button class="contact-trigger" id="chatBtn">Contact</button>
 
+  <!-- Contact Modal -->
   <div class="overlay" id="overlay">
     <div class="dialog">
       <button class="dialog-close" id="closeBtn">&times;</button>
@@ -331,7 +548,7 @@
     "alternateName": "S&B",
     "url": "https://swarmandbee.com",
     "logo": "https://swarmandbee.com/og-image.png",
-    "description": "Sovereign compute infrastructure firm providing dedicated RTX 6000 Pro Blackwell GPUs, CoVe-verified medical AI training data, and specialized fine-tuned models. Single-tenant sovereignty — your data never leaves your rack.",
+    "description": "Last mile compute. Sovereign compute infrastructure providing dedicated RTX 6000 Pro Blackwell GPUs, CoVe-verified AI training data, and specialized fine-tuned models. Single-tenant sovereignty — your data never leaves your rack.",
     "foundingDate": "2026",
     "contactPoint": {
       "@type": "ContactPoint",
@@ -346,42 +563,54 @@
       "https://discord.gg/H7cyEHFHgu"
     ],
     "knowsAbout": [
+      "Last mile compute",
       "Sovereign compute infrastructure",
       "Dedicated GPU hosting",
       "Medical AI model training",
+      "Aviation AI training data",
       "CoVe-verified training data",
       "On-premises AI deployment",
-      "HIPAA-compliant AI infrastructure",
       "Fine-tuning specialized language models",
       "Edge compute",
-      "Data sovereignty"
+      "Data sovereignty",
+      "Commercial real estate AI"
     ],
     "areaServed": "US",
     "brand": {
       "@type": "Brand",
       "name": "Swarm & Bee",
-      "slogan": "Last mile intelligence."
+      "slogan": "Last mile compute."
     },
     "offers": [
       {
         "@type": "Offer",
-        "name": "Dedicated GPU Infrastructure",
-        "description": "Single-tenant RTX 6000 Pro Blackwell GPU racks with full data sovereignty. No shared tenancy, no data leaving your rack."
+        "name": "SwarmMed — Medical AI Training Data",
+        "description": "805,313 CoVe-verified medical QA pairs across 196 specialties from 18 authoritative textbooks."
       },
       {
         "@type": "Offer",
-        "name": "Platinum Medical AI Training Data",
-        "description": "CoVe-verified, fact-checked medical QA training data for fine-tuning healthcare language models. Chain-of-Verification with 235B parameter verifier."
+        "name": "SwarmAviation — Aviation Intelligence",
+        "description": "Aviation training data covering pilot training, MRO, safety compliance, ATC, and drone operations."
       },
       {
         "@type": "Offer",
-        "name": "Specialized Medical AI Models",
-        "description": "Fine-tuned 7B and 8B parameter medical language models covering cardiology, pharmacology, radiology, and general medicine."
+        "name": "SwarmCompute — Dedicated GPU Infrastructure",
+        "description": "Single-tenant RTX PRO 6000 Blackwell GPU racks with full data sovereignty. No shared tenancy."
       },
       {
         "@type": "Offer",
-        "name": "Platinum Medical Training Data API",
-        "description": "API access to 805,313 CoVe-verified medical QA pairs across 196 specialties. Per-pair pricing from $2, with free sample endpoint."
+        "name": "SwarmResearch — Data API",
+        "description": "API access to verified training data. Self-service checkout from $99 via Stripe."
+      },
+      {
+        "@type": "Offer",
+        "name": "SwarmCRE — Commercial Real Estate",
+        "description": "AI-powered commercial real estate analytics, underwriting, and deal intelligence."
+      },
+      {
+        "@type": "Offer",
+        "name": "Managed Fine-Tuning (RFP)",
+        "description": "End-to-end managed model fine-tuning on dedicated hardware. Managed cook, dedicated rig, or spec build."
       }
     ]
   }
@@ -394,12 +623,12 @@
     "@type": "WebSite",
     "name": "Swarm & Bee",
     "url": "https://swarmandbee.com",
-    "description": "Sovereign compute infrastructure. Dedicated hardware, specialized models, your data never leaves your rack.",
+    "description": "Last mile compute. Sovereign compute infrastructure. Dedicated hardware, specialized models, your data never leaves your rack.",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://data.swarmandbee.com/?q={search_term_string}"
+        "urlTemplate": "https://swarmandbee.com/search?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }
