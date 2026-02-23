@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Swarm-CRE — Verified AI Datasets &amp; Models for Commercial Real Estate | Swarm &amp; Bee</title>
+  <meta name="description" content="Swarm-CRE — Domain-specific AI datasets and models for commercial real estate. Capital markets, industrial, cold chain, supply chain, and document intelligence. Verified, reproducible, built by CRE operators.">
+  <meta name="keywords" content="commercial real estate AI, CRE AI, cap rate analysis, underwriting AI, tenant scoring, dark box analysis, industrial real estate, cold chain, supply chain AI, CRE training data, commercial property AI, net lease AI, Swarm-CRE">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://swarmandbee.com/swarm-cre">
+
+  <meta property="og:title" content="Swarm-CRE — Verified AI Datasets & Models for Commercial Real Estate">
+  <meta property="og:description" content="Domain-specific AI for CRE. Capital markets, industrial, cold chain, supply chain, document intelligence. Built by operators, not academics.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://swarmandbee.com/swarm-cre">
+  <meta property="og:image" content="https://swarmandbee.com/og-image.png">
+  <meta property="og:site_name" content="Swarm &amp; Bee">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@swarmandbee">
+  <meta name="twitter:title" content="Swarm-CRE — Verified AI for Commercial Real Estate">
+  <meta name="twitter:description" content="Domain-specific CRE datasets and models. Capital markets, industrial, cold chain, supply chain. Built by operators.">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #080808;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #888; line-height: 1.7;
+    }
+    a { color: #d97a4a; text-decoration: none; transition: color 0.3s; }
+    a:hover { color: #e0e0e0; }
+
+    /* ── Back Nav ── */
+    .back-nav {
+      position: fixed; top: 1.2rem; left: 1.5rem;
+      font-size: 0.7rem; color: #555; text-decoration: none;
+      letter-spacing: 0.1em; z-index: 50; transition: color 0.3s;
+    }
+    .back-nav:hover { color: #f0f0f0; }
+
+    .page { max-width: 760px; margin: 0 auto; padding: 5rem 2rem 3rem; }
+
+    /* ── Hero ── */
+    .hero { text-align: center; margin-bottom: 4rem; }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4.5vw, 2.8rem); font-weight: 300; color: #e0e0e0;
+      letter-spacing: 0.06em; margin-bottom: 1rem;
+    }
+    .hero .lead {
+      font-size: clamp(0.88rem, 1.8vw, 1.05rem); color: #999;
+      max-width: 560px; margin: 0 auto 1.6rem; line-height: 1.7;
+    }
+    .hero .quiet {
+      font-size: 0.78rem; color: #555; line-height: 1.8;
+      font-style: italic;
+    }
+
+    /* ── Section ── */
+    .section { margin-bottom: 4rem; }
+    .section-label {
+      font-size: 0.58rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase;
+      color: #d97a4a; margin-bottom: 1.6rem;
+      padding-bottom: 0.6rem; border-bottom: 1px solid #151515;
+    }
+    .section h2 {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 300; color: #ccc;
+      letter-spacing: 0.02em; margin-bottom: 1.2rem;
+    }
+    .section p {
+      font-size: 0.85rem; color: #777; margin-bottom: 1rem;
+    }
+    .section p strong { color: #bbb; font-weight: 500; }
+
+    /* ── Lists ── */
+    .clean-list {
+      list-style: none; padding: 0; margin: 1rem 0 1.4rem;
+    }
+    .clean-list li {
+      padding: 0.3rem 0 0.3rem 1.4rem;
+      position: relative; font-size: 0.82rem; color: #777;
+    }
+    .clean-list li::before {
+      content: ''; position: absolute; left: 0; top: 0.7rem;
+      width: 5px; height: 5px; background: #333; border-radius: 50%;
+    }
+    .clean-list.orange li::before { background: #d97a4a; }
+
+    /* ── Callout ── */
+    .callout {
+      background: #0a0a0a; border-left: 2px solid #d97a4a;
+      padding: 1rem 1.4rem; margin: 1.4rem 0;
+      font-size: 0.82rem; color: #888;
+    }
+
+    /* ── Vertical Cards ── */
+    .verticals-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1rem; margin: 1.4rem 0;
+    }
+    .vertical-card {
+      background: #0c0c0c; border: 1px solid #1a1a1a;
+      padding: 1.4rem;
+    }
+    .vertical-card h3 {
+      font-size: 0.82rem; font-weight: 500; color: #ccc;
+      margin-bottom: 0.6rem; letter-spacing: 0.02em;
+    }
+    .vertical-card .count {
+      font-size: 0.6rem; color: #d97a4a; letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+    .vertical-card ul {
+      list-style: none; padding: 0;
+    }
+    .vertical-card li {
+      font-size: 0.72rem; color: #666; padding: 0.2rem 0 0.2rem 1rem;
+      position: relative;
+    }
+    .vertical-card li::before {
+      content: ''; position: absolute; left: 0; top: 0.55rem;
+      width: 4px; height: 4px; background: #333;
+    }
+    .verticals-grid .full-width {
+      grid-column: 1 / -1;
+    }
+
+    /* ── Stack Table ── */
+    .stack-table {
+      width: 100%; border-collapse: collapse; margin: 1.4rem 0;
+    }
+    .stack-table th {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+      color: #555; text-align: left; padding: 0.7rem 0.8rem; border-bottom: 1px solid #1a1a1a;
+    }
+    .stack-table td {
+      padding: 0.7rem 0.8rem; border-bottom: 1px solid #111; font-size: 0.82rem; color: #888;
+    }
+    .stack-table td:first-child { color: #ccc; font-weight: 400; }
+    .stack-table tr:hover td { background: #0c0c0c; }
+
+    /* ── Use Cases ── */
+    .use-cases-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0.8rem; margin: 1.4rem 0;
+    }
+    .use-case {
+      background: #0c0c0c; border: 1px solid #1a1a1a; padding: 1.2rem 1.4rem;
+    }
+    .use-case h4 {
+      font-size: 0.75rem; font-weight: 500; color: #ccc;
+      margin-bottom: 0.4rem; letter-spacing: 0.02em;
+    }
+    .use-case p {
+      font-size: 0.72rem; color: #555; line-height: 1.5;
+      font-style: italic; margin: 0;
+    }
+
+    /* ── Dataset Products ── */
+    .products-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px; background: #151515; border: 1px solid #151515;
+      margin: 1.4rem 0;
+    }
+    .product {
+      background: #0a0a0a; padding: 1.4rem;
+    }
+    .product-label {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+      color: #555; margin-bottom: 0.5rem;
+    }
+    .product-val {
+      font-size: 1.4rem; font-weight: 300; color: #d97a4a; margin-bottom: 0.2rem;
+    }
+    .product-note {
+      font-size: 0.65rem; color: #444; margin-bottom: 0.5rem;
+    }
+    .product-desc {
+      font-size: 0.72rem; color: #666; line-height: 1.5;
+    }
+
+    /* ── Principles ── */
+    .principles {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.6rem; margin: 1.4rem 0;
+    }
+    .principle {
+      padding: 0.8rem 1rem; border: 1px solid #1a1a1a;
+      font-size: 0.72rem; color: #777; letter-spacing: 0.02em;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center; padding: 2rem 0;
+      border-top: 1px solid #151515; margin-top: 2rem;
+    }
+    .cta-section p {
+      font-size: 0.82rem; color: #555; margin-bottom: 1.4rem;
+    }
+    .cta-row {
+      display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center;
+    }
+    .cta-btn {
+      display: inline-block; padding: 0.75rem 2rem;
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      font-family: inherit; text-decoration: none; transition: all 0.3s;
+    }
+    .cta-orange { background: #d97a4a; color: #080808; }
+    .cta-orange:hover { background: #e08a5a; color: #080808; }
+    .cta-outline { background: none; color: #888; border: 1px solid #333; }
+    .cta-outline:hover { color: #e0e0e0; border-color: #555; }
+
+    /* ── Footer ── */
+    .foot {
+      text-align: center; padding-top: 2rem; margin-top: 1rem;
+      font-size: 0.62rem; color: #333; letter-spacing: 0.06em;
+    }
+    .foot a { color: #444; margin: 0 0.5em; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .page { padding: 3.5rem 1.2rem 2rem; }
+      .verticals-grid { grid-template-columns: 1fr; }
+      .use-cases-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      .principles { grid-template-columns: 1fr; }
+      .cta-row { flex-direction: column; align-items: center; }
+      .cta-btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="/" class="back-nav">&larr; S&amp;B</a>
+
+  <div class="page">
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- HERO -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="hero">
+      <h1>Swarm-CRE</h1>
+      <p class="lead">Verified AI Datasets &amp; Models for Commercial Real Estate</p>
+      <p class="lead" style="color:#777;">We build CRE-grade datasets and models designed for underwriting, deal intelligence, tenant analysis, and operational research.</p>
+      <p class="quiet">Built by operators. Not academics.<br>Every pair grounded in real transaction logic.</p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- MARKET OPPORTUNITY -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-label">The Market Opportunity</div>
+      <h2>Commercial real estate runs on judgment &mdash; and judgment doesn't scale.</h2>
+
+      <p>Every CRE deal involves:</p>
+
+      <ul class="clean-list">
+        <li>Cap rate analysis and valuation modeling</li>
+        <li>Tenant creditworthiness and lease structure</li>
+        <li>Market comps, absorption rates, and vacancy trends</li>
+        <li>Regulatory diligence, zoning, and entitlements</li>
+        <li>Operating expense benchmarks and NOI projections</li>
+        <li>Dark box analysis on vacant or underperforming assets</li>
+      </ul>
+
+      <p>Most of this knowledge is:</p>
+
+      <ul class="clean-list">
+        <li>Locked in the heads of senior brokers and underwriters</li>
+        <li>Scattered across CoStar, LoopNet, internal memos, and spreadsheets</li>
+        <li>Time-consuming to synthesize across deal types</li>
+        <li>Impossible to query at scale without domain-specific AI</li>
+      </ul>
+
+      <div class="callout">
+        Generic AI doesn't understand cap rates, tenant credit, or lease structures.<br>
+        That's where Swarm-CRE fits.
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- WHY CRE NEEDS DOMAIN-SPECIFIC AI -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-label">Why CRE Needs Domain-Specific AI</div>
+      <h2>CRE is not a consumer AI market.</h2>
+
+      <p>It is a relationship-driven, data-heavy industry where:</p>
+
+      <ul class="clean-list orange">
+        <li><strong>Bad underwriting kills deals</strong></li>
+        <li><strong>Tenant vetting requires institutional knowledge</strong></li>
+        <li><strong>Market context changes by submarket and quarter</strong></li>
+        <li><strong>Dark box and value-add analysis requires pattern recognition</strong></li>
+      </ul>
+
+      <p>Generic LLMs don't know the difference between a 6-cap NNN and a 10-cap value-add.</p>
+      <p><strong>We're building the data layer first.</strong></p>
+
+      <div class="callout">
+        Swarm-CRE produces verified CRE training datasets:<br>
+        grounded in 30 years of transaction data, structured for underwriting,
+        built by operators who have closed $8B+ in commercial deals.
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- VERTICAL COVERAGE -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-label">Vertical Coverage</div>
+      <h2>Five CRE intelligence verticals.</h2>
+
+      <div class="verticals-grid">
+
+        <div class="vertical-card">
+          <h3>Capital Markets &amp; Valuation</h3>
+          <div class="count">Core vertical</div>
+          <ul>
+            <li>Cap rate analysis and valuation modeling</li>
+            <li>NOI projection and expense benchmarking</li>
+            <li>Debt coverage and financing structure</li>
+            <li>1031 exchange and disposition strategy</li>
+          </ul>
+        </div>
+
+        <div class="vertical-card">
+          <h3>Industrial &amp; Logistics</h3>
+          <div class="count">High growth</div>
+          <ul>
+            <li>Warehouse and distribution analysis</li>
+            <li>Last-mile logistics site selection</li>
+            <li>Clear height, dock count, and functional utility</li>
+            <li>Tenant credit and lease term analysis</li>
+          </ul>
+        </div>
+
+        <div class="vertical-card">
+          <h3>Cold Chain &amp; Specialized</h3>
+          <div class="count">Niche advantage</div>
+          <ul>
+            <li>Cold storage facility valuation</li>
+            <li>Temperature-controlled logistics intelligence</li>
+            <li>Build-to-suit vs. conversion analysis</li>
+            <li>Operator qualification and credit</li>
+          </ul>
+        </div>
+
+        <div class="vertical-card">
+          <h3>Supply Chain Intelligence</h3>
+          <div class="count">Cross-domain</div>
+          <ul>
+            <li>Port proximity and intermodal analysis</li>
+            <li>Inventory flow and throughput modeling</li>
+            <li>Freight corridor and route optimization</li>
+            <li>Supply chain risk assessment</li>
+          </ul>
+        </div>
+
+        <div class="vertical-card full-width">
+          <h3>Document Intelligence</h3>
+          <div class="count">Workflow automation</div>
+          <ul>
+            <li>Lease abstraction and key term extraction</li>
+            <li>Offering memorandum analysis and comp extraction</li>
+            <li>LOI and purchase agreement review</li>
+            <li>Zoning, entitlement, and regulatory document parsing</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p style="font-size:0.75rem;color:#555;">Built on real transaction patterns from industrial, net lease, multi-tenant, cold chain, and land development deals.</p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- MODEL + DATASET STACK -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-label">Model + Dataset Stack</div>
+      <h2>Swarm-CRE is part of the Swarm model hierarchy.</h2>
+
+      <table class="stack-table">
+        <thead>
+          <tr><th>Layer</th><th>Role</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>4B Router</td><td>Detects CRE requests and routes by deal type</td><td style="color:#d97a4a;">Cooking</td></tr>
+          <tr><td>14B CRE Specialist</td><td>Underwriting, valuation, and deal intelligence</td><td style="color:#d97a4a;">Cooking</td></tr>
+          <tr><td>32B Research Brain</td><td>Multi-document deal analysis and market synthesis</td><td style="color:#d97a4a;">Cooking</td></tr>
+          <tr><td>235B Verifier</td><td>Dataset validation and quality control</td><td style="color:#5a9a6a;">Live</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>We don't just build models. We build the verified datasets that power them.</strong></p>
+
+      <p>Current CRE dataset:</p>
+      <ul class="clean-list orange">
+        <li>2,611 verified CRE pairs (growing)</li>
+        <li>CoVe quality gate &mdash; same 235B verifier pipeline</li>
+        <li>Grounded in real transaction logic and deal structures</li>
+        <li>MD5-fingerprinted, anchored to Hedera blockchain</li>
+        <li>Apache 2.0 licensed</li>
+      </ul>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- USE CASES -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-label">Real-World Use Cases</div>
+      <h2>Swarm-CRE enables:</h2>
+
+      <div class="use-cases-grid">
+
+        <div class="use-case">
+          <h4>Underwriting &amp; Valuation</h4>
+          <p>"Underwrite this 120K SF industrial at a 7.2 cap with 3% annual bumps and 8 years remaining."</p>
+        </div>
+
+        <div class="use-case">
+          <h4>Tenant Scoring</h4>
+          <p>"Score this tenant: regional distributor, 15-year track record, $40M revenue, NNN lease."</p>
+        </div>
+
+        <div class="use-case">
+          <h4>Dark Box Analysis</h4>
+          <p>"Analyze the re-tenanting potential of a vacant 85K SF big box in a secondary market."</p>
+        </div>
+
+        <div class="use-case">
+          <h4>Market Intelligence</h4>
+          <p>"Compare cap rate trends for industrial assets in the Southeast over the last 4 quarters."</p>
+        </div>
+
+        <div class="use-case">
+          <h4>CRE AI Development</h4>
+          <p>High-quality, verified training data for building CRE-specific AI products and tools.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- DATASET PRODUCTS -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-label">Dataset Products</div>
+      <h2>Buy verified CRE training data.</h2>
+
+      <div class="products-grid">
+        <div class="product">
+          <div class="product-label">Starter</div>
+          <div class="product-val">$99</div>
+          <div class="product-note">500 pairs &middot; any CRE vertical</div>
+          <div class="product-desc">API key. Single vertical. Instant access.</div>
+        </div>
+        <div class="product">
+          <div class="product-label">Industrial</div>
+          <div class="product-val">$499</div>
+          <div class="product-note">2,500 pairs &middot; multi-vertical</div>
+          <div class="product-desc">API key. Cross-vertical coverage. Priority support.</div>
+        </div>
+        <div class="product">
+          <div class="product-label">Full Vault</div>
+          <div class="product-val" style="color:#ccc;">Custom</div>
+          <div class="product-note">Full dataset &middot; LOI required</div>
+          <div class="product-desc">All CRE verticals. Dedicated support. Sovereign deployment.</div>
+        </div>
+      </div>
+
+      <p style="font-size:0.72rem;color:#444;margin-top:0.8rem;">CRE dataset is actively growing. Early buyers lock in at current pricing. <a href="https://discord.gg/H7cyEHFHgu" target="_blank" style="color:#5865F2;">Join Discord</a> for updates and early access.</p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- TRUST + STRUCTURE -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-label">Trust + Structure</div>
+
+      <div class="principles">
+        <div class="principle">Built by CRE operators</div>
+        <div class="principle">$8B+ closed transaction basis</div>
+        <div class="principle">Verified by 235B model</div>
+        <div class="principle">On-chain provenance</div>
+        <div class="principle">Apache 2.0 licensed</div>
+        <div class="principle">Sovereignty by design</div>
+      </div>
+
+      <p style="margin-top:1rem;">This is the opposite of scraping LoopNet and hoping for the best.</p>
+      <p><strong>This is CRE-grade AI infrastructure, built by people who have actually closed deals.</strong></p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- CTA -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="cta-section">
+      <p>Explore CRE Datasets &amp; Models</p>
+      <div class="cta-row">
+        <a href="/search" class="cta-btn cta-orange">View Swarm-CRE Products</a>
+        <a href="/rfp" class="cta-btn cta-outline">Talk to Swarm-CRE</a>
+      </div>
+    </div>
+
+    <!-- ── Footer ── -->
+    <footer class="foot">
+      <a href="/">Home</a>
+      <a href="/swarmmed">Medical</a>
+      <a href="/aviation">Aviation</a>
+      <a href="/search">Search</a>
+      <a href="/data">Data API</a>
+      <a href="/rfp">RFP</a>
+      <a href="/loi">LOI</a>
+      <a href="mailto:build@swarmandbee.com">build@swarmandbee.com</a>
+      <a href="https://discord.gg/H7cyEHFHgu" target="_blank" style="color:#5865F2;">Discord</a>
+      <a href="https://x.com/swarmandbee" target="_blank">X / Twitter</a>
+      <br><br>
+      &copy; 2026 Swarm &amp; Bee. Last mile intelligence.
+    </footer>
+
+  </div>
+
+  <!-- JSON-LD: Product -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Swarm-CRE — Verified AI Datasets & Models for Commercial Real Estate",
+    "description": "Domain-specific AI datasets and models for commercial real estate. Capital markets, industrial, cold chain, supply chain, and document intelligence. Verified by 235B parameter model. Built by operators with $8B+ in closed transactions.",
+    "brand": { "@type": "Brand", "name": "Swarm & Bee" },
+    "url": "https://swarmandbee.com/swarm-cre",
+    "category": "Commercial Real Estate AI Training Data",
+    "offers": [
+      { "@type": "Offer", "name": "Starter", "price": "99", "priceCurrency": "USD", "description": "500 CRE pairs, any vertical" },
+      { "@type": "Offer", "name": "Industrial", "price": "499", "priceCurrency": "USD", "description": "2,500 pairs, multi-vertical" },
+      { "@type": "Offer", "name": "Full Vault", "priceCurrency": "USD", "description": "Full CRE dataset, LOI required" }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://swarmandbee.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Swarm-CRE", "item": "https://swarmandbee.com/swarm-cre" }
+    ]
+  }
+  </script>
+
+</body>
+</html>
