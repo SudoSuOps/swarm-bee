@@ -6,17 +6,17 @@
 Swarm & Bee (S&B) is a sovereign compute infrastructure firm delivering production-grade AI training data, fine-tuned models, and dedicated GPU rigs with full on-chain provenance via Hedera blockchain. Tagline: "Last mile intelligence."
 
 ## What We Sell
-- **Training Data**: 391,991 CoVe-verified platinum medical QA pairs across 59 specialties from 18 authoritative medical textbooks. 30/30 SFT suitability benchmark. Every pair verified by 235B parameter model (Chain-of-Verification).
+- **Training Data**: 406,181 CoVe-verified platinum medical QA pairs across 59 specialties from 18 authoritative medical textbooks. 30/30 SFT suitability benchmark. Every pair verified by 235B parameter model (Chain-of-Verification).
 - **Pre-Trained Models**: SwarmMed-14B (14.77B params, 80 specialties, Qwen2 architecture, Apache 2.0), SwarmMed-7B v5 (edge-deployable), SwarmMed-Vision-4B (multimodal medical).
 - **Dedicated Compute**: RTX PRO 6000 rigs (96GB VRAM), single-tenant sovereign deployment, wallet-gated API, 72hr replacement SLA. $3,500/month.
 - **Aviation Data**: 2.4M raw aviation records across MRO, pilot training, safety, ATC, drones. SwarmAviation-14B in production.
 
 ## Pricing
 - Free: 10 sample pairs per request (no auth) — GET /api/data/sample
-- Starter: $99 one-time — 391,991 pairs, 59 specialties, unlimited API pulls
-- Professional: $999 one-time — full access + priority support
-- Monthly: $4,999/month — unlimited API + monthly data drops + dedicated support
-- Enterprise: $500K–$1.5M/year — full vault license, sovereign deployment
+- Fine-Tune: $99 one-time — 1,000 pairs, any specialty
+- Pro: $499 one-time — 50,000 pairs, up to 5 specialties
+- Custom Build: $999 one-time — 100,000 pairs, up to 20 specialties
+- Enterprise: $1,995 one-time — 250,000 pairs, full vault access
 - Dedicated GPU: $3,500/month — RTX PRO 6000 (96GB VRAM)
 - Edge Node: $250/month — Jetson Orin Nano Super (4B model inference)
 - Spec Build: $500K entry at 10% cap rate (turnkey investment, 2x upside)

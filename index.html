@@ -452,6 +452,24 @@
       letter-spacing: 0.1em;
     }
 
+    .sample-provenance {
+      text-align: center;
+      font-size: 0.6rem;
+      color: #555;
+      letter-spacing: 0.06em;
+      margin-top: 0.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .sample-provenance code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.58rem;
+      color: #B89B3C;
+      background: #1a1a1a;
+      padding: 0.15rem 0.4rem;
+      border-radius: 2px;
+    }
+
     .explorer-cta {
       text-align: center;
     }
@@ -755,7 +773,7 @@
     <p class="subtitle">Last Mile Compute</p>
     <div class="rule"></div>
     <p class="tagline">Last mile intelligence.<br>Your data never leaves your rack.</p>
-    <p class="stats"><span class="counter" id="pairCounter">0</span> CoVe-verified pairs &middot; 59 medical specialties &middot; Packs from $99</p>
+    <p class="stats"><span class="counter" id="pairCounter">851,000+</span> CoVe-verified pairs &middot; 59 medical specialties &middot; Packs from $99</p>
   </header>
 
   <!-- Trust Bar -->
@@ -782,7 +800,7 @@
 
       <a href="/swarmmed" class="card" style="--accent:#B89B3C;">
         <div class="card-name">SwarmMed</div>
-        <div class="card-desc">Medical AI training data. 391K+ platinum pairs across 59 specialties.</div>
+        <div class="card-desc">Medical AI training data. 406K+ platinum pairs across 59 specialties.</div>
         <span class="card-arrow">&rarr;</span>
       </a>
 
@@ -921,8 +939,25 @@
     </div>
 
     <div class="sample-pairs" id="samplePairs">
-      <div class="sample-loading">Loading sample pairs...</div>
+      <!-- Preloaded pairs — visible instantly, replaced by live API pull -->
+      <div class="pair-card">
+        <div class="pair-q">What are the key diagnostic criteria for differentiating between unstable angina and NSTEMI in the emergency department setting?</div>
+        <div class="pair-a">The primary differentiator between unstable angina (UA) and non-ST-elevation myocardial infarction (NSTEMI) is the presence of elevated cardiac biomarkers. Both present with chest pain at rest, new-onset angina, or crescendo angina, but NSTEMI shows elevated troponin I or T above the 99th percentile of the upper reference limit. Serial troponin measurements at 0, 3, and 6 hours using high-sensitivity assays are recommended. ECG findings in both may show ST depression or T-wave inversion, but neither shows persistent ST elevation...</div>
+        <div class="pair-meta">cardiology</div>
+      </div>
+      <div class="pair-card">
+        <div class="pair-q">Explain the pathophysiology of diabetic ketoacidosis and its management priorities.</div>
+        <div class="pair-a">Diabetic ketoacidosis (DKA) results from absolute or relative insulin deficiency combined with counter-regulatory hormone excess. The cascade begins with unrestrained lipolysis producing free fatty acids, which undergo hepatic beta-oxidation to ketone bodies (acetoacetate, beta-hydroxybutyrate, acetone). Management priorities follow the ABC approach: Aggressive fluid resuscitation (0.9% NaCl 1-1.5L/hr initially), Bicarbonate assessment, and Continuous insulin infusion (0.1 U/kg/hr) after initial fluid bolus. Potassium replacement is critical...</div>
+        <div class="pair-meta">internal-medicine</div>
+      </div>
+      <div class="pair-card">
+        <div class="pair-q">What is the role of the anterior cruciate ligament in knee biomechanics, and what are the primary surgical reconstruction options?</div>
+        <div class="pair-a">The anterior cruciate ligament (ACL) is the primary restraint against anterior tibial translation and a secondary stabilizer against tibial rotation and valgus stress. It originates from the posteromedial aspect of the lateral femoral condyle and inserts on the anterior tibial spine. Reconstruction options include bone-patellar tendon-bone (BPTB) autograft, hamstring tendon autograft (semitendinosus/gracilis), quadriceps tendon autograft, and allograft. BPTB remains the gold standard for high-demand athletes due to bone-to-bone healing...</div>
+        <div class="pair-meta">surgery</div>
+      </div>
     </div>
+
+    <p class="sample-provenance" id="sampleProvenance">3 preloaded samples &mdash; click a specialty to pull live from <code>/api/data/sample</code></p>
 
     <div class="explorer-cta">
       <a href="https://discord.gg/H7cyEHFHgu" target="_blank" class="discord-cta">Get 5 Free Pairs &mdash; Join Discord</a>
@@ -946,7 +981,7 @@
       </div>
 
       <div class="testimonial">
-        <p class="testimonial-quote">391K verified pairs across 59 medical specialties. We licensed the full platinum vault for our research lab.</p>
+        <p class="testimonial-quote">406K verified pairs across 59 medical specialties. We licensed the full platinum vault for our research lab.</p>
         <p class="testimonial-attr">&mdash; Enterprise Buyer</p>
       </div>
 
@@ -1050,7 +1085,7 @@
       {
         "@type": "Offer",
         "name": "SwarmMed — Medical AI Training Data",
-        "description": "391,991 CoVe-verified medical QA pairs across 59 specialties from 18 authoritative textbooks."
+        "description": "406,181 CoVe-verified medical QA pairs across 59 specialties from 18 authoritative textbooks."
       },
       {
         "@type": "Offer",
@@ -1102,65 +1137,83 @@
 
   <script>
     (function() {
-      /* ── Animated Counter ── */
-      var target = 442000;
+      /* ── Live Counter (wired to ledger, fallback to 851K+) ── */
       var counter = document.getElementById('pairCounter');
-      var duration = 2000;
-      var start = 0;
-      var startTime = null;
+      var fallback = 851000;
 
-      function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
-
-      function animateCounter(ts) {
-        if (!startTime) startTime = ts;
-        var progress = Math.min((ts - startTime) / duration, 1);
-        var current = Math.floor(easeOutQuart(progress) * target);
-        counter.textContent = current.toLocaleString();
-        if (progress < 1) requestAnimationFrame(animateCounter);
+      function animateCount(from, to) {
+        var duration = 1500;
+        var startTime = null;
+        function ease(t) { return 1 - Math.pow(1 - t, 4); }
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var p = Math.min((ts - startTime) / duration, 1);
+          counter.textContent = Math.floor(from + ease(p) * (to - from)).toLocaleString() + '+';
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
       }
 
-      // Start counter when visible
-      var observer = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting) {
-          requestAnimationFrame(animateCounter);
-          observer.disconnect();
-        }
-      });
-      observer.observe(counter);
+      // Fetch live count from ledger, animate to real number
+      fetch('/api/data/count')
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+          if (d.total && d.total > fallback) {
+            animateCount(fallback, d.total);
+          } else if (d.total) {
+            counter.textContent = d.total.toLocaleString() + '+';
+          }
+        })
+        .catch(function() {
+          counter.textContent = fallback.toLocaleString() + '+';
+        });
 
-      /* ── Data Explorer ── */
+      /* ── Data Explorer (preloaded pairs, live on click) ── */
       var sampleArea = document.getElementById('samplePairs');
       var specBtns = document.querySelectorAll('.spec-btn');
+      var provenance = document.getElementById('sampleProvenance');
 
       function truncate(str, len) {
         if (!str) return '';
         return str.length > len ? str.substring(0, len) + '...' : str;
       }
 
-      function renderPairs(pairs) {
+      function escapeHtml(str) {
+        var d = document.createElement('div');
+        d.textContent = str;
+        return d.innerHTML;
+      }
+
+      function renderPairs(pairs, label) {
         if (!pairs || pairs.length === 0) {
           sampleArea.innerHTML = '<div class="sample-loading">No pairs available for this specialty.</div>';
+          provenance.innerHTML = '';
           return;
         }
         sampleArea.innerHTML = pairs.slice(0, 5).map(function(p) {
           return '<div class="pair-card">' +
-            '<div class="pair-q">' + truncate(p.question || p.input || '', 200) + '</div>' +
-            '<div class="pair-a">' + truncate(p.answer || p.output || '', 300) + '</div>' +
-            (p.specialty ? '<div class="pair-meta">' + p.specialty + '</div>' : '') +
+            '<div class="pair-q">' + escapeHtml(truncate(p.question || p.input || '', 200)) + '</div>' +
+            '<div class="pair-a">' + escapeHtml(truncate(p.answer || p.output || '', 300)) + '</div>' +
+            (p.specialty ? '<div class="pair-meta">' + escapeHtml(p.specialty) + '</div>' : '') +
             '</div>';
         }).join('');
+        if (label) provenance.innerHTML = label;
       }
 
       function loadSample(specialty) {
-        sampleArea.innerHTML = '<div class="sample-loading">Loading sample pairs...</div>';
+        sampleArea.innerHTML = '<div class="sample-loading">Pulling live from API...</div>';
+        provenance.innerHTML = '';
         var url = '/api/data/sample' + (specialty && specialty !== 'random' ? '?specialty=' + specialty : '');
         fetch(url)
           .then(function(r) { return r.json(); })
           .then(function(data) {
-            renderPairs(data.pairs || data.results || data);
+            var pairs = data.pairs || data.results || data;
+            var count = Array.isArray(pairs) ? pairs.length : 0;
+            renderPairs(pairs, count + ' pairs pulled live from <code>/api/data/sample</code>');
           })
           .catch(function() {
-            sampleArea.innerHTML = '<div class="sample-loading">Sample API offline. Join Discord for free pairs.</div>';
+            sampleArea.innerHTML = '<div class="sample-loading">Sample API offline &mdash; showing preloaded pairs. <a href="https://discord.gg/H7cyEHFHgu" target="_blank" style="color:#5865F2;">Join Discord</a> for free samples.</div>';
+            provenance.innerHTML = '';
           });
       }
 
@@ -1171,9 +1224,6 @@
           loadSample(btn.getAttribute('data-spec'));
         });
       });
-
-      // Auto-load pot luck on page load
-      loadSample('random');
 
       /* ── Contact Modal ── */
       var chatBtn = document.getElementById('chatBtn');
