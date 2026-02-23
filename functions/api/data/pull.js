@@ -1,10 +1,11 @@
 /**
  * Cloudflare Pages Function: GET /api/data/pull
- * API-key-gated access to pairs by vault/specialty with pagination.
+ * API-key-gated access to pairs by vertical/specialty with pagination.
  * Auth: Authorization: Bearer sk_swarm_xxxx
- * Params: ?specialty=surgery&vault=med-vault&tier=platinum&limit=100&offset=0
+ * Params: ?specialty=surgery&vertical=medical&tier=platinum&limit=100&offset=0
  *
- * Default vault: med-vault, default tier: platinum
+ * R2 layout: {vertical}/{tier}/{specialty}.jsonl in DATA_BUCKET (swarm-vault)
+ * API keys: keys/api-keys.json in OPS_BUCKET (swarm-ops)
  */
 export async function onRequestGet(context) {
   const { request, env } = context;
@@ -26,7 +27,8 @@ export async function onRequestGet(context) {
   let keyValid = validKeys.includes(token);
   if (!keyValid) {
     try {
-      const keysObj = await env.DATA_BUCKET.get('keys.json');
+      const bucket = env.OPS_BUCKET || env.DATA_BUCKET;
+      const keysObj = await bucket.get('keys/api-keys.json');
       if (keysObj) {
         const keysData = JSON.parse(await keysObj.text());
         keyValid = keysData.keys.some(function(k) { return k.key === token; });
@@ -47,15 +49,15 @@ export async function onRequestGet(context) {
     });
   }
 
-  const vault = url.searchParams.get('vault') || 'med-vault';
+  const vertical = url.searchParams.get('vertical') || url.searchParams.get('vault') || 'medical';
   const tier = url.searchParams.get('tier') || 'platinum';
   const limit = Math.min(Math.max(parseInt(url.searchParams.get('limit') || '100', 10) || 100, 1), 1000);
   const offset = Math.max(parseInt(url.searchParams.get('offset') || '0', 10) || 0, 0);
 
   try {
     // Read the specialty chunk directly from R2
-    // Layout: {vault}/{tier}/{specialty}.jsonl
-    const r2Key = vault + '/' + tier + '/' + specialty + '.jsonl';
+    // Layout: {vertical}/{tier}/{specialty}.jsonl
+    const r2Key = vertical + '/' + tier + '/' + specialty + '.jsonl';
     const chunkObj = await env.DATA_BUCKET.get(r2Key);
 
     if (!chunkObj) {
@@ -65,16 +67,16 @@ export async function onRequestGet(context) {
       if (catObj) {
         try {
           const catalog = JSON.parse(await catObj.text());
-          const vaultData = catalog.vaults[vault];
-          if (vaultData && vaultData.tiers[tier]) {
-            available = vaultData.tiers[tier].specialties.map(s => s.specialty);
+          const vertData = catalog.verticals && catalog.verticals[vertical];
+          if (vertData && vertData.tiers && vertData.tiers[tier]) {
+            available = vertData.tiers[tier].specialties.map(s => s.specialty);
           }
         } catch (_) {}
       }
       return new Response(JSON.stringify({
         ok: false,
         error: 'Specialty not found: ' + specialty,
-        vault, tier,
+        vertical, tier,
         available: available.length > 0 ? available : undefined,
       }), { status: 404, headers });
     }
@@ -103,11 +105,11 @@ export async function onRequestGet(context) {
     const has_more = (offset + pairs.length) < total;
 
     // Log to Discord (fire-and-forget)
-    logPull(env, request, token, vault, tier, specialty, offset, limit, pairs.length).catch(() => {});
+    logPull(env, request, token, vertical, tier, specialty, offset, limit, pairs.length).catch(() => {});
 
     return new Response(JSON.stringify({
       ok: true,
-      vault, tier, specialty,
+      vertical, tier, specialty,
       total,
       offset, limit,
       count: pairs.length,
@@ -123,7 +125,7 @@ export async function onRequestGet(context) {
   }
 }
 
-async function logPull(env, request, token, vault, tier, specialty, offset, limit, returned) {
+async function logPull(env, request, token, vertical, tier, specialty, offset, limit, returned) {
   const discordUrl = env.DISCORD_DATA_WEBHOOK_URL;
   if (!discordUrl) return;
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
@@ -137,7 +139,7 @@ async function logPull(env, request, token, vault, tier, specialty, offset, limi
         color: 0xB89B3C,
         fields: [
           { name: 'API Key', value: keyPrefix, inline: true },
-          { name: 'Vault', value: vault + '/' + tier, inline: true },
+          { name: 'Vertical', value: vertical + '/' + tier, inline: true },
           { name: 'Specialty', value: specialty, inline: true },
           { name: 'Offset/Limit', value: offset + '/' + limit, inline: true },
           { name: 'Returned', value: String(returned), inline: true },

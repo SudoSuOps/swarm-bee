@@ -47,8 +47,9 @@ export async function onRequestGet(context) {
       });
     }
 
-    // Load existing keys from R2
-    const keysObj = await env.DATA_BUCKET.get('platinum/keys.json');
+    // Load existing keys from R2 (OPS_BUCKET for credential isolation)
+    const opsBucket = env.OPS_BUCKET || env.DATA_BUCKET;
+    const keysObj = await opsBucket.get('keys/api-keys.json');
     const keysData = keysObj ? JSON.parse(await keysObj.text()) : { keys: [] };
 
     // Idempotent — return existing key if already activated
@@ -87,8 +88,8 @@ export async function onRequestGet(context) {
 
     keysData.keys.push(record);
 
-    // Store updated keys in R2
-    await env.DATA_BUCKET.put('platinum/keys.json', JSON.stringify(keysData, null, 2));
+    // Store updated keys in R2 (OPS_BUCKET for credential isolation)
+    await opsBucket.put('keys/api-keys.json', JSON.stringify(keysData, null, 2));
 
     // Log to Discord (fire-and-forget)
     logActivation(env, record).catch(function() {});

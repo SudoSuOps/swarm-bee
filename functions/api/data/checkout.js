@@ -6,19 +6,19 @@
 const TIERS = {
   starter: {
     name: 'SwarmForge Starter — API Access',
-    description: '391,991 platinum medical QA pairs. 59 specialties. Unlimited pulls.',
+    description: '805,313 CoVe-verified QA pairs. Medical, Aviation, Router. 196 specialties. Unlimited pulls.',
     price: 9900,
     mode: 'payment',
   },
   professional: {
     name: 'SwarmForge Professional — API Access + Priority Support',
-    description: '391,991 platinum medical QA pairs. 59 specialties. Unlimited pulls. Priority Discord support.',
+    description: '805,313 CoVe-verified QA pairs. 6 verticals, 196 specialties. Unlimited pulls. Priority Discord support.',
     price: 99900,
     mode: 'payment',
   },
   monthly: {
     name: 'SwarmForge Monthly — Unlimited API + Fresh Drops',
-    description: 'All 59 specialties. Unlimited pulls. Monthly data drops. Priority Discord. Dedicated support.',
+    description: 'All 6 verticals, 196 specialties. Unlimited pulls. Monthly data drops. Priority Discord. Dedicated support.',
     price: 499900,
     mode: 'subscription',
   },
