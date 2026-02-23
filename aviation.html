@@ -193,11 +193,35 @@
     }
     .foot a { color: #444; margin: 0 0.5em; }
 
+    /* ── Products ── */
+    .products-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px; background: #151515; border: 1px solid #151515;
+      margin: 1.4rem 0;
+    }
+    .product {
+      background: #0a0a0a; padding: 1.4rem;
+    }
+    .product-label {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+      color: #555; margin-bottom: 0.5rem;
+    }
+    .product-val {
+      font-size: 1.4rem; font-weight: 300; color: #4A90D9; margin-bottom: 0.2rem;
+    }
+    .product-note {
+      font-size: 0.65rem; color: #444; margin-bottom: 0.5rem;
+    }
+    .product-desc {
+      font-size: 0.72rem; color: #666; line-height: 1.5;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 600px) {
       .page { padding: 3.5rem 1.2rem 2rem; }
       .verticals-grid { grid-template-columns: 1fr; }
       .use-cases-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
       .principles { grid-template-columns: 1fr; }
       .cta-row { flex-direction: column; align-items: center; }
       .cta-btn { width: 100%; text-align: center; }
@@ -395,6 +419,31 @@
         </div>
 
       </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- DATASET PRODUCTS -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-label">Dataset Products</div>
+      <h2>Buy verified aviation training data.</h2>
+
+      <div class="products-grid">
+        <div class="product" style="border:1px solid #162640;">
+          <div class="product-label" style="color:#4A90D9;">Featured Aviation Pack</div>
+          <div class="product-val">$99</div>
+          <div class="product-note">1,000 pairs &middot; any aviation vertical</div>
+          <div class="product-desc">Pick any aviation vertical &mdash; pilot training, MRO, safety, ATC, drones. 1,000 CoVe-verified pairs. API key. Instant access.</div>
+        </div>
+        <div class="product">
+          <div class="product-label">Custom Volume</div>
+          <div class="product-val" style="color:#ccc;">RFP</div>
+          <div class="product-note">Multi-vertical &middot; full dataset</div>
+          <div class="product-desc">Need the full aviation dataset or cross-vertical coverage? <a href="/rfp" style="color:#4A90D9;">Submit an RFP</a> and we'll scope it.</div>
+        </div>
+      </div>
+
+      <p style="font-size:0.72rem;color:#444;margin-top:0.8rem;">Aviation dataset is actively growing from 10 HF datasets + 13 FAA handbooks. Early buyers lock in at current pricing. <a href="https://discord.gg/H7cyEHFHgu" target="_blank" style="color:#5865F2;">Join Discord</a> for updates.</p>
     </div>
 
     <!-- ══════════════════════════════════════════════════════════════ -->
