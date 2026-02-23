@@ -14,17 +14,19 @@ export async function onRequestGet(context) {
     'Cache-Control': 'public, max-age=300',
   };
 
-  // Hardcoded floor — never show less than this
+  // Fallback — only used when R2 read fails entirely
   const FALLBACK = {
     platinum: 406181,
     gold: 385626,
-    aviation: 9000,
-    cre: 3000,
-    router: 14760,
-    brain: 1405,
-    total: 851507,
+    aviation: 17190,
+    cre: 2611,
+    drone: 1986,
+    medical_grind: 15378,
+    total: 828972,
+    vault_total: 791807,
+    grind_total: 37165,
     source: 'fallback',
-    updated: '2026-02-23T00:00:00Z',
+    updated: '2026-02-23T21:10:39Z',
   };
 
   try {
@@ -32,8 +34,8 @@ export async function onRequestGet(context) {
     if (obj) {
       const data = JSON.parse(await obj.text());
       data.source = 'ledger';
-      // Never return less than fallback
-      if (data.total && data.total >= FALLBACK.total) {
+      // Live ledger always wins when available and has a valid total
+      if (data.total && data.total > 0) {
         return new Response(JSON.stringify(data), { status: 200, headers });
       }
     }
