@@ -148,6 +148,8 @@
 </head>
 <body>
 
+<a href="/" style="position:fixed;top:1.2rem;left:1.5rem;font-size:0.7rem;color:#555;text-decoration:none;letter-spacing:0.1em;z-index:50;transition:color 0.3s;" onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='#555'">&larr; S&amp;B</a>
+
 <div class="page">
 
   <!-- ── Nav ── -->
@@ -400,6 +402,79 @@
     </div>
   </div>
 
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- WHY AVIATION -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="faq-section">
+    <div class="faq-section-label blue">Why Aviation</div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why aviation AI?</div>
+      <div class="faq-a">
+        <p><strong>$571M market (2026) &rarr; $4.7B (2035). 26.5% CAGR. Zero competition.</strong></p>
+        <p>There is no production aviation LLM on HuggingFace. Not one. Airlines, MROs, flight schools, drone operators &mdash; they're all building internal tools with general-purpose models that hallucinate on Part 91 regulations.</p>
+        <p>We're building the first one. Domain-specific, verified against FAA source material, and commercially licensable.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What aviation data do you have?</div>
+      <div class="faq-a">
+        <ul>
+          <li><strong>10 HuggingFace datasets</strong> &mdash; 2.4M raw records including AviationQA (1.08M), Aviation Safety (364K), and SFT conversations (175K)</li>
+          <li><strong>13 FAA handbooks</strong> &mdash; PHAK, AFH, AIM, Instrument Flying, Helicopter, Risk Mgmt, Weight &amp; Balance, Avionics, sUAS, Aero Naval (880MB)</li>
+          <li><strong>NASA ASRS</strong> &mdash; 47,000 incident reports with contributing factor analysis</li>
+        </ul>
+        <p>Currently grinding <strong>12,400+ verified pairs</strong> across MRO, pilot training, safety, ATC, drones, and flight operations.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">When will SwarmAviation-14B be ready?</div>
+      <div class="faq-a">
+        <p>In production. Data grinding daily on Together.ai (Qwen3-235B). Target: first aviation LLM on HuggingFace. Built on Qwen2.5-14B architecture with QLoRA fine-tuning on RTX PRO 6000.</p>
+        <p><a href="/rfp">Request early access via RFP</a> or <a href="https://discord.gg/H7cyEHFHgu" target="_blank">join our Discord</a> for updates.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- BENCHMARKS & DATA QUALITY -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="faq-section">
+    <div class="faq-section-label gold">Data Quality</div>
+
+    <div class="faq-item">
+      <div class="faq-q">What does "30/30 benchmark" mean?</div>
+      <div class="faq-a">
+        <p>We test every dataset against <strong>30 SFT suitability criteria</strong> &mdash; format consistency, answer completeness, clinical accuracy, specialty coverage, zero hallucination, proper attribution, appropriate length, instruction-following quality, and more.</p>
+        <p>Our platinum data scores <strong>30/30</strong>. No public medical dataset scores above 22/30. That's not marketing. That's measured.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What's the minimum purchase?</div>
+      <div class="faq-a">
+        <p><strong>1,000 pairs per specialty, starting at $99.</strong> We don't sell individual pairs &mdash; minimum lot size ensures meaningful training signal for fine-tuning.</p>
+        <ul>
+          <li><strong>Starter:</strong> $99 &mdash; 1,000 pairs, any single specialty</li>
+          <li><strong>Professional:</strong> $499 &mdash; 10,000 pairs, up to 5 specialties</li>
+          <li><strong>Volume:</strong> $1,999 &mdash; 50,000 pairs, up to 20 specialties</li>
+          <li><strong>Monthly:</strong> $4,999/mo &mdash; unlimited API, fresh drops, all specialties</li>
+          <li><strong>Enterprise:</strong> Custom LOI &mdash; full vault, 442K+ pairs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Do you offer free samples?</div>
+      <div class="faq-a">
+        <p>Yes. Hit our <code style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;background:#111;padding:0.15rem 0.4rem;color:#B89B3C;">/api/data/sample</code> endpoint for 10 random platinum pairs, no auth needed.</p>
+        <p>Or <a href="https://discord.gg/H7cyEHFHgu" target="_blank">join our Discord</a> for <strong>5 free pairs daily</strong>. Pot luck across all specialties. No strings.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- ── CTA ── -->
   <div class="cta">
     <p>Still have questions? We answer the phone.</p>
@@ -418,6 +493,7 @@
     <a href="/loi">LOI</a>
     <a href="mailto:build@swarmandbee.com">build@swarmandbee.com</a>
     <a href="https://discord.gg/H7cyEHFHgu" target="_blank" style="color:#5865F2;">Discord</a>
+    <a href="https://x.com/swarmandbee" target="_blank">X / Twitter</a>
   </footer>
 
 </div>

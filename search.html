@@ -217,6 +217,8 @@
 </head>
 <body>
 
+  <a href="/" style="position:fixed;top:1.2rem;left:1.5rem;font-size:0.7rem;color:#555;text-decoration:none;letter-spacing:0.1em;z-index:50;transition:color 0.3s;" onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='#555'">&larr; S&amp;B</a>
+
   <!-- ── Header ── -->
   <header class="header">
     <div class="logo"><a href="/">Swarm &amp; Bee</a> &mdash; SwarmNet Search</div>
@@ -280,6 +282,7 @@
     <a href="mailto:build@swarmandbee.com">build@swarmandbee.com</a>
     <a href="tel:+15615327120">561.532.7120</a>
     <a href="https://discord.gg/H7cyEHFHgu" target="_blank" style="color:#5865F2;">Discord</a>
+    <a href="https://x.com/swarmandbee" target="_blank">X / Twitter</a>
   </footer>
 
 <script>
@@ -384,8 +387,16 @@
     { name: 'SwarmMed-14B v1.2', cat: 'models', pairs: 10008, status: 'active', desc: 'Crown Jewel. 14.77B params, 80 specialties, Qwen2 arch. Apache 2.0.', price: 'Included w/ data license', tags: 'swarmmed 14b medical llm qwen' },
     { name: 'SwarmMed-7B v5', cat: 'models', pairs: 1191, status: 'active', desc: 'Edge-deployable 7B medical model. 52.5% concept coverage.', price: 'Included w/ data license', tags: 'swarmmed 7b edge medical compact' },
     { name: 'SwarmMed-Vision-4B v1', cat: 'models', pairs: 1026, status: 'active', desc: 'First medical vision-language model. MRI gold pairs. 4.4B params.', price: 'Custom quote', tags: 'vision multimodal 4b mri medical imaging' },
-    { name: 'SwarmMed-Vision-4B v2', cat: 'models', pairs: 805313, status: 'cooking', desc: 'Full 805K pair cook. Training NOW on RTX PRO 6000. Edge-deployable.', price: 'Custom quote', tags: 'vision multimodal 4b full cook medical' },
-    { name: 'SwarmAviation-14B', cat: 'models', pairs: 0, status: 'cooking', desc: 'First production aviation LLM. 2.4M raw records. Grinding NOW.', price: 'Custom quote', tags: 'aviation 14b llm pilot mro' },
+    { name: 'SwarmResearch-32B v1', cat: 'models', pairs: 35499, status: 'cooking', desc: 'Deep research brain. 32B params. Medical + Aviation + CRE + Routing. Training NOW on RTX PRO 6000.', price: 'Custom quote', tags: 'research 32b cross-domain brain qwen' },
+    { name: 'Swarm-4B Brain', cat: 'models', pairs: 0, status: 'cooking', desc: 'Specialist router & first responder. 4B params. Runs 24/7 on 60W edge boxes. Routes to bigger Swarm models.', price: 'Included w/ compute', tags: '4b brain router edge appliance first responder' },
+    { name: 'SwarmAviation-14B', cat: 'models', pairs: 12400, status: 'cooking', desc: 'First production aviation LLM. 12K+ verified pairs. Grinding NOW.', price: 'Custom quote', tags: 'aviation 14b llm pilot mro' },
+    { name: 'SwarmCRE-14B', cat: 'models', pairs: 2611, status: 'cooking', desc: 'CRE vertical model. Underwriting, cap rates, tenant scoring, dark box analysis.', price: 'Custom quote', tags: 'cre real estate 14b underwriting cap rate' },
+
+    // ── CROSS-DOMAIN DATASETS ───────────────────────────────────────────
+
+    { name: 'Router / SwarmCore', cat: 'verticals', pairs: 14760, status: 'active', desc: 'Cross-domain routing intelligence. Multi-vertical query routing and domain classification.', price: '$5/pair (standard)', tags: 'router swarmcore routing domain classification' },
+    { name: 'Brain Research', cat: 'verticals', pairs: 1405, status: 'cooking', desc: 'Research-style pairs. Extraction, synthesis, specification. Deep reasoning.', price: '$15/pair (specialty)', tags: 'brain research extraction synthesis reasoning' },
+    { name: 'Commercial Real Estate (CRE)', cat: 'verticals', pairs: 2611, status: 'cooking', desc: 'CRE analytics, underwriting, cap rate analysis, tenant scoring, deal intelligence.', price: '$10/pair (specialty)', tags: 'cre real estate commercial underwriting cap rate deal' },
 
     // ── NEW VERTICALS (Coming Soon — RFP driven) ──────────────────────
 
@@ -398,7 +409,7 @@
     { name: 'Veterinary Medicine', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Animal health, diagnostics, treatment protocols.', price: 'RFP', tags: 'veterinary animal health diagnostics' },
     { name: 'Insurance Underwriting', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Risk assessment, claims analysis, actuarial.', price: 'RFP', tags: 'insurance underwriting risk claims actuarial' },
     { name: 'Supply Chain / Logistics', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Logistics optimization, routing, warehouse operations.', price: 'RFP', tags: 'supply chain logistics routing warehouse' },
-    { name: 'Real Estate (CRE)', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Commercial real estate analysis, underwriting, market comps.', price: 'RFP', tags: 'real estate cre commercial underwriting' },
+    /* CRE moved to active verticals above */
     { name: 'Environmental Compliance', cat: 'verticals', pairs: 0, status: 'coming', desc: 'EPA regulations, environmental impact, remediation.', price: 'RFP', tags: 'environmental epa compliance remediation' },
     { name: 'Dental', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Dental procedures, oral surgery, orthodontics.', price: 'RFP', tags: 'dental oral surgery orthodontics' },
     { name: 'Nursing', cat: 'verticals', pairs: 0, status: 'coming', desc: 'Nursing protocols, patient care, NCLEX prep.', price: 'RFP', tags: 'nursing patient care nclex protocols' },

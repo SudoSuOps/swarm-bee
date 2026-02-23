@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SwarmAviation — First Production Aviation AI Training Data | Swarm &amp; Bee</title>
+  <meta name="description" content="SwarmAviation — First production aviation LLM data. 12K+ verified pairs from NASA ASRS, FAA handbooks, AviationQA. MRO, pilot training, safety, ATC, drones. Zero competition.">
+  <meta name="keywords" content="aviation AI, aviation training data, pilot training AI, MRO AI, aviation safety, ATC AI, drone AI, FAA handbook, ASRS, aviation language model, SwarmAviation">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://swarmandbee.com/aviation">
+
+  <meta property="og:title" content="SwarmAviation — First Production Aviation AI Training Data">
+  <meta property="og:description" content="12K+ verified aviation pairs. NASA ASRS, FAA handbooks, AviationQA. MRO, pilot training, safety, ATC, drones. Zero competition.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://swarmandbee.com/aviation">
+  <meta property="og:image" content="https://swarmandbee.com/og-image.png">
+  <meta property="og:site_name" content="Swarm &amp; Bee">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@swarmandbee">
+  <meta name="twitter:title" content="SwarmAviation — First Production Aviation AI">
+  <meta name="twitter:description" content="12K+ verified aviation pairs. MRO, pilot training, safety, ATC, drones. Zero competition.">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #080808;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #888; line-height: 1.7;
+    }
+    a { color: #4A90D9; text-decoration: none; transition: color 0.3s; }
+    a:hover { color: #e0e0e0; }
+
+    .back-nav {
+      position: fixed; top: 1.2rem; left: 1.5rem;
+      font-size: 0.7rem; color: #555; text-decoration: none;
+      letter-spacing: 0.1em; z-index: 50; transition: color 0.3s;
+    }
+    .back-nav:hover { color: #f0f0f0; }
+
+    .page { max-width: 900px; margin: 0 auto; padding: 4rem 2rem 3rem; }
+
+    /* ── Hero ── */
+    .hero { text-align: center; margin-bottom: 3rem; }
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #4A90D9; border: 1px solid #1e2e40; padding: 0.35rem 0.8rem; margin-bottom: 1.4rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 300; color: #e0e0e0;
+      letter-spacing: 0.04em; margin-bottom: 0.8rem;
+    }
+    .hero p { font-size: 0.88rem; color: #666; max-width: 600px; margin: 0 auto; }
+
+    /* ── Stats Bar ── */
+    .stats-bar {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1px; background: #151515; border: 1px solid #151515; margin-bottom: 3rem;
+    }
+    .stat { background: #0a0a0a; padding: 1.2rem 1rem; text-align: center; }
+    .stat-val { font-size: 1.2rem; font-weight: 300; color: #4A90D9; }
+    .stat-label { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: #555; margin-top: 0.3rem; }
+
+    /* ── Section ── */
+    .section-label {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase;
+      color: #4A90D9; margin-bottom: 1.4rem;
+    }
+    .sh2 { font-size: 1.1rem; font-weight: 300; color: #ccc; margin-bottom: 1rem; }
+    .divider { height: 1px; background: #151515; margin: 2.5rem 0; }
+
+    /* ── Data Sources Grid ── */
+    .sources-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 0.8rem; margin-bottom: 2rem;
+    }
+    .source-card {
+      background: #0e0e0e; border: 1px solid #1a1a1a; padding: 1.2rem;
+      transition: border-color 0.3s;
+    }
+    .source-card:hover { border-color: #1e2e40; }
+    .source-name { font-size: 0.82rem; font-weight: 500; color: #ccc; margin-bottom: 0.3rem; }
+    .source-count { font-size: 0.62rem; color: #4A90D9; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+    .source-desc { font-size: 0.7rem; color: #666; line-height: 1.5; }
+
+    /* ── Use Cases ── */
+    .use-cases {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.6rem; margin-bottom: 2rem;
+    }
+    .use-case {
+      padding: 1rem 1.2rem; border: 1px solid #1a1a1a; background: #0a0a0a;
+    }
+    .use-case h4 {
+      font-size: 0.72rem; font-weight: 500; color: #ccc; margin-bottom: 0.3rem;
+      letter-spacing: 0.03em;
+    }
+    .use-case p { font-size: 0.65rem; color: #555; line-height: 1.5; }
+
+    /* ── Model Preview ── */
+    .model-preview {
+      background: #0a0a0a; border: 1px solid #1e2e40; padding: 2rem; margin-bottom: 2rem;
+    }
+    .model-preview h3 {
+      font-size: 1.1rem; font-weight: 300; color: #e0e0e0; margin-bottom: 0.8rem;
+    }
+    .model-preview p { font-size: 0.82rem; color: #666; margin-bottom: 0.6rem; }
+    .model-specs {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.8rem; margin: 1rem 0;
+    }
+    .model-spec { font-size: 0.75rem; color: #888; }
+    .model-spec strong { color: #ccc; font-weight: 400; }
+    .cooking-badge {
+      display: inline-block; font-size: 0.55rem; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: #B89B3C; border: 1px solid #2a2210; padding: 0.2rem 0.6rem;
+    }
+
+    /* ── Market Stats ── */
+    .market-box {
+      background: #0a0a0a; border: 1px solid #1a1a1a; padding: 1.6rem; margin-bottom: 2rem;
+      text-align: center;
+    }
+    .market-val { font-size: 1.8rem; font-weight: 300; color: #4A90D9; }
+    .market-range { font-size: 0.78rem; color: #666; margin: 0.4rem 0; }
+    .market-note { font-size: 0.65rem; color: #444; letter-spacing: 0.06em; }
+
+    /* ── CTA ── */
+    .cta-row { display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; margin: 2rem 0; }
+    .cta-btn {
+      display: inline-block; padding: 0.7rem 1.8rem;
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      font-family: inherit; text-decoration: none; transition: all 0.3s;
+    }
+    .cta-blue { background: #4A90D9; color: #080808; }
+    .cta-blue:hover { background: #5ea0e9; color: #080808; }
+    .cta-outline { background: none; color: #888; border: 1px solid #333; }
+    .cta-outline:hover { color: #e0e0e0; border-color: #555; }
+    .cta-discord { background: #5865F2; color: #fff; }
+    .cta-discord:hover { background: #6872f5; color: #fff; }
+
+    /* ── Footer ── */
+    .foot {
+      text-align: center; padding-top: 2rem; margin-top: 1rem;
+      font-size: 0.62rem; color: #333; letter-spacing: 0.06em;
+      border-top: 1px solid #111;
+    }
+    .foot a { color: #444; margin: 0 0.5em; }
+
+    @media (max-width: 600px) {
+      .page { padding: 3rem 1.2rem 2rem; }
+      .sources-grid { grid-template-columns: 1fr; }
+      .use-cases { grid-template-columns: 1fr; }
+      .cta-row { flex-direction: column; align-items: center; }
+      .cta-btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="/" class="back-nav">&larr; S&amp;B</a>
+
+  <div class="page">
+
+    <!-- ── Hero ── -->
+    <div class="hero">
+      <div class="hero-badge">First-to-Market Aviation AI</div>
+      <h1>SwarmAviation</h1>
+      <p>First production aviation LLM training data on the market. 12,400+ verified pairs from NASA ASRS, 13 FAA handbooks, and 10 HuggingFace datasets. Zero competition.</p>
+    </div>
+
+    <!-- ── Stats Bar ── -->
+    <div class="stats-bar">
+      <div class="stat"><div class="stat-val">12,400+</div><div class="stat-label">Verified Pairs</div></div>
+      <div class="stat"><div class="stat-val">23</div><div class="stat-label">Data Sources</div></div>
+      <div class="stat"><div class="stat-val">13</div><div class="stat-label">FAA Handbooks</div></div>
+      <div class="stat"><div class="stat-val">6</div><div class="stat-label">Verticals</div></div>
+      <div class="stat"><div class="stat-val">0</div><div class="stat-label">Competitors</div></div>
+    </div>
+
+    <!-- ── Data Sources ── -->
+    <div class="section-label">Data Sources</div>
+    <div class="sh2">23 sources. 2.4M raw records. Grinding daily.</div>
+
+    <div class="sources-grid">
+      <div class="source-card">
+        <div class="source-name">NASA ASRS Reports</div>
+        <div class="source-count">47,000 incident reports</div>
+        <div class="source-desc">Aviation Safety Reporting System. Incident analysis, contributing factors, human factors.</div>
+      </div>
+      <div class="source-card">
+        <div class="source-name">AviationQA</div>
+        <div class="source-count">1.08M QA pairs</div>
+        <div class="source-desc">General aviation knowledge base. Broad coverage across all aviation domains.</div>
+      </div>
+      <div class="source-card">
+        <div class="source-name">Aviation Safety QA</div>
+        <div class="source-count">364,000 safety pairs</div>
+        <div class="source-desc">Safety-focused QA pairs. Accident prevention, risk management, CRM.</div>
+      </div>
+      <div class="source-card">
+        <div class="source-name">FAA Handbooks (13 PDFs)</div>
+        <div class="source-count">880MB / 13 books</div>
+        <div class="source-desc">PHAK, AFH, AIM, Instrument Flying, Helicopter, Risk Mgmt, W&amp;B, Avionics, sUAS, Aero Naval.</div>
+      </div>
+      <div class="source-card">
+        <div class="source-name">Aviation Conversations</div>
+        <div class="source-count">175,000 SFT-ready</div>
+        <div class="source-desc">Multi-turn aviation conversations. Instruction fine-tuning ready.</div>
+      </div>
+      <div class="source-card">
+        <div class="source-name">AviationLLM Chunks</div>
+        <div class="source-count">58,000 text chunks</div>
+        <div class="source-desc">Pre-processed aviation text for language model training.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── Use Cases ── -->
+    <div class="section-label">Use Cases</div>
+    <div class="sh2">Six verticals. Every corner of aviation.</div>
+
+    <div class="use-cases">
+      <div class="use-case">
+        <h4>MRO &amp; Maintenance</h4>
+        <p>Predictive maintenance, troubleshooting guides, parts lookup, compliance tracking.</p>
+      </div>
+      <div class="use-case">
+        <h4>Pilot Training</h4>
+        <p>Ground school prep, checkride review, scenario-based training, knowledge testing.</p>
+      </div>
+      <div class="use-case">
+        <h4>Safety &amp; Compliance</h4>
+        <p>Incident analysis, safety reporting, risk assessment, regulatory compliance.</p>
+      </div>
+      <div class="use-case">
+        <h4>ATC Communications</h4>
+        <p>Phraseology training, separation procedures, clearance interpretation.</p>
+      </div>
+      <div class="use-case">
+        <h4>Drone / sUAS Operations</h4>
+        <p>Part 107 compliance, mission planning, airspace management, commercial ops.</p>
+      </div>
+      <div class="use-case">
+        <h4>Flight Operations</h4>
+        <p>SOP development, dispatch procedures, performance calculations, flight planning.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── Model Preview ── -->
+    <div class="section-label">Model</div>
+    <div class="model-preview">
+      <span class="cooking-badge">Cooking</span>
+      <h3>SwarmAviation-14B</h3>
+      <p>First production aviation language model on HuggingFace. Built on Qwen2.5-14B with 12K+ verified pairs from the world's most comprehensive aviation data pipeline.</p>
+
+      <div class="model-specs">
+        <div class="model-spec"><strong>Architecture:</strong> Qwen2.5-14B-Instruct</div>
+        <div class="model-spec"><strong>Training Data:</strong> 12,400+ verified pairs</div>
+        <div class="model-spec"><strong>Sources:</strong> 23 (10 HF + 13 FAA PDFs)</div>
+        <div class="model-spec"><strong>Method:</strong> QLoRA on RTX PRO 6000</div>
+        <div class="model-spec"><strong>License:</strong> Apache 2.0</div>
+        <div class="model-spec"><strong>Status:</strong> Grinding &mdash; pairs growing daily</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── Market Stats ── -->
+    <div class="section-label">Market Opportunity</div>
+
+    <div class="market-box">
+      <div class="market-val">$4.7B</div>
+      <div class="market-range">$571M (2026) &rarr; $4.7B (2035)</div>
+      <div class="market-note">26.5% CAGR &middot; Aviation AI Market &middot; Zero production LLMs exist</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── CTA ── -->
+    <div class="cta-row">
+      <a href="/rfp" class="cta-btn cta-blue">Request Aviation Data (RFP)</a>
+      <a href="https://discord.gg/H7cyEHFHgu" target="_blank" class="cta-btn cta-discord">Join Discord for Updates</a>
+      <a href="/data" class="cta-btn cta-outline">Browse All Data</a>
+    </div>
+
+    <!-- ── Footer ── -->
+    <footer class="foot">
+      <a href="/">Home</a>
+      <a href="/search">Search</a>
+      <a href="/data">Data API</a>
+      <a href="/rfp">RFP</a>
+      <a href="/loi">LOI</a>
+      <a href="mailto:build@swarmandbee.com">build@swarmandbee.com</a>
+      <a href="https://discord.gg/H7cyEHFHgu" target="_blank" style="color:#5865F2;">Discord</a>
+      <a href="https://x.com/swarmandbee" target="_blank">X / Twitter</a>
+      <br><br>
+      &copy; 2026 Swarm &amp; Bee. Last mile intelligence.
+    </footer>
+
+  </div>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "SwarmAviation — Aviation AI Training Data",
+    "description": "First production aviation LLM training data. 12,400+ verified pairs from NASA ASRS, 13 FAA handbooks, and 10 HuggingFace datasets. MRO, pilot training, safety, ATC, drones.",
+    "brand": { "@type": "Brand", "name": "Swarm & Bee" },
+    "url": "https://swarmandbee.com/aviation",
+    "category": "Aviation AI Training Data"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://swarmandbee.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Aviation", "item": "https://swarmandbee.com/aviation" }
+    ]
+  }
+  </script>
+
+</body>
+</html>

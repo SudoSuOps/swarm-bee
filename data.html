@@ -193,6 +193,8 @@
 </head>
 <body>
 
+  <a href="/" style="position:fixed;top:1.2rem;left:1.5rem;font-size:0.7rem;color:#555;text-decoration:none;letter-spacing:0.1em;z-index:60;transition:color 0.3s;" onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='#555'">&larr; S&amp;B</a>
+
   <nav class="nav">
     <a href="/" class="nav-brand">Swarm &amp; Bee</a>
     <div class="nav-links">
@@ -207,17 +209,17 @@
   <!-- ── Hero ── -->
   <div class="section hero">
     <div class="hero-badge">SwarmForge Platinum Data</div>
-    <h1>805,313 Verified Medical QA Pairs</h1>
-    <p>CoVe-verified against a 235B-parameter model. Sourced from 18 authoritative medical textbooks. 196 specialties. Zero patient data. Commercially licensable. API access.</p>
+    <h1>442,000+ Verified Training Pairs</h1>
+    <p>CoVe-verified against a 235B-parameter model. 391K medical platinum across 59 specialties. Plus aviation, CRE, router, and research pairs. Zero patient data. Commercially licensable. API access.</p>
   </div>
 
   <!-- ── Stats ── -->
   <div class="section" style="padding-top:0;">
     <div class="stats">
-      <div class="stat"><div class="stat-val">805,313</div><div class="stat-label">Platinum Pairs</div></div>
-      <div class="stat"><div class="stat-val">196</div><div class="stat-label">Specialties</div></div>
-      <div class="stat"><div class="stat-val">18</div><div class="stat-label">Textbooks</div></div>
-      <div class="stat"><div class="stat-val">235B</div><div class="stat-label">CoVe Verifier</div></div>
+      <div class="stat"><div class="stat-val">442,000+</div><div class="stat-label">Verified Pairs</div></div>
+      <div class="stat"><div class="stat-val">59</div><div class="stat-label">Medical Specialties</div></div>
+      <div class="stat"><div class="stat-val">6</div><div class="stat-label">Verticals</div></div>
+      <div class="stat"><div class="stat-val">30/30</div><div class="stat-label">SFT Benchmark</div></div>
       <div class="stat"><div class="stat-val">0</div><div class="stat-label">Patient Data</div></div>
     </div>
   </div>
@@ -233,19 +235,38 @@
   <div class="section">
     <div class="divider"></div>
 
+    <!-- ── Platinum Quality ── -->
+    <div class="sh">Why Platinum</div>
+    <div class="sh2">4-stage verification. 30/30 benchmark. Zero garbage.</div>
+    <div style="background:#0e0c08;border:1px solid #3a3020;padding:1.4rem 1.8rem;margin-bottom:2rem;">
+      <p style="font-size:0.82rem;color:#888;line-height:1.7;margin-bottom:0.8rem;">
+        Every pair passes a <strong style="color:#ccc;font-weight:400;">4-stage quality gate</strong> with Chain-of-Verification by our <strong style="color:#B89B3C;font-weight:400;">235B parameter verifier</strong> (Qwen3-235B).
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:1rem 0;">
+        <div style="font-size:0.72rem;color:#666;"><strong style="color:#ccc;font-weight:400;">Stage 1:</strong> Clinical template generation</div>
+        <div style="font-size:0.72rem;color:#666;"><strong style="color:#ccc;font-weight:400;">Stage 2:</strong> Structural validation &amp; dedup</div>
+        <div style="font-size:0.72rem;color:#666;"><strong style="color:#ccc;font-weight:400;">Stage 3:</strong> CoVe verification (235B)</div>
+        <div style="font-size:0.72rem;color:#666;"><strong style="color:#ccc;font-weight:400;">Stage 4:</strong> FLAG &rarr; rewrite &rarr; re-verify</div>
+      </div>
+      <p style="font-size:0.72rem;color:#666;"><strong style="color:#B89B3C;font-weight:400;">93.6% conversion</strong> (57% PASS + 42% FLAG&rarr;rewrite). <strong style="color:#B89B3C;font-weight:400;">30/30</strong> SFT suitability benchmark. 18 authoritative textbooks. Zero patient data. Apache 2.0.</p>
+    </div>
+
+    <div class="divider"></div>
+
     <!-- ── Pricing ── -->
     <div class="sh">Pricing</div>
-    <div class="sh2">Per-pair pricing backed by market comps</div>
+    <div class="sh2">Per-specialty bundles. Minimum 1,000 pairs.</div>
     <table class="price-table">
       <thead>
         <tr><th>Tier</th><th>Price</th><th>Access</th><th>Volume</th></tr>
       </thead>
       <tbody>
-        <tr><td>Sample</td><td>Free</td><td>No auth required</td><td>10 pairs/request</td></tr>
-        <tr><td>Volume</td><td>$2/pair</td><td>API key + LOI</td><td>100K+ pairs</td></tr>
-        <tr><td>Standard</td><td>$5 &ndash; $10/pair</td><td>API key + LOI</td><td>10K &ndash; 100K pairs</td></tr>
-        <tr><td>Specialty</td><td>$15 &ndash; $25/pair</td><td>API key + LOI</td><td>&lt;10K pairs</td></tr>
-        <tr><td>Enterprise Annual</td><td>$500K &ndash; $1.5M/yr</td><td>Full vault license</td><td>All 805,313 pairs</td></tr>
+        <tr><td>Free Sample</td><td>Free</td><td>No auth required</td><td>10 pairs/request</td></tr>
+        <tr><td>Starter</td><td>$99</td><td>API key, any single specialty</td><td>1,000 pairs</td></tr>
+        <tr><td>Professional</td><td>$499</td><td>API key, up to 5 specialties</td><td>10,000 pairs</td></tr>
+        <tr><td>Volume</td><td>$1,999</td><td>API key, up to 20 specialties</td><td>50,000 pairs</td></tr>
+        <tr><td>Monthly Stream</td><td>$4,999/mo</td><td>Unlimited API, fresh drops</td><td>All specialties</td></tr>
+        <tr><td>Enterprise</td><td>Custom LOI</td><td>Full vault license</td><td>442,000+ pairs</td></tr>
       </tbody>
     </table>
     <p style="font-size:0.72rem;color:#444;margin-top:0.6rem;">Replacement cost: $7&ndash;$13/pair. Underwriting memo available on request.</p>
@@ -287,20 +308,27 @@ curl "https://swarmandbee.com/api/data/sample?specialty=surgery"</pre>
     </p>
 
     <div class="sh" style="margin-top:2rem;">Self-Service API Access</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:#151515;border:1px solid #151515;margin:1rem 0;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:#151515;border:1px solid #151515;margin:1rem 0;">
       <div style="background:#0a0a0a;padding:1.6rem;">
         <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:0.6rem;">Starter</div>
         <div style="font-size:1.6rem;font-weight:300;color:#B89B3C;">$99</div>
-        <div style="font-size:0.6rem;color:#444;">one-time</div>
-        <div style="font-size:0.72rem;color:#666;margin:0.6rem 0;">API key. All 196 specialties. Unlimited pulls.</div>
+        <div style="font-size:0.6rem;color:#444;">1,000 pairs &middot; 1 specialty</div>
+        <div style="font-size:0.72rem;color:#666;margin:0.6rem 0;">API key. Any single specialty. Instant access.</div>
         <button onclick="checkout('starter')" class="cta-btn cta-gold" style="width:100%;margin-top:0.6rem;">Buy Starter</button>
       </div>
       <div style="background:#0a0a0a;padding:1.6rem;">
         <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:0.6rem;">Professional</div>
-        <div style="font-size:1.6rem;font-weight:300;color:#B89B3C;">$999</div>
-        <div style="font-size:0.6rem;color:#444;">one-time</div>
-        <div style="font-size:0.72rem;color:#666;margin:0.6rem 0;">API key. All specialties. Priority Discord support.</div>
+        <div style="font-size:1.6rem;font-weight:300;color:#B89B3C;">$499</div>
+        <div style="font-size:0.6rem;color:#444;">10,000 pairs &middot; 5 specialties</div>
+        <div style="font-size:0.72rem;color:#666;margin:0.6rem 0;">API key. Up to 5 specialties. Priority Discord support.</div>
         <button onclick="checkout('professional')" class="cta-btn cta-gold" style="width:100%;margin-top:0.6rem;">Buy Professional</button>
+      </div>
+      <div style="background:#0a0a0a;padding:1.6rem;">
+        <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:0.6rem;">Volume</div>
+        <div style="font-size:1.6rem;font-weight:300;color:#B89B3C;">$1,999</div>
+        <div style="font-size:0.6rem;color:#444;">50,000 pairs &middot; 20 specialties</div>
+        <div style="font-size:0.72rem;color:#666;margin:0.6rem 0;">API key. Up to 20 specialties. Priority support.</div>
+        <button onclick="checkout('volume')" class="cta-btn cta-gold" style="width:100%;margin-top:0.6rem;">Buy Volume</button>
       </div>
       <div style="background:#0c0c0c;padding:1.6rem;border:1px solid #2a2210;">
         <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#B89B3C;margin-bottom:0.6rem;">Monthly Stream</div>
@@ -312,8 +340,8 @@ curl "https://swarmandbee.com/api/data/sample?specialty=surgery"</pre>
       <div style="background:#0a0a0a;padding:1.6rem;">
         <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:0.6rem;">Enterprise</div>
         <div style="font-size:1.6rem;font-weight:300;color:#ccc;">Custom</div>
-        <div style="font-size:0.6rem;color:#444;">LOI required</div>
-        <div style="font-size:0.72rem;color:#666;margin:0.6rem 0;">Full vault license. $500K&ndash;$1.5M/yr. Custom integrations.</div>
+        <div style="font-size:0.6rem;color:#444;">Full vault &middot; LOI required</div>
+        <div style="font-size:0.72rem;color:#666;margin:0.6rem 0;">442K+ pairs. All verticals. Dedicated support.</div>
         <a href="/loi" class="cta-btn cta-outline" style="display:block;width:100%;margin-top:0.6rem;text-align:center;">Submit LOI</a>
       </div>
     </div>
@@ -382,6 +410,8 @@ curl "https://swarmandbee.com/api/data/sample?specialty=surgery"</pre>
     <a href="https://data.swarmandbee.com/privacy.html">Privacy</a>
     <span class="sep">&middot;</span>
     <a href="https://discord.gg/H7cyEHFHgu" target="_blank" style="color:#5865F2;">Discord</a>
+    <span class="sep">&middot;</span>
+    <a href="https://x.com/swarmandbee" target="_blank">X / Twitter</a>
     <br><br>
     &copy; 2026 Swarm &amp; Bee. Last mile intelligence.
   </footer>

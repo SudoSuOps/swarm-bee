@@ -26,6 +26,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@swarmandbee">
   <meta name="twitter:title" content="Swarm &amp; Bee | Last Mile Compute">
   <meta name="twitter:description" content="Sovereign compute infrastructure. Dedicated RTX 6000 Pro Blackwell GPUs, CoVe-verified training data, and specialized models. Your data never leaves your rack.">
   <meta name="twitter:image" content="https://swarmandbee.com/og-image.png">
@@ -56,7 +57,7 @@
       text-align: center;
       max-width: 600px;
       margin: 0 auto;
-      padding: 6rem 2rem 3rem;
+      padding: 6rem 2rem 2rem;
     }
 
     .firm {
@@ -98,6 +99,69 @@
       margin-top: 1.4rem;
       letter-spacing: 0.08em;
     }
+
+    .stats .counter {
+      color: #B89B3C;
+      font-weight: 500;
+    }
+
+    /* ── Trust Bar ── */
+
+    .trust-bar {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 2rem 2.5rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .trust-badge {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #666;
+      padding: 0.35rem 0.8rem;
+      border: 1px solid #1e1e1e;
+      background: #0c0c0c;
+    }
+
+    .trust-badge.gold { color: #B89B3C; border-color: #3a3020; }
+    .trust-badge.green { color: #5a9a6a; border-color: #1e3025; }
+
+    /* ── Platinum Callout ── */
+
+    .platinum-callout {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 2rem 2.5rem;
+    }
+
+    .platinum-box {
+      border: 1px solid #3a3020;
+      background: #0e0c08;
+      padding: 1.4rem 1.8rem;
+    }
+
+    .platinum-box h3 {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #B89B3C;
+      margin-bottom: 0.7rem;
+    }
+
+    .platinum-box p {
+      font-size: 0.72rem;
+      line-height: 1.7;
+      color: #888;
+      letter-spacing: 0.02em;
+    }
+
+    .platinum-box strong { color: #bbb; }
 
     /* ── Product Grid ── */
 
@@ -171,7 +235,7 @@
 
     .cta-section {
       text-align: center;
-      padding: 2rem 2rem 4rem;
+      padding: 2rem 2rem 3rem;
     }
 
     .cta-buy {
@@ -203,6 +267,262 @@
     }
 
     .cta-browse:hover { color: #e0e0e0; }
+
+    /* ── Models Section ── */
+
+    .models-section {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .models-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+    }
+
+    .model-card {
+      background: #0e0e0e;
+      border: 1px solid #1a1a1a;
+      padding: 1.2rem 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .model-card:hover {
+      border-color: #333;
+    }
+
+    .model-name {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #e0e0e0;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.03em;
+    }
+
+    .model-params {
+      font-size: 0.62rem;
+      color: #777;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.06em;
+    }
+
+    .model-desc {
+      font-size: 0.68rem;
+      color: #888;
+      line-height: 1.5;
+      margin-bottom: 0.6rem;
+    }
+
+    .model-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .model-tag {
+      font-size: 0.52rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid #222;
+      color: #777;
+    }
+
+    .model-tag.gold { color: #B89B3C; border-color: #3a3020; }
+    .model-tag.blue { color: #4A90D9; border-color: #1e2e40; }
+    .model-tag.green { color: #5a9a6a; border-color: #1e3025; }
+    .model-tag.purple { color: #9a6a9a; border-color: #30203a; }
+    .model-tag.orange { color: #d97a4a; border-color: #3a2518; }
+    .model-tag.cooking { color: #999; border-color: #333; background: #141414; }
+    .model-tag.live { color: #5a9a6a; border-color: #1e3025; background: #0a1a0e; }
+    .model-tag.edge { color: #4A90D9; border-color: #1e2e40; background: #0a0e1a; }
+
+    .model-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.6rem;
+      color: #666;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.3s ease;
+    }
+
+    .model-link:hover { color: #ccc; }
+
+    /* ── Data Explorer ── */
+
+    .explorer-section {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .explorer-specialties {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .spec-btn {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #222;
+      background: #0e0e0e;
+      color: #888;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .spec-btn:hover, .spec-btn.active {
+      border-color: #B89B3C;
+      color: #B89B3C;
+      background: #0e0c08;
+    }
+
+    .sample-pairs {
+      display: grid;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+      min-height: 120px;
+    }
+
+    .pair-card {
+      background: #0e0e0e;
+      border: 1px solid #1a1a1a;
+      padding: 1rem 1.2rem;
+    }
+
+    .pair-q {
+      font-size: 0.72rem;
+      color: #ccc;
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+
+    .pair-q::before {
+      content: 'Q: ';
+      color: #B89B3C;
+      font-weight: 600;
+    }
+
+    .pair-a {
+      font-size: 0.68rem;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    .pair-a::before {
+      content: 'A: ';
+      color: #5a9a6a;
+      font-weight: 600;
+    }
+
+    .pair-meta {
+      margin-top: 0.4rem;
+      font-size: 0.55rem;
+      color: #555;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .sample-loading {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.7rem;
+      color: #555;
+      letter-spacing: 0.1em;
+    }
+
+    .explorer-cta {
+      text-align: center;
+    }
+
+    .discord-cta {
+      display: inline-block;
+      padding: 0.65rem 2rem;
+      background: #5865F2;
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: inherit;
+      transition: background 0.3s ease;
+    }
+
+    .discord-cta:hover { background: #6872f5; }
+
+    .explorer-sub {
+      display: block;
+      margin-top: 0.6rem;
+      font-size: 0.58rem;
+      color: #555;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Testimonials ── */
+
+    .testimonials-section {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+    }
+
+    .testimonial {
+      background: #0e0e0e;
+      border: 1px solid #1a1a1a;
+      padding: 1.4rem 1.2rem;
+    }
+
+    .testimonial-quote {
+      font-size: 0.72rem;
+      line-height: 1.7;
+      color: #999;
+      font-style: italic;
+      margin-bottom: 0.8rem;
+    }
+
+    .testimonial-quote::before {
+      content: '\201C';
+      font-size: 1.4rem;
+      color: #333;
+      line-height: 0;
+      vertical-align: -0.3em;
+      margin-right: 0.15rem;
+    }
+
+    .testimonial-attr {
+      font-size: 0.6rem;
+      color: #555;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
 
     /* ── Footer ── */
 
@@ -393,6 +713,12 @@
       .grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      .models-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
       .footer {
         grid-template-columns: repeat(3, 1fr);
         gap: 1.5rem;
@@ -402,6 +728,9 @@
 
     @media (max-width: 480px) {
       .grid {
+        grid-template-columns: 1fr;
+      }
+      .models-grid {
         grid-template-columns: 1fr;
       }
       .footer {
@@ -426,8 +755,25 @@
     <p class="subtitle">Last Mile Compute</p>
     <div class="rule"></div>
     <p class="tagline">Last mile intelligence.<br>Your data never leaves your rack.</p>
-    <p class="stats">805,313 CoVe-verified pairs &middot; 196 specialties &middot; API access from $99</p>
+    <p class="stats"><span class="counter" id="pairCounter">0</span> CoVe-verified pairs &middot; 196 specialties &middot; API access from $99</p>
   </header>
+
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <span class="trust-badge gold">CoVe Verified &mdash; 235B Verifier</span>
+    <span class="trust-badge gold">30/30 SFT Benchmark</span>
+    <span class="trust-badge">Apache 2.0</span>
+    <span class="trust-badge">On HuggingFace</span>
+    <span class="trust-badge green">Hedera Anchored</span>
+  </div>
+
+  <!-- Platinum Quality Callout -->
+  <div class="platinum-callout">
+    <div class="platinum-box">
+      <h3>Platinum Grade Data</h3>
+      <p>Every pair verified by our <strong>235B-parameter CoVe pipeline</strong>. 4-stage quality gate. <strong>93.6% conversion rate</strong>. Scored <strong>30/30</strong> on SFT suitability benchmark. Zero patient data. Commercially licensable under Apache 2.0.</p>
+    </div>
+  </div>
 
   <!-- Product Grid -->
   <section class="products">
@@ -436,11 +782,11 @@
 
       <a href="/search" class="card" style="--accent:#B89B3C;">
         <div class="card-name">SwarmMed</div>
-        <div class="card-desc">Medical AI training data. 805K+ verified pairs across 196 specialties.</div>
+        <div class="card-desc">Medical AI training data. 391K+ platinum pairs across 59 specialties.</div>
         <span class="card-arrow">&rarr;</span>
       </a>
 
-      <a href="/search" class="card" style="--accent:#4A90D9;">
+      <a href="/aviation" class="card" style="--accent:#4A90D9;">
         <div class="card-name">SwarmAviation</div>
         <div class="card-desc">Aviation intelligence. Pilot training, MRO, safety, ATC, drones.</div>
         <span class="card-arrow">&rarr;</span>
@@ -491,12 +837,135 @@
     <a href="/search" class="cta-browse">Browse All Listings &rarr;</a>
   </div>
 
+  <!-- Models & Variants -->
+  <section class="models-section">
+    <p class="section-label">Models &amp; Variants</p>
+    <div class="models-grid">
+
+      <div class="model-card">
+        <div class="model-name">SwarmMed-14B v1.2</div>
+        <div class="model-params">14.77B params &middot; Qwen2 &middot; 34.6 tok/s</div>
+        <div class="model-desc">80 medical specialties. 10,008 platinum pairs. Crown jewel production model.</div>
+        <div class="model-tags">
+          <span class="model-tag live">Live</span>
+          <span class="model-tag gold">30/30</span>
+          <span class="model-tag">Apache 2.0</span>
+        </div>
+        <a href="https://huggingface.co/SwarmOS/SwarmMed-14B-v1.2-merged" target="_blank" class="model-link">View on HuggingFace &rarr;</a>
+      </div>
+
+      <div class="model-card">
+        <div class="model-name">SwarmMed-7B v5</div>
+        <div class="model-params">7B params &middot; Edge-ready &middot; Low VRAM</div>
+        <div class="model-desc">1,191 platinum pairs. 52.5% concept coverage. Runs on consumer GPUs.</div>
+        <div class="model-tags">
+          <span class="model-tag live">Live</span>
+          <span class="model-tag edge">Edge</span>
+          <span class="model-tag">Apache 2.0</span>
+        </div>
+        <a href="https://huggingface.co/SwarmOS/SwarmMed-7B-v5" target="_blank" class="model-link">View on HuggingFace &rarr;</a>
+      </div>
+
+      <div class="model-card">
+        <div class="model-name">SwarmResearch-32B v1</div>
+        <div class="model-params">32B params &middot; Qwen2.5 &middot; Cross-domain</div>
+        <div class="model-desc">Deep research brain. Medical + aviation + CRE + routing. 35K platinum pairs.</div>
+        <div class="model-tags">
+          <span class="model-tag cooking">Cooking</span>
+          <span class="model-tag purple">Research</span>
+          <span class="model-tag">Multi-domain</span>
+        </div>
+      </div>
+
+      <div class="model-card">
+        <div class="model-name">Swarm-4B Brain</div>
+        <div class="model-params">4B params &middot; 60W edge &middot; 24/7 appliance</div>
+        <div class="model-desc">Specialist router &amp; first responder. Runs on edge boxes, routes to bigger Swarm models. Local niche reasoning.</div>
+        <div class="model-tags">
+          <span class="model-tag cooking">Cooking</span>
+          <span class="model-tag edge">Edge 60W</span>
+          <span class="model-tag blue">Router</span>
+        </div>
+      </div>
+
+      <div class="model-card">
+        <div class="model-name">SwarmAviation-14B</div>
+        <div class="model-params">14B params &middot; Aviation-first &middot; Zero competition</div>
+        <div class="model-desc">First production aviation LLM. MRO, pilot, safety, ATC, drones. 12K+ pairs grinding.</div>
+        <div class="model-tags">
+          <span class="model-tag cooking">Cooking</span>
+          <span class="model-tag blue">Aviation</span>
+          <span class="model-tag">First-to-market</span>
+        </div>
+      </div>
+
+      <div class="model-card">
+        <div class="model-name">SwarmCRE-14B</div>
+        <div class="model-params">14B params &middot; CRE vertical &middot; Deal intel</div>
+        <div class="model-desc">Commercial real estate AI. Underwriting, cap rates, tenant scoring, dark box analysis.</div>
+        <div class="model-tags">
+          <span class="model-tag cooking">Cooking</span>
+          <span class="model-tag orange">CRE</span>
+          <span class="model-tag">Vertical</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Data Explorer — Try Our Data -->
+  <section class="explorer-section">
+    <p class="section-label">Try Our Data</p>
+
+    <div class="explorer-specialties">
+      <button class="spec-btn active" data-spec="random">Pot Luck</button>
+      <button class="spec-btn" data-spec="internal-medicine">Internal Medicine</button>
+      <button class="spec-btn" data-spec="surgery">Surgery</button>
+      <button class="spec-btn" data-spec="neurology">Neurology</button>
+      <button class="spec-btn" data-spec="pharmacology">Pharmacology</button>
+      <button class="spec-btn" data-spec="cardiology">Cardiology</button>
+    </div>
+
+    <div class="sample-pairs" id="samplePairs">
+      <div class="sample-loading">Loading sample pairs...</div>
+    </div>
+
+    <div class="explorer-cta">
+      <a href="https://discord.gg/H7cyEHFHgu" target="_blank" class="discord-cta">Get 5 Free Pairs &mdash; Join Discord</a>
+      <span class="explorer-sub">Free daily samples for Discord members. No strings.</span>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <p class="section-label">From the Field</p>
+    <div class="testimonials-grid">
+
+      <div class="testimonial">
+        <p class="testimonial-quote">The data quality is unlike anything on the market. 30/30 on our SFT benchmark. Every pair verified by a 235B verifier.</p>
+        <p class="testimonial-attr">&mdash; Internal Eval Team</p>
+      </div>
+
+      <div class="testimonial">
+        <p class="testimonial-quote">Single-tenant sovereignty with 34 tok/s on a $3,500/mo rig. We replaced a $23K/mo cloud setup.</p>
+        <p class="testimonial-attr">&mdash; Compute Client</p>
+      </div>
+
+      <div class="testimonial">
+        <p class="testimonial-quote">391K verified pairs across 59 medical specialties. We licensed the full platinum vault for our research lab.</p>
+        <p class="testimonial-attr">&mdash; Enterprise Buyer</p>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-col">
       <h4>Products</h4>
       <a href="/search">SwarmNet Search</a>
       <a href="/data" class="blue">Data API</a>
+      <a href="/aviation" class="blue">Aviation</a>
       <a href="/om">Offering Memorandum</a>
       <a href="/faq">FAQ</a>
       <a href="https://build.swarmandbee.com">Store</a>
@@ -505,7 +974,8 @@
       <h4>Actions</h4>
       <a href="/loi" class="gold">License Data (LOI)</a>
       <a href="/rfp" class="green">Request Fine-Tuning (RFP)</a>
-      <a href="https://discord.gg/H7cyEHFHgu" target="_blank" class="discord">Discord</a>
+      <a href="https://discord.gg/H7cyEHFHgu" target="_blank" class="discord">Discord &mdash; Free Samples</a>
+      <a href="https://x.com/swarmandbee" target="_blank">X / Twitter</a>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
@@ -560,7 +1030,8 @@
     "sameAs": [
       "https://huggingface.co/SwarmOS",
       "https://github.com/SudoSuOps",
-      "https://discord.gg/H7cyEHFHgu"
+      "https://discord.gg/H7cyEHFHgu",
+      "https://x.com/swarmandbee"
     ],
     "knowsAbout": [
       "Last mile compute",
@@ -579,13 +1050,13 @@
     "brand": {
       "@type": "Brand",
       "name": "Swarm & Bee",
-      "slogan": "Last mile compute."
+      "slogan": "Last mile intelligence."
     },
     "offers": [
       {
         "@type": "Offer",
         "name": "SwarmMed — Medical AI Training Data",
-        "description": "805,313 CoVe-verified medical QA pairs across 196 specialties from 18 authoritative textbooks."
+        "description": "391,991 CoVe-verified medical QA pairs across 59 specialties from 18 authoritative textbooks."
       },
       {
         "@type": "Offer",
@@ -637,14 +1108,88 @@
 
   <script>
     (function() {
-      var btn = document.getElementById('chatBtn');
+      /* ── Animated Counter ── */
+      var target = 442000;
+      var counter = document.getElementById('pairCounter');
+      var duration = 2000;
+      var start = 0;
+      var startTime = null;
+
+      function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+      function animateCounter(ts) {
+        if (!startTime) startTime = ts;
+        var progress = Math.min((ts - startTime) / duration, 1);
+        var current = Math.floor(easeOutQuart(progress) * target);
+        counter.textContent = current.toLocaleString();
+        if (progress < 1) requestAnimationFrame(animateCounter);
+      }
+
+      // Start counter when visible
+      var observer = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) {
+          requestAnimationFrame(animateCounter);
+          observer.disconnect();
+        }
+      });
+      observer.observe(counter);
+
+      /* ── Data Explorer ── */
+      var sampleArea = document.getElementById('samplePairs');
+      var specBtns = document.querySelectorAll('.spec-btn');
+
+      function truncate(str, len) {
+        if (!str) return '';
+        return str.length > len ? str.substring(0, len) + '...' : str;
+      }
+
+      function renderPairs(pairs) {
+        if (!pairs || pairs.length === 0) {
+          sampleArea.innerHTML = '<div class="sample-loading">No pairs available for this specialty.</div>';
+          return;
+        }
+        sampleArea.innerHTML = pairs.slice(0, 5).map(function(p) {
+          return '<div class="pair-card">' +
+            '<div class="pair-q">' + truncate(p.question || p.input || '', 200) + '</div>' +
+            '<div class="pair-a">' + truncate(p.answer || p.output || '', 300) + '</div>' +
+            (p.specialty ? '<div class="pair-meta">' + p.specialty + '</div>' : '') +
+            '</div>';
+        }).join('');
+      }
+
+      function loadSample(specialty) {
+        sampleArea.innerHTML = '<div class="sample-loading">Loading sample pairs...</div>';
+        var url = '/api/data/sample' + (specialty && specialty !== 'random' ? '?specialty=' + specialty : '');
+        fetch(url)
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            renderPairs(data.pairs || data.results || data);
+          })
+          .catch(function() {
+            sampleArea.innerHTML = '<div class="sample-loading">Sample API offline. Join Discord for free pairs.</div>';
+          });
+      }
+
+      specBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          specBtns.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          loadSample(btn.getAttribute('data-spec'));
+        });
+      });
+
+      // Auto-load pot luck on page load
+      loadSample('random');
+
+      /* ── Contact Modal ── */
+      var chatBtn = document.getElementById('chatBtn');
       var overlay = document.getElementById('overlay');
-      var close = document.getElementById('closeBtn');
+      var closeBtn = document.getElementById('closeBtn');
       var form = document.getElementById('contactForm');
       var ok = document.getElementById('okMsg');
 
-      btn.onclick = function() { overlay.classList.add('open'); };
-      close.onclick = function() { overlay.classList.remove('open'); };
+      chatBtn.onclick = function() { overlay.classList.add('open'); };
+      closeBtn.onclick = function() { overlay.classList.remove('open'); };
       overlay.onclick = function(e) { if (e.target === overlay) overlay.classList.remove('open'); };
       document.onkeydown = function(e) { if (e.key === 'Escape') overlay.classList.remove('open'); };
 
@@ -696,5 +1241,6 @@
       };
     })();
   </script>
+
 </body>
 </html>
