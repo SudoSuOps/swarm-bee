@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>SwarmMed — Verified AI Intelligence for Healthcare | Swarm &amp; Bee</title>
-  <meta name="description" content="SwarmMed — 406,181 CoVe-verified medical training pairs across 59 specialties. 18 authoritative textbooks. 30/30 SFT benchmark. Zero patient data. Commercially licensable.">
+  <meta name="description" content="SwarmMed-14B v2 — 14.77B parameter medical AI. 15/15 specialty benchmark. 391K platinum pairs. 30/30 SFT score. Apache 2.0. On HuggingFace now.">
   <meta name="keywords" content="medical AI, medical training data, healthcare AI, CoVe verified, medical language model, clinical AI, medical QA pairs, SwarmMed, fine-tuning data, sovereign healthcare AI, HIPAA, medical LLM">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://swarmandbee.com/swarmmed">
 
   <meta property="og:title" content="SwarmMed — Verified AI Intelligence for Healthcare">
-  <meta property="og:description" content="406,181 verified medical pairs. 59 specialties. 18 textbooks. 30/30 benchmark. Zero patient data. The data layer for clinical AI.">
+  <meta property="og:description" content="SwarmMed-14B v2 — 14.77B params, 15/15 specialty benchmark, 391K platinum pairs, 30/30 SFT score. Apache 2.0. Live on HuggingFace.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://swarmandbee.com/swarmmed">
   <meta property="og:image" content="https://swarmandbee.com/og-image.png">
@@ -20,7 +20,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@swarmandbee">
   <meta name="twitter:title" content="SwarmMed — Verified AI Intelligence for Healthcare">
-  <meta name="twitter:description" content="406,181 verified medical pairs. 59 specialties. 30/30 benchmark. Zero patient data.">
+  <meta name="twitter:description" content="SwarmMed-14B v2 — 14.77B params. 15/15 specialty benchmark. 391K platinum pairs. Apache 2.0. On HuggingFace.">
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -220,6 +220,88 @@
     }
     .foot a { color: #444; margin: 0 0.5em; }
 
+    /* ── Model Hero Card ── */
+    .model-hero {
+      background: #0a0a0a; border: 1px solid #2a2210;
+      padding: 2rem 2.2rem; margin: 1.4rem 0 2rem;
+      position: relative; overflow: hidden;
+    }
+    .model-hero::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, #B89B3C, #d4a84a, #B89B3C);
+    }
+    .model-hero h3 {
+      font-size: 1.1rem; font-weight: 400; color: #e0e0e0;
+      letter-spacing: 0.04em; margin-bottom: 0.4rem;
+    }
+    .model-hero .model-sub {
+      font-size: 0.72rem; color: #666; margin-bottom: 1.2rem;
+    }
+    .model-stats {
+      display: flex; flex-wrap: wrap; gap: 1.4rem; margin-bottom: 1.2rem;
+    }
+    .model-stat {
+      text-align: center; min-width: 80px;
+    }
+    .model-stat .val {
+      font-size: 1.2rem; font-weight: 300; color: #B89B3C;
+    }
+    .model-stat .lbl {
+      font-size: 0.55rem; color: #555; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .model-hero .hf-link {
+      display: inline-block; padding: 0.5rem 1.4rem; margin-top: 0.6rem;
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      background: #B89B3C; color: #080808; text-decoration: none; transition: background 0.3s;
+    }
+    .model-hero .hf-link:hover { background: #c9ab4c; }
+    .badge-live {
+      display: inline-block; font-size: 0.5rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.15rem 0.5rem; color: #5a9a6a; border: 1px solid #2a4a2a;
+      vertical-align: middle; margin-left: 0.5rem;
+    }
+    .badge-v2 {
+      display: inline-block; font-size: 0.5rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.15rem 0.5rem; color: #B89B3C; border: 1px solid #2a2210;
+      vertical-align: middle; margin-left: 0.5rem;
+    }
+
+    /* ── Benchmark Grid ── */
+    .bench-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1px; background: #151515; border: 1px solid #151515;
+      margin: 1.4rem 0;
+    }
+    .bench-cell {
+      background: #0a0a0a; padding: 0.8rem 1rem; text-align: center;
+    }
+    .bench-cell .spec {
+      font-size: 0.65rem; color: #999; font-weight: 500;
+      letter-spacing: 0.04em; margin-bottom: 0.3rem;
+    }
+    .bench-cell .score {
+      font-size: 0.85rem; font-weight: 400; color: #B89B3C;
+    }
+    .bench-cell .meta {
+      font-size: 0.55rem; color: #444; margin-top: 0.15rem;
+    }
+    .bench-cell.pass .score { color: #5a9a6a; }
+
+    /* ── Loss Curve (CSS only) ── */
+    .loss-curve {
+      display: flex; align-items: flex-end; gap: 2px;
+      height: 60px; margin: 1rem 0;
+      border-bottom: 1px solid #1a1a1a;
+      border-left: 1px solid #1a1a1a;
+      padding: 0 0.5rem;
+    }
+    .loss-bar {
+      flex: 1; background: #B89B3C; border-radius: 1px 1px 0 0;
+      min-width: 8px; transition: height 0.5s;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 600px) {
       .page { padding: 3.5rem 1.2rem 2rem; }
@@ -244,8 +326,93 @@
     <div class="hero">
       <h1>SwarmMed</h1>
       <p class="lead">Verified AI Intelligence for Healthcare</p>
-      <p class="lead" style="color:#777;">We build medical-grade datasets and models designed for clinical reasoning, diagnostics, research, and education.</p>
+      <p class="lead" style="color:#777;">Medical-grade datasets and models for clinical reasoning, diagnostics, research, and education. Now featuring <strong style="color:#B89B3C;">SwarmMed-14B v2</strong> &mdash; 15/15 specialty benchmark, live on HuggingFace.</p>
       <p class="quiet">No patient data. No hallucinations.<br>Only verified, reproducible data and models.</p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- SWARMMED-14B V2 — FLAGSHIP MODEL -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-label">Flagship Model</div>
+      <h2>SwarmMed-14B v2 <span class="badge-live">LIVE</span> <span class="badge-v2">NEW</span></h2>
+
+      <div class="model-hero">
+        <h3>SwarmMed-14B v2 (Merged)</h3>
+        <div class="model-sub">14.77 billion parameters &middot; Qwen2 architecture &middot; BF16 &middot; Apache 2.0</div>
+
+        <div class="model-stats">
+          <div class="model-stat"><div class="val">14.77B</div><div class="lbl">Parameters</div></div>
+          <div class="model-stat"><div class="val">15/15</div><div class="lbl">Specialties Passed</div></div>
+          <div class="model-stat"><div class="val">391K</div><div class="lbl">Training Pairs</div></div>
+          <div class="model-stat"><div class="val">30/30</div><div class="lbl">SFT Benchmark</div></div>
+          <div class="model-stat"><div class="val">0.992</div><div class="lbl">Final Loss</div></div>
+          <div class="model-stat"><div class="val">28.5</div><div class="lbl">tok/s (3090Ti)</div></div>
+        </div>
+
+        <a href="https://huggingface.co/SwarmOS/SwarmMed-14B-v2-merged" target="_blank" class="hf-link">View on HuggingFace &rarr;</a>
+      </div>
+
+      <p><strong>15-Specialty Inference Benchmark</strong> &mdash; tested on clinical prompts across cardiology, neurology, surgery, emergency medicine, pharmacology, internal medicine, oncology, pediatrics, orthopedics, psychiatry, nephrology, pulmonology, endocrinology, gastroenterology, and infectious disease.</p>
+
+      <div class="bench-grid">
+        <div class="bench-cell pass"><div class="spec">Cardiology</div><div class="score">PASS</div><div class="meta">281 tok &middot; 20.5 t/s</div></div>
+        <div class="bench-cell pass"><div class="spec">Neurology</div><div class="score">PASS</div><div class="meta">214 tok &middot; 29.7 t/s</div></div>
+        <div class="bench-cell pass"><div class="spec">Surgery</div><div class="score">PASS</div><div class="meta">166 tok &middot; 29.3 t/s</div></div>
+        <div class="bench-cell pass"><div class="spec">Emergency Med</div><div class="score">PASS</div><div class="meta">199 tok &middot; 29.5 t/s</div></div>
+        <div class="bench-cell pass"><div class="spec">Pharmacology</div><div class="score">PASS</div><div class="meta">368 tok &middot; 29.8 t/s</div></div>
+        <div class="bench-cell pass"><div class="spec">Internal Med</div><div class="score">PASS</div><div class="meta">255 tok &middot; 29.6 t/s</div></div>
+        <div class="bench-cell pass"><div class="spec">Oncology</div><div class="score">PASS</div><div class="meta">133 tok &middot; 29.9 t/s</div></div>
+        <div class="bench-cell pass"><div class="spec">Pediatrics</div><div class="score">PASS</div><div class="meta">318 tok &middot; 29.9 t/s</div></div>
+        <div class="bench-cell pass"><div class="spec">Orthopedics</div><div class="score">PASS</div><div class="meta">92 tok &middot; 29.8 t/s</div></div>
+        <div class="bench-cell pass"><div class="spec">Psychiatry</div><div class="score">PASS</div><div class="meta">370 tok &middot; 30.2 t/s</div></div>
+        <div class="bench-cell pass"><div class="spec">Nephrology</div><div class="score">PASS</div><div class="meta">227 tok &middot; 29.6 t/s</div></div>
+        <div class="bench-cell pass"><div class="spec">Pulmonology</div><div class="score">PASS</div><div class="meta">242 tok &middot; 30.1 t/s</div></div>
+        <div class="bench-cell pass"><div class="spec">Endocrinology</div><div class="score">PASS</div><div class="meta">243 tok &middot; 25.9 t/s</div></div>
+        <div class="bench-cell pass"><div class="spec">Gastroenterology</div><div class="score">PASS</div><div class="meta">128 tok &middot; 29.5 t/s</div></div>
+        <div class="bench-cell pass"><div class="spec">Infectious Dis</div><div class="score">PASS</div><div class="meta">308 tok &middot; 30.0 t/s</div></div>
+      </div>
+
+      <p style="font-size:0.72rem;color:#555;">Benchmark run on RTX 3090Ti (24GB) with AWQ quantization + LoRA adapter. Merged model on RTX PRO 6000 Blackwell (96GB) achieves 60+ tok/s at full BF16 precision.</p>
+
+      <h2 style="margin-top:2rem;">Training</h2>
+
+      <table class="stack-table">
+        <thead>
+          <tr><th>Property</th><th>Value</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Base Model</td><td>Qwen/Qwen2.5-14B-Instruct</td></tr>
+          <tr><td>Method</td><td>LoRA SFT (rank 64, alpha 128, all-linear)</td></tr>
+          <tr><td>Training Data</td><td>391,991 platinum pairs &middot; 80+ specialties</td></tr>
+          <tr><td>Training Tokens</td><td>30.27M</td></tr>
+          <tr><td>Epochs</td><td>3 (348 steps)</td></tr>
+          <tr><td>Final Eval Loss</td><td>0.992 (from 1.09 &rarr; 0.992)</td></tr>
+          <tr><td>Training Time</td><td>~38 minutes (Together.ai)</td></tr>
+          <tr><td>Model Size</td><td>29.5 GB (BF16, 6 safetensor shards)</td></tr>
+          <tr><td>License</td><td>Apache 2.0</td></tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:0.72rem;color:#555;margin-top:0.6rem;">Loss curve: 1.09 &rarr; 1.05 &rarr; 1.03 &rarr; 1.01 &rarr; 1.00 &rarr; 0.995 &rarr; 0.992 &mdash; steady convergence, no overfitting.</p>
+
+      <div class="loss-curve" title="Training loss curve: 1.09 → 0.992">
+        <div class="loss-bar" style="height:100%;" title="1.09"></div>
+        <div class="loss-bar" style="height:89%;" title="1.05"></div>
+        <div class="loss-bar" style="height:80%;" title="1.03"></div>
+        <div class="loss-bar" style="height:72%;" title="1.01"></div>
+        <div class="loss-bar" style="height:65%;" title="1.00"></div>
+        <div class="loss-bar" style="height:55%;" title="0.999"></div>
+        <div class="loss-bar" style="height:45%;" title="0.995"></div>
+        <div class="loss-bar" style="height:38%;" title="0.993"></div>
+        <div class="loss-bar" style="height:32%;" title="0.992"></div>
+        <div class="loss-bar" style="height:32%;" title="0.992"></div>
+      </div>
+      <p style="font-size:0.55rem;color:#444;text-align:center;">Eval loss over training &mdash; lower is better</p>
+
+      <div class="callout" style="margin-top:1.4rem;">
+        <strong>Provenance:</strong> Model NFT <span style="color:#B89B3C;">0.0.10291842</span> SFMOD on Hedera Mainnet. IPFS metadata anchored. Every training pair MD5-fingerprinted and blockchain-verified via SwarmChain.
+      </div>
     </div>
 
     <!-- ══════════════════════════════════════════════════════════════ -->
@@ -401,7 +568,7 @@
         <tbody>
           <tr><td>4B Router</td><td>Detects medical requests and routes by specialty</td><td style="color:#B89B3C;">Cooking</td></tr>
           <tr><td>7B Edge</td><td>Lightweight clinical reasoning at the point of care</td><td style="color:#5a9a6a;">Live</td></tr>
-          <tr><td>14B Specialist</td><td>Full medical reasoning across 80 specialties</td><td style="color:#5a9a6a;">Live</td></tr>
+          <tr><td>14B Specialist <span class="badge-v2">v2</span></td><td>Full medical reasoning across 80 specialties &middot; 15/15 benchmark</td><td style="color:#5a9a6a;">Live &middot; <a href="https://huggingface.co/SwarmOS/SwarmMed-14B-v2-merged" target="_blank" style="font-size:0.72rem;">HF</a></td></tr>
           <tr><td>32B Research Brain</td><td>Multi-document clinical analysis and synthesis</td><td style="color:#B89B3C;">Cooking</td></tr>
           <tr><td>235B Verifier</td><td>Dataset validation and quality control</td><td style="color:#5a9a6a;">Live</td></tr>
         </tbody>
@@ -523,7 +690,8 @@
     <div class="cta-section">
       <p>Explore Medical Datasets &amp; Models</p>
       <div class="cta-row">
-        <a href="/data" class="cta-btn cta-gold">View Medical Products</a>
+        <a href="https://huggingface.co/SwarmOS/SwarmMed-14B-v2-merged" target="_blank" class="cta-btn cta-gold">SwarmMed-14B v2 on HuggingFace</a>
+        <a href="/data" class="cta-btn cta-outline">View Medical Products</a>
         <a href="/rfp" class="cta-btn cta-outline">Request Custom Data (RFP)</a>
       </div>
     </div>
