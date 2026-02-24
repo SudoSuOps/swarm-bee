@@ -68,7 +68,7 @@ const PHI_BLOCKED_RESPONSE =
 
 const MODE_SYSTEM_PROMPTS = {
   explain:
-    "You are SwarmMed, a medical AI assistant trained on 406K CoVe-verified " +
+    "You are SwarmMed-14B v2, a medical AI assistant trained on 391,991 CoVe-verified " +
     "platinum QA pairs across 59 specialties.\n\n" +
     "RULES:\n" +
     "- Provide clear, educational explanations of medical concepts\n" +
@@ -156,10 +156,11 @@ async function callInference(prompt, mode, env) {
   ];
 
   // Try local vLLM via CF tunnel first
-  if (env.SWARM_INFERENCE_URL) {
+  const inferUrl = env.SWARM_INFERENCE_URL || "https://inference-med.quantumrails.io";
+  if (inferUrl) {
     try {
       const resp = await fetch(
-        `${env.SWARM_INFERENCE_URL}/v1/chat/completions`,
+        `${inferUrl}/v1/chat/completions`,
         {
           method: "POST",
           headers: {
@@ -167,7 +168,7 @@ async function callInference(prompt, mode, env) {
             Authorization: `Bearer ${env.SWARM_INFERENCE_KEY || "not-needed"}`,
           },
           body: JSON.stringify({
-            model: "SwarmMed-14B-v1.2",
+            model: "swarmmed-14b-v2",
             messages,
             max_tokens: maxTokens,
             temperature: 0.3,
@@ -179,7 +180,7 @@ async function callInference(prompt, mode, env) {
         const data = await resp.json();
         return {
           answer: data.choices?.[0]?.message?.content || "",
-          model_used: "SwarmMed-14B-v1.2",
+          model_used: "SwarmMed-14B-v2",
           backend: "local-vllm",
           tokens: data.usage || {},
         };
