@@ -231,6 +231,24 @@
 
     .card:hover .card-arrow { opacity: 1; }
 
+    .card-featured {
+      border-color: #3a3020;
+      background: #110f08;
+      box-shadow: 0 0 20px rgba(184, 155, 60, 0.08);
+    }
+    .card-featured:hover {
+      box-shadow: 0 0 30px rgba(184, 155, 60, 0.15);
+    }
+
+    .card-live {
+      display: inline-block;
+      font-size: 0.5rem; font-weight: 700;
+      letter-spacing: 0.15em;
+      padding: 0.15rem 0.5rem;
+      background: #B89B3C; color: #080808;
+      margin-bottom: 0.5rem;
+    }
+
     /* ── Buy CTA ── */
 
     .cta-section {
@@ -798,6 +816,13 @@
     <p class="products-label">Product Lines</p>
     <div class="grid">
 
+      <a href="/ask" class="card card-featured" style="--accent:#B89B3C;">
+        <span class="card-live">LIVE</span>
+        <div class="card-name">Ask SwarmMed</div>
+        <div class="card-desc">Try it now &mdash; ask any medical question. 14B model, PHI-safe, receipt-backed.</div>
+        <span class="card-arrow">&rarr;</span>
+      </a>
+
       <a href="/swarmmed" class="card" style="--accent:#B89B3C;">
         <div class="card-name">SwarmMed</div>
         <div class="card-desc">Medical AI training data. 406K+ platinum pairs across 59 specialties.</div>
@@ -837,12 +862,6 @@
       <a href="/rfp" class="card" style="--accent:#5a9a6a;">
         <div class="card-name">SwarmRFP</div>
         <div class="card-desc">Request fine-tuning. Managed cook, dedicated rig, or spec build.</div>
-        <span class="card-arrow">&rarr;</span>
-      </a>
-
-      <a href="/ask" class="card" style="--accent:#3ECF8E;">
-        <div class="card-name">Ask SwarmMed</div>
-        <div class="card-desc">Live medical AI demo. Ask any clinical question. PHI-safe, receipt-backed.</div>
         <span class="card-arrow">&rarr;</span>
       </a>
 
