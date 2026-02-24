@@ -203,7 +203,7 @@
       <div class="stat"><div class="num">30/30</div><div class="label">SFT Benchmark</div></div>
       <div class="stat"><div class="num">2,660</div><div class="label">NFTs on Hedera</div></div>
       <div class="stat"><div class="num">14.77B</div><div class="label">Model Parameters</div></div>
-      <div class="stat"><div class="num">96 GB</div><div class="label">Dedicated VRAM</div></div>
+      <div class="stat"><div class="num">14 TB</div><div class="label">Fleet VRAM (128x RTX PRO 6000)</div></div>
     </div>
   </section>
 
@@ -269,16 +269,16 @@
 
     <h3>Dedicated Rig Specification</h3>
     <ul>
-      <li><strong>GPU:</strong> 2x NVIDIA RTX PRO 6000 (48GB each, 96GB total VRAM)</li>
+      <li><strong>GPU:</strong> 2x NVIDIA RTX PRO 6000 Blackwell (96GB GDDR7 each, 192GB total VRAM)</li>
       <li><strong>Deployment:</strong> 100% holder-dedicated, no shared tenancy</li>
       <li><strong>Access:</strong> Wallet-gated API &mdash; only your systems query your model</li>
       <li><strong>SLA:</strong> 72-hour hardware replacement guarantee</li>
-      <li><strong class="green">Incoming:</strong> 8x RTX 6000 Blackwell + 24x PNY RTX 4500 Blackwell (32GB)</li>
     </ul>
 
     <h3>Fleet</h3>
     <ul>
-      <li>42+ GPUs across 6 nodes (1,856 GB total VRAM)</li>
+      <li><strong>128x RTX PRO 6000 Blackwell</strong> (96GB GDDR7 each &mdash; 12,288 GB dedicated VRAM)</li>
+      <li>170+ total GPUs across fleet (~14 TB total VRAM)</li>
       <li>vLLM serving infrastructure on swarmrails (2x RTX 3090Ti)</li>
       <li>12x Zima Edge nodes for distributed inference</li>
       <li>10x Jetson Orin Nano Super for edge deployment</li>

@@ -302,12 +302,11 @@
       <div class="faq-q">What hardware do you run?</div>
       <div class="faq-a">
         <ul>
-          <li><strong>Production:</strong> 2x RTX PRO 6000 (96GB VRAM) &mdash; primary inference and fine-tuning</li>
+          <li><strong>Production:</strong> 128x NVIDIA RTX PRO 6000 Blackwell (96GB GDDR7 each) &mdash; 12,288 GB dedicated VRAM</li>
           <li><strong>Training fleet:</strong> 2x RTX 3090Ti, 2x RTX 3090 &mdash; vLLM serving, model cooking</li>
           <li><strong>Edge:</strong> 12x Zima nodes + 10x Jetson Orin Nano Super &mdash; distributed inference</li>
-          <li><strong>Incoming:</strong> 8x RTX 6000 Blackwell + 24x PNY RTX 4500 Blackwell (32GB)</li>
         </ul>
-        <p>Total fleet: 42+ GPUs, 1,856 GB VRAM, ~$144K hardware. And growing.</p>
+        <p>Total fleet: 170+ GPUs, ~14 TB VRAM. Blackwell architecture &mdash; faster and cheaper than H100 for inference workloads.</p>
       </div>
     </div>
   </div>

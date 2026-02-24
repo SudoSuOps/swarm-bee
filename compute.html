@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>S&B Compute — RTX PRO 6000 Blackwell Fleet | Swarm &amp; Bee</title>
+  <meta name="description" content="128x RTX PRO 6000 Blackwell GPUs. 12,288 GB VRAM. Single-tenant sovereign compute. Dedicated rigs, managed inference, fine-tuning, edge nodes. From $250/mo.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://swarmandbee.com/compute">
+
+  <meta property="og:title" content="S&B Compute — 128x RTX PRO 6000 Blackwell">
+  <meta property="og:description" content="12TB+ dedicated VRAM. Single-tenant sovereign compute from $250/mo. Fine-tuning, inference, edge deployment.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://swarmandbee.com/compute">
+  <meta property="og:image" content="https://swarmandbee.com/og-image.png">
+  <meta property="og:site_name" content="Swarm &amp; Bee">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@swarmandbee">
+  <meta name="twitter:title" content="S&B Compute — 128x RTX PRO 6000 Blackwell">
+  <meta name="twitter:description" content="12TB+ dedicated VRAM. Single-tenant sovereign compute. RTX PRO 6000 Blackwell fleet.">
+
+  <meta name="keywords" content="RTX PRO 6000, Blackwell GPU, dedicated GPU, sovereign compute, single-tenant, fine-tuning, inference, medical AI, edge compute, GPU rental, HIPAA compute">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #080808;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #aaa;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; }
+
+    .back-nav {
+      position: fixed; top: 1.2rem; left: 1.5rem;
+      font-size: 0.7rem; color: #888; text-decoration: none;
+      letter-spacing: 0.1em; z-index: 50;
+    }
+    .back-nav:hover { color: #f0f0f0; }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 5rem 2rem 2rem;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #5a9a6a;
+      background: rgba(90,154,106,0.08);
+      border: 1px solid rgba(90,154,106,0.15);
+      border-radius: 100px;
+      padding: 0.35rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+      font-weight: 600;
+      color: #f0f0f0;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .hero h1 .accent { color: #5a9a6a; }
+    .hero p {
+      font-size: 1rem;
+      color: #888;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    /* Fleet Stats */
+    .fleet-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1px;
+      background: #222;
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 760px;
+      margin: 0 auto 3rem;
+    }
+    .fleet-stat {
+      background: #111;
+      padding: 1.25rem 1rem;
+      text-align: center;
+    }
+    .fleet-stat .val {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #f0f0f0;
+      letter-spacing: -0.02em;
+    }
+    .fleet-stat .val .g { color: #5a9a6a; }
+    .fleet-stat .lbl {
+      font-size: 0.65rem;
+      color: #666;
+      letter-spacing: 0.05em;
+      margin-top: 0.2rem;
+    }
+
+    /* Section */
+    section {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .section-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #5a9a6a;
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 600;
+      color: #f0f0f0;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+
+    .desc {
+      color: #888;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    /* Package Cards */
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .pkg {
+      background: #111;
+      border: 1px solid #1a1a1a;
+      border-radius: 14px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .pkg:hover {
+      border-color: #333;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .pkg.featured {
+      border-color: #5a9a6a;
+      box-shadow: 0 0 24px rgba(90,154,106,0.08);
+    }
+
+    .pkg-badge {
+      display: inline-block;
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      margin-bottom: 0.75rem;
+      width: fit-content;
+    }
+    .pkg-badge.green { background: rgba(90,154,106,0.12); color: #5a9a6a; }
+    .pkg-badge.gold { background: rgba(184,155,60,0.12); color: #B89B3C; }
+    .pkg-badge.blue { background: rgba(74,144,217,0.12); color: #4A90D9; }
+    .pkg-badge.purple { background: rgba(154,106,154,0.12); color: #9a6a9a; }
+
+    .pkg-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #f0f0f0;
+      margin-bottom: 0.4rem;
+    }
+
+    .pkg-desc {
+      font-size: 0.78rem;
+      color: #888;
+      line-height: 1.55;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+
+    .pkg-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .pkg-spec {
+      font-size: 0.6rem;
+      font-weight: 500;
+      color: #666;
+      background: #0d0d0d;
+      border: 1px solid #1a1a1a;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      letter-spacing: 0.03em;
+    }
+
+    .pkg-price {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #5a9a6a;
+      letter-spacing: -0.02em;
+    }
+    .pkg-price .period {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: #666;
+    }
+
+    .pkg-cta {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #5a9a6a;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .pkg-cta:hover { color: #7abd8a; text-decoration: underline; }
+
+    /* Comparison table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.78rem;
+    }
+    .compare-table th {
+      text-align: left;
+      color: #666;
+      font-weight: 500;
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid #222;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .compare-table td {
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid #151515;
+      color: #aaa;
+    }
+    .compare-table tr:hover td { background: #0d0d0d; }
+    .compare-table .them { color: #666; }
+    .compare-table .us { color: #5a9a6a; font-weight: 600; }
+
+    /* CTA */
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #5a9a6a;
+      color: #080808;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .cta:hover {
+      background: #4d8a5d;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(90,154,106,0.2);
+    }
+
+    /* Divider */
+    .divider {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      margin: 1rem 0;
+      max-width: 880px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      font-size: 0.7rem;
+      color: #444;
+      border-top: 1px solid #1a1a1a;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    footer a { color: #666; text-decoration: none; }
+    footer a:hover { color: #f0f0f0; }
+
+    @media (max-width: 600px) {
+      .packages { grid-template-columns: 1fr; }
+      .fleet-stats { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="/" class="back-nav">&larr; S&amp;B</a>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">S&amp;B Compute</div>
+    <h1>128x RTX PRO 6000.<br><span class="accent">Blackwell.</span><br>Your rack.</h1>
+    <p>Single-tenant sovereign compute. No shared tenancy. No cloud hop. Your data never leaves your hardware. 10 packages from edge inference to full spec build.</p>
+  </div>
+
+  <!-- Fleet Stats -->
+  <div class="fleet-stats">
+    <div class="fleet-stat">
+      <div class="val">128<span class="g">x</span></div>
+      <div class="lbl">RTX PRO 6000</div>
+    </div>
+    <div class="fleet-stat">
+      <div class="val">12<span class="g">,</span>288</div>
+      <div class="lbl">GB DEDICATED VRAM</div>
+    </div>
+    <div class="fleet-stat">
+      <div class="val">96<span class="g">GB</span></div>
+      <div class="lbl">GDDR7 PER CARD</div>
+    </div>
+    <div class="fleet-stat">
+      <div class="val">170<span class="g">+</span></div>
+      <div class="lbl">TOTAL GPUs</div>
+    </div>
+    <div class="fleet-stat">
+      <div class="val">~14<span class="g">TB</span></div>
+      <div class="lbl">TOTAL FLEET VRAM</div>
+    </div>
+  </div>
+
+  <!-- Packages -->
+  <section>
+    <div class="section-label">10 Packages</div>
+    <h2>Pick your rig. Ship your model.</h2>
+    <p class="desc">Every package is single-tenant. Wallet-gated API. Your data never leaves your rack. 72-hour hardware replacement SLA on all dedicated rigs.</p>
+
+    <div class="packages">
+
+      <!-- 1. Edge Node -->
+      <div class="pkg">
+        <div class="pkg-badge blue">EDGE</div>
+        <div class="pkg-name">Edge Inference Node</div>
+        <div class="pkg-desc">Jetson Orin Nano Super. 10W power draw. Run 4B models at the point of care &mdash; clinic, bedside, ambulance, factory floor. Silent. Fanless. Always on.</div>
+        <div class="pkg-specs">
+          <span class="pkg-spec">Jetson Orin Nano</span>
+          <span class="pkg-spec">8GB</span>
+          <span class="pkg-spec">10W</span>
+          <span class="pkg-spec">4B models</span>
+        </div>
+        <div class="pkg-price">$250 <span class="period">/mo</span></div>
+        <a href="/rfp" class="pkg-cta">Request &rarr;</a>
+      </div>
+
+      <!-- 2. Zima Cluster -->
+      <div class="pkg">
+        <div class="pkg-badge blue">EDGE CLUSTER</div>
+        <div class="pkg-name">Zima Edge Cluster</div>
+        <div class="pkg-desc">12-node distributed inference cluster. CoVe verification, load balancing, fault tolerance. Runs at the edge for latency-critical workloads.</div>
+        <div class="pkg-specs">
+          <span class="pkg-spec">12 nodes</span>
+          <span class="pkg-spec">Distributed</span>
+          <span class="pkg-spec">CoVe-ready</span>
+        </div>
+        <div class="pkg-price">$800 <span class="period">/mo</span></div>
+        <a href="/rfp" class="pkg-cta">Request &rarr;</a>
+      </div>
+
+      <!-- 3. Managed Inference API -->
+      <div class="pkg">
+        <div class="pkg-badge green">API</div>
+        <div class="pkg-name">Managed Inference API</div>
+        <div class="pkg-desc">Hosted inference on the S&amp;B fleet. Pay per token. No hardware to manage. HIPAA-ready. Served from RTX PRO 6000 Blackwell GPUs.</div>
+        <div class="pkg-specs">
+          <span class="pkg-spec">RTX PRO 6000</span>
+          <span class="pkg-spec">Per-token</span>
+          <span class="pkg-spec">HIPAA</span>
+          <span class="pkg-spec">vLLM</span>
+        </div>
+        <div class="pkg-price">Per-token</div>
+        <a href="/rfp" class="pkg-cta">Request pricing &rarr;</a>
+      </div>
+
+      <!-- 4. CoVe Verification -->
+      <div class="pkg">
+        <div class="pkg-badge purple">VERIFICATION</div>
+        <div class="pkg-name">CoVe Verification Service</div>
+        <div class="pkg-desc">Run your data through our 235B-parameter Chain-of-Verification pipeline. 4-stage quality gate. 93.6% conversion rate. You send pairs, we verify.</div>
+        <div class="pkg-specs">
+          <span class="pkg-spec">235B verifier</span>
+          <span class="pkg-spec">93.6% rate</span>
+          <span class="pkg-spec">4-stage gate</span>
+        </div>
+        <div class="pkg-price">$0.02 <span class="period">/pair</span></div>
+        <a href="/rfp" class="pkg-cta">Request &rarr;</a>
+      </div>
+
+      <!-- 5. SwarmForge Fine-Tune -->
+      <div class="pkg">
+        <div class="pkg-badge green">FINE-TUNE</div>
+        <div class="pkg-name">SwarmForge Fine-Tune</div>
+        <div class="pkg-desc">50K verified platinum pairs. 14B model. 3 epochs on RTX PRO 6000 Blackwell. Delivered as serverless endpoint or LoRA adapter. Hours, not months.</div>
+        <div class="pkg-specs">
+          <span class="pkg-spec">RTX PRO 6000</span>
+          <span class="pkg-spec">50K pairs</span>
+          <span class="pkg-spec">LoRA-64</span>
+          <span class="pkg-spec">3 epochs</span>
+        </div>
+        <div class="pkg-price">$249 <span class="period">one-time</span></div>
+        <a href="/swarm-finetune" class="pkg-cta">Details &rarr;</a>
+      </div>
+
+      <!-- 6. Dual Rig -->
+      <div class="pkg featured">
+        <div class="pkg-badge green">MOST POPULAR</div>
+        <div class="pkg-name">RTX PRO 6000 Dual Rig</div>
+        <div class="pkg-desc">2x RTX PRO 6000 Blackwell. 192GB VRAM. Your dedicated rig. Single-tenant. Wallet-gated API. Run 14B&ndash;32B models with full sovereignty. 72hr hardware replacement SLA.</div>
+        <div class="pkg-specs">
+          <span class="pkg-spec">2x RTX PRO 6000</span>
+          <span class="pkg-spec">192GB VRAM</span>
+          <span class="pkg-spec">96GB GDDR7 each</span>
+          <span class="pkg-spec">Blackwell</span>
+        </div>
+        <div class="pkg-price">$3,500 <span class="period">/mo</span></div>
+        <a href="/rfp" class="pkg-cta">Request &rarr;</a>
+      </div>
+
+      <!-- 7. Quad Rig -->
+      <div class="pkg">
+        <div class="pkg-badge green">HEAVY</div>
+        <div class="pkg-name">RTX PRO 6000 Quad Rig</div>
+        <div class="pkg-desc">4x RTX PRO 6000 Blackwell. 384GB VRAM. Multi-model serving, parallel fine-tuning, and large model inference. For teams that need serious throughput.</div>
+        <div class="pkg-specs">
+          <span class="pkg-spec">4x RTX PRO 6000</span>
+          <span class="pkg-spec">384GB VRAM</span>
+          <span class="pkg-spec">Multi-model</span>
+          <span class="pkg-spec">Blackwell</span>
+        </div>
+        <div class="pkg-price">$6,500 <span class="period">/mo</span></div>
+        <a href="/rfp" class="pkg-cta">Request &rarr;</a>
+      </div>
+
+      <!-- 8. Eight Rig -->
+      <div class="pkg">
+        <div class="pkg-badge gold">ENTERPRISE</div>
+        <div class="pkg-name">RTX PRO 6000 Eight Rig</div>
+        <div class="pkg-desc">8x RTX PRO 6000 Blackwell. 768GB VRAM. Full rack-scale inference. Run 70B+ models, multi-tenant isolation, or parallel training jobs at scale.</div>
+        <div class="pkg-specs">
+          <span class="pkg-spec">8x RTX PRO 6000</span>
+          <span class="pkg-spec">768GB VRAM</span>
+          <span class="pkg-spec">70B+ models</span>
+          <span class="pkg-spec">Rack-scale</span>
+        </div>
+        <div class="pkg-price">$12,000 <span class="period">/mo</span></div>
+        <a href="/rfp" class="pkg-cta">Request &rarr;</a>
+      </div>
+
+      <!-- 9. Custom Fine-Tune Project -->
+      <div class="pkg">
+        <div class="pkg-badge gold">PROJECT</div>
+        <div class="pkg-name">Custom Fine-Tune Project</div>
+        <div class="pkg-desc">Full-service managed fine-tune. We source the data, build the pipeline, run CoVe verification, and deliver a production model on your dedicated rig. End to end.</div>
+        <div class="pkg-specs">
+          <span class="pkg-spec">RTX PRO 6000</span>
+          <span class="pkg-spec">Custom data</span>
+          <span class="pkg-spec">CoVe pipeline</span>
+          <span class="pkg-spec">Delivered model</span>
+        </div>
+        <div class="pkg-price">$50K+ <span class="period">project</span></div>
+        <a href="/rfp" class="pkg-cta">Request &rarr;</a>
+      </div>
+
+      <!-- 10. Spec Build Turnkey -->
+      <div class="pkg">
+        <div class="pkg-badge gold">INVESTMENT</div>
+        <div class="pkg-name">Spec Build Turnkey</div>
+        <div class="pkg-desc">Full CRE-style spec build. 2x RTX PRO 6000 rig + 120K new pairs/year + managed hosting. 10-year term. Entry at 10% cap rate. Stabilize to 5% cap = 2x upside.</div>
+        <div class="pkg-specs">
+          <span class="pkg-spec">$500K entry</span>
+          <span class="pkg-spec">10% cap</span>
+          <span class="pkg-spec">10yr term</span>
+          <span class="pkg-spec">5% bumps</span>
+        </div>
+        <div class="pkg-price">$500K <span class="period">entry</span></div>
+        <a href="/loi" class="pkg-cta">Submit LOI &rarr;</a>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Why RTX PRO 6000 > H100 -->
+  <section>
+    <div class="section-label">Why Blackwell</div>
+    <h2>RTX PRO 6000 vs. the cloud</h2>
+    <p class="desc">Blackwell architecture. More VRAM. Fraction of the cost. No shared tenancy.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>AWS H100 (cloud)</th>
+          <th>S&amp;B RTX PRO 6000</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>VRAM per GPU</td>
+          <td class="them">80GB HBM3</td>
+          <td class="us">96GB GDDR7</td>
+        </tr>
+        <tr>
+          <td>Architecture</td>
+          <td class="them">Hopper (2022)</td>
+          <td class="us">Blackwell (2025)</td>
+        </tr>
+        <tr>
+          <td>Monthly cost (1 GPU)</td>
+          <td class="them">~$23,000/mo</td>
+          <td class="us">~$1,750/mo</td>
+        </tr>
+        <tr>
+          <td>Tenancy</td>
+          <td class="them">Shared / multi-tenant</td>
+          <td class="us">Single-tenant, dedicated</td>
+        </tr>
+        <tr>
+          <td>Data sovereignty</td>
+          <td class="them">Your data on their rack</td>
+          <td class="us">Your data on YOUR rack</td>
+        </tr>
+        <tr>
+          <td>Access control</td>
+          <td class="them">IAM / API key</td>
+          <td class="us">Wallet-gated (Hedera)</td>
+        </tr>
+        <tr>
+          <td>Hardware SLA</td>
+          <td class="them">No dedicated SLA</td>
+          <td class="us">72hr replacement guarantee</td>
+        </tr>
+        <tr>
+          <td>Lock-in</td>
+          <td class="them">12-month reserved</td>
+          <td class="us">Month-to-month available</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Bottom CTA -->
+  <section style="text-align:center; padding:4rem 2rem;">
+    <h2>Your model. Your rack. Your data.</h2>
+    <p class="desc" style="margin-bottom:2rem;">128x RTX PRO 6000 Blackwell. 12TB+ VRAM. 10 packages. Pick yours.</p>
+    <a href="/rfp" class="cta">Request Compute &rarr;</a>
+    <div style="margin-top:1.5rem;">
+      <a href="/om" style="font-size:0.75rem; color:#666; text-decoration:underline; text-underline-offset:3px;">Read the full Offering Memorandum</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>Swarm &amp; Bee</strong> &mdash; Last mile intelligence.</p>
+    <p style="margin-top:0.5rem;">
+      <a href="/">Home</a> &middot;
+      <a href="/datasets">Datasets</a> &middot;
+      <a href="/data">Data API</a> &middot;
+      <a href="/swarm-finetune">SwarmForge</a> &middot;
+      <a href="/faq">FAQ</a> &middot;
+      <a href="https://x.com/swarmandbee" target="_blank" rel="noopener">X / Twitter</a>
+    </p>
+    <p style="margin-top:0.5rem;">&copy; 2026 Swarm &amp; Bee. All rights reserved.</p>
+  </footer>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "S&B Compute — RTX PRO 6000 Blackwell Fleet",
+    "description": "128x RTX PRO 6000 Blackwell GPUs. 12,288 GB dedicated VRAM. Single-tenant sovereign compute. 10 packages from $250/mo to $500K spec build.",
+    "brand": { "@type": "Organization", "name": "Swarm & Bee" },
+    "offers": [
+      { "@type": "Offer", "name": "Edge Inference Node", "price": "250", "priceCurrency": "USD", "billingIncrement": "P1M" },
+      { "@type": "Offer", "name": "Zima Edge Cluster", "price": "800", "priceCurrency": "USD", "billingIncrement": "P1M" },
+      { "@type": "Offer", "name": "SwarmForge Fine-Tune", "price": "249", "priceCurrency": "USD" },
+      { "@type": "Offer", "name": "RTX PRO 6000 Dual Rig", "price": "3500", "priceCurrency": "USD", "billingIncrement": "P1M" },
+      { "@type": "Offer", "name": "RTX PRO 6000 Quad Rig", "price": "6500", "priceCurrency": "USD", "billingIncrement": "P1M" },
+      { "@type": "Offer", "name": "RTX PRO 6000 Eight Rig", "price": "12000", "priceCurrency": "USD", "billingIncrement": "P1M" },
+      { "@type": "Offer", "name": "Spec Build Turnkey", "price": "500000", "priceCurrency": "USD" }
+    ]
+  }
+  </script>
+
+</body>
+</html>
