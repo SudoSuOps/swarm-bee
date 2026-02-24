@@ -213,11 +213,12 @@
       .header-links a { margin-left: 0; margin-right: 1rem; }
       .listings { grid-template-columns: 1fr; }
     }
+    .back-nav { position: fixed; top: 1.2rem; left: 1.5rem; font-size: 0.7rem; color: #555; text-decoration: none; letter-spacing: 0.1em; z-index: 50; }
+    .back-nav:hover { color: #f0f0f0; }
   </style>
 </head>
 <body>
-
-  <a href="/" style="position:fixed;top:1.2rem;left:1.5rem;font-size:0.7rem;color:#555;text-decoration:none;letter-spacing:0.1em;z-index:50;transition:color 0.3s;" onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='#555'">&larr; S&amp;B</a>
+<a href="/" class="back-nav">&larr; S&amp;B</a>
 
   <!-- ── Header ── -->
   <header class="header">
