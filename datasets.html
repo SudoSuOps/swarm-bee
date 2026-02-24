@@ -37,6 +37,118 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..700;1,14..32,300..400&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcviYwY.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Swarm & Bee",
+    "url": "https://swarmandbee.com",
+    "logo": "https://swarmandbee.com/favicon.svg",
+    "description": "Enterprise AI infrastructure. Verified training datasets, sovereign compute, specialized models.",
+    "sameAs": [
+      "https://x.com/swarmandbee",
+      "https://huggingface.co/SwarmOS",
+      "https://discord.gg/H7cyEHFHgu"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-561-532-7120",
+      "contactType": "sales",
+      "email": "build@swarmandbee.com"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: Product -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Swarm & Bee Verified Training Datasets",
+    "description": "Platinum-grade AI training datasets with proof-of-lineage. 790,000+ expert-verified Q&A pairs for LLM fine-tuning across medical, aviation, legal, and finance verticals.",
+    "brand": {
+      "@type": "Organization",
+      "name": "Swarm & Bee"
+    },
+    "category": "AI Training Data",
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "99",
+      "highPrice": "1995",
+      "priceCurrency": "USD",
+      "offerCount": "5",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "30",
+      "bestRating": "30",
+      "ratingCount": "1",
+      "reviewCount": "1"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What format are the datasets delivered in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All datasets are delivered in JSONL (JSON Lines) format. Each line contains a structured object with question, answer, specialty, tier, source, and verification score fields. Compatible with Unsloth, Axolotl, TRL, LLaMA-Factory, and custom SFT pipelines."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How are the datasets verified?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every pair passes a 4-stage Chain-of-Verification (CoVe) pipeline. A 70B-parameter model generates the pair, then a 235B-parameter model independently verifies factual accuracy, format consistency, and domain correctness. Only pairs scoring 20+ out of 30 are promoted to platinum tier. The pipeline achieves a 93.6% raw-to-platinum conversion rate."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the minimum purchase?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The minimum purchase is 1,000 pairs at $99 for any single specialty. We also offer Pro (50,000 pairs, $499), Custom Build (100,000 pairs, $999), and Enterprise (250,000 pairs, $1,995) tiers. A free sample of 10 random pairs is available via our public API with no authentication required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do the datasets contain patient data or PII?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. All medical datasets contain zero patient data and zero personally identifiable information. Pairs are generated from authoritative medical textbooks and verified by our CoVe pipeline. The data is commercially licensable under Apache 2.0."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What verticals are available?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Currently available: Medical AI (390K+ pairs, 80+ specialties), Aviation AI (MRO, safety, ATC, pilot training), Research Agents (cross-domain reasoning), and CRE (commercial real estate). Legal AI and Finance AI verticals are in development."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I try the data before purchasing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Our public API returns 10 random platinum pairs per request with no authentication. Visit swarmandbee.com/api/data/sample or try the live demo on our datasets page. You can also request 5 free pairs delivered to your email."
+        }
+      }
+    ]
+  }
+  </script>
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -291,6 +403,42 @@
 
 
   <!-- ============================================ -->
+  <!-- 3B. LIVE DATA DEMO -->
+  <!-- ============================================ -->
+  <section class="py-24 px-6 bg-white fade-up" id="demo">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-[11px] font-medium tracking-widest uppercase text-gold mb-4">Live Preview</p>
+        <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight mb-4">
+          See the data
+        </h2>
+        <p class="text-muted text-base max-w-lg mx-auto">
+          Real platinum pairs from our vault. Pulled live from our API.
+        </p>
+      </div>
+
+      <!-- Sample pair cards -->
+      <div id="sample-pairs" class="space-y-4 mb-8">
+        <div class="text-center py-12 text-muted text-sm" id="sample-loading">
+          <svg class="animate-spin h-5 w-5 mx-auto mb-3 text-muted" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
+          Loading sample pairs...
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <button onclick="loadSamples()" class="text-xs font-medium text-muted bg-warm border border-softgray rounded-full px-5 py-2 hover:text-charcoal hover:border-charcoal/20 transition-colors">
+          Refresh samples
+        </button>
+        <a href="https://cal.com/swarm/dataset-call" target="_blank" rel="noopener"
+           class="cta-btn text-xs font-medium text-white bg-charcoal rounded-full px-5 py-2 hover:bg-accent">
+          Want 390K+ more? Book a call
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
   <!-- 4. DATASET VERTICALS GRID -->
   <!-- ============================================ -->
   <section class="py-24 px-6 bg-white fade-up">
@@ -454,7 +602,129 @@
 
 
   <!-- ============================================ -->
-  <!-- 7. FINAL CTA -->
+  <!-- 7. EMAIL CAPTURE (secondary CTA) -->
+  <!-- ============================================ -->
+  <section class="py-20 px-6 fade-up" id="samples">
+    <div class="max-w-xl mx-auto">
+      <div class="p-8 rounded-2xl bg-white border border-softgray">
+        <div class="text-center mb-6">
+          <p class="text-[11px] font-medium tracking-widest uppercase text-gold mb-3">Free Sample</p>
+          <h3 class="text-xl font-semibold tracking-tight mb-2">Not ready for a call?</h3>
+          <p class="text-muted text-sm">Get 5 free platinum pairs delivered to your inbox. Pick your vertical.</p>
+        </div>
+
+        <form id="sample-form" class="space-y-3" onsubmit="return handleSampleRequest(event)">
+          <input type="email" id="sf-email" required placeholder="work@company.com"
+                 class="w-full px-4 py-2.5 text-sm bg-cream border border-softgray rounded-lg focus:outline-none focus:border-charcoal/30 transition-colors placeholder:text-muted/50">
+          <div class="grid grid-cols-2 gap-3">
+            <input type="text" id="sf-company" placeholder="Company (optional)"
+                   class="px-4 py-2.5 text-sm bg-cream border border-softgray rounded-lg focus:outline-none focus:border-charcoal/30 transition-colors placeholder:text-muted/50">
+            <select id="sf-vertical"
+                    class="px-4 py-2.5 text-sm bg-cream border border-softgray rounded-lg focus:outline-none focus:border-charcoal/30 transition-colors text-muted">
+              <option value="">Select vertical</option>
+              <option value="medical">Medical AI</option>
+              <option value="aviation">Aviation AI</option>
+              <option value="legal">Legal AI</option>
+              <option value="finance">Finance AI</option>
+              <option value="research">Research Agents</option>
+              <option value="rag">Domain RAG</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <button type="submit" id="sf-submit"
+                  class="w-full cta-btn bg-charcoal text-white text-sm font-medium rounded-lg px-6 py-2.5 hover:bg-accent transition-colors">
+            Send me 5 free pairs
+          </button>
+        </form>
+        <div id="sf-success" class="hidden text-center py-4">
+          <svg class="w-6 h-6 text-gold mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <p class="text-sm font-medium text-charcoal">Request received.</p>
+          <p class="text-xs text-muted mt-1">We'll send your sample pairs shortly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- 8. FAQ -->
+  <!-- ============================================ -->
+  <section class="py-24 px-6 bg-white fade-up" id="faq">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-[11px] font-medium tracking-widest uppercase text-muted mb-4">FAQ</p>
+        <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">
+          Common questions
+        </h2>
+      </div>
+
+      <div class="space-y-3" id="faq-list">
+        <details class="group bg-cream rounded-xl border border-softgray overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer text-sm font-medium hover:text-charcoal transition-colors">
+            What format are the datasets delivered in?
+            <svg class="w-4 h-4 text-muted flex-shrink-0 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-muted leading-relaxed">
+            JSONL (JSON Lines). Each line contains a structured object with <code class="text-xs bg-warm px-1 py-0.5 rounded">question</code>, <code class="text-xs bg-warm px-1 py-0.5 rounded">answer</code>, <code class="text-xs bg-warm px-1 py-0.5 rounded">specialty</code>, <code class="text-xs bg-warm px-1 py-0.5 rounded">tier</code>, <code class="text-xs bg-warm px-1 py-0.5 rounded">source</code>, and <code class="text-xs bg-warm px-1 py-0.5 rounded">cove_score</code> fields. Drop directly into Unsloth, Axolotl, TRL, LLaMA-Factory, or any custom SFT pipeline.
+          </div>
+        </details>
+
+        <details class="group bg-cream rounded-xl border border-softgray overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer text-sm font-medium hover:text-charcoal transition-colors">
+            How are the datasets verified?
+            <svg class="w-4 h-4 text-muted flex-shrink-0 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-muted leading-relaxed">
+            4-stage Chain-of-Verification (CoVe) pipeline. A 70B-parameter model generates each pair, then a 235B-parameter model independently verifies factual accuracy, format consistency, and domain correctness. Only pairs scoring 20+ out of 30 are promoted to platinum. 93.6% conversion rate. The 6.4% that fail are rejected or rewritten.
+          </div>
+        </details>
+
+        <details class="group bg-cream rounded-xl border border-softgray overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer text-sm font-medium hover:text-charcoal transition-colors">
+            What does 30/30 benchmark mean?
+            <svg class="w-4 h-4 text-muted flex-shrink-0 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-muted leading-relaxed">
+            We evaluate every dataset against 30 SFT suitability criteria: format consistency, answer completeness, clinical accuracy, specialty coverage, zero hallucination, proper attribution, and more. Our platinum data scores 30/30. No public dataset we've tested scores above 22/30.
+          </div>
+        </details>
+
+        <details class="group bg-cream rounded-xl border border-softgray overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer text-sm font-medium hover:text-charcoal transition-colors">
+            What is the minimum purchase?
+            <svg class="w-4 h-4 text-muted flex-shrink-0 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-muted leading-relaxed">
+            1,000 pairs at $99 for any single specialty. We also offer Pro (50K pairs, $499), Custom Build (100K pairs, $999), and Enterprise (250K pairs, $1,995). Free: 10 random pairs via our public API, no auth needed.
+          </div>
+        </details>
+
+        <details class="group bg-cream rounded-xl border border-softgray overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer text-sm font-medium hover:text-charcoal transition-colors">
+            Do the datasets contain patient data or PII?
+            <svg class="w-4 h-4 text-muted flex-shrink-0 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-muted leading-relaxed">
+            No. Zero patient data. Zero PII. All medical pairs are generated from authoritative textbooks and verified by our CoVe pipeline. Commercially licensable under Apache 2.0. Our PHI detection layer blocks 7 categories of identifiable data at generation time.
+          </div>
+        </details>
+
+        <details class="group bg-cream rounded-xl border border-softgray overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer text-sm font-medium hover:text-charcoal transition-colors">
+            Can I try the data before purchasing?
+            <svg class="w-4 h-4 text-muted flex-shrink-0 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-muted leading-relaxed">
+            Yes. The <a href="#demo" class="text-charcoal underline underline-offset-2">live demo above</a> pulls real platinum pairs from our API. You can also request 5 free pairs via email using the form above, or hit our public endpoint directly: <code class="text-xs bg-warm px-1 py-0.5 rounded">GET /api/data/sample</code>.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- 9. FINAL CTA -->
   <!-- ============================================ -->
   <section class="py-28 px-6 fade-up">
     <div class="max-w-2xl mx-auto text-center">
@@ -481,7 +751,7 @@
 
 
   <!-- ============================================ -->
-  <!-- 8. FOOTER -->
+  <!-- 10. FOOTER -->
   <!-- ============================================ -->
   <footer class="border-t border-softgray py-12 px-6">
     <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -511,8 +781,78 @@
         }
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // ─── Live Data Demo ────────────────────────────────
+    async function loadSamples() {
+      const container = document.getElementById('sample-pairs');
+      container.innerHTML = '<div class="text-center py-12 text-muted text-sm"><svg class="animate-spin h-5 w-5 mx-auto mb-3 text-muted" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>Loading sample pairs...</div>';
+
+      try {
+        const resp = await fetch('/api/data/sample');
+        const data = await resp.json();
+        if (!data.ok || !data.pairs || data.pairs.length === 0) {
+          container.innerHTML = '<div class="text-center py-8 text-muted text-sm">Sample data currently unavailable. <a href="https://cal.com/swarm/dataset-call" class="underline">Book a call</a> for a private demo.</div>';
+          return;
+        }
+
+        const pairs = data.pairs.slice(0, 3);
+        container.innerHTML = pairs.map((p, i) => `
+          <div class="p-5 bg-cream rounded-xl border border-softgray">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-[10px] font-medium tracking-widest uppercase text-gold bg-warm px-2.5 py-0.5 rounded-full border border-gold/20">${escHtml(p.specialty || 'general')}</span>
+              <span class="text-[10px] text-muted">${escHtml(p.tier || 'platinum')}</span>
+            </div>
+            <h4 class="text-sm font-medium mb-2 leading-snug">${escHtml(truncate(p.question, 180))}</h4>
+            <p class="text-xs text-muted leading-relaxed">${escHtml(truncate(p.answer, 280))}</p>
+          </div>
+        `).join('');
+      } catch (err) {
+        container.innerHTML = '<div class="text-center py-8 text-muted text-sm">Could not load samples. <a href="https://cal.com/swarm/dataset-call" class="underline">Book a call</a> for a private demo.</div>';
+      }
+    }
+
+    function truncate(str, max) {
+      if (!str) return '';
+      return str.length > max ? str.slice(0, max).trim() + '...' : str;
+    }
+
+    function escHtml(str) {
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    // Load samples on page load
+    loadSamples();
+
+    // ─── Email Capture ─────────────────────────────────
+    async function handleSampleRequest(e) {
+      e.preventDefault();
+      const btn = document.getElementById('sf-submit');
+      const email = document.getElementById('sf-email').value.trim();
+      const company = document.getElementById('sf-company').value.trim();
+      const vertical = document.getElementById('sf-vertical').value;
+
+      if (!email) return false;
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      try {
+        await fetch('/api/sample-request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, company, vertical }),
+        });
+      } catch (err) {
+        // Fire-and-forget — show success anyway
+      }
+
+      document.getElementById('sample-form').classList.add('hidden');
+      document.getElementById('sf-success').classList.remove('hidden');
+      return false;
+    }
   </script>
 
 </body>
