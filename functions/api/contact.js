@@ -8,12 +8,23 @@
  *   ROCKETCHAT_WEBHOOK_URL = https://chat.swarmandbee.com/hooks/xxx/yyy (fallback)
  */
 
+const ALLOWED_ORIGINS = [
+  'https://swarmandbee.com',
+  'https://swarmandbeecre.com',
+  'https://swarmandbeeroi.com',
+];
+
+function corsOrigin(request) {
+  const o = request.headers.get('Origin') || '';
+  return ALLOWED_ORIGINS.includes(o) ? o : ALLOWED_ORIGINS[0];
+}
+
 export async function onRequestPost(context) {
   const { request, env } = context;
 
   const headers = {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': 'https://swarmandbee.com',
+    'Access-Control-Allow-Origin': corsOrigin(request),
   };
 
   try {
@@ -123,10 +134,12 @@ export async function onRequestPost(context) {
   }
 }
 
-export async function onRequestOptions() {
+export async function onRequestOptions(context) {
+  const o = context.request.headers.get('Origin') || '';
+  const origin = ALLOWED_ORIGINS.includes(o) ? o : ALLOWED_ORIGINS[0];
   return new Response(null, {
     headers: {
-      'Access-Control-Allow-Origin': 'https://swarmandbee.com',
+      'Access-Control-Allow-Origin': origin,
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Max-Age': '86400',
