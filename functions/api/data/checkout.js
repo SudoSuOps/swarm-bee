@@ -41,6 +41,7 @@ export async function onRequestPost(context) {
     const body = await request.json();
     const tierKey = body.tier;
     const tier = TIERS[tierKey];
+    const origin = body.origin || 'hq';
 
     if (!tier) {
       return new Response(JSON.stringify({
@@ -58,8 +59,16 @@ export async function onRequestPost(context) {
 
     const params = new URLSearchParams();
     params.append('mode', tier.mode);
-    params.append('success_url', 'https://swarmandbee.com/data-success?session_id={CHECKOUT_SESSION_ID}');
-    params.append('cancel_url', 'https://swarmandbee.com/data');
+    const SUCCESS_URLS = {
+      roi: 'https://swarmandbeeroi.com/data-success.html?session_id={CHECKOUT_SESSION_ID}',
+      hq:  'https://swarmandbee.com/data-success?session_id={CHECKOUT_SESSION_ID}',
+    };
+    const CANCEL_URLS = {
+      roi: 'https://swarmandbeeroi.com/#data-packs',
+      hq:  'https://swarmandbee.com/data',
+    };
+    params.append('success_url', SUCCESS_URLS[origin] || SUCCESS_URLS.hq);
+    params.append('cancel_url', CANCEL_URLS[origin] || CANCEL_URLS.hq);
     params.append('line_items[0][price_data][currency]', 'usd');
     params.append('line_items[0][price_data][product_data][name]', tier.name);
     params.append('line_items[0][price_data][product_data][description]', tier.description);
@@ -70,6 +79,7 @@ export async function onRequestPost(context) {
     }
     params.append('metadata[tier]', tierKey);
     params.append('metadata[product]', 'swarmforge-data-api');
+    params.append('metadata[origin]', origin);
 
     const resp = await fetch('https://api.stripe.com/v1/checkout/sessions', {
       method: 'POST',

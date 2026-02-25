@@ -76,13 +76,21 @@ export async function onRequestGet(context) {
     const tier = session.metadata && session.metadata.tier
       ? session.metadata.tier : 'unknown';
 
+    const QUOTA_MAP = { finetune: 1000, pro: 50000, custom: 100000, enterprise: 250000, starter: 500 };
+
     const record = {
       key: apiKey,
       email: email,
       tier: tier,
       stripe_session: sessionId,
+      stripe_customer_id: session.customer || null,
+      stripe_subscription_id: session.subscription || null,
       amount_paid: session.amount_total,
       currency: session.currency,
+      quota: QUOTA_MAP[tier] || null,
+      pairs_pulled: 0,
+      status: 'active',
+      origin: (session.metadata && session.metadata.origin) || 'hq',
       created_at: new Date().toISOString(),
     };
 

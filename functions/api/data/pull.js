@@ -46,13 +46,18 @@ export async function onRequestGet(context) {
   const validKeys = (env.API_KEYS || '').split(',').map(function(k) { return k.trim(); }).filter(Boolean);
   let keyValid = validKeys.includes(token);
 
+  let keyRecord = null;
+  let keysData = null;
+  let opsBucket = null;
+
   if (!keyValid) {
     try {
-      const opsBucket = env.OPS_BUCKET || env.DATA_BUCKET;
+      opsBucket = env.OPS_BUCKET || env.DATA_BUCKET;
       const keysObj = await opsBucket.get('keys/api-keys.json');
       if (keysObj) {
-        const keysData = JSON.parse(await keysObj.text());
-        keyValid = keysData.keys.some(function(k) { return k.key === token; });
+        keysData = JSON.parse(await keysObj.text());
+        keyRecord = keysData.keys.find(function(k) { return k.key === token; });
+        keyValid = !!keyRecord;
       }
     } catch (_) {}
   }
@@ -61,6 +66,21 @@ export async function onRequestGet(context) {
     return new Response(JSON.stringify({ ok: false, error: 'Invalid API key.' }), {
       status: 403, headers,
     });
+  }
+
+  // Quota enforcement (only for R2-stored keys with quota field)
+  if (keyRecord) {
+    if (keyRecord.status === 'cancelled') {
+      return new Response(JSON.stringify({ ok: false, error: 'API key cancelled.' }), {
+        status: 403, headers,
+      });
+    }
+    if (keyRecord.quota && keyRecord.pairs_pulled >= keyRecord.quota) {
+      return new Response(JSON.stringify({
+        ok: false, error: 'Quota exhausted.',
+        quota: keyRecord.quota, used: keyRecord.pairs_pulled,
+      }), { status: 403, headers });
+    }
   }
 
   // --- Params ---
@@ -127,10 +147,10 @@ export async function onRequestGet(context) {
       }
 
       // Use legacy object
-      return servePairs(legacyObj, vertical, tier, specialty, offset, limit, headers, env, request, token);
+      return servePairs(legacyObj, vertical, tier, specialty, offset, limit, headers, env, request, token, keyRecord, keysData, opsBucket);
     }
 
-    return servePairs(chunkObj, vertical, tier, specialty, offset, limit, headers, env, request, token);
+    return servePairs(chunkObj, vertical, tier, specialty, offset, limit, headers, env, request, token, keyRecord, keysData, opsBucket);
   } catch (err) {
     console.error('Pull handler error:', err);
     return new Response(JSON.stringify({ ok: false, error: 'Server error.' }), {
@@ -139,18 +159,31 @@ export async function onRequestGet(context) {
   }
 }
 
-async function servePairs(chunkObj, vertical, tier, specialty, offset, limit, headers, env, request, token) {
+async function servePairs(chunkObj, vertical, tier, specialty, offset, limit, headers, env, request, token, keyRecord, keysData, opsBucketRef) {
   const text = await chunkObj.text();
   const lines = text.trim().split('\n');
   const total = lines.length;
 
+  // Clamp limit to remaining quota if applicable
+  var effectiveLimit = limit;
+  if (keyRecord && keyRecord.quota) {
+    var remaining = keyRecord.quota - (keyRecord.pairs_pulled || 0);
+    effectiveLimit = Math.min(limit, remaining);
+    if (effectiveLimit <= 0) {
+      return new Response(JSON.stringify({
+        ok: false, error: 'Quota exhausted.',
+        quota: keyRecord.quota, used: keyRecord.pairs_pulled,
+      }), { status: 403, headers: headers });
+    }
+  }
+
   if (offset >= total) {
     return new Response(JSON.stringify({
-      ok: true, pairs: [], count: 0, total: total, offset: offset, limit: limit, has_more: false,
+      ok: true, pairs: [], count: 0, total: total, offset: offset, limit: effectiveLimit, has_more: false,
     }), { status: 200, headers });
   }
 
-  const pairs = lines.slice(offset, offset + limit).map(function(line) {
+  const pairs = lines.slice(offset, offset + effectiveLimit).map(function(line) {
     var d = JSON.parse(line);
     return {
       question: d.question,
@@ -164,18 +197,34 @@ async function servePairs(chunkObj, vertical, tier, specialty, offset, limit, he
 
   const has_more = (offset + pairs.length) < total;
 
-  // Log to Discord (fire-and-forget)
-  logPull(env, request, token, vertical, tier, specialty, offset, limit, pairs.length).catch(function() {});
+  // Track usage for quota-bearing keys
+  if (keyRecord && keysData && opsBucketRef && pairs.length > 0) {
+    keyRecord.pairs_pulled = (keyRecord.pairs_pulled || 0) + pairs.length;
+    keyRecord.last_pull_at = new Date().toISOString();
+    opsBucketRef.put('keys/api-keys.json', JSON.stringify(keysData, null, 2)).catch(function() {});
+  }
 
-  return new Response(JSON.stringify({
+  // Log to Discord (fire-and-forget)
+  logPull(env, request, token, vertical, tier, specialty, offset, effectiveLimit, pairs.length).catch(function() {});
+
+  var responseBody = {
     ok: true,
     vertical: vertical, tier: tier, specialty: specialty,
     total: total,
-    offset: offset, limit: limit,
+    offset: offset, limit: effectiveLimit,
     count: pairs.length,
     has_more: has_more,
     pairs: pairs,
-  }), { status: 200, headers });
+  };
+
+  // Add quota info if applicable
+  if (keyRecord && keyRecord.quota) {
+    responseBody.quota = keyRecord.quota;
+    responseBody.used = keyRecord.pairs_pulled;
+    responseBody.remaining = keyRecord.quota - keyRecord.pairs_pulled;
+  }
+
+  return new Response(JSON.stringify(responseBody), { status: 200, headers });
 }
 
 async function logPull(env, request, token, vertical, tier, specialty, offset, limit, returned) {
