@@ -712,35 +712,177 @@ section h2 {
 }
 .fb-thanks.hidden { display: none; }
 
-/* ═══ RESPONSIVE ═══ */
+/* ═══ RESPONSIVE — TABLET (768px) ═══ */
 @media (max-width: 768px) {
+  /* Nav + Eco */
   .nav-links { display: none; }
+  .eco-bar { font-size: 0.65rem; gap: 6px; }
+
+  /* Hero */
   .hero { padding: 140px 16px 60px; }
-  .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
-  .hero-sub { font-size: 1rem; }
-  .problem-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero h1 { font-size: 2rem; }
+  .hero-sub { font-size: 1rem; margin-bottom: 28px; }
+  .hero-badge { font-size: 0.75rem; padding: 5px 14px; }
+
+  /* Sections general */
+  section { padding: 60px 16px; }
+  section h2 { font-size: 1.6rem; }
+  .section-sub { font-size: 0.92rem; margin-bottom: 32px; }
+  .section-label { font-size: 0.72rem; }
+  .section-inner { padding: 0 8px; }
+
+  /* Problem grid */
+  .problem-grid { grid-template-columns: 1fr; gap: 32px; }
+  .problem-col h3 { font-size: 1rem; margin-bottom: 16px; }
+  .problem-item p { font-size: 0.88rem; }
+  .problem-cta { font-size: 1rem; }
+
+  /* Platform pipeline */
   .pipeline { gap: 4px; }
   .pipe-step { min-width: 80px; padding: 12px 10px; }
+  .pipe-step .pipe-icon { font-size: 1.2rem; }
   .pipe-step .pipe-label { font-size: 0.72rem; }
   .pipe-arrow { font-size: 0.9rem; padding: 0 4px; }
+
+  /* Infra cards */
   .infra-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+  .infra-card { padding: 22px 20px; }
+  .infra-card h4 { font-size: 0.95rem; }
+  .infra-card p { font-size: 0.85rem; }
+
+  /* ROI layout */
   .roi-layout { grid-template-columns: 1fr; gap: 32px; }
+  .roi-text p { font-size: 0.95rem; }
+  .trait-badge { padding: 16px 14px; }
+  .trait-label { font-size: 0.82rem; }
+  .trait-desc { font-size: 0.72rem; }
+
+  /* Vertical engines */
   .vert-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
-  .builder-grid { grid-template-columns: 1fr 1fr; }
+  .vert-body { padding: 22px 20px; }
+  .vert-card h3 { font-size: 1.05rem; }
+  .vert-card p { font-size: 0.85rem; }
+  .vert-stats { gap: 12px; }
+  .vert-stat { font-size: 0.75rem; }
+  .vert-icon { font-size: 1.5rem; }
+
+  /* Builder grid */
+  .builder-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .builder-card { padding: 20px 16px; }
+  .builder-card h4 { font-size: 0.9rem; }
+  .builder-card p { font-size: 0.78rem; }
+  .builder-icon { font-size: 1.3rem; }
+
+  /* Flywheel */
   .flywheel-loop { gap: 4px; }
   .fw-step { padding: 14px 16px; }
+  .fw-step .fw-label { font-size: 0.78rem; }
+  .fw-step .fw-icon { font-size: 1.1rem; }
   .fw-arrow { padding: 0 6px; font-size: 1rem; }
-  .footer-inner { grid-template-columns: 1fr; gap: 24px; }
-  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .flywheel-quote { font-size: 0.95rem; }
+
+  /* Footer */
+  .footer { padding: 40px 16px 20px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .footer-col a { font-size: 0.82rem; }
+  .footer-brand p { font-size: 0.82rem; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; font-size: 0.72rem; }
+
+  /* Feedback widget */
+  .fb-widget { bottom: 16px; right: 16px; }
+  .fb-panel { width: 260px; }
 }
 
+/* ═══ RESPONSIVE — MOBILE (480px) ═══ */
 @media (max-width: 480px) {
-  .hero { padding: 120px 16px 48px; }
+  /* Hero */
+  .hero { padding: 120px 12px 48px; }
+  .hero h1 { font-size: 1.7rem; letter-spacing: -0.01em; }
+  .hero-sub { font-size: 0.9rem; }
+  .hero-badge { font-size: 0.72rem; padding: 5px 12px; }
   .hero-btns { flex-direction: column; align-items: center; }
-  .btn-primary, .btn-outline { width: 100%; max-width: 300px; justify-content: center; }
-  .builder-grid { grid-template-columns: 1fr; }
+  .btn-primary, .btn-outline { width: 100%; max-width: 300px; justify-content: center; font-size: 0.92rem; padding: 12px 24px; }
+
+  /* Sections tighter */
+  section { padding: 48px 12px; }
+  section h2 { font-size: 1.35rem; }
+  .section-sub { font-size: 0.85rem; margin-bottom: 24px; }
+  .section-label { font-size: 0.68rem; }
+
+  /* Problem */
+  .problem-grid { gap: 24px; }
+  .problem-col h3 { font-size: 0.92rem; margin-bottom: 12px; }
+  .problem-item { padding: 10px 0; gap: 10px; }
+  .problem-item p { font-size: 0.82rem; }
+  .problem-icon { width: 24px; height: 24px; font-size: 0.78rem; }
+  .problem-cta { font-size: 0.92rem; }
+
+  /* Pipeline stacks vertical */
   .pipeline { flex-direction: column; align-items: center; }
-  .pipe-arrow { transform: rotate(90deg); padding: 4px 0; }
+  .pipe-step { min-width: auto; width: 100%; max-width: 260px; padding: 14px 16px; }
+  .pipe-step .pipe-icon { font-size: 1.1rem; }
+  .pipe-step .pipe-label { font-size: 0.78rem; }
+  .pipe-arrow { transform: rotate(90deg); padding: 4px 0; font-size: 0.9rem; }
+
+  /* Infra cards */
+  .infra-card { padding: 18px 16px; }
+  .infra-card h4 { font-size: 0.9rem; }
+  .infra-card p { font-size: 0.82rem; }
+  .infra-tag { font-size: 0.68rem; }
+
+  /* ROI layout */
+  .roi-text p { font-size: 0.88rem; }
+  .roi-cta { font-size: 0.88rem; }
+  .trait-grid { gap: 12px; }
+  .trait-badge { padding: 14px 12px; }
+  .trait-icon { font-size: 1.3rem; }
+  .trait-label { font-size: 0.78rem; }
+  .trait-desc { font-size: 0.68rem; }
+
+  /* Vertical engines */
+  .vert-body { padding: 18px 16px; }
+  .vert-icon { font-size: 1.4rem; margin-bottom: 8px; }
+  .vert-card h3 { font-size: 1rem; }
+  .vert-card p { font-size: 0.82rem; margin-bottom: 12px; }
+  .vert-stats { gap: 10px; margin-bottom: 14px; }
+  .vert-stat { font-size: 0.72rem; }
+  .vert-link { font-size: 0.82rem; }
+
+  /* Builder grid 1-col */
+  .builder-grid { grid-template-columns: 1fr; }
+  .builder-card { padding: 18px 14px; }
+  .builder-icon { font-size: 1.2rem; margin-bottom: 8px; }
+  .builder-card h4 { font-size: 0.85rem; }
+  .builder-card p { font-size: 0.75rem; }
+
+  /* Flywheel stacks */
   .flywheel-loop { flex-direction: column; align-items: center; }
-  .fw-arrow { transform: rotate(90deg); padding: 4px 0; }
+  .fw-step { width: 100%; max-width: 220px; padding: 14px 16px; }
+  .fw-step .fw-icon { font-size: 1.1rem; }
+  .fw-step .fw-label { font-size: 0.78rem; }
+  .fw-arrow { transform: rotate(90deg); padding: 4px 0; font-size: 0.9rem; }
+  .flywheel-quote { font-size: 0.88rem; }
+
+  /* Footer single column */
+  .footer-inner { grid-template-columns: 1fr; gap: 20px; }
+  .footer-bottom { font-size: 0.7rem; }
+
+  /* Feedback — full width */
+  .fb-widget { bottom: 12px; right: 12px; left: 12px; }
+  .fb-toggle { width: auto; float: right; }
+  .fb-panel { width: 100%; left: 0; right: 0; position: fixed; bottom: 52px; border-radius: var(--radius) var(--radius) 0 0; }
+}
+
+/* ═══ RESPONSIVE — SMALL MOBILE (375px) ═══ */
+@media (max-width: 375px) {
+  .hero h1 { font-size: 1.5rem; }
+  .eco-bar { font-size: 0.58rem; gap: 4px; }
+  .eco-bar a { letter-spacing: -0.01em; }
+  section h2 { font-size: 1.2rem; }
+  .problem-item p { font-size: 0.78rem; }
+  .infra-card p { font-size: 0.78rem; }
+  .builder-card p { font-size: 0.72rem; }
+  .vert-card p { font-size: 0.78rem; }
+  .trait-desc { font-size: 0.65rem; }
+  .flywheel-quote { font-size: 0.82rem; }
 }
